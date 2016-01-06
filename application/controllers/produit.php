@@ -83,64 +83,18 @@ class Produit extends CI_Controller
     }
 
     public function insertion(){
-/*        $data = array();
-        $data[0]['reference'] = "IPR1";
-        $data[0]['libelle'] = "AK-CC7122EP01";
-        $data[0]['images'] = "";
-        $data[0]['marque'] = "Akasa";
-        $data[0]['video'] = "";
-        $data[0]['statut'] = "1";
-
-        $data[1]['reference'] = "IPR2";
-        $data[1]['libelle'] = "Alpine M1";
-        $data[1]['images'] = "";
-        $data[1]['marque'] = "Arctic";
-        $data[1]['video'] = "";
-        $data[1]['statut'] = "1";
-
-        $data[2]['reference'] = "IPR3";
-        $data[2]['libelle'] = "Seidon 120V (Ver. 2.0)";
-        $data[2]['images'] = "";
-        $data[2]['marque'] = "Cooler Master LTD";
-        $data[2]['video'] = "";
-        $data[2]['statut'] = "1";
-
-        $data[3]['reference'] = "IPR4";
-        $data[3]['libelle'] = "Macho Zero";
-        $data[3]['images'] = "";
-        $data[3]['marque'] = "Thermalright";
-        $data[3]['video'] = "";
-        $data[3]['statut'] = "1";
-        foreach($data as $key => $value){
-            $this->prod->create($value);
-        }*/
         $libelle = $this->input->post('libelle');
         $reference = $this->input->post('reference');
         $marque = $this->input->post('marque');
         $categorie = $this->input->post('categories');
         $image = $this->input->post('image');
         $video = $this->input->post('video');
-
-        var_dump($libelle);
-
+        /*INACHEVÉ*/
     }
 
     public function createPage()
     {
         $this->categorie_model->createCategorie('Niveau 1');
         //$this->categorie_model->getCategorie();
-    }
-    public function test_requete(){
-        // Première requête
-        $this->benchmark->mark('requete1_start');
-        $query = $this->db->query('SELECT `id`, `username`, `user_rank` FROM `users`')->result();
-        $this->benchmark->mark('requete1_end');
-        
-        //  Deuxième requête
-        $this->benchmark->mark('requete2_start');
-        $query = $this->db->select('id, username, user_rank')->from('users')->get()->result();
-        $this->benchmark->mark('requete2_end');
- 
-        $this->output->enable_profiler(true);
     }
 }

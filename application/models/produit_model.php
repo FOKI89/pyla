@@ -56,7 +56,7 @@ class Produit_model extends MY_Model
                 ->get()
                 ->result();
     }
-    public function add(Produit $produit)
+    /*public function add(Produit $produit)
     {
         $q = $this->_db->prepare('INSERT INTO personnages SET nom = :nom, forcePerso = :forcePerso, degats = :degats, niveau = :niveau, experience = :experience');
 
@@ -69,10 +69,10 @@ class Produit_model extends MY_Model
         $q->execute();
     }
 
-    /*public function delete(Personnage $perso)
+    public function delete(Personnage $perso)
     {
     $this->_db->exec('DELETE FROM personnages WHERE id = '.$perso->id());
-    }*/
+    }
 
     public function get($id)
     {
@@ -96,7 +96,7 @@ class Produit_model extends MY_Model
         }
 
         return $persos;
-    }
+    }*/
 
     public function setDb(PDO $db)
     {

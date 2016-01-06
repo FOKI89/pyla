@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Accueil extends CI_Controller
-{   
+{
     public function __construct()
     {
         parent::__construct();
@@ -10,7 +10,7 @@ class Accueil extends CI_Controller
         $this->load->library('layout');
         $this->output->enable_profiler(true);
     }
-    
+
     public function index()
     {
         $this->accueil();
@@ -19,31 +19,27 @@ class Accueil extends CI_Controller
     public function accueil(){
         $this->checkAdmin();
 
-        
         $data = $this->_createMenu();
-        /*$this->layout->views('apremiere_vue', $data)
+        /* fusionner plusieurs vue avant d'en afficher le total
+        $this->layout->views('premiere_vue', $data)
                      ->views('seconde_vue')
                      ->view('derniere_vue');*/
         $this->layout->view('accueil/menu',$data);
-
-        $categorie = json_decode(json_encode($this->cat->getCategorie(26)));
-        var_dump($categorie[0]->libelle);
-        $categorie[0]->libelle;
-        /*$categorie = (object) $this->cat->getCategorie(26)[0];
-        echo "LIBELLE : ".$categorie->libelle;*/
     }
 
     public function checkAdmin(){
-        /*$this->session->set_userdata('admin',1);*/
+        /* test utilisateur = admin
+        $this->session->set_userdata('admin',1);*/
         if($this->session->userdata('admin') != null){
             echo 'Bonjour Administrateur';//redirect(site_url().'/backoffice/accueil');
         }
     }
 
     private function _createMenu($id_parent = null){
-       /* if(!$categories = $this->cat->getCategoriesByParent($id_parent)){
-            show_404();
-        }*/
+        /* affichage page erreur si $id_parent <> null && int
+        if(!$categories = $this->cat->getCategoriesByParent($id_parent)){
+             show_404();
+         }*/
         $categories = $this->cat->getCategoriesByParent($id_parent);
         if($categories != null){
             $data['menu'] = '<ul>';
@@ -60,11 +56,9 @@ class Accueil extends CI_Controller
             $data['menu'] .= '</ul>';
             return $data;
         }
-        else{
-            //show_404();
-        }
     }
 
+    /*Fonction pour créer des jeux de tests (ici produits) dans la BDD*/
     public function insertion(){
         $data = array();
         $data[0]['reference'] = "IPR1";
@@ -102,19 +96,5 @@ class Accueil extends CI_Controller
     public function createPage()
     {
         $this->categorie_model->createCategorie('Niveau 1');
-        //$this->categorie_model->getCategorie();
-    }
-    public function test_requete(){
-        // Première requête
-        $this->benchmark->mark('requete1_start');
-        $query = $this->db->query('SELECT `id`, `username`, `user_rank` FROM `users`')->result();
-        $this->benchmark->mark('requete1_end');
-        
-        //  Deuxième requête
-        $this->benchmark->mark('requete2_start');
-        $query = $this->db->select('id, username, user_rank')->from('users')->get()->result();
-        $this->benchmark->mark('requete2_end');
- 
-        $this->output->enable_profiler(true);
     }
 }
