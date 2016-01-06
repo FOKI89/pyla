@@ -1,0 +1,7 @@
+# Démarrage de l'URL Rewriting
+#Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /CodeIgniter/
+ 
+# Pages statiques
+RewriteRule ^accueil$ index.php?c=accueil&m=accueil [L]
