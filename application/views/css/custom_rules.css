@@ -1,0 +1,14 @@
+  header, main, footer {
+      padding-left: 240px;
+      background-color:#ffffff;
+  }
+
+  @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+    }
+}
+
+footer .container a{
+    color:#bdbdbd;
+}
