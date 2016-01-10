@@ -1,0 +1,3 @@
+function newImage(){
+	alert('works !');
+}
