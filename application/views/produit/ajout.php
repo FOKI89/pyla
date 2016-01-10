@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php //echo css_url('livreor/style'); ?>" />
 	</head>
 	<body>
-		<form method="post" action="<?php echo site_url('produit/ajout'); ?>">
+		<form method="post" action="<?php echo site_url('produit/ajout'); ?>" accept-charset="utf-8" enctype="multipart/form-data">
 			<div>
 				<label>
 					Libellé : <br />
@@ -34,7 +34,7 @@
 					<?php echo form_dropdown('categories',$categories); ?>
 
 				</label>
-				<?php echo form_error('marque'); ?>
+				<?php echo form_error('categories'); ?>
 			</div>
 			<div>
 				<label>

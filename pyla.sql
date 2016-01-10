@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Mer 06 Janvier 2016 à 21:42
+-- Généré le :  Dim 10 Janvier 2016 à 15:51
 -- Version du serveur :  5.5.38
 -- Version de PHP :  5.6.2
 
@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Base de données :  `tradr`
+-- Base de données :  `pyla`
 --
 
 -- --------------------------------------------------------
@@ -390,57 +390,58 @@ CREATE TABLE `produits` (
 `id` int(11) NOT NULL,
   `reference` varchar(255) NOT NULL,
   `libelle` varchar(255) NOT NULL,
-  `images` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `marque` varchar(255) NOT NULL,
-  `video` varchar(255) NOT NULL,
-  `statut` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+  `video` varchar(255) DEFAULT NULL,
+  `statut` tinyint(1) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `produits`
 --
 
-INSERT INTO `produits` (`id`, `reference`, `libelle`, `images`, `marque`, `video`, `statut`) VALUES
-(1, 'IPB1', 'UMX-3 Noir', '', 'LDLC', '', 1),
-(2, 'IPB2', 'QT01 Blanc', '', 'LDLC', '', 1),
-(3, 'IPB3', 'Aeolus', '', 'Advance', '', 1),
-(4, 'IPB4', 'Aegis Core (Bleu)', '', 'BitFenix', '', 1),
-(5, 'IPAB1', 'AK-HDA-01', '', 'Akasa', '', 1),
-(6, 'IPAB2', 'AK-FC-06U3BK', '', 'Akasa', '', 1),
-(7, 'IPAB3', 'Combination Laptop Lock', '', 'Kensington', '', 1),
-(8, 'IPAB4', 'Alchemy 2.0 Magnetic LED-Strip (rouge, 12 cm)', '', 'BitFenix', '', 1),
-(9, 'IPA1', 'BG-400 Quality Select 80PLUS Bronze', '', 'LDLC', '', 1),
-(10, 'IPA2', 'Pure Power L8 600W 80PLUS Bronze', '', 'Be Quiet !', '', 1),
-(11, 'IPA3', 'HX850i 80PLUS Platinum', '', 'Corsair', '', 1),
-(12, 'IPA4', 'ZM700-TX 80PLUS', '', 'Zalman', '', 1),
-(13, 'IPDD1', '7K4000 4 To SATA 6Gb/s', '', 'Hitachi Deskstar', '', 1),
-(14, 'IPDD2', 'Extreme 1 To - Rouge', '', 'Buffalo MiniStation', '', 1),
-(15, 'IPDD3', 'HDD 5 To 3.5" (4XB0G88712)', '', 'Lenovo ThinkServer', '', 1),
-(16, 'IPDD4', 'SpinPoint M8 500 Go', '', 'Seagate Momentus', '', 1),
-(17, 'IPSSD1', 'SSD 840 EVO 500 Go mSATA', '', 'Samsung', '', 1),
-(18, 'IPSSD2', 'HyperX Predator M.2 PCIe 240 Go', '', 'Kingston', '', 1),
-(19, 'IPSSD3', 'Phoenix Blade 480 Go PCI Express 8x', '', 'G.Skill', '', 1),
-(20, 'IPSSD4', 'CS2111 480 Go', '', 'PNY', '', 1),
-(21, 'IPCM1', '960GM-VGS3 FX', '', 'ASRock', '', 1),
-(22, 'IPCM2', 'B150 PRO GAMING D3', '', 'ASUS', '', 1),
-(23, 'IPCM3', 'GA-6PXSV1', '', 'Gigabyte', '', 1),
-(24, 'IPCM4', 'B85-G43 GAMING', '', 'MSI', '', 1),
-(25, 'IPCG1', 'DualHead2Go Analog Edition', '', 'Matrox', '', 1),
-(26, 'IPCG2', 'TripleHead2Go DP Edition', '', 'Matrox', '', 1),
-(27, 'IPCG3', 'GTX 980 Ti Hydro Copper', '', 'EVGA GeForce', '', 1),
-(28, 'IPCG4', 'FirePro W9100 16 GB', '', 'Sapphire', '', 1),
-(29, 'IPMPC1', '1 Go DDR2 533 MHz', '', 'Kingston', '', 1),
-(30, 'IPMPC2', 'HyperX Impact SO-DIMM 16 Go (2 x 8 Go) DDR3 2133 MHz CL11', '', 'Kingston', '', 1),
-(31, 'IPMPC3', 'ValueRAM 8 Go DDR3 1866 MHz ECC Registered CL13 DR X8', '', 'Kingston', '', 1),
-(32, 'IPMPC4', '16 Go DDR3L 1600 MHz Registered CL11 DR X4', '', 'HP', '', 1),
-(33, 'IPP1', 'A10-7870K (3.9 GHz) Black Edition', '', 'AMD', '', 1),
-(34, 'IPP2', 'Celeron G1620 (2.7 GHz)', '', 'Intel', '', 1),
-(35, 'IPP3', 'Xeon E5-2643 v2 (3.5 GHz)', '', 'Intel', '', 1),
-(36, 'IPP4', 'Xeon E5-2697 v2 (2.7 GHz)', '', 'Intel', '', 1),
-(37, 'IPR1', 'AK-CC7122EP01', '', 'Akasa', '', 1),
-(38, 'IPR2', 'Alpine M1', '', 'Arctic', '', 1),
-(39, 'IPR3', 'Seidon 120V (Ver. 2.0)', '', 'Cooler Master LTD', '', 1),
-(40, 'IPR4', 'Macho Zero', '', 'Thermalright', '', 1);
+INSERT INTO `produits` (`id`, `reference`, `libelle`, `image`, `marque`, `video`, `statut`, `date`) VALUES
+(1, 'IPB1', 'UMX-3 Noir', '', 'LDLC', '', 1, '0000-00-00'),
+(2, 'IPB2', 'QT01 Blanc', '', 'LDLC', '', 1, '0000-00-00'),
+(3, 'IPB3', 'Aeolus', '', 'Advance', '', 1, '0000-00-00'),
+(4, 'IPB4', 'Aegis Core (Bleu)', '', 'BitFenix', '', 1, '0000-00-00'),
+(5, 'IPAB1', 'AK-HDA-01', '', 'Akasa', '', 1, '0000-00-00'),
+(6, 'IPAB2', 'AK-FC-06U3BK', '', 'Akasa', '', 1, '0000-00-00'),
+(7, 'IPAB3', 'Combination Laptop Lock', '', 'Kensington', '', 1, '0000-00-00'),
+(8, 'IPAB4', 'Alchemy 2.0 Magnetic LED-Strip (rouge, 12 cm)', '', 'BitFenix', '', 1, '0000-00-00'),
+(9, 'IPA1', 'BG-400 Quality Select 80PLUS Bronze', '', 'LDLC', '', 1, '0000-00-00'),
+(10, 'IPA2', 'Pure Power L8 600W 80PLUS Bronze', '', 'Be Quiet !', '', 1, '0000-00-00'),
+(11, 'IPA3', 'HX850i 80PLUS Platinum', '', 'Corsair', '', 1, '0000-00-00'),
+(12, 'IPA4', 'ZM700-TX 80PLUS', '', 'Zalman', '', 1, '0000-00-00'),
+(13, 'IPDD1', '7K4000 4 To SATA 6Gb/s', '', 'Hitachi Deskstar', '', 1, '0000-00-00'),
+(14, 'IPDD2', 'Extreme 1 To - Rouge', '', 'Buffalo MiniStation', '', 1, '0000-00-00'),
+(15, 'IPDD3', 'HDD 5 To 3.5" (4XB0G88712)', '', 'Lenovo ThinkServer', '', 1, '0000-00-00'),
+(16, 'IPDD4', 'SpinPoint M8 500 Go', '', 'Seagate Momentus', '', 1, '0000-00-00'),
+(17, 'IPSSD1', 'SSD 840 EVO 500 Go mSATA', '', 'Samsung', '', 1, '0000-00-00'),
+(18, 'IPSSD2', 'HyperX Predator M.2 PCIe 240 Go', '', 'Kingston', '', 1, '0000-00-00'),
+(19, 'IPSSD3', 'Phoenix Blade 480 Go PCI Express 8x', '', 'G.Skill', '', 1, '0000-00-00'),
+(20, 'IPSSD4', 'CS2111 480 Go', '', 'PNY', '', 1, '0000-00-00'),
+(21, 'IPCM1', '960GM-VGS3 FX', '', 'ASRock', '', 1, '0000-00-00'),
+(22, 'IPCM2', 'B150 PRO GAMING D3', '', 'ASUS', '', 1, '0000-00-00'),
+(23, 'IPCM3', 'GA-6PXSV1', '', 'Gigabyte', '', 1, '0000-00-00'),
+(24, 'IPCM4', 'B85-G43 GAMING', '', 'MSI', '', 1, '0000-00-00'),
+(25, 'IPCG1', 'DualHead2Go Analog Edition', '', 'Matrox', '', 1, '0000-00-00'),
+(26, 'IPCG2', 'TripleHead2Go DP Edition', '', 'Matrox', '', 1, '0000-00-00'),
+(27, 'IPCG3', 'GTX 980 Ti Hydro Copper', '', 'EVGA GeForce', '', 1, '0000-00-00'),
+(28, 'IPCG4', 'FirePro W9100 16 GB', '', 'Sapphire', '', 1, '0000-00-00'),
+(29, 'IPMPC1', '1 Go DDR2 533 MHz', '', 'Kingston', '', 1, '0000-00-00'),
+(30, 'IPMPC2', 'HyperX Impact SO-DIMM 16 Go (2 x 8 Go) DDR3 2133 MHz CL11', '', 'Kingston', '', 1, '0000-00-00'),
+(31, 'IPMPC3', 'ValueRAM 8 Go DDR3 1866 MHz ECC Registered CL13 DR X8', '', 'Kingston', '', 1, '0000-00-00'),
+(32, 'IPMPC4', '16 Go DDR3L 1600 MHz Registered CL11 DR X4', '', 'HP', '', 1, '0000-00-00'),
+(33, 'IPP1', 'A10-7870K (3.9 GHz) Black Edition', '', 'AMD', '', 1, '0000-00-00'),
+(34, 'IPP2', 'Celeron G1620 (2.7 GHz)', '', 'Intel', '', 1, '0000-00-00'),
+(35, 'IPP3', 'Xeon E5-2643 v2 (3.5 GHz)', '', 'Intel', '', 1, '0000-00-00'),
+(36, 'IPP4', 'Xeon E5-2697 v2 (2.7 GHz)', '', 'Intel', '', 1, '0000-00-00'),
+(37, 'IPR1', 'AK-CC7122EP01', '', 'Akasa', '', 1, '0000-00-00'),
+(38, 'IPR2', 'Alpine M1', '', 'Arctic', '', 1, '0000-00-00'),
+(39, 'IPR3', 'Seidon 120V (Ver. 2.0)', '', 'Cooler Master LTD', '', 1, '0000-00-00'),
+(40, 'IPR4', 'Macho Zero', '', 'Thermalright', '', 1, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -635,7 +636,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT pour la table `tags`
 --

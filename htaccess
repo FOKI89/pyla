@@ -1,7 +1,7 @@
 # Démarrage de l'URL Rewriting
 #Options +FollowSymLinks
 RewriteEngine On
-RewriteBase /CodeIgniter/
+RewriteBase /Pyla/
  
 # Pages statiques
 RewriteRule ^accueil$ index.php?c=accueil&m=accueil [L]

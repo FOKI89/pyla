@@ -7,7 +7,6 @@ class Accueil extends CI_Controller
 
         $this->load->model('categorie_model', 'cat');
         $this->load->model('produit_model', 'prod');
-        $this->load->library('layout');
         $this->output->enable_profiler(true);
     }
 
@@ -29,7 +28,7 @@ class Accueil extends CI_Controller
 
     public function checkAdmin(){
         /* test utilisateur = admin
-        $this->session->set_userdata('admin',1);*/
+           $this->session->set_userdata('admin',1);*/
         if($this->session->userdata('admin') != null){
             echo 'Bonjour Administrateur';//redirect(site_url().'/backoffice/accueil');
         }

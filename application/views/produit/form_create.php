@@ -31,7 +31,7 @@
 	<div>
 		<label>
 			Image : <br />
-			<input type="file" name="image[]" value="<?php echo set_value('image'); ?>" />
+			<input type="file" name="image" value="<?php echo set_value('image'); ?>" />
 		</label>
 		<?php echo form_error('image'); ?>
 	</div>
