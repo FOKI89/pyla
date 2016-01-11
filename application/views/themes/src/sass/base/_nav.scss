@@ -1,0 +1,84 @@
+nav.main-nav{
+    background-color: #90caf9;
+    position: relative;
+}
+
+nav.main-nav ul{
+    margin: 0 auto;
+}
+
+nav ul li div.subMenu{
+    display: none;
+    left: 0;
+    padding-top: 20px;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+div.subMenu ul li{
+    display: block;
+    float:none;
+}
+
+div.subMenu ul li a{
+    color:#2196f3;
+    padding: 0;
+    height:inherit;
+}
+
+
+#mobile-menu li.logo a{
+    height:80px;
+    position: relative;
+}
+
+
+#mobile-menu  .collapsible-header,
+#mobile-menu > li{
+        margin: 0;
+}
+
+#mobile-menu.side-nav li.logo:hover,
+#mobile-menu.side-nav li.search:hover,
+#mobile-menu.side-nav li.deroule:hover{
+    background-color: #fafafa;
+}
+
+#mobile-menu.side-nav li:hover{
+    background-color: rgba(144, 202, 249, 1);
+}
+
+#mobile-menu.side-nav li:active{
+    background-color: rgba(144, 202, 249, 0.6);
+}
+
+#mobile-menu.side-nav li.search{
+    margin: 20px 0;
+}
+
+#mobile-menu li.search .search-wrapper input#search {
+    border: 0 none;
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    height: 45px;
+    margin: 0;
+    padding: 0 45px 0 15px;
+    width: 100%;
+    color:#2196f3;
+}
+
+#mobile-menu li.search .search-wrapper {
+    margin: 0 12px;
+    transition: margin 0.25s ease 0s;
+}
+#mobile-menu li.search .search-wrapper i.material-icons {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color:#2196f3;
+    line-height: 30px;
+}

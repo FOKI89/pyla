@@ -1,0 +1,53 @@
+/*------------------------------------*\
+  HEADER desktop
+\*------------------------------------*/
+header{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+header ul.liste_category li {
+	text-align: center;
+}
+
+div.recherche{
+	margin: 20px 0 0 0;
+}
+
+div.header-links{
+	margin: 20px 0 0 0;
+}
+
+
+div.recherche nav{
+	background: $backgroundColor;
+	color:$backgroundColorHeader;
+	height:40px;
+	line-height: 40px;
+
+}
+
+div.recherche i.right{
+	margin: 0;
+}
+header nav,
+header nav .nav-wrapper i,
+header nav a.button-collapse,
+header nav a.button-collapse i,
+header .btn.dropdown-button.white.grey-text,
+header .btn{
+	height: 40px;
+	line-height: 40px;
+}
+
+header .dropdown-content li{
+	min-height: 40px;
+}
+
+header .dropdown-content li > a, header .dropdown-content li > span{
+	padding: 9px 16px;
+}
+
+header .btn{
+	padding:0 1rem;
+}

@@ -1,0 +1,38 @@
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alignleft{
+	float:left;
+
+}
+
+.alignright{
+	float:right;
+}
+
+.article-content  img.aligncenter{
+    max-width:100%;
+  	margin-left: auto;
+    margin-right: auto;
+}
+
+.waves-effect.waves-blue .waves-ripple{
+    background-color: #2196f3;
+}
+
+.bouton{
+    display: block;
+    padding: 10px 5px;
+    text-align: center;
+    margin: 10px 0 0 0;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+.bouton:hover{
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
