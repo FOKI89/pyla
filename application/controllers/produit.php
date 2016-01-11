@@ -4,8 +4,8 @@ class Produit extends CI_Controller
     private $id;
     private $reference;
     private $libelle;
-    private $image;
     private $marque;
+    private $image;
     private $video;
     private $statut;
     private $date;
@@ -25,7 +25,7 @@ class Produit extends CI_Controller
         $this->produit($id_categorie);
     }
 
-    public function produit($id_categorie = null){
+    public function liste_produit($id_categorie = null){
         $this->id_categorie = intval($id_categorie);
         $data = $this->_createGrille();
         /*$this->layout->views('premiere_vue', $data)
@@ -65,31 +65,7 @@ class Produit extends CI_Controller
         return $data;
     }
 
-    private function _insertion(){
-        $options_echappees = array();
-        $options_non_echappees = array();
-        $options_echappees['libelle'] = $this->input->post('libelle');
-        $options_echappees['reference'] = $this->input->post('reference');
-        $options_echappees['marque'] = $this->input->post('marque');
-        $options_echappees['image'] = $this->image;
-        $options_echappees['video'] = $this->input->post('video');
-        $options_non_echappees = array();
-        $options_non_echappees['statut'] = 1;
-        $options_non_echappees['date'] = 'NOW()';
-
-        $resultat = $this->prod->create($options_echappees, $options_non_echappees);
-
-        unset($options_echappees);
-        unset($options_non_echappees);
-        $options_echappees = array();
-        $options_non_echappees = array();
-        $options_non_echappees['id_categorie'] = (int) $this->input->post('categories');
-        $options_non_echappees['id_produit'] = (int) $this->db->insert_id();
-
-        $resultat = $this->cat_prod->create($options_echappees, $options_non_echappees);
-    }
-
-    public function form_create(){
+     public function form_create(){
         $fields = array(
                   'id',
                   'libelle',
@@ -126,9 +102,24 @@ class Produit extends CI_Controller
         }
         if($this->form_validation->run())
         {
+            $this->product->setReference($this->input->post('reference'));
+            $this->product->setLibelle($this->input->post('libelle'));
+            $this->product->setMarque($this->input->post('marque'));
+            if(!empty($this->input->post('video'))){
+                echo 'IN';
+                $this->product->setVideo($this->input->post('video'));
+            }
+            $this->product->setStatut(1);
+
+            $this->_insertion();
+
             if (!empty($_FILES['image']['name']))
             {
-                $config['upload_path']   = './assets/images/produit';
+                $filename = './assets/images/produit/'.$this->product->getId();
+                if (!file_exists($filename)) {
+                    mkdir($filename, 0777, true);
+                }
+                $config['upload_path']   = $filename;
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size']      = '2048';
                 $config['encrypt_name']  = TRUE;  
@@ -153,7 +144,6 @@ class Produit extends CI_Controller
                     }
 
                     $this->image = $img['file_name'];
-                    $this->_insertion();
                 }
                 else
                 {
@@ -167,6 +157,30 @@ class Produit extends CI_Controller
             $this->layout->ajouter_js('new_image');
             $this->layout->view('produit/form_create',$data);
         }  
+    }
+
+    private function _insertion(){
+        $options_echappees = array();
+        $options_non_echappees = array();
+        $options_echappees['reference'] = $this->product->getReference();
+        $options_echappees['libelle'] = $this->product->getLibelle();
+        $options_echappees['marque'] = $this->product->getMarque();
+        $options_echappees['video'] = $this->product->getVideo() != NULL ? $this->product->getVideo() : NULL;
+        $options_non_echappees = array();
+        $options_non_echappees['statut'] = $this->product->getStatut();
+        $options_non_echappees['date'] = 'NOW()';
+
+        $resultat = $this->prod->create($options_echappees, $options_non_echappees);
+
+        unset($options_echappees);
+        unset($options_non_echappees);
+        $options_echappees = array();
+        $options_non_echappees = array();
+        $this->product->setId((int) $this->db->insert_id());
+        $options_non_echappees['id_categorie'] = (int) $this->input->post('categories');
+        $options_non_echappees['id_produit'] = $this->product->getId();
+
+        $resultat = $this->cat_prod->create($options_echappees, $options_non_echappees);
     }
 
     public function createPage()

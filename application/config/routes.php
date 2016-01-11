@@ -72,5 +72,5 @@ $route['accueil.php'] = "accueil/accueil";
 | -------------------------------------------------------------------------
 */
 
-$route['produit/(:num)'] = "produit/produit/$1";
+$route['produit/(:num)'] = "produit/liste_produit/$1";
 $route['produit/ajout'] = "produit/form_create";
