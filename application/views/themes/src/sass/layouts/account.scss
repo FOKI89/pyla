@@ -1,0 +1,44 @@
+ul#nav-account{
+  width:250px;
+}
+ul#nav-account a{
+  color: #444;
+  display: block;
+  font-size: 1rem;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  /*background: #eceff1;*/
+}
+
+ul#nav-account a.collapsible-header{
+  background: transparent;
+}
+
+ul#nav-account > li a{
+  border-bottom: 1px solid #ddd;
+}
+
+ul#nav-account li.active > a{
+  background: #cfd8dc;
+}
+
+
+ul#nav-account a:hover{
+  color:#26a69a;
+}
+
+ul#nav-account .collapsible-body li a {
+    margin: 0 1rem 0 2rem;
+}
+
+/* Dashboard */
+
+.dashboard-account .card-content h3{
+  font-size:18px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dashboard-account .card-content p{
+  margin-bottom: 10px;
+}

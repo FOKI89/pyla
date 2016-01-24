@@ -44,7 +44,7 @@
 
         <div class="header-links col s12 m10 l5">
             <a class="btn yellow blue-text" href="#">Inscription</a>
-            <a class="btn blue yellow-text" href="#">Connexion</a>
+            <a class="btn blue yellow-text" href="/account.php">Connexion</a>
             <a class="btn white blue-grey-text darken-3-text" href="#"><i class="material-icons">shopping_cart</i></a>
 
         </div>
