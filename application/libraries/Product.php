@@ -19,14 +19,6 @@ class Product
      */
     public function setId($id)
     {
-        if(filter_var($id, FILTER_VALIDATE_INT) !== false)
-        {
-            if(filter_var($id, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[1-9]+$/"))) !== false)
-            {
-                log_message('error', 'ID - Format incorrect');
-            }
-            log_message('error', 'ID - Type incorrect');
-        }
         $this->id = $id;
         return $this;
     }
@@ -137,12 +129,8 @@ class Product
      */
     public function setVideo($video)
     {
-        if(filter_var($video, FILTER_VALIDATE_URL) !== false)
-        {
-            $this->video = $video;
-            return $this;
-        }
-        log_message('error', 'STATUT - Format incorrect');
+        $this->video = $video;
+        return $this;
     }
 
     /**
@@ -163,18 +151,8 @@ class Product
      */
     public function setStatut($statut)
     {
-        if(filter_var($statut, FILTER_VALIDATE_INT) !== false)
-        {
-            if(filter_var($statut, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0|1]$/"))) !== false)
-            {
-                $this->statut = $statut;
-                return $this;
-            }else{
-                log_message('error', 'STATUT - Format incorrect');
-            }
-        }else{
-            log_message('error', 'STATUT - Type incorrect');
-        }
+        $this->statut = $statut;
+        return $this;
     }
 
     /**

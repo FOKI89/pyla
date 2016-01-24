@@ -1,48 +1,42 @@
-<?php echo form_open_multipart('produit/form_create');?>
+<form method="post" accept-charset="utf-8" id="new_product" />
 	<div>
-		<label>
-			Libellé : <br />
-			<input type="text" name="libelle" value="<?php echo set_value('libelle'); ?>" />
+		<label for="libelle">
+			Libellé * <br />
+			<input type="text" id="libelle" name="libelle" value="<?php echo set_value('libelle'); ?>" title="Minimum 3 caractères" required / >
 		</label>
-		<?php echo form_error('libelle'); ?>
+	</div>
+	<div>
+		<label for="reference">
+			Référence * <br />
+			<input type="text" id="reference" name="reference" value="<?php echo set_value('reference'); ?>" title="Minimum 3 caractères" required />
+		</label>
+	</div>
+	<div>
+		<label for="marque">
+			Marque * <br />
+			<input type="text" id="marque" name="marque" value="<?php echo set_value('marque'); ?>" title="Minimum 3 caractères" required />
+		</label>
 	</div>
 	<div>
 		<label>
-			Référence : <br />
-			<input type="text"  name="reference" value="<?php echo set_value('reference'); ?>" />
-		</label>
-		<?php echo form_error('reference'); ?>
-	</div>
-	<div>
-		<label>
-			Marque : <br />
-			<input type="text" name="marque" value="<?php echo set_value('marque'); ?>" />
-		</label>
-		<?php echo form_error('marque'); ?>
-	</div>
-	<div>
-		<label>
-			Catégorie : <br />
+			Catégorie * <br />
 			<?php echo form_dropdown('categories',$categories); ?>
 
 		</label>
-		<?php echo form_error('marque'); ?>
 	</div>
 	<div>
-		<label>
-			Image : <br />
-			<input type="file" name="image" value="<?php echo set_value('image'); ?>" />
+		<label for="image">
+			Image * <br />
+			<input type="file" id="image" name="image" value="<?php echo set_value('image'); ?>" required />
 		</label>
-		<?php echo form_error('image'); ?>
 	</div>
 	<div>
-		<label>
+		<label for="video">
 			Vidéo : <br />
-			<input type="file" name="video" value="<?php echo set_value('video'); ?>" />
+			<input type="url" id="video" name="video" value="<?php echo set_value('video'); ?>" />
 		</label>
-		<?php echo form_error('video'); ?>
 	</div>
 	<p>
-		<input type="submit" value="Ajouter produit" />
+		<input type="submit" value="Valider" />
 	</p>
 </form>

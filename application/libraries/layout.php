@@ -50,7 +50,6 @@ class Layout
 	
 	public function view($name, $data = array())
 	{
-		$this->set_titre('Mon titre');
 		$this->var['output'] .= $this->CI->load->view($name, $data, true);
     
     	$this->CI->load->view('themes/'.$this->theme, $this->var);
@@ -103,6 +102,10 @@ class Layout
 			$this->var['css'][] = css_url($nom);
 			return true;
 		}
+		elseif(is_string($nom)){
+			$this->var['css'][] = $nom;
+			return true;
+		}
 		return false;
 	}
 
@@ -111,6 +114,10 @@ class Layout
 		if(is_string($nom) AND !empty($nom) AND file_exists('./assets/javascript/' . $nom . '.js'))
 		{
 			$this->var['js'][] = js_url($nom);
+			return true;
+		}
+		elseif(is_string($nom)){
+			$this->var['js'][] = $nom;
 			return true;
 		}
 		return false;
