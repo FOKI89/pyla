@@ -23,9 +23,9 @@ ul#nav-account li.active > a{
   background: #cfd8dc;
 }
 
-
 ul#nav-account a:hover{
-  color:#26a69a;
+  color:#212121;
+  text-decoration: underline;
 }
 
 ul#nav-account .collapsible-body li a {
@@ -33,12 +33,112 @@ ul#nav-account .collapsible-body li a {
 }
 
 /* Dashboard */
+.dashboard-account{
+  display: none;
+}
+
+.dashboard-account.active{
+  display: block;
+}
+
+.dashboard-account .card{
+  background: transparent;
+  box-shadow: none;
+  margin-top: 20px;
+}
+
+.dashboard-account .card-content{
+  border-radius: 3px;
+}
 
 .dashboard-account .card-content h3{
   font-size:18px;
-  border-bottom: 1px solid #ddd;
+  margin-top: 0;
 }
 
 .dashboard-account .card-content p{
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+}
+.dashboard-account .card-content p:first-of-type{
+  margin: 10px 0 5px;
+}
+
+.dashboard-account .card-content a{
+  margin:5px 0 0 0;
+  display: inline-block;
+  margin:10px 0 0 0;
+}
+
+.dashboard-account .card-content a:hover{
+  text-decoration: underline;
+}
+
+.dashboard-account .card-content a i{
+  vertical-align: bottom;
+}
+
+
+/*  informations personnelles  */
+.informations-personnelles-account{
+  display: none;
+}
+.informations-personnelles-account.active{
+  display: block;
+}
+
+/* Commandes  */
+.commandes-account,
+.ventes-account,
+.commentaires-account{
+  display: none;
+}
+
+.commandes-account.active,
+.ventes-account.active,
+.commentaires-account.active{
+  display: block;
+}
+.commandes-account table.striped > tbody > tr:nth-child(2n+1){
+  background: #bbdefb ;
+}
+.ventes-account table.striped > tbody > tr:nth-child(2n+1){
+  background: #d1c4e9 ;
+}
+
+.commentaires-account .card-content{
+  margin:20px 0;
+}
+
+/* Page connection  */
+
+.subscribe{
+  border-left: 1px solid #ededed;
+}
+
+.subscribe ul{
+  margin:20px 0 20px 20px;
+}
+
+.subscribe ul li{
+  list-style: square;
+  list-style-position: inside;
+  padding: 10px 0;
+}
+
+.subscribe p.required-fields{
+  text-align: right;
+}
+
+.subscribe p.required-fields i{
+  width:20px;
+}
+
+.subscribe form .row{
+  position: relative;
+}
+
+.subscribe form p.required-fields{
+  position: absolute;
+  right:0;
+  top:0;
 }

@@ -19,12 +19,12 @@ div.header-links{
 }
 
 
-div.recherche nav{
+div.recherche nav.col{
 	background: $backgroundColor;
 	color:$backgroundColorHeader;
 	height:40px;
 	line-height: 40px;
-
+	padding: 0;
 }
 
 div.recherche i.right{

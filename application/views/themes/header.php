@@ -14,12 +14,12 @@
 <body>
   <header>
      <div class="row">
-         <div class="logo col l1 m2 s2">
-         <a href="#" class="brand-logo">
+         <div class="logo col l1 m2 s3">
+         <a href="" class="brand-logo">
              <img class="" src="img/logo.png" alt="logo pyla"></a>
         </div>
         <!-- Champs de recherche  -->
-        <div class="recherche col s10 m10 l6">
+        <div class="recherche col hide-on-small-only m10 l6">
             <nav class="col s7">
                 <div class="nav-wrapper">
                   <form>
@@ -42,9 +42,9 @@
            </div>
         </div>
 
-        <div class="header-links col s12 m10 l5">
-            <a class="btn yellow blue-text" href="#">Inscription</a>
-            <a class="btn blue yellow-text" href="/account.php">Connexion</a>
+        <div class="header-links col s9 m10 l5">
+            <a class="btn yellow blue-text" href="/connection.php">Inscription</a>
+            <a class="btn blue yellow-text" href="/connection.php">Connexion</a>
             <a class="btn white blue-grey-text darken-3-text" href="#"><i class="material-icons">shopping_cart</i></a>
 
         </div>
