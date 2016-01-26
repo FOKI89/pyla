@@ -9,7 +9,7 @@
                       <h2>Dashboard</h2>
                       <p>Bienvenue dans votre espace personnel Ludovic</p>
                       <div class="divider"></div>
-                      <div class="card col m6 s12">
+                      <div class="card col m6 s12 z-depth-0">
                         <div class="card-content blue lighten-4">
                           <h3>Dernière Commande:</h3>
                           <div class="divider grey darken-4"></div>
@@ -18,7 +18,7 @@
                           <a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
                         </div>
                       </div>
-                      <div class="card col m6 s12">
+                      <div class="card col m6 s12 z-depth-0">
                         <div class="card-content indigo lighten-4">
                           <h3>Dernier Commentaire:</h3>
                           <div class="divider grey darken-4"></div>
@@ -27,7 +27,7 @@
                           <a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
                         </div>
                       </div>
-                      <div class="card col m6 s12">
+                      <div class="card col m6 s12 z-depth-0">
                         <div class="card-content deep-purple lighten-4">
                           <h3>Dernier Vente:</h3>
                           <div class="divider grey darken-4"></div>
@@ -36,7 +36,7 @@
                           <a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
                         </div>
                       </div>
-                      <div class="card col m6 s12">
+                      <div class="card col m6 s12 z-depth-0">
                         <div class="card-content purple lighten-5">
                           <h3>Infos</h3>
                           <div class="divider grey darken-4"></div>

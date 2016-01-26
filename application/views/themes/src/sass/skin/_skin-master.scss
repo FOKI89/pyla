@@ -71,7 +71,7 @@ h1{
 
 h2, h3{
     font-family: $mainFontLight, arial, sans-serif;
-    text-transform:uppercase;
+  /*  text-transform:uppercase;*/
     margin-bottom:10px;
     font-size:35px;
     color:$textColor;
@@ -79,7 +79,7 @@ h2, h3{
 
 h4{
     font-family: $mainFont, arial, sans-serif;
-    text-transform:uppercase;
+    /*text-transform:uppercase;*/
     font-size:15px;
     color:$textColor;
 }

@@ -1,6 +1,6 @@
 <div class="row products-container">
     <h2 class="header center-on-small-only grey-text grey-darken-4-text">Les tendances:</h2>
-    <div class="col s12 m6 product">
+    <div class="col s12 m12 l6 product">
         <div class="card">
             <div class="col m8 s12 main-part-product">
                   <div class="card-image">
@@ -30,11 +30,11 @@
     </div>
 
 
-    <div class="col s12 m6 product">
+    <div class="col s12 m12 l6 product">
         <div class="card">
             <div class="col m8 s12 main-part-product">
                   <div class="card-image">
-                      <a href="#"><img src="img/img-test2.jpg">
+                      <a href="/produit.php"><img src="img/img-test2.jpg">
                           <span class="card-title">Card Title</span>
                       </a>
                   </div>
@@ -60,11 +60,11 @@
     </div>
 
 
-    <div class="col s12 m6 product">
+    <div class="col s12 m12 l6 product">
         <div class="card">
             <div class="col m8 s12 main-part-product">
                   <div class="card-image">
-                      <a href="#"><img src="img/img-test2.jpg">
+                      <a href="/produit.php"><img src="img/img-test2.jpg">
                           <span class="card-title">Card Title</span>
                       </a>
                   </div>
@@ -89,11 +89,11 @@
         </div>
     </div>
 
-    <div class="col s12 m6 product">
+    <div class="col s12 m12 l6 product">
         <div class="card">
             <div class="col m8 s12 main-part-product">
                   <div class="card-image">
-                      <a href="#"><img src="img/img-test1.png">
+                      <a href="/produit.php"><img src="img/img-test1.png">
                           <span class="card-title">Card Title</span>
                       </a>
                   </div>

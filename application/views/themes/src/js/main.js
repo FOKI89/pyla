@@ -13,6 +13,13 @@ jQuery(document).ready(function($) {
       event.preventDefault();
       navAccount(this);
     });
+
+
+    if($(".input-field select").length > 0){
+      $(".input-field select").material_select();
+    }
+
+
 });
 
 
