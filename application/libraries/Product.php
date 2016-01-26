@@ -8,7 +8,6 @@ class Product
     private $images;
     private $video;
     private $statut;
-
     protected $table = 'produits';
 
     /**

@@ -65,6 +65,8 @@ $route['index.php'] = "accueil/accueil";
 $route['accueil'] = "accueil/accueil";
 $route['accueil.html'] = "accueil/accueil";
 $route['accueil.php'] = "accueil/accueil";
+$route['connexion'] = "accueil/form_connect";
+$route['connexion.php'] = "accueil/form_connect";
 
 /*
 | -------------------------------------------------------------------------
@@ -73,4 +75,14 @@ $route['accueil.php'] = "accueil/accueil";
 */
 
 $route['produit/(:num)'] = "produit/liste_produit/$1";
-$route['produit/ajout'] = "produit/form_create";
+$route['nouveau-produit'] = "produit/form_create";
+
+/*
+| -------------------------------------------------------------------------
+| UTILISATEUR
+| -------------------------------------------------------------------------
+*/
+
+$route['utilisateur/inscription'] = "utilisateur/form_create";
+$route['utilisateur/inscription.php'] = "utilisateur/form_create";
+$route['utilisateur/activation?t(:any)'] = "utilisateur/activation";

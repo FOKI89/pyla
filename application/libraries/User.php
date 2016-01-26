@@ -1,74 +1,33 @@
-<?php
-
-namespace Entities;
-
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Entities\Utilisateur
- */
-class Utilisateur
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+class User
 {
-    /**
-     * @var integer $id
-     */
     private $id;
-
-    /**
-     * @var string $prenom
-     */
     private $prenom;
-
-    /**
-     * @var string $nom
-     */
     private $nom;
-
-    /**
-     * @var string $adresse
-     */
     private $adresse;
-
-    /**
-     * @var string $telephone
-     */
     private $telephone;
-
-    /**
-     * @var string $cp
-     */
     private $cp;
-
-    /**
-     * @var string $ville
-     */
     private $ville;
-
-    /**
-     * @var integer $id_pays
-     */
     private $id_pays;
-
-    /**
-     * @var string $email
-     */
     private $email;
-
-    /**
-     * @var string $mdp
-     */
     private $mdp;
-
-    /**
-     * @var datetime $date_naissance
-     */
     private $date_naissance;
-
+    private $statut;
+    private $date_entree;
+    private $id_token;
+    protected $table = 'utilisateurs';
+    
     /**
-     * @var integer $droit
+     * Set id
+     *
+     * @param int $id
+     * @return Produit
      */
-    private $droit;
-
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * Get id
@@ -115,7 +74,7 @@ class Utilisateur
     }
 
     /**
-     * Get nom
+     * Get prenom
      *
      * @return string 
      */
@@ -215,21 +174,21 @@ class Utilisateur
     /**
      * Set id_pays
      *
-     * @param integer $idPays
+     * @param string $id_pays
      * @return Utilisateur
      */
-    public function setIdPays($idPays)
+    public function setIdpays($id_pays)
     {
-        $this->id_pays = $idPays;
+        $this->id_pays = $id_pays;
         return $this;
     }
 
     /**
      * Get id_pays
      *
-     * @return integer 
+     * @return string 
      */
-    public function getIdPays()
+    public function getIdpays()
     {
         return $this->id_pays;
     }
@@ -281,7 +240,7 @@ class Utilisateur
     /**
      * Set date_naissance
      *
-     * @param datetime $dateNaissance
+     * @param date $dateNaissance
      * @return Utilisateur
      */
     public function setDateNaissance($dateNaissance)
@@ -293,7 +252,7 @@ class Utilisateur
     /**
      * Get date_naissance
      *
-     * @return datetime 
+     * @return date 
      */
     public function getDateNaissance()
     {
@@ -301,24 +260,69 @@ class Utilisateur
     }
 
     /**
-     * Set droit
+     * Set statut
      *
-     * @param integer $droit
+     * @param integer $statut
      * @return Utilisateur
      */
-    public function setDroit($droit)
+    public function setStatut($statut)
     {
-        $this->droit = $droit;
+        $this->statut = $statut;
         return $this;
     }
 
     /**
-     * Get droit
+     * Get statut
      *
      * @return integer 
      */
-    public function getDroit()
+    public function getStatut()
     {
-        return $this->droit;
+        return $this->statut;
+    }
+
+    /**
+     * Set date_entree
+     *
+     * @param date $dateEntree
+     * @return Utilisateur
+     */
+    public function setDateEntree($dateEntree)
+    {
+        $this->date_entree = $dateEntree;
+        return $this;
+    }
+
+    /**
+     * Get date_entree
+     *
+     * @return integer 
+     */
+    public function getDateEntree()
+    {
+        return $this->date_entree;
+    }
+      
+
+    /**
+     * Set id_token
+     *
+     * @param integer $id_token
+     * @return Utilisateur
+     */
+    public function setIdToken($id_token)
+    {
+        $this->id_token = $id_token;
+        return $this;
+    }
+
+    /**
+     * Get id_token
+     *
+     * @return integer 
+     */
+    public function getIdToken()
+    {
+        return $this->id_token;
     }
 }

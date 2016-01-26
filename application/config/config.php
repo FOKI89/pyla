@@ -315,7 +315,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'Pylaproject §05-02-2016§ ~~D...L~~ B)';
 
 /*
 |--------------------------------------------------------------------------
@@ -514,3 +514,13 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+$config['protocol'] = 'sendmail';
+$config['useragent'] = "CodeIgniter";
+$config['mailpath']  = "/usr/bin/sendmail"; // or "/usr/sbin/sendmail"
+$config['protocol']  = "smtp";
+$config['smtp_host'] = "localhost";
+$config['smtp_port'] = "25";
+$config['charset']   = 'utf-8';
+$config['newline']   = "\r\n";
+$config['wordwrap']  = TRUE;

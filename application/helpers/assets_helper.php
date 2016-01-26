@@ -25,6 +25,14 @@ if ( ! function_exists('img_url'))
 	}
 }
 
+if ( ! function_exists('php_url'))
+{
+	function php_url($nom)
+	{
+		return base_url() . 'assets/php/' . $nom;
+	}
+}
+
 if ( ! function_exists('img'))
 {
 	function img($nom, $alt = '')
