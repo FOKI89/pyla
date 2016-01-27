@@ -20,7 +20,11 @@
             <br>
             <br>
             <div style="text-align: center">
+<<<<<<< HEAD
                 <a style="text-decoration:none;cursor:pointer;background:#80CA3E;color:#ffffff;border-top:10px solid #80CA3E;border-bottom:10px solid #80CA3E;border-left:20px solid #80CA3E;border-right:20px solid #80CA3E;" href="http://localhost:8888/Pyla/activation?t=<?php echo $token; ?>" >
+=======
+                <a style="text-decoration:none;cursor:pointer;background:#80CA3E;color:#ffffff;border-top:10px solid #80CA3E;border-bottom:10px solid #80CA3E;border-left:20px solid #80CA3E;border-right:20px solid #80CA3E;" href="http://localhost:8888/Pyla/utilisateur/activation?t=<?php echo $token; ?>" >
+>>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
                     <strong>Confirmer mon adresse email</strong>
                 </a>
             </div>

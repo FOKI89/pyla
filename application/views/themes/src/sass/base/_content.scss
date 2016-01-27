@@ -1,3 +1,14 @@
+h1{
+  font-size:3.5em;
+  margin:0 0 1.68rem 0;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.container{
+  position: relative;
+}
+
 /*
 **
 ** CONTAINER PRODUCTS
@@ -5,7 +16,8 @@
 */
 
 .products-container h2{
-    border-bottom: 2px solid #9e9e9e;
+    border-bottom: 2px solid #3f51b5;
+    padding-bottom: 5px;
 }
 
 .product{
@@ -37,7 +49,8 @@ div.side-part-product .card-image{
 }
 
 .top-products h2{
-    border-bottom: 2px solid #9e9e9e;
+    border-bottom: 2px solid #3f51b5;
+    padding-bottom: 5px;
 }
 
 .top-products img{

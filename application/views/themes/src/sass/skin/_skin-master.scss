@@ -61,31 +61,39 @@ $backgroundColorInput2:#333333; // gris très foncé
  \*------------------------------------*/
 body{
     background: $backgroundColor;
-    font-family: $mainFont, arial, sans-serif;
+    font-family: $mainFontLight, arial, sans-serif;
     width: 100%;
 }
 
 h1{
-    font-family: $mainFontLight, arial, sans-serif;
+    font-family: $mainFont, arial, sans-serif;
 }
 
-h2, h3{
+h2{
+  font-family: $mainFont, arial, sans-serif;
+  margin-bottom:10px;
+  font-size:30px;
+  color:$textColor;
+}
+
+
+h3{
     font-family: $mainFontLight, arial, sans-serif;
-    text-transform:uppercase;
+  /*  text-transform:uppercase;*/
     margin-bottom:10px;
-    font-size:35px;
+    font-size:30px;
     color:$textColor;
 }
 
 h4{
     font-family: $mainFont, arial, sans-serif;
-    text-transform:uppercase;
+    /*text-transform:uppercase;*/
     font-size:15px;
     color:$textColor;
 }
 
 p{
-    font-family: $mainFont, arial, sans-serif;
+    font-family: $mainFontLight, arial, sans-serif;
     font-size:16px;
 	margin-bottom:20px;
     color: $textColor;
@@ -101,5 +109,5 @@ a, a:hover, a:active, a:focus{
 }
 
 form input {
-    font-family: $mainFontHeavy, arial, sans-serif;
+    font-family: $mainFont, arial, sans-serif;
 }
