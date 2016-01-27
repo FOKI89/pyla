@@ -24,23 +24,12 @@ class Utilisateur extends CI_Controller
         $this->load->model("utilisateur_model", "utilisateur");
         $this->load->model("pays_model", "pays");
         $this->load->model("token_model", "token");
-<<<<<<< HEAD
         $this->load->model("statut_model", "stat");
         $this->output->enable_profiler(true);
     }
 
     public function form_creation(){
         $fields = array("id","libelle");
-=======
-        $this->output->enable_profiler(true);
-    }
-
-    public function form_create(){
-        $fields = array(
-                  "id",
-                  "libelle",
-                  );
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
         $pays = $this->pays->read($fields);
 
         $select = [];
@@ -64,7 +53,6 @@ class Utilisateur extends CI_Controller
         $this->layout->ajouter_js("jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-<<<<<<< HEAD
         $this->layout->ajouter_js("utilisateur/form_creation");
         $this->layout->view("utilisateur/form_creation",$data);
     }
@@ -74,13 +62,6 @@ class Utilisateur extends CI_Controller
     }
 
     public function form_validation(){
-=======
-        $this->layout->ajouter_js("utilisateur/form_submit");
-        $this->layout->view("utilisateur/form_create",$data);
-    }
-
-    public function form_validate(){
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
         $return = array();
         $return[0] = false;
         $require = array("prenom","nom","email","mdp","confirm_mdp");
@@ -131,11 +112,7 @@ class Utilisateur extends CI_Controller
             }
             elseif($item == "mdp"){
                 $erreur = false;
-<<<<<<< HEAD
                 $return[1] = "Votre mot de passe doit contenir\n\n";
-=======
-                $return[1] = "Votre mot de passe doit contenir :\n";
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
                 if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(.){8,15}$/"))) === false){
                     $return[1] .= "- entre 8 et 15 caractères\n";
                     $erreur = true;
@@ -167,11 +144,8 @@ class Utilisateur extends CI_Controller
         if($this->input->post("mdp") != $this->input->post("confirm_mdp")){
             $return[1] = "mdp";
             die(json_encode($return));
-<<<<<<< HEAD
         }else{
             $mdp = $this->encrypt->encode($this->input->post('mdp'));
-=======
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
         }
         $this->user->setPrenom($this->input->post("prenom"));
         $this->user->setNom($this->input->post("nom"));
@@ -180,7 +154,6 @@ class Utilisateur extends CI_Controller
         $this->user->setAdresse($this->input->post("adresse"));
         $this->user->setVille($this->input->post("ville"));
         $this->user->setCp($this->input->post("cp"));
-<<<<<<< HEAD
         $this->user->setIdPays($this->input->post("pays"));
         $this->user->setDateNaissance($this->input->post("date_naissance"));
         $this->user->setMdp($mdp);
@@ -190,17 +163,10 @@ class Utilisateur extends CI_Controller
             $return[1] = "email";
             die(json_encode($return));
         }
-=======
-        $this->user->setIdPays($this->input->post("country"));
-        $this->user->setDateNaissance($this->input->post("date_naissance"));
-        $this->user->setMdp($this->input->post("mdp"));
-
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
         $this->_insertion();
         $this->_setToken();
         $this->_mailInscription();
 
-<<<<<<< HEAD
         $return[0] = "lien";
         $return[1] = "http://localhost:8888/Pyla/activation?t=".$this->num_token;
         die(json_encode($return));
@@ -235,12 +201,6 @@ class Utilisateur extends CI_Controller
         }
     }
 
-=======
-        $return[0] = true;
-        die(json_encode($return));
-    }
-
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
     private function _insertion(){
         $options_echappees = array();
         $options_non_echappees = array();
@@ -305,11 +265,7 @@ class Utilisateur extends CI_Controller
         $data["nom"] = $this->user->getNom();
         $data["token"] = $this->num_token;
         $message = $this->load->view('email/inscription.php',$data,TRUE);
-<<<<<<< HEAD
         $this->email->from('dlery.jarvis@gmail.com', 'Pyla');
-=======
-        $this->email->from('damien.lery@sfr.fr', 'Pyla');
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
         $this->email->to($this->user->getEmail());
         $this->email->subject('Finaliser votre inscription Pyla');
         $this->email->message($message);
@@ -340,7 +296,6 @@ class Utilisateur extends CI_Controller
             return false;
         }
 
-<<<<<<< HEAD
         $user_tuples = $this->utilisateur->read("*",array("id_token" => $this->user->getIdToken()));
 
         foreach($user_tuples as $user_tuple)
@@ -348,23 +303,16 @@ class Utilisateur extends CI_Controller
             $this->user->setId($user_tuple->id);
         }
 
-=======
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
         unset($options_echappees);
         unset($options_non_echappees);
         $options_echappees = array();
         $options_non_echappees = array();
-<<<<<<< HEAD
         $options_non_echappees["statut"] = "2";
         $options_non_echappees["id_token"] = "NULL";
-=======
-        $options_non_echappees["statut"] = "0";
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
         if(!$this->utilisateur->update(array("id_token" => $this->user->getIdToken()), $options_echappees, $options_non_echappees)){
             show_error("Update statut","error_db");
             return false;
         }
-<<<<<<< HEAD
         
         $this->_setSession();
 
@@ -616,13 +564,4 @@ class Utilisateur extends CI_Controller
         $return[0] = true;
         die(json_encode($return));
     }
-=======
-        echo "Compte activé";
-    }
-
-    /*public function createPage()
-    {
-        $this->categorie_model->createCategorie("Niveau 1");
-    }*/
->>>>>>> 09e817904ab57cdbf1bc9f7063f24f91f16d880d
 }
