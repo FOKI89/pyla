@@ -1,10 +1,13 @@
-$("#new_user").on("submit", function(c){
+$("#new_product").on("submit", function(c){
     c.preventDefault();
     var data = new FormData();
-   $.each($('form#new_user :input'), function(i, fileds){
+   $.each($('form#new_product :input'), function(i, fileds){
        data.append($(fileds).attr('name'), $(fileds).val());
    });
-    var champs = ["prenom","nom","email","mdp","confirm_mdp"];
+   $.each($('form#new_product input[type=file]')[0].files, function (i, file) { 
+       data.append("image", file);
+   });
+    var champs = ["libelle", "reference", "marque", "image"];
     for(var i= 0; i < champs.length; i++)
     {
         $('[name ='+champs[i]+']').css({ 'box-shadow': 'none'});
@@ -14,7 +17,7 @@ $("#new_user").on("submit", function(c){
     }
 
     $.ajax({
-        url: 'form_validate',
+        url: 'produit/form_validation',
         data: data,
         cache: false,
         contentType: false,
@@ -25,22 +28,15 @@ $("#new_user").on("submit", function(c){
             if(jqXHR[0] == true){
                 swal({
                     title: "Succès",
-                    text: "Votre compte a été crée\nUn mail vous a été envoyé afin d'activer votre compte",
+                    text: "Votre produit a été enregistré",
                     type: "success",
-                    timer: 4000,
+                    timer: 1500,
                     showConfirmButton: false
                 });
             }else if(jqXHR[1] == "require"){
                 swal({
                     title: "Erreur",
                     text: "Veuillez renseigner les champs requis",
-                    type: "error",
-                    showConfirmButton: true
-                });
-            }else if(jqXHR[1] == "mdp"){
-                swal({
-                    title: "Erreur",
-                    text: "Les mots de passe ne concordent pas",
                     type: "error",
                     showConfirmButton: true
                 });
@@ -55,7 +51,7 @@ $("#new_user").on("submit", function(c){
         },
         error: function(jqXHR, textStatus, errorThrown)
         {
-            alert("ERREUR : "+ textStatus);
+            alert("ERROR : "+ textStatus);
         }
     });
     return false;

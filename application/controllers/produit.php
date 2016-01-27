@@ -65,7 +65,7 @@ class Produit extends CI_Controller
         return $data;
     }
 
-    public function form_create(){
+    public function form_creation(){
         $fields = array(
                   "id",
                   "libelle",
@@ -93,11 +93,11 @@ class Produit extends CI_Controller
         $this->layout->ajouter_js("jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("produit/form_submit");
-        $this->layout->view("produit/form_create",$data);
+        $this->layout->ajouter_js("produit/form_creation");
+        $this->layout->view("produit/form_creation",$data);
     }
 
-    public function form_validate(){
+    public function form_validation(){
         $return = array();
         $return[0] = false;
         $require = array("reference","libelle","marque","image");

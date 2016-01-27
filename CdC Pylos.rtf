@@ -37,7 +37,6 @@ V\'c9RIFICATION APR\'c8S MISE SUR SERVEUR\
 Chemins lors de l\'92upload et l\'92insertion en base de la photo d\'92un produit\
 \
 MAC EMAIL\
-\
 Ne pas avoir de propri\'e9t\'e9 nomm\'e9e email dans le controller utilisant la library Email (il prendrait $this->email comme la propri\'e9t\'e9 du controller et non comme une instance de la library Email).\
 \
 Dans application > config > config.php, ajouter :\
@@ -62,10 +61,13 @@ $this->email->send();\
 echo $this->email->print_debugger();\
 \
 EMAIL FORMAT HTML\
-\
 M\'eame si dans config.php est d\'e9j\'e0 pr\'e9sent : $config['mailtype']  = 'html' ;\
 ajouter dans le code cr\'e9ant l\'92email :  $this->email->set_mailtype("html");\
 \
 FEATURES\
+Ne pas g\'e9rer tout ce qui a trait au paiement (facture, tva,\'85)\
 \
-Ne pas g\'e9rer tout ce qui a trait au paiement (facture, tva,\'85)}
+SWEETALERT\
+Si une erreur du type \'ab\'a0logStr is not defined\'a0\'bb est r\'e9cup\'e9r\'e9e, v\'e9rifier la syntaxe et qu\'92il n\'92y ait pas d\'92espace inutile  dans les param\'e8tres de la swal \
+- \'91Error\'92 au lieu \'91error\'92\
+- \'92warning \'91 au lieu \'91warning\'92}
