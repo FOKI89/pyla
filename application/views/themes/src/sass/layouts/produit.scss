@@ -30,6 +30,105 @@ div.meilleures-ventes p{
 }
 
 
+/* Liste_produits*/
+.liste_produits div.card-content::after{
+  content:"";
+  display: table;
+  clear:both;
+}
+span.card-title.activator i{
+  margin-top: 12px;
+}
+
+div.card-reveal p:first-of-type{
+  margin-top: 10px;
+}
+
+div.card-reveal a.btn{
+  padding: 0 1rem;
+}
+
+div.card-reveal a i{
+  font-size: 19px;
+  margin-right: 5px;
+}
+
+.pagination li.active{
+  background: #64b5f6;
+  vertical-align: middle;
+}
+
+
+/* filter bar  */
+.nav-filter{
+  position: absolute;
+  left:0;
+  top:0;
+  z-index: 2;
+  width:15%;
+  height: 100%;
+}
+
+.nav-filter nav{
+  height: inherit;
+  line-height: 1;
+}
+
+.nav-filter h3{
+  margin:0;
+  padding: 10px 0;
+  //border-bottom:1px solid #3f51b5;
+}
+
+
+.nav-filter nav ul{
+  width: 100%;
+}
+.nav-filter nav ul li{
+  float: none;
+  margin:0 auto;
+}
+.nav-filter .dropdown-content li > a,
+.nav-filter .dropdown-content li > span{
+  color:#2196f3;
+}
+.nav-filter .select-dropdown{
+  text-indent: 20px;
+}
+
+.nav-filter .select-wrapper span.caret{
+  right:20px;
+  color:#ffffff;
+}
+
+.nav-filter .checkboxes{
+  margin:10px 0;
+}
+
+.nav-filter .checkboxes p{
+  text-indent: 10px;
+}
+.nav-filter .checkboxes [type="checkbox"] + label{
+  padding-left: 15px;
+}
+
+.nav-filter #filtre_prix{
+  width:96%;
+  margin: 10px auto;
+}
+
+.nav-filter .noUi-horizontal .noUi-handle{
+  width:28px;
+  border-radius: 28px;
+}
+
+.nav-filter .noUi-handle::after{
+  left:10px;
+}
+
+.nav-filter .noUi-connect{
+  background: #2196f3;
+}
 
 /* Notation  */
 

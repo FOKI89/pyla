@@ -1,6 +1,9 @@
 nav.main-nav{
-    background-color: #90caf9;
     position: relative;
+}
+
+nav.main-nav .container{
+  position: static;
 }
 
 nav.main-nav ul{
@@ -17,13 +20,13 @@ nav ul li div.subMenu{
     z-index: 999;
 }
 
+
 div.subMenu ul li{
     display: block;
     float:none;
 }
 
 div.subMenu ul li a{
-    color:#2196f3;
     padding: 0;
     height:inherit;
 }

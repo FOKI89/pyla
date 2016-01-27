@@ -1,5 +1,5 @@
 <div class="row top-products">
-    <h2 class="header center-on-small-only grey-text grey-darken-4-text">Le top du top:</h2>
+    <h2 class="header center-on-small-only indigo-text">Le top du top:</h2>
     <div class="col l4 m4 s12 center-on-small-only">
         <img src="/img/top-product1.jpg">
         <div class="top-products-link-hover">

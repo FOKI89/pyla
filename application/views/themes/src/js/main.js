@@ -19,8 +19,17 @@ jQuery(document).ready(function($) {
       $(".input-field select").material_select();
     }
 
-
+    if($('.nav-filter').length > 0){
+      filterPosition();
+      $( window ).resize(function(){
+        filterPosition();
+      });
+    }
+    if($('.nav-filter #filtre_prix').length > 0){
+      fourchettePrix();
+    }
 });
+
 
 
 function centerMenu(menu){
@@ -38,7 +47,30 @@ function hoverEvent(parent){
 }
 /*  Fonction servant à faire apparaitre/disparaitre les blocs de la section mon compte*/
 function navAccount(link){
-  $('.section div.active').removeClass("active");
+  $('.section div.active-account').removeClass("active-account");
   var part = $(link).attr("data-nav");
-  $("." + part).addClass('active');
+  $("." + part).addClass('active-account');
+}
+
+function filterPosition(){
+  if($( window ).width() > 975){
+    var bodyWidth = $('body').width();
+    var navFilterWidth = bodyWidth * 0.15 - 10;
+    var leftPosition = bodyWidth * 0.15;
+    $('.nav-filter').width(navFilterWidth);
+    $('.nav-filter').css({ top: 0, left: "-" + leftPosition +"px" });
+  }
+}
+
+function fourchettePrix(){
+  var slider = document.getElementById('filtre_prix');
+    noUiSlider.create(slider, {
+      start: [20, 100],
+      connect: true,
+      step: 1,
+       range: {
+         'min': 0,
+         'max': 450
+       },
+    });
 }

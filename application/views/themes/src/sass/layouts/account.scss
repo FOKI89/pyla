@@ -19,7 +19,7 @@ ul#nav-account > li a{
   border-bottom: 1px solid #ddd;
 }
 
-ul#nav-account li.active > a{
+ul#nav-account li.active-account > a{
   background: #cfd8dc;
 }
 
@@ -37,7 +37,7 @@ ul#nav-account .collapsible-body li a {
   display: none;
 }
 
-.dashboard-account.active{
+.dashboard-account.active-account{
   display: block;
 }
 
@@ -81,7 +81,7 @@ ul#nav-account .collapsible-body li a {
 .informations-personnelles-account{
   display: none;
 }
-.informations-personnelles-account.active{
+.informations-personnelles-account.active-account{
   display: block;
 }
 
@@ -92,9 +92,9 @@ ul#nav-account .collapsible-body li a {
   display: none;
 }
 
-.commandes-account.active,
-.ventes-account.active,
-.commentaires-account.active{
+.commandes-account.active-account,
+.ventes-account.active-account,
+.commentaires-account.active-account{
   display: block;
 }
 .commandes-account table.striped > tbody > tr:nth-child(2n+1){

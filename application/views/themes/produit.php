@@ -2,7 +2,6 @@
     <div class="container">
         <div class="section">
           <?php include '/partials/breadcrumb.php'; ?>
-          <div class="divider"></div>
           <h2 class="header center-on-small-only grey-text grey-darken-4-text">Statue représentant Toutancamion adolescent, réplique artisanale en terre cuite</h2>
             <div class ="row produit">
               <div class="col s12 m6">

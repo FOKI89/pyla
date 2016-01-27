@@ -5,3 +5,4 @@
     <a href="#!" class="breadcrumb blue-text">Statue représentant Toutancamion adolescent</a>
   </div>
 </div>
+<div class="divider"></div>

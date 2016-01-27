@@ -5,7 +5,7 @@
             <div class ="row">
                   <?php include "partials/nav-account.php";?>
                   <div class="col l8 s12">
-                    <div class="dashboard-account active">
+                    <div class="dashboard-account active-account">
                       <h2>Dashboard</h2>
                       <p>Bienvenue dans votre espace personnel Ludovic</p>
                       <div class="divider"></div>
