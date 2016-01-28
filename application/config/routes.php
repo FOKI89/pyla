@@ -55,7 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 /*
 | -------------------------------------------------------------------------
-| ACUEIL
+| ACCUEIL
 | -------------------------------------------------------------------------
 */
 
@@ -65,6 +65,8 @@ $route['index.php'] = "accueil/accueil";
 $route['accueil'] = "accueil/accueil";
 $route['accueil.html'] = "accueil/accueil";
 $route['accueil.php'] = "accueil/accueil";
+$route['connexion'] = "accueil/form_connexion";
+$route['connexion.php'] = "accueil/form_connexion";
 
 /*
 | -------------------------------------------------------------------------
@@ -73,4 +75,26 @@ $route['accueil.php'] = "accueil/accueil";
 */
 
 $route['produit/(:num)'] = "produit/liste_produit/$1";
-$route['produit/ajout'] = "produit/form_create";
+$route['nouveau-produit'] = "produit/form_creation";
+
+/*
+| -------------------------------------------------------------------------
+| UTILISATEUR
+| -------------------------------------------------------------------------
+*/
+
+$route['utilisateur/inscription'] = "utilisateur/form_creation";
+$route['utilisateur/inscription.php'] = "utilisateur/form_creation";
+$route['inscription'] = "utilisateur/form_creation";
+$route['inscription.php'] = "utilisateur/form_creation";
+$route['utilisateur/activation?(:any)'] = "utilisateur/activation";
+$route['activation?(:any)'] = "utilisateur/activation";
+$route['utilisateur/modification'] = "utilisateur/form_update";
+
+/*
+| -------------------------------------------------------------------------
+| BACKOFFICE
+| -------------------------------------------------------------------------
+*/
+
+$route['style'] = "css/form_bg";

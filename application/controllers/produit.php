@@ -36,7 +36,7 @@ class Produit extends CI_Controller
 
     private function _createGrille(){
         $id_categorie = array("id_categorie" => $this->id_categorie);
-        $categorie_produits = $this->cat_prod->postCategorieProduits($id_categorie);
+        $categorie_produits = $this->cat_prod->getCategorieProduits($id_categorie);
         $produits = array();
         foreach($categorie_produits as $cat_prod){
             foreach($cat_prod as $key => $value){
@@ -65,7 +65,7 @@ class Produit extends CI_Controller
         return $data;
     }
 
-    public function form_create(){
+    public function form_creation(){
         $fields = array(
                   "id",
                   "libelle",
@@ -93,96 +93,13 @@ class Produit extends CI_Controller
         $this->layout->ajouter_js("jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("produit/form_submit");
-        $this->layout->view("produit/form_create",$data);
+        $this->layout->ajouter_js("produit/form_creation");
+        $this->layout->view("produit/form_creation",$data);
     }
-/*    public function form_validate(){
+
+    public function form_validation(){
         $return = array();
         $return[0] = false;
-        $return[1] = "false";
-
-        $this->form_validation->set_rules("libelle", ""Libellé"", "trim|required|min_length[2]|max_length[100]|alpha_dash_space|encode_php_tags");
-        $this->form_validation->set_rules("reference", ""Référence"", "trim|required|min_length[2]|max_length[20]|alpha_dash_space|encode_php_tags");
-        $this->form_validation->set_rules("marque", ""Marque"", "trim|required|min_length[2]|max_length[50]|alpha_dash_space|encode_php_tags");
-        if (empty($_FILES["image"]["name"]))
-        {
-            $this->form_validation->set_rules("image", "Image");
-        }
-        if (empty($_FILES["video"]["name"]))
-        {
-            $this->form_validation->set_rules("video", "Video");
-        }
-        if($this->form_validation->run())
-        {   
-            $this->product->setReference($this->input->post("reference"));
-            $this->product->setLibelle($this->input->post("libelle"));
-            $this->product->setMarque($this->input->post("marque"));
-            if(!empty($this->input->post("video"))){
-                $this->product->setVideo($this->input->post("video"));
-            }
-            $this->product->setStatut(1);
-
-            $this->_insertion();
-
-            if (!empty($_FILES["image"]["name"]))
-            {
-                $filename = "./assets/images/produit/".$this->product->postId();
-                if (!file_exists($filename)) {
-                    mkdir($filename, 0777, true);
-                }
-                $config["upload_path"]   = $filename;
-                $config["allowed_types"] = "gif|jpg|png|jpeg";
-                $config["max_size"]      = "2048";
-                $config["encrypt_name"]  = TRUE;  
-
-                $this->upload->initialize($config);
-
-                if ($this->upload->do_upload("image"))
-                {
-                    $img = $this->upload->data();
-
-                    $config["image_library"]  = "gd2";
-                    $config["source_image"]   = $img["full_path"];
-                    $config["maintain_ratio"] = TRUE;
-                    $config["width"]          = 400;
-                    $config["height"]         = 250;
-                    $config["overwrite"]      = TRUE;
-
-                    $this->image_lib->initialize($config);
-                    if (!$this->image_lib->resize())
-                    {
-                        echo $this->image_lib->display_errors();
-                    }
-
-                    $this->image = $img["file_name"];
-                    $return[0] = true;
-                    $return[1] = "true";
-                    die(json_encode(true));
-                }
-                else
-                {
-                    $return[0] = true;
-        $return[1] = "true";
-                    echo $this->upload->display_errors();
-                }  
-            }
-            $return[0] = true;
-            $return[1] = "true";
-            die(json_encode(true));
-        }
-        else
-        {
-            $return[1] = "Error 403 forbidden";
-            die(json_encode(false));
-        }   
-        $return[0] = true;
-        $return[1] = "true";
-        die(json_encode($return));
-    }*/
-    public function form_validate(){
-        $return = array();
-        $return[0] = false;
-
         $require = array("reference","libelle","marque","image");
         $format = array("reference","libelle","marque","video");
 
@@ -196,7 +113,6 @@ class Produit extends CI_Controller
             $return[1] = "require";
             die(json_encode($return));
         }
-
         foreach($format as $item){
             if(($item == "libelle" || $item == "reference" || $item == "marque") && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^((.){3,})$/"))) === false){
                 $return[1] = "Les champs libellé, référence et marque doivent se composer d'au moins 3 caractères";
@@ -206,6 +122,7 @@ class Produit extends CI_Controller
                 die(json_encode($return));
             }
         }
+
         $this->product->setReference($this->input->post("reference"));
         $this->product->setLibelle($this->input->post("libelle"));
         $this->product->setMarque($this->input->post("marque"));
@@ -286,7 +203,6 @@ class Produit extends CI_Controller
 
         if(!$this->cat_prod->create($options_echappees, $options_non_echappees)){
             show_error("Insertion categorie_produit","error_db");
-            return false;
         }
     }
 

@@ -57,6 +57,16 @@ class Accueil extends CI_Controller
         }
     }
 
+    public function form_connexion(){
+        $this->layout->set_titre("Connexion");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("jquery-1.11.3.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("accueil/form_connexion");
+        $this->layout->view('accueil/form_connexion');
+    }
+
     /*Fonction pour créer des jeux de tests (ici produits) dans la BDD*/
     public function insertion(){
         $data = array();

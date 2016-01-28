@@ -85,7 +85,7 @@ class MY_Model extends CI_Model
 	    }
 	    
 	    return (bool) $this->db->where($where)
-                               ->delte($this->table);
+                               ->delete($this->table);
 	}
 
 	/* Count
