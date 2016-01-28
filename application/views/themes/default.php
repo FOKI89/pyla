@@ -3,6 +3,7 @@
 	<head>
 		<title><?php echo $titre; ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
+		<link rel="icon" type="image/png" href="<?php echo img_url("logo-2.png") ?>" />
 <?php foreach($css as $url): ?>
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
 <?php endforeach; ?>

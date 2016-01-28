@@ -36,7 +36,7 @@ $("#new_user").on("submit", function(c){
                     title: "Succès",
                     text: "Vos modifications ont été enregistrées",
                     type: "success",
-                    timer: 4000,
+                    timer: 1700,
                     showConfirmButton: false
                 });
             }else if(jqXHR[1] == "require"){
@@ -67,6 +67,17 @@ $("#new_user").on("submit", function(c){
                     type: "warning",
                     showConfirmButton: true
                 });
+            }else if(jqXHR[1] == "session"){
+                swal({
+                    title: "Erreur",
+                    text: "Une erreur est survenue, veuillez vous identifier",
+                    type: "warning",
+                    showConfirmButton: true
+                    },
+                    function(){
+                        window.location.href = 'accueil/connexion';
+                });
+
             }else{
                 swal({
                     title: "Format incorrect",

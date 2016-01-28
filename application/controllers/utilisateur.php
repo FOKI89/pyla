@@ -67,80 +67,10 @@ class Utilisateur extends CI_Controller
         $require = array("prenom","nom","email","mdp","confirm_mdp");
         $format = array("prenom","nom","email","telephone","adresse","ville","cp","id_pays","date_naissance","mdp");
 
-        foreach($require as $item){
-            if(empty($this->input->post($item))){
-                $return[1] = "require";
-                die(json_encode($return));
-            }
-        }
-        foreach($format as $item){
-            if($item == "prenom" && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
-                $return[1] = "Prénom";
-                die(json_encode($return));
-            }
-            elseif($item == "nom" && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù.-]{3,50}$/"))) === false){
-                $return[1] = "Nom";
-                die(json_encode($return));
-            }
-            elseif($item == "email" && (filter_var($this->input->post($item), FILTER_VALIDATE_EMAIL) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/(yopmail\.com|trash-mail\.com|thrma\.com|mailinator\.com)/"))) !== false)){
-                $return[1] = "Email";
-                die(json_encode($return));
-            }
-            elseif($item == "telephone" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^\+?([0-9](.|-|\s)*){5,20}$/"))) === false){
-                $return[1] = "Téléphone".$this->input->post($item);
-                die(json_encode($return));
-            }
-            elseif($item == "adresse" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
-                $return[1] = "Adresse";
-                die(json_encode($return));
-            }
-            elseif($item == "ville" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
-                $return[1] = "Ville";
-                die(json_encode($return));
-            }
-            elseif($item == "cp" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han} .-]{3,50}$/"))) === false){
-                $return[1] = "Code Postal";
-                die(json_encode($return));
-            }
-            elseif($item == "id_pays" && !empty($this->input->post($item))  && (filter_var($this->input->post($item), FILTER_VALIDATE_INT) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9]{1,3}$/"))) === false)){
-                $return[1] = "Id Pays";
-                die(json_encode($return));
-            }
-            elseif($item == "date_naissance"  && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))) === false){
-                $return[1] = "Date de naissance";
-                die(json_encode($return));
-            }
-            elseif($item == "mdp"){
-                $erreur = false;
-                $return[1] = "Votre mot de passe doit contenir\n\n";
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(.){8,15}$/"))) === false){
-                    $return[1] .= "- entre 8 et 15 caractères\n";
-                    $erreur = true;
-                }
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[A-Z]/"))) === false){
-                    $return[1] .= "- 1 majuscule\n";
-                    $erreur = true;
-                }
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[a-z]/"))) === false){
-                    $return[1] .= "- 1 minuscule\n";
-                    $erreur = true;
-                }
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[0-9]/"))) === false){
-                    $return[1] .= "- 1 chiffre\n";
-                    $erreur = true;
-                }
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[~!@\#€£%\^\*()=_{}\[\]\|:;,?-]/"))) === false){
-                    $return[1] .= '- 1 caractère spécial (~!@#€£%^*()=_{}[]|:;,?-)';
-                    $erreur = true;
-                }
-                if($erreur){
-                    die(json_encode($return));
-                }
-                else{
-                    $return[1] = NULL;
-                }
-            }
-        }
+        $this->_validation_require($require);
+        $this->_validation_format($format);
+        $this->_validation_mdp($this->input->post("mdp"));
+        
         if($this->input->post("mdp") != $this->input->post("confirm_mdp")){
             $return[1] = "mdp";
             die(json_encode($return));
@@ -170,6 +100,84 @@ class Utilisateur extends CI_Controller
         $return[0] = "lien";
         $return[1] = "http://localhost:8888/Pyla/activation?t=".$this->num_token;
         die(json_encode($return));
+    }
+
+    private function _validation_require($require){
+        foreach($require as $item){
+            if(empty($this->input->post($item))){
+                $return[1] = "require";
+                die(json_encode($return));
+            }
+        }
+    }
+
+    private function _validation_format($format){
+        foreach($format as $item){
+            if($item == "prenom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
+                $return[1] = "Prénom";
+                die(json_encode($return));
+            }
+            elseif($item == "nom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù.-]{3,50}$/"))) === false){
+                $return[1] = "Nom";
+                die(json_encode($return));
+            }
+            elseif($item == "email" && !empty($this->input->post($item)) && (filter_var($this->input->post($item), FILTER_VALIDATE_EMAIL) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/(yopmail\.com|trash-mail\.com|thrma\.com|mailinator\.com)/"))) !== false)){
+                $return[1] = "Email";
+                die(json_encode($return));
+            }
+            elseif($item == "telephone" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^\+?([0-9](.|-|\s)*){5,20}$/"))) === false){
+                $return[1] = "Téléphone".$this->input->post($item);
+                die(json_encode($return));
+            }
+            elseif($item == "adresse" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
+                $return[1] = "Adresse";
+                die(json_encode($return));
+            }
+            elseif($item == "ville" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
+                $return[1] = "Ville";
+                die(json_encode($return));
+            }
+            elseif($item == "cp" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han} .-]{3,50}$/"))) === false){
+                $return[1] = "Code Postal";
+                die(json_encode($return));
+            }
+            elseif($item == "id_pays" && !empty($this->input->post($item))  && (filter_var($this->input->post($item), FILTER_VALIDATE_INT) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9]{1,3}$/"))) === false)){
+                $return[1] = "Id Pays";
+                die(json_encode($return));
+            }
+            elseif($item == "date_naissance"  && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))) === false){
+                $return[1] = "Date de naissance";
+                die(json_encode($return));
+            }
+        }
+    }
+
+    private function _validation_mdp($mdp){
+        $erreur = false;
+        $return[1] = "Votre mot de passe doit contenir\n\n";
+        if(filter_var($mdp, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(.){8,15}$/"))) === false){
+            $return[1] .= "- entre 8 et 15 caractères\n";
+            $erreur = true;
+        }
+        if(filter_var($mdp, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[A-Z]/"))) === false){
+            $return[1] .= "- 1 majuscule\n";
+            $erreur = true;
+        }
+        if(filter_var($mdp, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[a-z]/"))) === false){
+            $return[1] .= "- 1 minuscule\n";
+            $erreur = true;
+        }
+        if(filter_var($mdp, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[0-9]/"))) === false){
+            $return[1] .= "- 1 chiffre\n";
+            $erreur = true;
+        }
+        if(filter_var($mdp, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[~!@\#€£%\^\*()=_{}\[\]\|:;,?-]/"))) === false){
+            $return[1] .= '- 1 caractère spécial (~!@#€£%^*()=_{}[]|:;,?-)';
+            $erreur = true;
+        }
+        if($erreur){
+            die(json_encode($return));
+        }
     }
 
     private function _verifUser(){
@@ -329,12 +337,7 @@ class Utilisateur extends CI_Controller
         $return[0] = false;
         $require = array("email","mdp");
 
-        foreach($require as $item){
-            if(empty($this->input->post($item))){
-                $return[1] = "require";
-                die(json_encode($return));
-            }
-        }
+        $this->validation_require($require);
         
         $option = array();
         $option['email']  = $this->input->post("email");
@@ -380,6 +383,16 @@ class Utilisateur extends CI_Controller
     }
 
     public function form_update(){
+        if(!isset($_SESSION['id'])){
+            $this->layout->set_titre("Connexion");
+            $this->layout->ajouter_css("sweetalert/sweetalert");
+            $this->layout->ajouter_js("jquery-1.11.3.min");
+            $this->layout->ajouter_js("sweetalert/sweetalert.min");
+            $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+            $this->layout->ajouter_js("accueil/form_connexion");
+            $this->layout->view('accueil/form_connexion');
+            return false;
+        }
         $user_tuples = $this->utilisateur->read("*",array("id" => $_SESSION['id']));
         foreach($user_tuples as $user_tuple)
         {
@@ -439,104 +452,32 @@ class Utilisateur extends CI_Controller
         $require = array("prenom","nom","email");
         $format = array("prenom","nom","email","telephone","adresse","ville","cp","id_pays","date_naissance","new_mdp");
 
-        foreach($require as $item){
-            if(empty($this->input->post($item))){
-                $return[1] = "require";
-                die(json_encode($return));
-            }
-        }
-
         $array = array($this->input->post('old_mdp'), $this->input->post('new_mdp'), $this->input->post('confirm_mdp'));
         if(count(array_filter($array)) != 0 && count(array_filter($array)) != 3) {
             $return[1] = "require";
             die(json_encode($return));
         }
 
-        foreach($format as $item){
-            if($item == "prenom" && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
-                $return[1] = "Prénom";
-                die(json_encode($return));
-            }
-            elseif($item == "nom" && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù.-]{3,50}$/"))) === false){
-                $return[1] = "Nom";
-                die(json_encode($return));
-            }
-            elseif($item == "email" && (filter_var($this->input->post($item), FILTER_VALIDATE_EMAIL) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/(yopmail\.com|trash-mail\.com|thrma\.com|mailinator\.com)/"))) !== false)){
-                $return[1] = "Email";
-                die(json_encode($return));
-            }
-            elseif($item == "telephone" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^\+?([0-9](.|-|\s)*){5,20}$/"))) === false){
-                $return[1] = "Téléphone".$this->input->post($item);
-                die(json_encode($return));
-            }
-            elseif($item == "adresse" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
-                $return[1] = "Adresse";
-                die(json_encode($return));
-            }
-            elseif($item == "ville" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
-                $return[1] = "Ville";
-                die(json_encode($return));
-            }
-            elseif($item == "cp" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han} .-]{3,50}$/"))) === false){
-                $return[1] = "Code Postal";
-                die(json_encode($return));
-            }
-            elseif($item == "id_pays" && !empty($this->input->post($item))  && (filter_var($this->input->post($item), FILTER_VALIDATE_INT) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9]{1,3}$/"))) === false)){
-                $return[1] = "Id Pays";
-                die(json_encode($return));
-            }
-            elseif($item == "date_naissance"  && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))) === false){
-                $return[1] = "Date de naissance";
-                die(json_encode($return));
-            }
+        $this->_validation_require($require);
+        $this->_validation_format($format);
 
-            $user_tuples = $this->utilisateur->read("*",array("id" => $_SESSION['id']));
+        $user_tuples = $this->utilisateur->read("*",array("id" => $_SESSION['id']));
 
-            foreach($user_tuples as $user_tuple)
-            {
-                $this->user->setId($user_tuple->id);
-            }
+        foreach($user_tuples as $user_tuple)
+        {
+            $this->user->setId($user_tuple->id);
+        }
 
-            if(!empty($this->input->post('old_mdp'))){
-                $mdp = $this->encrypt->decode($user_tuple->mdp);
+        if(!empty($this->input->post('old_mdp'))){
+            $mdp = $this->encrypt->decode($user_tuple->mdp);
 
-                if($this->input->post("old_mdp") != $mdp){
-                    $return[1] = "old_mdp";
-                    die(json_encode($return));
-                }
-            }
-
-            elseif($item == "new_mdp" && !empty($this->input->post($item))){
-                $erreur = false;
-                $return[1] = "Votre mot de passe doit contenir\n\n";
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(.){8,15}$/"))) === false){
-                    $return[1] .= "- entre 8 et 15 caractères\n";
-                    $erreur = true;
-                }
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[A-Z]/"))) === false){
-                    $return[1] .= "- 1 majuscule\n";
-                    $erreur = true;
-                }
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[a-z]/"))) === false){
-                    $return[1] .= "- 1 minuscule\n";
-                    $erreur = true;
-                }
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[0-9]/"))) === false){
-                    $return[1] .= "- 1 chiffre\n";
-                    $erreur = true;
-                }
-                if(filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[~!@\#€£%\^\*()=_{}\[\]\|:;,?-]/"))) === false){
-                    $return[1] .= '- 1 caractère spécial (~!@#€£%^*()=_{}[]|:;,?-)';
-                    $erreur = true;
-                }
-                if($erreur){
-                    die(json_encode($return));
-                }
-                else{
-                    $return[1] = NULL;
-                }
+            if($this->input->post("old_mdp") != $mdp){
+                $return[1] = "old_mdp";
+                die(json_encode($return));
             }
         }
+
+        if(!empty($this->input->post("new_mdp"))){ $this->_validation_mdp($this->input->post("new_mdp"));}
 
         if($this->input->post("new_mdp") != $this->input->post("confirm_mdp")){
             $return[1] = "new_mdp";
@@ -549,7 +490,9 @@ class Utilisateur extends CI_Controller
         unset($post['submit']);
         if(!empty($post['new_mdp'])){
             $post['mdp'] = $this->encrypt->encode($post['new_mdp']);
+            unset($post['old_mdp']);
             unset($post['new_mdp']);
+            unset($post['confirm_mdp']);
         }else{
             unset($post['old_mdp']);
             unset($post['new_mdp']);
@@ -563,5 +506,11 @@ class Utilisateur extends CI_Controller
 
         $return[0] = true;
         die(json_encode($return));
+    }
+
+    public function deconnexion(){
+        if(isset($_SESSION['id'])){
+            $_SESSION['id'] = NULL;
+        }
     }
 }

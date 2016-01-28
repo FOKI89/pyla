@@ -75,7 +75,6 @@ $route['connexion.php'] = "accueil/form_connexion";
 */
 
 $route['produit/(:num)'] = "produit/liste_produit/$1";
-$route['nouveau-produit'] = "produit/form_creation";
 
 /*
 | -------------------------------------------------------------------------
@@ -97,4 +96,6 @@ $route['utilisateur/modification'] = "utilisateur/form_update";
 | -------------------------------------------------------------------------
 */
 
+$route['backoffice/nouveau-produit'] = "produit/form_creation";
+$route['backoffice/nouveau-critere'] = "critere/form_creation";
 $route['style'] = "css/form_bg";

@@ -94,6 +94,7 @@ class Produit extends CI_Controller
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("produit/form_creation");
+        $this->layout->ajouter_js("produit/form_creation_critere");
         $this->layout->view("produit/form_creation",$data);
     }
 
@@ -103,25 +104,13 @@ class Produit extends CI_Controller
         $require = array("reference","libelle","marque","image");
         $format = array("reference","libelle","marque","video");
 
-        foreach($require as $item){
-            if(empty($this->input->post($item))){
-                $return[1] = "require";
-                die(json_encode($return));
-            }
-        }
         if(empty($_FILES["image"]["name"])){
             $return[1] = "require";
             die(json_encode($return));
         }
-        foreach($format as $item){
-            if(($item == "libelle" || $item == "reference" || $item == "marque") && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^((.){3,})$/"))) === false){
-                $return[1] = "Les champs libellé, référence et marque doivent se composer d'au moins 3 caractères";
-                die(json_encode($return));
-            }elseif(!empty($this->input->post('video')) && filter_var($item, FILTER_VALIDATE_URL) === false){
-                $return[1] = "L'url de la vidéo n'est pas correcte";
-                die(json_encode($return));
-            }
-        }
+        
+        $this->_validation_require($require);
+        $this->_validation_format($format);
 
         $this->product->setReference($this->input->post("reference"));
         $this->product->setLibelle($this->input->post("libelle"));
@@ -175,6 +164,27 @@ class Produit extends CI_Controller
   
         $return[0] = true;
         die(json_encode($return));
+    }
+
+    private function _validation_require($require){
+        foreach($require as $item){
+            if(empty($this->input->post($item))){
+                $return[1] = "require";
+                die(json_encode($return));
+            }
+        }
+    }
+
+    private function _validation_format($format){
+        foreach($format as $item){
+            if(($item == "libelle" || $item == "reference" || $item == "marque") && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^((.){3,})$/"))) === false){
+                $return[1] = "Les champs libellé, référence et marque doivent se composer d'au moins 3 caractères";
+                die(json_encode($return));
+            }elseif(!empty($this->input->post('video')) && filter_var($item, FILTER_VALIDATE_URL) === false){
+                $return[1] = "L'url de la vidéo n'est pas correcte";
+                die(json_encode($return));
+            }
+        }
     }
 
     private function _insertion(){

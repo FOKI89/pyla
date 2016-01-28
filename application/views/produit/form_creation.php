@@ -40,3 +40,22 @@
 		<input type="submit" value="Valider" />
 	</p>
 </form>
+
+<button id="add_critere"> + critère</button>
+
+<form method="post" accept-charset="utf-8" id="new_critere" style="display:none;" />
+	<div>
+		<label for="libelle">
+			Libellé * <br />
+			<input type="text" id="libelle" name="libelle" value="" title="Minimum 3 caractères" required / >
+		</label>
+	</div>
+	<div>
+		<label for="unite">
+			Unité <br />
+			<input type="text" id="unite" name="unite" value="" />
+		</label>
+	</div>
+		<input type="submit" value="Ajouter" />
+	</p>
+</form>
