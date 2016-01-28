@@ -17,7 +17,7 @@ class Produit extends CI_Controller
         $this->load->model("categorie_model", "cat");
         $this->load->model("produit_model", "prod");
         $this->load->model("categorie_produit_model", "cat_prod");
-        $this->output->enable_profiler(true);
+        $this->output->enable_profiler(false);
     }
     
     public function index($id_categorie = null)
@@ -90,7 +90,7 @@ class Produit extends CI_Controller
         $data["categories"] = $select;
         $this->layout->set_titre("Nouveau Produit");
         $this->layout->ajouter_css("sweetalert/sweetalert");
-        $this->layout->ajouter_js("jquery-1.11.3.min");
+        $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("produit/form_creation");
@@ -124,7 +124,7 @@ class Produit extends CI_Controller
 
         if (!empty($_FILES["image"]["name"]))
         {
-            $filename = "./assets/images/produit/".$this->product->getId();
+            $filename = "./assets/img/produit/".$this->product->getId();
             if (!file_exists($filename)) {
                 mkdir($filename, 0777, true);
             }

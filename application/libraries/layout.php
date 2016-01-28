@@ -15,6 +15,8 @@ class Layout
 	public function __construct()
 	{	
 		$this->CI =& get_instance();
+		$this->CI->load->model("site_model");
+		$this->CI->load->model("pays_model", "pays");
 		$this->var['output'] = '';
 		
 		//	Le titre est composé du nom de la méthode et du nom du contrôleur
@@ -28,6 +30,8 @@ class Layout
 		// Nous initialisons les variables css et js pour gérer l'inclusion de fichiers css et js
 		$this->var['css'] = array();
 		$this->var['js'] = array();
+		$this->var['nav'] = NULL;
+		$this->_setSession();
 	}
 
 	public function set_theme($theme)
@@ -111,7 +115,7 @@ class Layout
 
 	public function ajouter_js($nom)
 	{
-		if(is_string($nom) AND !empty($nom) AND file_exists('./assets/javascript/' . $nom . '.js'))
+		if(is_string($nom) AND !empty($nom) AND file_exists('./assets/js/' . $nom . '.js'))
 		{
 			$this->var['js'][] = js_url($nom);
 			return true;
@@ -121,5 +125,27 @@ class Layout
 			return true;
 		}
 		return false;
+	}
+
+	private function _setSession()
+	{
+		$site_tuples = $this->CI->site_model->read("*");
+		$id_pays = $site_tuples[0]->id_pays;
+		$pays_tuples = $this->CI->pays->read("*", array("id" => $id_pays));
+		$pays = $pays_tuples[0]->libelle;
+
+        foreach($site_tuples as $site_tuple)
+        {
+            $_SESSION['site_nom'] = $site_tuple->nom;
+            $_SESSION['site_adresse'] = $site_tuple->adresse;
+            $_SESSION['site_ville'] = $site_tuple->ville;
+            $_SESSION['site_cp'] = $site_tuple->cp;
+            $_SESSION['site_pays'] = $pays;
+            $_SESSION['site_email'] = $site_tuple->email;
+            $_SESSION['site_telephone'] = $site_tuple->telephone;
+            $_SESSION['site_date_creation'] = $site_tuple->date_creation;
+        }
+
+        return true;
 	}
 }

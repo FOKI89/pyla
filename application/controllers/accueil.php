@@ -7,7 +7,7 @@ class Accueil extends CI_Controller
 
         $this->load->model('categorie_model', 'cat');
         $this->load->model('produit_model', 'prod');
-        $this->output->enable_profiler(true);
+        $this->output->enable_profiler(false);
     }
 
     public function index()
@@ -35,10 +35,25 @@ class Accueil extends CI_Controller
     }
 
     private function _createMenu($id_parent = null){
-        /* affichage page erreur si $id_parent <> null && int
-        if(!$categories = $this->cat->getCategoriesByParent($id_parent)){
-             show_404();
-         }*/
+        $categories = $this->cat->getCategoriesByParent($id_parent);
+        if($categories != null){
+            $data['menu'] = '<div class="container">
+            <ul class="center hide-on-med-and-down desktop">';
+            foreach($categories as $categorie){
+                foreach($categorie as $key => $value){
+                    if($key == 'id'){
+                        $id_parent = intval($value);
+                    }
+                    if($key == 'libelle'){
+                        $data['menu'] .= '<li><a href="'.site_url('produit/'.$id_parent).'">'.$value.'</a></li><li style="list-style-type:none">'.$this->_createMenu($id_parent)['menu'].'</li>';
+                    }
+                }
+            }
+            $data['menu'] .= '</ul>';
+            return $data;
+        }
+    }
+    /*private function _createMenu($id_parent = null){
         $categories = $this->cat->getCategoriesByParent($id_parent);
         if($categories != null){
             $data['menu'] = '<ul>';
@@ -55,16 +70,16 @@ class Accueil extends CI_Controller
             $data['menu'] .= '</ul>';
             return $data;
         }
-    }
+    }*/
 
     public function form_connexion(){
         $this->layout->set_titre("Connexion");
         $this->layout->ajouter_css("sweetalert/sweetalert");
-        $this->layout->ajouter_js("jquery-1.11.3.min");
+        $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("accueil/form_connexion");
-        $this->layout->view('accueil/form_connexion');
+        $this->layout->view('themes/accueil/connection');
     }
 
     /*Fonction pour créer des jeux de tests (ici produits) dans la BDD*/

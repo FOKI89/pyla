@@ -690,11 +690,11 @@ class CI_Email {
 	 * @return	CI_Email
 	 */
 	public function subject($subject)
-	{
-		$subject = $this->_prep_q_encoding($subject);
-		$this->set_header('Subject', $subject);
-		return $this;
-	}
+{
+    $subject = '=?UTF-8?B?'.base64_encode($subject).'?=';
+    $this->set_header('Subject', $subject);
+    return $this;
+}
 
 	// --------------------------------------------------------------------
 

@@ -515,7 +515,7 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['protocol'] = 'sendmail';
+$config['protocol']  = 'sendmail';
 $config['useragent'] = "CodeIgniter";
 $config['mailpath']  = "/usr/bin/sendmail"; // or "/usr/sbin/sendmail"
 $config['protocol']  = "smtp";

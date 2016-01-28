@@ -1,0 +1,114 @@
+
+ /*------------------------------------*\
+     IMPORT FONT
+ \*------------------------------------*/
+ @font-face {
+   font-family: 'Roboto-Medium';
+   src: url('../font/Roboto-Medium.eot');
+   src: url('../font/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../font/Roboto-Medium.woff2') format('woff2'),
+        url('../font/Roboto-Medium.woff') format('woff'),
+        url('../font/Roboto-Medium.ttf') format('truetype');
+ }
+
+ @font-face {
+     font-family: 'Roboto-Light';
+     src: url('../font/Roboto-Light.eot');
+     src: url('../font/Roboto-Light.eot?#iefix') format('embedded-opentype'),
+          url('../font/Roboto-Light.woff2') format('woff2'),
+          url('../font/Roboto-Light.woff') format('woff'),
+          url('../font/Roboto-Light.ttf') format('truetype');
+ }
+
+ @font-face {
+     font-family: 'Roboto-Bold';
+     src: url('../font/Roboto-Bold.eot');
+     src: url('../font/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+          url('../font/Roboto-Bold.woff2') format('woff2'),
+          url('../font/Roboto-Bold.woff') format('woff'),
+          url('../font/Roboto-Bold.ttf') format('truetype');
+ }
+
+ @font-face {
+     font-family: 'Material-Design-Icons';
+     src: url('../font/Material-Design-Icons.eot');
+     src: url('../font/Material-Design-Icons.woff2') format('woff2'),
+          url('../font/Material-Design-Icons.woff') format('woff'),
+          url('../font/Material-Design-Icons.ttf') format('truetype');
+ }
+
+$mainFont: 'Roboto-Medium';
+$mainFontLight: 'Roboto-Light';
+$mainFontHeavy: 'Roboto-Bold';
+$icons: 'Material-Design-Icons';
+
+$backgroundColor: #fafafa;
+$backgroundColorHeader:#808080;
+$backgroundColorFooter: #111111; //gris foncé
+
+$textColor: #2c2c2c;
+$textColor2: #000000; // Noir
+
+$brandColor: #b5086a; //
+
+$borderColor: #e7e7e7; //  gris très clair
+
+/** Components */
+$backgroundColorInput:#f5f5f5; // blanc cassé
+$backgroundColorInput2:#333333; // gris très foncé
+
+ /*------------------------------------*\
+     GENERAL SETTING
+ \*------------------------------------*/
+body{
+    background: $backgroundColor;
+    font-family: $mainFontLight, arial, sans-serif;
+    width: 100%;
+}
+
+h1{
+    font-family: $mainFont, arial, sans-serif;
+}
+
+h2{
+  font-family: $mainFont, arial, sans-serif;
+  margin-bottom:10px;
+  font-size:30px;
+  color:$textColor;
+}
+
+
+h3{
+    font-family: $mainFontLight, arial, sans-serif;
+  /*  text-transform:uppercase;*/
+    margin-bottom:10px;
+    font-size:30px;
+    color:$textColor;
+}
+
+h4{
+    font-family: $mainFont, arial, sans-serif;
+    /*text-transform:uppercase;*/
+    font-size:15px;
+    color:$textColor;
+}
+
+p{
+    font-family: $mainFontLight, arial, sans-serif;
+    font-size:16px;
+	margin-bottom:20px;
+    color: $textColor;
+}
+
+a{
+    text-decoration: none;
+    color: $textColor;
+}
+
+a, a:hover, a:active, a:focus{
+    font-family: $mainFont, arial, sans-serif;
+}
+
+form input {
+    font-family: $mainFont, arial, sans-serif;
+}

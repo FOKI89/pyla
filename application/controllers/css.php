@@ -18,7 +18,7 @@ class Css extends CI_Controller
     public function form_bg(){
         $this->layout->set_titre("Backoffice - Background");
         $this->layout->ajouter_css("sweetalert/sweetalert");
-        $this->layout->ajouter_js("jquery-1.11.3.min");
+        $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("backoffice/form_insertion_bg");

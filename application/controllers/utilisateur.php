@@ -25,7 +25,7 @@ class Utilisateur extends CI_Controller
         $this->load->model("pays_model", "pays");
         $this->load->model("token_model", "token");
         $this->load->model("statut_model", "stat");
-        $this->output->enable_profiler(true);
+        $this->output->enable_profiler(false);
     }
 
     public function form_creation(){
@@ -50,11 +50,11 @@ class Utilisateur extends CI_Controller
         $data["pays"] = $select;
         $this->layout->set_titre("Inscription");
         $this->layout->ajouter_css("sweetalert/sweetalert");
-        $this->layout->ajouter_js("jquery-1.11.3.min");
+        $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("utilisateur/form_creation");
-        $this->layout->view("utilisateur/form_creation",$data);
+        $this->layout->view('themes/accueil/register',$data);
     }
 
     public function form_insertion(){
@@ -97,8 +97,9 @@ class Utilisateur extends CI_Controller
         $this->_setToken();
         $this->_mailInscription();
 
-        $return[0] = "lien";
-        $return[1] = "http://localhost:8888/Pyla/activation?t=".$this->num_token;
+        /*$return[0] = "lien";
+        $return[1] = "http://localhost:8888/Pyla/activation?t=".$this->num_token;*/
+        $return[0] = true;
         die(json_encode($return));
     }
 
@@ -113,11 +114,11 @@ class Utilisateur extends CI_Controller
 
     private function _validation_format($format){
         foreach($format as $item){
-            if($item == "prenom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
+            if($item == "prenom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
                 $return[1] = "Prénom";
                 die(json_encode($return));
             }
-            elseif($item == "nom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù.-]{3,50}$/"))) === false){
+            elseif($item == "nom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù.-]{3,50}$/"))) === false){
                 $return[1] = "Nom";
                 die(json_encode($return));
             }
@@ -129,11 +130,11 @@ class Utilisateur extends CI_Controller
                 $return[1] = "Téléphone".$this->input->post($item);
                 die(json_encode($return));
             }
-            elseif($item == "adresse" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
+            elseif($item == "adresse" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
                 $return[1] = "Adresse";
                 die(json_encode($return));
             }
-            elseif($item == "ville" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÔÖÛÜÙâäàéèêëôöûüù. .-]{3,50}$/"))) === false){
+            elseif($item == "ville" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
                 $return[1] = "Ville";
                 die(json_encode($return));
             }
@@ -272,10 +273,10 @@ class Utilisateur extends CI_Controller
         $data["prenom"] = $this->user->getPrenom();
         $data["nom"] = $this->user->getNom();
         $data["token"] = $this->num_token;
-        $message = $this->load->view('email/inscription.php',$data,TRUE);
+        $message = $this->load->view('themes/email/inscription.php',$data,TRUE);
         $this->email->from('dlery.jarvis@gmail.com', 'Pyla');
         $this->email->to($this->user->getEmail());
-        $this->email->subject('Finaliser votre inscription Pyla');
+        $this->email->subject('Activation de votre compte Pyla');
         $this->email->message($message);
         $this->email->set_mailtype("html"); 
         if(!$this->email->send()){
@@ -286,7 +287,9 @@ class Utilisateur extends CI_Controller
     public function activation(){
         $token_count = $this->token->count('token',$this->input->get("t"));
         if($token_count != 1){
-           show_error("Compte non identifiable","error_db"); 
+            $this->layout->set_titre("Erreur d'activation");
+            $this->layout->view('themes/accueil/welcome_error.php');
+            return false;
         }
 
         $tokens = $this->token->read("id",array("token" => $this->input->get("t")));
@@ -324,8 +327,8 @@ class Utilisateur extends CI_Controller
         
         $this->_setSession();
 
-        //$this->load->view('email/inscription.php',$data,TRUE);
-        echo "Compte activé";
+        $this->layout->set_titre("Inscription");
+        $this->layout->view('themes/accueil/welcome.php');
     }
 
     private function _setSession(){
@@ -337,7 +340,7 @@ class Utilisateur extends CI_Controller
         $return[0] = false;
         $require = array("email","mdp");
 
-        $this->validation_require($require);
+        $this->_validation_require($require);
         
         $option = array();
         $option['email']  = $this->input->post("email");
@@ -386,7 +389,7 @@ class Utilisateur extends CI_Controller
         if(!isset($_SESSION['id'])){
             $this->layout->set_titre("Connexion");
             $this->layout->ajouter_css("sweetalert/sweetalert");
-            $this->layout->ajouter_js("jquery-1.11.3.min");
+            $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
             $this->layout->ajouter_js("sweetalert/sweetalert.min");
             $this->layout->ajouter_js("sweetalert/sweetalert-dev");
             $this->layout->ajouter_js("accueil/form_connexion");
@@ -439,7 +442,7 @@ class Utilisateur extends CI_Controller
 
         $this->layout->set_titre("Coordonnées");
         $this->layout->ajouter_css("sweetalert/sweetalert");
-        $this->layout->ajouter_js("jquery-1.11.3.min");
+        $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("utilisateur/form_update");

@@ -5,13 +5,14 @@
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pyla</title>
-  <link rel="stylesheet" href="css/components/nouislider.css">
-  <link rel="stylesheet" href="css/main.css">
+	<?php //if(file_exists("C:\pyla\assets\css\main.css")){echo "yes";}else{echo "non";}?>
+  <link rel="stylesheet" href="C:\pyla\assets\css\main.css">
+  <!--<link rel="stylesheet" href="../../../../assets/css/main.css">-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src='js/vendors/jquery-1.11.3.min.js'></script>
-  <script src="js/vendors/materialize.min.js"></script>
-  <script src="js/vendors/nouislider.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="C:/pyla/assets/js/vendors/jquery-1.11.3.min.js"></script>
+  <script src="C:/pyla/assets/js/vendors/materialize.min.js"></script>
+  <script src="C:/pyla/assets/js/vendors/nouislider.min.js"></script>
+  <script src="C:/pyla/assets/js/vendors/main.js"></script>
 </head>
 <body>
   <header>
@@ -48,7 +49,7 @@
         <div class="header-links col s9 m10 l5">
             <a class="btn yellow blue-text" href="/connection.php">Inscription</a>
             <a class="btn blue yellow-text" href="/connection.php">Connexion</a>
-            <a class="btn white blue-grey-text darken-3-text" href="#"><i class="material-icons">shopping_cart</i></a>
+            <a class="btn white blue-grey-text darken-3-text" href="panier.php"><i class="material-icons">shopping_cart</i></a>
 
         </div>
     </div>
