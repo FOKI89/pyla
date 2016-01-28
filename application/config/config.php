@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8888/Pyla/';
-$config['url_base'] = '/Users/Damien/Sites/Pyla';
+$config['base_url'] = 'http://pyla.lan';
+$config['url_base'] = 'C:/pyla';
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +36,7 @@ $config['url_base'] = '/Users/Damien/Sites/Pyla';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
