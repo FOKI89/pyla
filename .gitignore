@@ -1,4 +1,10 @@
- Node Package Manager
+Node Package Manager
 node_modules
 /application/config/config.php
 /application/config/database.php
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
