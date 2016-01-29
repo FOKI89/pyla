@@ -2,13 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Votre inscription sur Pyla</title>
+        <title>Votre inscription sur Pila</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body>
         <div style="width:600px; margin:0px auto;">
             <h3 style="text-align: center">
-                    Bienvenue sur Pyla!
+                    Bienvenue sur Pila!
                     <br>
             </h3>
             <br><?php echo $prenom;?> <?php echo $nom;?>,
@@ -26,7 +26,7 @@
             </div>
             <br>
             <br>A bientôt,
-            <br>L'équipe Pyla
+            <br>L'équipe Pila
         </div>
     </body>
 </html>

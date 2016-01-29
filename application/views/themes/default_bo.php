@@ -15,7 +15,24 @@
 			<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
 		<?php endforeach; ?>
 	</head>
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
 
+      <!-- TITRE DE LA PAGE-->
+      <title><?php echo $titre; ?></title>
+
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+      <!-- Import custom rules -->
+      <link type="text/css" rel="stylesheet" href="../css/custom_rules.css" media="screen,projection">
+
+      <!--Let browser know website is optimied for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
 	<body>
 		<header>
  			<div class="row">

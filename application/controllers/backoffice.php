@@ -16,8 +16,9 @@ class Backoffice extends CI_Controller
     }
 
     public function accueil(){
+        $this->layout->set_titre("Pila Backoffice");
         $this->layout->set_theme('default_bo');
-        $this->layout->view('bo/login/backend_login');
+        $this->layout->view('themes/bo/login/backend_login');
         return false;
         //$this->layout->view('accueil/menu',$data);
     }

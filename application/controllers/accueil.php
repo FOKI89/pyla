@@ -23,10 +23,11 @@ class Accueil extends CI_Controller
         $data = array();
         $data['categories'] = $this->top_categories();
         //$data['produits'] = $this->top_produits();
+        $this->layout->set_titre("Pila");
         $this->layout->views('themes/index')
                      ->views('themes/partials/home_items',$data)
-                     ->views('themes/partials/top_products',$data)
-                     ->view('accueil/menu',$data);
+                     ->view('themes/partials/top_products',$data);
+                     //->view('accueil/menu',$data);
         return false;
         //$this->layout->view('accueil/menu',$data);
     }
