@@ -18,12 +18,22 @@ nav ul li div.subMenu{
     top: 100%;
     width: 100%;
     z-index: 999;
+    columns:5;
 }
-
 
 div.subMenu ul li{
     display: block;
     float:none;
+    line-height: 30px;
+    padding-left: 15px;
+}
+div.subMenu .subMenu-title{
+    font-size: 1.3rem;
+}
+
+
+div.subMenu ul li a{
+    display: inline-block;
 }
 
 div.subMenu ul li a{

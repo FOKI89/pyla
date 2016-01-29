@@ -1,20 +1,25 @@
-h1{
-  font-size:3.5em;
-  margin:0 0 1.68rem 0;
-  padding: 10px;
-  border-radius: 3px;
-}
-
 .container{
   position: relative;
 }
-
 
 .section::after{
   display: table;
   content:"";
   clear: both;
 }
+
+.slider .indicators .indicator-item.active{
+  background: #2196f3;
+}
+
+.divider{
+  margin: 10px 0;
+}
+
+.btn, .btn-large, .btn-flat{
+  padding:0 1rem;
+}
+
 /*
 **
 ** CONTAINER PRODUCTS

@@ -25,8 +25,7 @@ class Accueil extends CI_Controller
         //$data['produits'] = $this->top_produits();
         $this->layout->views('themes/index')
                      ->views('themes/partials/home_items',$data)
-                     ->views('themes/partials/top_products',$data)
-                     ->view('accueil/menu',$data);
+                     ->view('themes/partials/top_products',$data);
         return false;
         //$this->layout->view('accueil/menu',$data);
     }
