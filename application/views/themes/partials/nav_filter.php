@@ -1,8 +1,8 @@
 <div class="nav-filter indigo lighten-5">
   <nav class="indigo indigo lighten-5">
     <h3 class="center">Filtres:</h3>
-    <form action="#">
-      <div class="input-field">
+    <form id="filtrage" class="row" action="" method="" >
+      <div class="input-field col s12 m12">
         <select class="icon blue lighten-1">
           <option value="" disabled selected>Catégorie</option>
           <option value="1">Tee Shirts</option>
@@ -14,7 +14,7 @@
           <option value="7">Accessoires</option>
         </select>
       </div>
-      <div class="checkboxes">
+      <div class="checkboxes col s6 m6 l12">
         <p>Marque:</p>
         <p>
           <input type="checkbox" class="filled-in" id="marque_addadas" />
@@ -34,7 +34,7 @@
         </p>
       </div>
       <div class="divider"></div>
-      <div class="checkboxes">
+      <div class="checkboxes col s6 m6 l12">
         <p>Matière:</p>
         <p>
           <input type="checkbox" class="filled-in" id="fill0" />
@@ -57,8 +57,17 @@
           <label for="fill4">Synthétique</label>
         </p>
       </div>
-      <div id="filtre_prix" class="range-field"></div>
-
+      <div class="divider"></div>
+      <div class="col s12 m6 l12">
+        <p class='prix'>Prix:</p>
+        <div id="filtre_prix" class="range-field"></div>
+      </div>
+      <div class="divider"></div>
+      <div class="col s12 m6 l12 center">
+        <button class="btn waves-effect waves-light blue yellow-text " type="submit" name="recherche">Rechercher
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
   </form>
   </nav>
 </div>

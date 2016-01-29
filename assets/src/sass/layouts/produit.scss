@@ -3,7 +3,7 @@ div.produit{
 }
 
 div.produit .input-field select{
-  display: block;
+  //display: block;
 }
 
 div.produit p.infos-produit{
@@ -60,33 +60,49 @@ div.card-reveal a i{
 
 
 /* filter bar  */
-.nav-filter{
-  position: absolute;
-  left:0;
-  top:0;
-  z-index: 2;
-  width:15%;
-  height: 100%;
+.nav-filter {
+  width:100%;
+  margin: 20px 0;
 }
 
 .nav-filter nav{
   height: inherit;
   line-height: 1;
+  padding:20px;
+  height: 100%;
 }
 
-.nav-filter h3{
-  margin:0;
-  padding: 10px 0;
-  //border-bottom:1px solid #3f51b5;
-}
+@media (min-width:965px) {
+  .nav-filter{
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 2;
+    width:15%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
+  .nav-filter nav{
+    height: inherit;
+    line-height: 1;
+    padding: 0;
+  }
 
-.nav-filter nav ul{
-  width: 100%;
-}
-.nav-filter nav ul li{
-  float: none;
-  margin:0 auto;
+  .nav-filter h3{
+    margin:0;
+    padding: 10px 0;
+    //border-bottom:1px solid #3f51b5;
+  }
+
+  .nav-filter nav ul{
+    width: 100%;
+  }
+  .nav-filter nav ul li{
+    float: none;
+    margin:0 auto;
+  }
 }
 .nav-filter .dropdown-content li > a,
 .nav-filter .dropdown-content li > span{
@@ -112,18 +128,41 @@ div.card-reveal a i{
   padding-left: 15px;
 }
 
+.nav-filter .filled-in[type="checkbox"]:checked + label::after{
+  background: #ffeb3b;
+  border: 2px solid #2196f3;
+}
+
+.nav-filter .filled-in[type="checkbox"]:checked + label::before{
+   border-color: transparent #2196f3 #2196f3 transparent;
+}
+
 .nav-filter #filtre_prix{
   width:96%;
   margin: 10px auto;
 }
 
+.nav-filter p.prix{
+  text-indent: 10px;
+}
+
 .nav-filter .noUi-horizontal .noUi-handle{
-  width:28px;
-  border-radius: 28px;
+  width:18px;
+  height: 18px;
+  border-radius: 18px;
+  top:-1px;
+  left:-9px;
 }
 
 .nav-filter .noUi-handle::after{
-  left:10px;
+  left:8px;
+  top:4px;
+  height: 9px;
+}
+.nav-filter .noUi-handle::before{
+  top:4px;
+  height: 9px;
+  left: 6px;
 }
 
 .nav-filter .noUi-connect{

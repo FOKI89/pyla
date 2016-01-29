@@ -6,16 +6,29 @@ header{
 	margin: 0 auto;
 }
 
+header .row{
+	margin-bottom: 0;
+}
+
+header .logo{
+	margin-top: 10px;
+}
+
 header ul.liste_category li {
 	text-align: center;
 }
 
 div.recherche{
-	margin: 20px 0 0 0;
+	margin: 34px 0 0 0;
+}
+div.header-links{
+	margin: 20px 0;
 }
 
-div.header-links{
-	margin: 20px 0 0 0;
+@media (min-width:965px){
+	div.header-links{
+		margin: 34px 0 0 0;
+	}
 }
 
 

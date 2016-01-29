@@ -18,16 +18,8 @@ class Layout
 		$this->CI->load->model("site_model");
 		$this->CI->load->model("pays_model", "pays");
 		$this->var['output'] = '';
-		
-		//	Le titre est composé du nom de la méthode et du nom du contrôleur
-		//	La fonction ucfirst permet d'ajouter une majuscule
 		$this->var['titre'] = ucfirst($this->CI->router->fetch_method()) . ' - ' . ucfirst($this->CI->router->fetch_class());
-		
-		//	Nous initialisons la variable $charset avec la même valeur que
-		//	la clé de configuration initialisée dans le fichier config.php
 		$this->var['charset'] = $this->CI->config->item('charset');
-
-		// Nous initialisons les variables css et js pour gérer l'inclusion de fichiers css et js
 		$this->var['css'] = array();
 		$this->var['js'] = array();
 		$this->var['nav'] = NULL;

@@ -7,7 +7,7 @@ class Backoffice extends CI_Controller
 
         $this->load->model('categorie_model', 'cat');
         $this->load->model('produit_model', 'prod');
-        $this->output->enable_profiler(true);
+        $this->output->enable_profiler(false);
     }
 
     public function index()
