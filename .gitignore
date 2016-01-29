@@ -1,2 +1,3 @@
  Node Package Manager
 node_modules
+/application/config/config.php
