@@ -4,27 +4,27 @@
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
 
-      <link type="text/css" rel="stylesheet" href="css/custom_rules.css"  media="screen,projection"/>
-
+      <link type="text/css" rel="stylesheet" href="../css/custom_rules.css"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Accès back-office | Pila</title>
     </head>
 
     <body>
       <div class="container">
-        <div class="row">
-          <!-- Contenur du formulaire-->
+        <div class="row login-wrapper">
+          <!-- Conteneur du formulaire-->
           <div class="col s12 l4 offset-l4 center-align z-depth-2">
             <!-- Header du formulaire-->
             <div class="row blue darken-4 white-text valign-wrapper">
               <div class="col s3 center-align valign">
-                  <img src="images/logo.png" class="logo_login" alt="Logo Pila">
+                  <img src="../images/logo.png" class="logo_login" alt="Logo Pila">
               </div>
               <div class="col s9 valign">
-                  <h5>Interface d'administration</h5>
+                  <h5>Accès back-office</h5>
               </div>
             </div>
             <!-- Corps du formulaire-->
@@ -37,7 +37,7 @@
                   <label for="remember_me">Se souvenir de moi</label>
                 </p>
                 <p>
-                  <button class="btn waves-effect waves-light btn-large blue darken-4" type="submit" name="action">CONNEXION
+                  <button class="btn waves-effect waves-light btn-large submit-button" type="submit" name="action">CONNEXION
                   <i class="material-icons right">send</i>
                 </button>
                 </p>
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-       
+
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>

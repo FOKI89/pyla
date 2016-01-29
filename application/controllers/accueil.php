@@ -7,7 +7,7 @@ class Accueil extends CI_Controller
 
         $this->load->model('categorie_model', 'cat');
         $this->load->model('produit_model', 'prod');
-        $this->output->enable_profiler(false);
+        $this->output->enable_profiler(true);
     }
 
     public function index()
@@ -19,11 +19,16 @@ class Accueil extends CI_Controller
         $this->checkAdmin();
 
         $data = $this->_createMenu();
-        /* fusionner plusieurs vue avant d'en afficher le total
-        $this->layout->views('premiere_vue', $data)
-                     ->views('seconde_vue')
-                     ->view('derniere_vue');*/
-        $this->layout->view('accueil/menu',$data);
+        // fusionner plusieurs vue avant d'en afficher le total
+        $data = array();
+        $data['categories'] = $this->top_categories();
+        //$data['produits'] = $this->top_produits();
+        $this->layout->views('themes/index')
+                     ->views('themes/partials/home_items',$data)
+                     ->views('themes/partials/top_products',$data)
+                     ->view('accueil/menu',$data);
+        return false;
+        //$this->layout->view('accueil/menu',$data);
     }
 
     public function checkAdmin(){
@@ -120,5 +125,32 @@ class Accueil extends CI_Controller
     public function createPage()
     {
         $this->categorie_model->createCategorie('Niveau 1');
+    }
+
+    public function top_categories(){
+        $i = 0;
+        $data = array();
+        $categories = $this->cat->read("*",array("top" => 1));
+        foreach($categories as $categorie)
+        {
+            $data[$i]['id'] = $categorie->id;
+            $data[$i]['libelle'] = $categorie->libelle;
+            $data[$i]['produits'] = $this->prod->getTopProduitsByCategorie((int)$categorie->id);
+            $i++;
+        }
+        return $data;
+    }
+
+    public function top_produits(){
+        $data = array();
+        $categories = $this->prod->read("*",array("top" => 1));
+        foreach($categories as $categorie)
+        {
+            $data[]['id'] = $categorie->id;
+            $data[]['libelle'] = $categorie->libelle;
+        }
+
+
+        return $data;
     }
 }

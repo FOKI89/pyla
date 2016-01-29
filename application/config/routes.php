@@ -96,6 +96,7 @@ $route['utilisateur/modification'] = "utilisateur/form_update";
 | -------------------------------------------------------------------------
 */
 
+$route['backoffice'] = "backoffice/accueil";
 $route['backoffice/nouveau-produit'] = "produit/form_creation";
 $route['backoffice/nouveau-critere'] = "critere/form_creation";
 $route['style'] = "css/form_bg";

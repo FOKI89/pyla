@@ -1,0 +1,321 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+
+      <!-- TITRE DE LA PAGE-->
+      <title>Créer un article | Pila</title>
+
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+      <!-- Import custom rules -->
+      <link type="text/css" rel="stylesheet" href="../css/custom_rules.css" media="screen,projection">
+
+      <!--Let browser know website is optimied for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+<!-- ======================================================================= -->
+    <body>
+      <header>
+        <!-- Top bar -->
+        <nav class="top-nav blue darken-4">
+          <div class="container">
+            <div class="nav-wrapper">
+              <!-- Bouton pour afficher la sidebar-->
+                <a href="" class="button-collapse" data-activates="slide-out"><i class="mdi-navigation-menu"></i></a>
+
+                <a href="../Dashboard/dashboard.html" class="breadcrumb">Back-office</a>
+                <a href="#!" class="breadcrumb">Catalogue</a>
+                <a href="../Utilisateurs/creer_utilisateur.html" class="breadcrumb">Créer un article</a>
+            </div>
+          </div>
+        </nav>
+<!-- ======================================================================= -->
+       <!-- Barre latérale -->
+        <ul id="slide-out" class="side-nav fixed">
+          <!-- Header/logo Pila-->
+          <li class="blue darken-4 white-text valign-wrapper" style="height:64px;">
+            <img src="../images/logo.png" alt="Logo Projet Pila" style="max-height:80%">
+          </li>
+
+          <!-- Infos sur l'utilisateur connecté -->
+          <li class="yellow accent-4 center-align">
+           <i class="material-icons user-icon">person</i> Thomas Moraine
+          </li>
+
+          <!-- Liste des catégories-->
+          <ul class="collapsible" data-collapsible="accordion">
+              <!-- Lien vers le Dashboard-->
+              <li>
+                <div class="collapsible-header blue-text text-darken-4">
+                  <i class="material-icons">view_module</i>
+                  <a href="../Dashboard/dashboard.html" class="categorie_menu">Dashboard</a></div>
+              </li>
+              <!-- Sous-menu Utilisateurs -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">group</i>
+                  <span class="categorie_menu">Utilisateurs</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Utilisateurs/creer_utilisateur.html" class="sidebar-link">Créer un compte</a></li>
+                    <li><a href="../Utilisateurs/chercher_utilisateur.html" class="sidebar-link">Chercher un utilisateur</a></li>
+                    <li><a href="../Utilisateurs/liste_utilisateurs.html" class="sidebar-link">Liste des utilisateurs</a></li>
+                  </ul>
+                </div>
+              </li>
+              <!-- Sous-menu Catalogue -->
+              <li>
+                <div class="collapsible-header active"><i class="material-icons">library_books</i>
+                  <span class="categorie_menu">Catalogue</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li class="active"><a href="../Catalogue/creer_article.html" class="sidebar-link">Créer un article</a></li>
+                    <li><a href="../Catalogue/chercher_article.html" class="sidebar-link">Chercher un article</a></li>
+                    <li><a href="../Catalogue/creer_critere.html" class="sidebar-link">Créer un critère</a></li>
+                    <li><a href="../Catalogue/liste_criteres.html" class="sidebar-link">Liste des critères</a></li>
+                  </ul>
+                </div>
+              </li>
+              <!-- Sous-menu Commandes -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">shopping_cart</i>
+                  <span class="categorie_menu">Commandes</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Commandes/chercher_commande.html" class="sidebar-link">Chercher une commande</a></li>
+                  </ul>
+                </div>
+              </li>
+             <!--  <li>
+                <div class="collapsible-header"><i class="material-icons">extension</i>
+                  <span class="categorie_menu">Modules</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li>Installer un module</li>
+                    <li>Liste des modules</li>
+                  </ul>
+                </div>
+              </li> -->
+
+              <!-- Sous-menu Pages -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">web</i>
+                  <span class="categorie_menu">Pages</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Pages/modif_pages.html" class="sidebar-link">Modifier les pages</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="collapsible-header"><i class="material-icons">timeline</i>
+                  <span class="categorie_menu">Statistiques</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li>Sous-menu Stats</li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">settings</i>
+                  <span class="categorie_menu">Paramètres</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li>Sous-menu Paramètres</li>
+                  </ul>
+                </div>
+              </li>
+            <!-- Déconnexion -->
+              <li>
+                <div class="collapsible-header">
+                  <i class="material-icons user-icon">exit_to_app</i>
+                  <span> Déconnexion</span>
+                </div>
+              </li>
+          </ul>
+          <!-- Fin de la liste des menus-->
+        </ul>
+        <!-- Fin de la sidebar-->
+      </header>
+<!-- ======================================================================= -->
+      <!-- CONTENU PRINCIPAL-->
+      <main class="grey lighten-4">
+        <!-- Conteneur -->
+        <div class="container">
+          <!-- Center row -->
+          <div class="row ">
+            <div class="col s12 center-align">
+<!-- ======================================================================= -->
+              <!-- Formulaire de recherche d'utilisateur -->
+                <div class="row">
+                  <div class="col s12">
+                    <div class="card">
+                      <div class="card-content">
+                        <span class="card-title"><i class="material-icons prefix">create</i> Créer un article</span>
+                         <form action="#">
+
+
+                            <!-- Prix et Nom du produit-->
+                            <div class="row">
+                               <div class="col s12 m6">
+                                 <input id="nom_article" type="text" class="validate" name="nom_article" >
+                                 <label for="nom_article">Nom du produit</label>
+                              </div>
+                              <div class="col s12 m6">
+                                 <input type="number" name="prix" step="0.01" min="0.01">
+                                 <label for="prix">Prix (en €)</label>
+                              </div>
+                            </div>
+
+                            <!-- Description du produit -->
+                            <div class="row">
+                              <div class="input-field col s12">
+                                <textarea id="description_produit" nom="description_produit" class="materialize-textarea"></textarea>
+                                <label for="description_produit">Description du produit</label>
+                              </div>
+                            </div>
+                            <!-- Photo de l'article -->
+                            <div class="file-field input-field">
+                              <div class="btn file-upload-button">
+                                <span>Photo</span>
+                                <input type="file">
+                              </div>
+                              <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Nom du fichier">
+                              </div>
+                            </div>
+                            <!-- Référence du produit -->
+                              <div class="row">
+                                <div class="input-field col s12">
+                                  <input placeholder="Référence" id="reference" type="text" class="validate">
+                                  <label for="reference">Référence</label>
+                                </div>
+                              </div>
+                            <!-- Promo, A paraître et Afficher sur la page d'accueil -->
+                            <div class="row left-align">
+                              <div class="input-field col s12 m3">
+                                  <input type="number" name="taux_rabais" step="0.1" min="0" max="99">
+                                  <label for="taux_rabais">Taux de rabais (en %)</label>
+                              </div>
+                              <div class="input-field col s6 m2">
+                                  <input type="checkbox" id="en_promo" name="en_promo"/>
+                                  <label for="en_promo">En promo</label>
+                                </div>
+                              <div class="input-field col s6 m3">
+                                  <input type="checkbox" id="a_paraitre" name="a_paraitre"/>
+                                  <label for="a_paraitre">À paraître</label>
+                              </div>
+                              <div class="input-field col s12 m4">
+                                  <input type="checkbox" id="afficher_accueil" name="afficher_accueil"/>
+                                  <label for="afficher_accueil">Afficher sur la page d'accueil</label>
+                              </div>
+                              </div>
+
+                              <!-- Gestion des critères-->
+                              <div class="row left-align">
+                                <div class="col s12">
+                                    <h5>Critères du produit</h5>
+                                </div>
+                              </div>
+
+                              <ul id="criteres_du_produit">
+                                <li class="critere_individuel">
+                                  <div class="row">
+                                    <div class="col s12 m4">
+                                      <select name="liste_criteres" id="class">
+                                        <option value="" disabled selected>Sélectionner</option>
+                                          <option value="poids">Poids</option>
+                                          <option value="resolution">Résolution</option>
+                                          <option value="pegi_12">PEGI 12</option>
+                                          <option value="pegi_16">PEGI 16</option>
+                                          <option value="pegi_18">PEGI 18</option>
+                                          <option value="longueur">Longueur</option>
+                                      </select>
+
+                                    </div>
+                                    <div class="col s12 m6">
+                                      <input placeholder="Valeur du critère" id="valeur_critere" type="text" class="validate">
+
+                                    </div>
+
+                                    <!-- Valeur de l'unité -->
+                                    <div class="col s12 m2">
+                                      <input id="valeur_unite" type="text" class="validate">
+
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+
+                              <!-- Ajouter un critère -->
+                              <div class="row right-align">
+                                <div class="col s12">
+                                  <a id="ajouter_critere" class="btn-floating btn-large waves-effect waves-light yellow accent-4"><i class="material-icons black-text">add</i></a>
+                                </div>
+                              </div>
+
+                              <!-- Bouton d'envoi du formulaire-->
+                              <div class="row">
+                                <div class="col s12">
+                                  <button class="btn waves-effect waves-light submit-button" type="submit" name="action">Valider la création
+                                  <i class="material-icons right">send</i>
+                                </button>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </main>
+<!-- ======================================================================= -->
+      <!-- FOOTER -->
+      <footer class="page-footer blue darken-4 white-text">
+            <div class="container">© 2014 Damien Léry, Thomas Moraine et Ludovic Sire
+            <span class="right">Réalisé avec <a href="http://materializecss.com/">Materialize CSS</a>
+               (<a href="LICENSE.txt">Licence</a>)</span>
+            </div>
+      </footer>
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="../js/materialize.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('select').material_select();
+        });
+      </script>
+      <script>
+       $(document).ready(function() {
+        $('input#input_text, textarea#textarea1').characterCounter();
+      });
+       </script>
+
+       <!-- Gère l'affichage de la sidebar -->
+       <script type="text/javascript" src="../js/affichage-sidebar.js"></script>
+
+       <!-- Gère l'ajout de critères -->
+       <script type="text/javascript" src="../js/ajouter-critere.js"></script>
+
+       <!-- Initialisation des Select -->
+       <script>
+         $(document).ready(function() {
+          $('input#input_text, textarea#textarea1').characterCounter();
+        });
+        </script>
+    </body>
+  </html>

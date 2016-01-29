@@ -1,0 +1,113 @@
+  header, main, footer {
+      padding-left: 240px;
+      background-color:#ffffff;
+  }
+
+  @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+    }
+}
+
+footer .container a{
+    color:#bdbdbd;
+}
+
+.logo_login{
+	height:75px;
+	margin:20%;
+}
+
+.user_avatar{
+  height:50px;
+  margin:20%;
+}
+
+.tableau-dashboard{
+  font-weight: normal;
+}
+
+.no-weight{
+  font-weight: normal;
+}
+
+.no-border-radius{
+  border-radius:0px;
+}
+
+.border-right{
+  border-style: solid;
+  border-right-width: 1px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-color: #d0d0d0;
+}
+
+.big-chip{
+  font-size:18px;
+}
+
+.sidebar-link{
+  color:#0D47A1;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.user-icon {
+  vertical-align: middle;
+}
+
+.submit-button, .submit-button:focus, .file-upload-button, .file-upload-button:focus{
+  background-color: #0D47A1;
+}
+
+.submit-button:hover{
+  background-color: #ffd600;
+  color:#000000;
+}
+
+.file-upload-button:hover{
+  background-color: #2196f3;
+  color:#ffffff;
+}
+
+div ul li.active{
+  background-color:#0D47A1 !important;
+}
+
+.categorie_menu{
+  font-weight: bold;
+}
+
+.collapsible-header{
+  margin-left: 0px !important;
+}
+
+.detail-produit{
+  color:#0D47A1;
+}
+
+.caracteristique-produit{
+  padding:20px;
+}
+
+.info-produit{
+  padding-bottom: 7px;
+}
+
+.description-produit{
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+
+.info-commande{
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 601px) {
+  .login-wrapper {
+    margin-top: 150px;
+  }

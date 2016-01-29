@@ -1,0 +1,307 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Dashboard | Pila</title>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+      <!-- Import custom rules -->
+      <link type="text/css" rel="stylesheet" href="../css/custom_rules.css" media="screen,projection">
+
+      <!--Let browser know website is optimied for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+<!-- ======================================================================= -->
+    <body>
+      <header>
+        <!-- Top bar -->
+        <nav class="top-nav blue darken-4">
+          <div class="container">
+            <div class="nav-wrapper">
+                <!-- Bouton pour afficher la sidebar-->
+                <a href="" class="button-collapse" data-activates="slide-out"><i class="mdi-navigation-menu"></i></a>
+
+                <a href="#!" class="breadcrumb">Back-office</a>
+                <a href="../Dashboard/dashboard.html" class="breadcrumb">Dashboard</a>
+            </div>
+          </div>
+        </nav>
+<!-- ======================================================================= -->
+        <!-- Barre latérale -->
+        <ul id="slide-out" class="side-nav fixed">
+          <!-- Header/logo Pila-->
+          <li class="blue darken-4 white-text valign-wrapper" style="height:64px;">
+            <img src="../images/logo.png" alt="Logo Projet Pila" style="max-height:80%">
+          </li>
+
+          <!-- Infos sur l'utilisateur connecté -->
+          <li class="yellow accent-4 center-align">
+           <i class="material-icons user-icon">person</i> Thomas Moraine
+          </li>
+
+          <!-- Liste des catégories-->
+          <ul class="collapsible" data-collapsible="accordion">
+              <!-- Lien vers le Dashboard-->
+              <li>
+                <div class="collapsible-header blue-text text-darken-4 active">
+                  <i class="material-icons">view_module</i>
+                  <a href="../Dashboard/dashboard.html" class="categorie_menu">Dashboard</a></div>
+              </li>
+              <!-- Sous-menu Utilisateurs -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">group</i>
+                  <span class="categorie_menu">Utilisateurs</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Utilisateurs/creer_utilisateur.html" class="sidebar-link">Créer un compte</a></li>
+                    <li><a href="../Utilisateurs/chercher_utilisateur.html" class="sidebar-link">Chercher un utilisateur</a></li>
+                    <li><a href="../Utilisateurs/liste_utilisateurs.html" class="sidebar-link">Liste des utilisateurs</a></li>
+                  </ul>
+                </div>
+              </li>
+              <!-- Sous-menu Catalogue -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">library_books</i>
+                  <span class="categorie_menu">Catalogue</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Catalogue/creer_article.html" class="sidebar-link">Créer un article</a></li>
+                    <li><a href="../Catalogue/chercher_article.html" class="sidebar-link">Chercher un article</a></li>
+                    <li><a href="../Catalogue/creer_critere.html" class="sidebar-link">Créer un critère</a></li>
+                    <li><a href="../Catalogue/liste_criteres.html" class="sidebar-link">Liste des critères</a></li>
+                  </ul>
+                </div>
+              </li>
+              <!-- Sous-menu Commandes -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">shopping_cart</i>
+                  <span class="categorie_menu">Commandes</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Commandes/chercher_commande.html" class="sidebar-link">Chercher une commande</a></li>
+                  </ul>
+                </div>
+              </li>
+             <!--  <li>
+                <div class="collapsible-header"><i class="material-icons">extension</i>
+                  <span class="categorie_menu">Modules</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li>Installer un module</li>
+                    <li>Liste des modules</li>
+                  </ul>
+                </div>
+              </li> -->
+
+              <!-- Sous-menu Pages -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">web</i>
+                  <span class="categorie_menu">Pages</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Pages/modif_pages.html" class="sidebar-link">Modifier les pages</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Sous-menu Statistiques -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">timeline</i>
+                  <span class="categorie_menu">Statistiques</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li>Sous-menu Stats</li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">settings</i>
+                  <span class="categorie_menu">Paramètres</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li>Sous-menu Paramètres</li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Déconnexion -->
+              <li>
+                <div class="collapsible-header">
+                  <i class="material-icons user-icon">exit_to_app</i>
+                  <span> Déconnexion</span>
+                </div>
+              </li>
+
+          </ul>
+          <!-- Fin de la liste des menus-->
+        </ul>
+        <!-- Fin de la sidebar-->
+      </header>
+<!-- ======================================================================= -->
+      <!-- CONTENU PRINCIPAL-->
+      <main class="grey lighten-4">
+        <!-- Conteneur -->
+        <div class="container">
+          <!-- Center row -->
+          <div class="row ">
+            <div class="col s12 center-align">
+<!-- ======================================================================= -->
+              <!-- Timeline -->
+                <div class="row">
+                  <div class="col s12">
+                    <div class="card hoverable">
+                      <div class="card-content">
+                        <span class="card-title"><i class="material-icons">timeline</i> Timeline</span>
+                        <img src="../images/dashboard_exemple.jpg" alt="Exemple de dashboard" class="responsive-img">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<!-- ======================================================================= -->
+              <!-- Résumé de l'activité -->
+              <div class="row">
+                  <div class="col s12">
+                    <div class="card hoverable">
+                      <div class="card-content">
+                        <span class="card-title">Résumé de l'activité</span>
+
+                        <!-- Header -->
+                         <ul class="collection">
+                          <li class="collection-item left-align">
+                            <div>Nombre de visiteurs <small>(Dans les 30 dernières minutes)</small>
+                              <span class="secondary-content">253</span>
+                            </div>
+                          </li>
+                          <li class="collection-item left-align">
+                            <div>Paniers actifs <small>(Dans les 30 dernières minutes)</small><span class="secondary-content">57</span></div>
+                          </li>
+                        </ul>
+<!-- ======================================================================= -->
+                        <!-- Résultats -->
+                        <ul class="collection with-header">
+                          <li class="collection-header blue darken-4 white-text"><h6>Résultats</h6></li>
+                          <li class="collection-item">
+                            <table class="centered">
+                              <thead>
+                                <tr>
+                                    <th data-field="sales">Ventes</th>
+                                    <th data-field="orders">Commandes</th>
+                                    <th data-field="cart">Panier moyen</th>
+                                    <th data-field="visits">Visites</th>
+                                    <th data-field="net_profit">Bénéfice net</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                </tr>
+                                <tr>
+                                  <td>280 823 €
+                                    <p class="green-text text-darken-3">
+                                      <small>
+                                        <i class="material-icons">arrow_upward</i>17,49%
+                                      </small>
+                                    </p>
+                                  </td>
+                                  <td>4225
+                                    <p class="green-text text-darken-3">
+                                      <small>
+                                        <i class="material-icons">arrow_upward</i>12,15%
+                                      </small>
+                                    </p>
+                                  </td>
+                                  <td>56 €
+                                    <p class="red-text text-darken-3">
+                                      <small>
+                                        <i class="material-icons">arrow_downward</i>-1,2%
+                                      </small>
+                                    </p>
+                                  </td>
+                                  <td>265 012
+                                    <p class="green-text text-darken-3">
+                                      <small>
+                                        <i class="material-icons">arrow_upward</i>17,16%
+                                      </small>
+                                    </p>
+                                  </td>
+                                  <td>165 667 €
+                                    <p class="green-text text-darken-3">
+                                      <small>
+                                        <i class="material-icons">arrow_upward</i>18,43%
+                                      </small>
+                                    </p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </li>
+                        </ul>
+<!-- ======================================================================= -->
+                        <!-- En cours et Notifications-->
+                        <table>
+                          <thead>
+                            <tr class="blue darken-4 white-text tableau-dashboard">
+                              <th class="no-weight no-border-radius center-align">En cours</th>
+                              <th class="no-weight no-border-radius center-align">
+                              <th class="no-weight no-border-radius center-align">Notifications</th>
+                              <th class="no-weight no-border-radius center-align">
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="center-align">Commandes</td>
+                              <td class="center-align green-text darken-text-3 border-right">88</td>
+                              <td class="center-align">Nouveaux messages</td>
+                              <td class="center-align green-text darken-text-3">21</td>
+                            </tr>
+                            <tr>
+                              <td class="center-align">Retours/échanges</td>
+                              <td class="center-align green-text darken-text-3 border-right">3</td>
+                              <td class="center-align">Demandes de renseignements</td>
+                              <td class="center-align green-text darken-text-3">42</td>
+                            </tr>
+                            <tr>
+                              <td class="center-align">Paniers abandonnés</td>
+                              <td class="center-align green-text darken-text-3 border-right">11</td>
+                              <td class="center-align">Avis de produit</td>
+                              <td class="center-align green-text darken-text-3">3</td>
+                            </tr>
+                            <tr>
+                              <td class="center-align">Produits en rupture</td>
+                              <td class="center-align green-text darken-text-3 border-right">5</td>
+                              <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </main>
+<!-- ======================================================================= -->
+      <!-- FOOTER -->
+      <footer class="page-footer blue darken-4 white-text">
+            <div class="container">© 2014 Damien Léry, Thomas Moraine et Ludovic Sire
+            <span class="right">Réalisé avec <a href="http://materializecss.com/">Materialize CSS</a>
+               (<a href="../Legal/LICENSE.txt">Licence</a>)</span>
+            </div>
+        </footer>
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="../js/materialize.min.js"></script>
+      <!-- Gère l'affichage de la sidebar -->
+      <script type="text/javascript" src="../js/affichage-sidebar.js"></script>
+    </body>
+  </html>

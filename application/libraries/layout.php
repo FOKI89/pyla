@@ -31,6 +31,7 @@ class Layout
 		$this->var['css'] = array();
 		$this->var['js'] = array();
 		$this->var['nav'] = NULL;
+		$this->ajouter_js('accueil/footer');
 		$this->_setSession();
 	}
 

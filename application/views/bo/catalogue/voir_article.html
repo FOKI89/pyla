@@ -1,0 +1,233 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+
+      <!-- TITRE DE LA PAGE-->
+      <title>Voir un article | Pila</title>
+
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+      <!-- Import custom rules -->
+      <link type="text/css" rel="stylesheet" href="../css/custom_rules.css" media="screen,projection">
+
+      <!--Let browser know website is optimied for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+<!-- ======================================================================= -->
+    <body>
+      <header>
+        <!-- Top bar -->
+        <nav class="top-nav blue darken-4">
+          <div class="container">
+            <div class="nav-wrapper">
+                <!-- Bouton pour afficher la sidebar-->
+                <a href="" class="button-collapse" data-activates="slide-out"><i class="mdi-navigation-menu"></i></a>
+
+                <a href="../Dashboard/dashboard.html" class="breadcrumb">Back-office</a>
+                <a href="#!" class="breadcrumb">Catalogue</a>
+                <a href="../Utilisateurs/creer_utilisateur.html" class="breadcrumb">Voir un article</a>
+            </div>
+          </div>
+        </nav>
+<!-- ======================================================================= -->
+       <!-- Barre latérale -->
+        <ul id="slide-out" class="side-nav fixed">
+          <!-- Header/logo Pila-->
+          <li class="blue darken-4 white-text valign-wrapper" style="height:64px;">
+            <img src="../images/logo.png" alt="Logo Projet Pila" style="max-height:80%">
+          </li>
+
+          <!-- Infos sur l'utilisateur connecté -->
+          <li class="yellow accent-4 center-align">
+           <i class="material-icons user-icon">person</i> Thomas Moraine
+          </li>
+
+          <!-- Liste des catégories-->
+          <ul class="collapsible" data-collapsible="accordion">
+              <!-- Lien vers le Dashboard-->
+              <li>
+                <div class="collapsible-header blue-text text-darken-4">
+                  <i class="material-icons">view_module</i>
+                  <a href="../Dashboard/dashboard.html" class="categorie_menu">Dashboard</a></div>
+              </li>
+              <!-- Sous-menu Utilisateurs -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">group</i>
+                  <span class="categorie_menu">Utilisateurs</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Utilisateurs/creer_utilisateur.html" class="sidebar-link">Créer un compte</a></li>
+                    <li><a href="../Utilisateurs/chercher_utilisateur.html" class="sidebar-link">Chercher un utilisateur</a></li>
+                    <li><a href="../Utilisateurs/liste_utilisateurs.html" class="sidebar-link">Liste des utilisateurs</a></li>
+                  </ul>
+                </div>
+              </li>
+              <!-- Sous-menu Catalogue -->
+              <li>
+                <div class="collapsible-header active"><i class="material-icons">library_books</i>
+                  <span class="categorie_menu">Catalogue</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Catalogue/creer_article.html" class="sidebar-link">Créer un article</a></li>
+                    <li><a href="../Catalogue/chercher_article.html" class="sidebar-link">Chercher un article</a></li>
+                    <li><a href="../Catalogue/creer_critere.html" class="sidebar-link">Créer un critère</a></li>
+                    <li><a href="../Catalogue/liste_criteres.html" class="sidebar-link">Liste des critères</a></li>
+                  </ul>
+                </div>
+              </li>
+              <!-- Sous-menu Commandes -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">shopping_cart</i>
+                  <span class="categorie_menu">Commandes</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Commandes/chercher_commande.html" class="sidebar-link">Chercher une commande</a></li>
+                  </ul>
+                </div>
+              </li>
+              <!-- <li>
+                <div class="collapsible-header"><i class="material-icons">extension</i>
+                  <span class="categorie_menu">Modules</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li>Installer un module</li>
+                    <li>Liste des modules</li>
+                  </ul>
+                </div>
+              </li> -->
+
+              <!-- Sous-menu Pages -->
+              <li>
+                <div class="collapsible-header"><i class="material-icons">web</i>
+                  <span class="categorie_menu">Pages</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li><a href="../Pages/modif_pages.html" class="sidebar-link">Modifier les pages</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <div class="collapsible-header"><i class="material-icons">timeline</i>
+                  <span class="categorie_menu">Statistiques</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li>Sous-menu Stats</li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">settings</i>
+                  <span class="categorie_menu">Paramètres</span>
+                </div>
+                <div class="collapsible-body">
+                  <ul class="center-align blue-text text-darken-4">
+                    <li>Sous-menu Paramètres</li>
+                  </ul>
+                </div>
+              </li>
+            <!-- Déconnexion -->
+              <li>
+                <div class="collapsible-header">
+                  <i class="material-icons user-icon">exit_to_app</i>
+                  <span> Déconnexion</span>
+                </div>
+              </li>
+          </ul>
+          <!-- Fin de la liste des menus-->
+        </ul>
+        <!-- Fin de la sidebar-->
+      </header>
+<!-- ======================================================================= -->
+      <!-- CONTENU PRINCIPAL-->
+      <main class="grey lighten-4">
+        <!-- Conteneur -->
+        <div class="container">
+          <!-- Center row -->
+          <div class="row ">
+            <div class="col s12 center-align">
+<!-- ======================================================================= -->
+              <div class="row">
+                <div class="col s10 offset-s1">
+                  <!-- Carte du produit -->
+                  <div class="card hoverable">
+                    <!-- Photo et nom du produit-->
+                    <div class="card-image">
+                      <img src="../images/photo-produit.jpg">
+                      <span class="card-title">Montre homme Grand Seiko - SBGH035</span>
+                    </div>
+
+                    <!-- Infos complémentaires sur le produit -->
+                    <div class="card-content">
+                      <div class="row left-align">
+                        <div class="col s7">
+                          <ul>
+                            <li class="info-produit"><h5>Prix :</h5></li>
+                            <li class="info-produit">Référence :</li>
+                            <li class="info-produit">Description :</li>
+                          </ul>
+                        </div>
+
+                        <div class="col s5 right-align">
+                          <ul>
+                            <li class="detail-produit"><h5>6 500 €</h5></li>
+                            <li class="detail-produit">SBGH035G</li>
+                          </ul>
+                        </div>
+
+                      <!-- Description produit -->
+                      <div class="row left-align">
+                        <div class="col s12 detail-produit">
+                        <p class="description-produit">
+                          The SBGH035 is one of the best, and oddly most underreported, of all the new Grand Seikos in 2014.  It is currently the top of the line of three hand Grand Seikos and is one of very few models to receive the SPECIAL accuracy designation.  That mark means that not only is the watch more accurate than the already famously accurate Hi-Beat, but it was assembled by an elite subgroup of Grand Seiko and receives a much more impressive rotor.  One of the things that makes this watch even more special, however, is that it's one of extremely few SPECIAL rated watches made in steel, meaning that this limited edition isn't even much more expensive than a regular Hi-Beat--normally you'd have to buy a gold or platinum watch, which can easily triple the price.
+                        </p>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">Modifier le produit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+<!-- ======================================================================= -->
+      <!-- FOOTER -->
+      <footer class="page-footer blue darken-4 white-text">
+            <div class="container">© 2014 Damien Léry, Thomas Moraine et Ludovic Sire
+            <span class="right">Réalisé avec <a href="http://materializecss.com/">Materialize CSS</a>
+               (<a href="LICENSE.txt">Licence</a>)</span>
+            </div>
+      </footer>
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="../js/materialize.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('select').material_select();
+        });
+      </script>
+      <script>
+       $(document).ready(function() {
+        $('input#input_text, textarea#textarea1').characterCounter();
+      });
+       </script>
+
+       <!-- Gère l'affichage de la sidebar -->
+       <script type="text/javascript" src="../js/affichage-sidebar.js"></script>
+    </body>
+  </html>

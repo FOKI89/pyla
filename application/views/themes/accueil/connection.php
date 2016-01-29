@@ -38,7 +38,7 @@
                         <li>Vous permet d'avoir accès aux promotions.</li>
                         <li>Accumuler des points de fidélité.</li>
                       </ul>
-                      <a class="btn waves-effect waves-light yellow blue-text" href="register.php" name="connection">Inscription
+                      <a class="btn waves-effect waves-light yellow blue-text" href="<?php echo base_url().'inscription'; ?>" name="connection">Inscription
                         <i class="material-icons right">send</i>
                       </a>
                     </div><!-- fin div inscription -->

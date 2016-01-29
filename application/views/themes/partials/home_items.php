@@ -1,5 +1,6 @@
 <div class="row products-container">
     <h2 class="header center-on-small-only indigo-text">Les tendances:</h2>
+    <?php foreach($categories as $categorie){ ?>
     <div class="col s12 m12 l6 product">
         <div class="card">
             <div class="col m8 s12 main-part-product">
@@ -8,7 +9,7 @@
                           <span class="card-title">Card Title</span>
                       </a>
                   </div>
-                  <span class="card-title grey-text text-darken-3">A vos murs !</span>
+                  <span class="card-title grey-text text-darken-3"><?php echo $categorie['libelle'];?></span>
                   <p class="grey-text text-darken-3 description-product">Les murs de pierres anciennes sont très tendance cette année,
                     aussi bien dans la décoration de nos intérieurs que sur le sol
                     de la chambre de nos enfants. Pour les fêtes, le père Noël doit
@@ -28,9 +29,11 @@
              </div>
         </div>
     </div>
+    <?php } ?>
 
 
-    <div class="col s12 m12 l6 product">
+
+    <!-- <div class="col s12 m12 l6 product">
         <div class="card">
             <div class="col m8 s12 main-part-product">
                   <div class="card-image">
@@ -113,5 +116,5 @@
                     <a href="#" class="bouton waves-effect waves-light yellow blue-text">This is a link</a>
              </div>
         </div>
-    </div>
+    </div> -->
 </div><!-- Fin div Row -->
