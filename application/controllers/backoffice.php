@@ -16,9 +16,16 @@ class Backoffice extends CI_Controller
     }
 
     public function accueil(){
+        $admin_count = $this->utilisateur->count('statut',1);
+        if($admin_count == 0){
+            $this->layout->set_titre("BackOffice - Premiers pas");
+            $this->layout->set_theme('default_bo');
+            $this->load->view('themes/bo/login/backend_config');
+            return false;
+        }
         $this->layout->set_titre("Pila Backoffice");
         $this->layout->set_theme('default_bo');
-        $this->layout->view('themes/bo/login/backend_login');
+        $this->load->view('themes/bo/login/backend_login');
         return false;
         //$this->layout->view('accueil/menu',$data);
     }

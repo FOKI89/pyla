@@ -516,4 +516,43 @@ class Utilisateur extends CI_Controller
             $_SESSION['id'] = NULL;
         }
     }
+
+    public function form_config(){
+        $return = array();
+        $return[0] = false;
+        $require = array("email","mdp","confirm_mdp");
+        $format = array("email","mdp");
+
+        $this->_validation_require($require);
+        $this->_validation_format($format);
+        $this->_validation_mdp($this->input->post("mdp"));
+        
+        if($this->input->post("mdp") != $this->input->post("confirm_mdp")){
+            $return[1] = "mdp";
+            die(json_encode($return));
+        }else{
+            $mdp = $this->encrypt->encode($this->input->post('mdp'));
+        }
+        $this->user->setEmail($this->input->post("email"));
+        $this->user->setMdp($mdp);
+        $this->_insertion_admin();
+
+        $return[0] = true;
+        die(json_encode($return));
+    }
+
+    private function _insertion_admin(){
+        $options_echappees = array();
+        $options_non_echappees = array();
+        $options_echappees["email"] = $this->user->getEmail();
+        $options_echappees["mdp"] = $this->user->getMdp();;
+        $options_non_echappees = array();
+        $options_non_echappees["date_entree"] = "NOW()";
+        $options_non_echappees["statut"] = "1";
+
+        if(!$this->utilisateur->create($options_echappees, $options_non_echappees)){
+            show_error("Insert administrateur","error_db");
+            return false;
+        }
+    }
 }
