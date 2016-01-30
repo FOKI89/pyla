@@ -1,10 +1,20 @@
 Node Package Manager
 node_modules
-/application/config/config.php
-/application/config/database.php
 */config/development
 */logs/log-*.php
 !*/logs/index.html
 */cache/*
 !*/cache/index.html
 !*/cache/.htaccess
+
+
+# Fichiers de configuration
+application/config/database.php
+application/config/database.php
+
+
+# Images
+assets/img/produit
+assets/img/bo
+application/config/database.php
+application/config/database.php

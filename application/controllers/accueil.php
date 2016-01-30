@@ -41,6 +41,25 @@ class Accueil extends CI_Controller
 
     private function _createMenu($id_parent = null){
         $categories = $this->cat->getCategoriesByParent($id_parent);
+        $data["menu"] = array();
+        if($categories != null){
+          foreach ($categories as $categorie) {
+              if ($categorie['id'] == $id_parent) {
+                  $children = $this->_createMenu($categorie['id']);
+                  if ($children) {
+                      $categorie['children'] = $children;
+                  }
+                  $data["menu"] = $categorie;
+              }
+          }
+          return $data;
+        }
+
+      }
+
+
+/*
+
         if($categories != null){
             $data['menu'] = '<div class="container">
             <ul class="center hide-on-med-and-down desktop">';
@@ -58,6 +77,8 @@ class Accueil extends CI_Controller
             return $data;
         }
     }
+*/
+
     /*private function _createMenu($id_parent = null){
         $categories = $this->cat->getCategoriesByParent($id_parent);
         if($categories != null){
@@ -132,7 +153,7 @@ class Accueil extends CI_Controller
         $data = array();
         $categories = $this->cat->read("*",array("top" => 1));
         foreach($categories as $categorie)
-        {   
+        {
             $j = 0;
             $data[$i]['id'] = $categorie->id;
             $data[$i]['libelle'] = $categorie->libelle;
