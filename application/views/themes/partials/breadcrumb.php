@@ -1,8 +1,10 @@
 <div class="nav-wrapper">
   <div class="col s12">
-    <a href="#!" class="breadcrumb blue-text">Home</a>
-    <a href="#!" class="breadcrumb blue-text">Statues</a>
-    <a href="#!" class="breadcrumb blue-text">Statue représentant Toutancamion adolescent</a>
+  	<?php foreach($breadcrumb as $item){ if($item->type == "categorie"){ ?>
+  	<a href="<?php echo site_url('categorie/'.$item->id); ?>" class="breadcrumb blue-text"><?php echo $item->libelle; ?></a>
+  	<?php }else{ ?>
+    <a href="<?php echo site_url('produit/'.$item->id); ?>" class="breadcrumb blue-text"><?php echo $item->libelle; ?></a>
+    <?php }} ?>
   </div>
 </div>
 <div class="divider"></div>

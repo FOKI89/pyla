@@ -22,6 +22,7 @@ class Layout
 		$this->var['charset'] = $this->CI->config->item('charset');
 		$this->var['css'] = array();
 		$this->var['js'] = array();
+		$this->var['breadcrumb'] = array();
 		$this->var['nav'] = NULL;
 		$this->ajouter_js('accueil/footer');
 		$this->_setSession();
@@ -79,6 +80,18 @@ class Layout
 	    if(is_string($charset) AND !empty($charset))
 	    {
 	        $this->var['charset'] = $charset;
+	        return true;
+	    }
+	    return false;
+	}
+
+
+
+	public function set_breadcrumb($breadcrumb)
+	{
+	    if(is_string($breadcrumb) AND !empty($breadcrumb))
+	    {
+	        $this->var['breadcrumb'] = $breadcrumb;
 	        return true;
 	    }
 	    return false;

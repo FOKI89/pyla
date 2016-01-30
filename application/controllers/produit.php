@@ -63,6 +63,27 @@ class Produit extends CI_Controller
         return $data;
     }
 
+    public function detail_produit($id_produit = null){
+        $this->id = intval($id_produit);
+        $produit = $this->prod->read("*",array("id" => $this->id));
+
+        if(!$query = $this->db->query('SELECT c.id, c.libelle FROM categories c INNER JOIN categories_produits cp ON cp.id_categorie = c.id INNER JOIN produits p ON p.id = cp.id_produit WHERE p.id = '.$this->id.' LIMIT 1')){
+            show_error("Select utilisateur","error_db");
+            return false;
+        }
+        $categorie = $query->result();
+        $categorie[0]->type = "categorie";
+        $produit[0]->type = "produit";
+        $breadcrumb = array();
+        $breadcrumb[] = $categorie[0];
+        $breadcrumb[] = $produit[0];
+        $data['produit'] = $produit[0];
+        $data['breadcrumb'] = $breadcrumb;
+        $this->layout->set_titre($produit[0]->libelle);
+        //$this->layout->set_breadcrumb($breadcrumb);
+        $this->layout->view("themes/produit",$data);
+    }
+
     public function form_creation(){
         $fields = array(
                   "id",
