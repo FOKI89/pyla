@@ -1,7 +1,7 @@
 Node Package Manager
 node_modules
-/application/config/config
-/application/config/database
+/application/config/config.php
+/application/config/database.php
 */config/development
 */logs/log-*.php
 !*/logs/index.html
