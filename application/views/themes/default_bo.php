@@ -17,7 +17,7 @@
 		<ul id="slide-out" class="side-nav fixed">
 			<!-- Header/logo Pila-->
 			<li class="blue darken-4 white-text valign-wrapper" style="height:64px;">
-				<img src="../images/logo.png" alt="Logo Projet Pila" style="max-height:80%">
+				<img src="<?php echo img_url("bo/logo.png") ?>" alt="Logo Projet Pila" style="max-height:80%">
 			</li>
 
 			<!-- Infos sur l'utilisateur connecté -->

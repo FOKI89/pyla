@@ -132,10 +132,16 @@ class Accueil extends CI_Controller
         $data = array();
         $categories = $this->cat->read("*",array("top" => 1));
         foreach($categories as $categorie)
-        {
+        {   
+            $j = 0;
             $data[$i]['id'] = $categorie->id;
             $data[$i]['libelle'] = $categorie->libelle;
             $data[$i]['produits'] = $this->prod->getTopProduitsByCategorie((int)$categorie->id);
+            foreach($data[$i]['produits'] as $produit){
+                $images = preg_grep('/^([^.])/', scandir($this->config->item('url_base').'/assets/img/produit/'.$produit["id"]));
+                $data[$i]['produits'][$j]['img'] = reset($images);
+                $j++;
+            }
             $i++;
         }
         return $data;

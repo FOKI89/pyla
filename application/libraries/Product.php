@@ -5,6 +5,7 @@ class Product
     private $reference;
     private $libelle;
     private $marque;
+    private $description;
     private $images;
     private $video;
     private $statut;
@@ -96,6 +97,28 @@ class Product
     public function getMarque()
     {
         return $this->marque;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Produit
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

@@ -5,6 +5,7 @@ class Produit extends CI_Controller
     private $reference;
     private $libelle;
     private $marque;
+    private $description;
     private $image;
     private $video;
     private $statut;
@@ -28,9 +29,6 @@ class Produit extends CI_Controller
     public function liste_produit($id_categorie = null){
         $this->id_categorie = intval($id_categorie);
         $data = $this->_createGrille();
-        /*$this->layout->views("premiere_vue", $data)
-                     ->views("seconde_vue")
-                     ->view("derniere_vue");*/
         $this->layout->view("produit/grille",$data);
     }
 
@@ -115,6 +113,7 @@ class Produit extends CI_Controller
         $this->product->setReference($this->input->post("reference"));
         $this->product->setLibelle($this->input->post("libelle"));
         $this->product->setMarque($this->input->post("marque"));
+        $this->product->setDescription($this->input->post("description"));
         if(!empty($this->input->post("video"))){
             $this->product->setVideo($this->input->post("video"));
         }
@@ -193,6 +192,7 @@ class Produit extends CI_Controller
         $options_echappees["reference"] = $this->product->getReference();
         $options_echappees["libelle"] = $this->product->getLibelle();
         $options_echappees["marque"] = $this->product->getMarque();
+        $options_echappees["description"] = $this->product->getDescription();
         $options_echappees["video"] = $this->product->getVideo() != NULL ? $this->product->getVideo() : NULL;
         $options_non_echappees = array();
         $options_non_echappees["statut"] = $this->product->getStatut();
@@ -214,10 +214,5 @@ class Produit extends CI_Controller
         if(!$this->cat_prod->create($options_echappees, $options_non_echappees)){
             show_error("Insertion categorie_produit","error_db");
         }
-    }
-
-    public function createPage()
-    {
-        $this->categorie_model->createCategorie("Niveau 1");
     }
 }

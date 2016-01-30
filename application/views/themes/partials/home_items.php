@@ -16,15 +16,11 @@
                     se préparer à en déposer en dessous de beaucoup ... <a href="#" class="blue-text">lire la suite</a></p>
               </div>
             <div class="col m4 hide-on-small-only side-part-product">
+            <?php foreach($categorie['produits'] as $item){ ?>
                 <div class="card-image">
-                    <a href="#"><img src="img/test-mini1.jpg" alt=""></a>
+                    <a href="<?php echo site_url('produit/'.$item['id']); ?>"><img src="<?php echo img_url('produit/'.$item["id"].'/'.$item["img"]) ?>" alt=""/></a>
                 </div>
-                <div class="card-image">
-                    <a href="#"><img src="img/test-mini2.jpg" alt=""></a>
-                </div>
-                <div class="card-image">
-                    <a href="#"><img src="img/test-mini3.jpg" alt=""></a>
-                </div>
+            <?php } ?>
                     <a href="#" class="bouton waves-effect waves-light yellow blue-text">This is a link</a>
              </div>
         </div>

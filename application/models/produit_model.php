@@ -6,6 +6,7 @@ class Produit_model extends MY_Model
     private $libelle;
     private $images;
     private $marque;
+    private $description;
     private $video;
     private $statut;
 
@@ -40,7 +41,7 @@ class Produit_model extends MY_Model
             $limit = "";
         }
 
-        $all = $this->db->query('SELECT p.id, p.reference, p.libelle, p.image, p.marque, p.video, p.statut, p.date FROM categories_produits cp INNER JOIN produits p WHERE cp.id_produit = p.id AND cp.id_categorie = '.$id_categorie.' ORDER BY libelle '.$limit);
+        $all = $this->db->query('SELECT p.id, p.reference, p.libelle, p.image, p.marque, p.description, p.video, p.statut, p.date FROM categories_produits cp INNER JOIN produits p WHERE cp.id_produit = p.id AND cp.id_categorie = '.$id_categorie.' ORDER BY libelle '.$limit);
         $produits = $all->result_array();
         return $produits;     
     }
@@ -58,7 +59,7 @@ class Produit_model extends MY_Model
             return false;
         }
 
-        $all = $this->db->query('SELECT p.id, p.reference, p.image FROM categories_produits cp INNER JOIN produits p ON cp.id_produit = p.id INNER JOIN evaluations e ON p.id = e.id_produit WHERE cp.id_produit = p.id AND cp.id_categorie = '.$id_categorie.' AND cp.id_categorie = '.$id_categorie.' ORDER BY e.note LIMIT 4');
+        $all = $this->db->query('SELECT p.id, p.reference, p.libelle, p.marque, p.description FROM categories_produits cp INNER JOIN produits p ON cp.id_produit = p.id INNER JOIN evaluations e ON p.id = e.id_produit WHERE cp.id_produit = p.id AND cp.id_categorie = '.$id_categorie.' AND cp.id_categorie = '.$id_categorie.' AND P.statut = 1 ORDER BY e.note LIMIT 4');
         if($all->num_rows() > 0){
            $produits = $all->result_array();
         }else{
