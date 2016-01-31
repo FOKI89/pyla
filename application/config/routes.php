@@ -74,7 +74,7 @@ $route['connexion.php'] = "accueil/form_connexion";
 | -------------------------------------------------------------------------
 */
 
-$route['categorie/(:num)'] = "produit/liste_produit/$1";
+$route['categorie/(:num)'] = "produit/liste_produits/$1";
 
 /*
 | -------------------------------------------------------------------------

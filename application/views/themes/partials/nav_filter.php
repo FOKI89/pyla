@@ -1,6 +1,6 @@
 <div class="nav-filter indigo lighten-5">
   <nav class="indigo indigo lighten-5">
-    <h3 class="center">Filtres:</h3>
+    <h3 class="center">Filtres</h3>
     <form id="filtrage" class="row" action="" method="" >
       <div class="input-field col s12 m12">
         <select class="icon blue lighten-1">

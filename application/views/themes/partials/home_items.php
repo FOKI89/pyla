@@ -10,10 +10,7 @@
                       </a>
                   </div>
                   <span class="card-title grey-text text-darken-3"><?php echo $categorie['libelle'];?></span>
-                  <p class="grey-text text-darken-3 description-product">Les murs de pierres anciennes sont très tendance cette année,
-                    aussi bien dans la décoration de nos intérieurs que sur le sol
-                    de la chambre de nos enfants. Pour les fêtes, le père Noël doit
-                    se préparer à en déposer en dessous de beaucoup ... <a href="#" class="blue-text">lire la suite</a></p>
+                  <p class="grey-text text-darken-3 description-product"><?php if(isset($categorie['categorie'])) echo $categorie['categorie'];?><a href="#" class="blue-text"></a></p>
               </div>
             <div class="col m4 hide-on-small-only side-part-product">
             <?php foreach($categorie['produits'] as $item){ ?>

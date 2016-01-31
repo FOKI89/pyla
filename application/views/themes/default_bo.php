@@ -39,7 +39,9 @@
 		<ul id="slide-out" class="side-nav fixed">
 			<!-- Header/logo Pila-->
 			<li class="blue darken-4 white-text center-align" style="height:64px;">
-				<img src="<?php echo img_url("bo/logo.png") ?>" alt="Logo Projet Pila" style="max-height:80%">
+				<a href="<?php echo base_url(); ?>" class="brand-logo">
+					<img src="<?php echo img_url("bo/logo.png") ?>" alt="Logo Projet Pila" style="max-height:80%" title="Aller à la boutique">
+				</a>
 			</li>
 
 			<!-- Infos sur l'utilisateur connecté -->
