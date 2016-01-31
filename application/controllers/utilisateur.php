@@ -50,7 +50,6 @@ class Utilisateur extends CI_Controller
         $data["pays"] = $select;
         $this->layout->set_titre("Inscription");
         $this->layout->ajouter_css("sweetalert/sweetalert");
-        $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("utilisateur/form_creation");
@@ -449,7 +448,6 @@ class Utilisateur extends CI_Controller
 
         $this->layout->set_titre("Coordonnées");
         $this->layout->ajouter_css("sweetalert/sweetalert");
-        $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("utilisateur/form_update");
@@ -561,5 +559,23 @@ class Utilisateur extends CI_Controller
             show_error("Insert administrateur","error_db");
             return false;
         }
+    }
+
+    public function compte(){
+        $this->layout->set_titre("Mon compte");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_creation");
+        $this->layout->view('themes/account');
+    }
+
+    public function panier(){
+        $this->layout->set_titre("Mon panier");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_creation");
+        $this->layout->view('themes/panier');
     }
 }

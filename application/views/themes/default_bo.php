@@ -91,6 +91,9 @@
 							<ul class="center-align blue-text text-darken-4">
 								<li><a href="<?php echo site_url('backoffice/chercher-commande'); ?>" class="sidebar-link">Chercher une commande</a></li>
 							</ul>
+							<ul class="center-align blue-text text-darken-4">
+								<li><a href="<?php echo site_url('backoffice/liste-commande'); ?>" class="sidebar-link">Liste des commandes</a></li>
+							</ul>
 						</div>
 					</li>
 					<!-- Sous-menu Pages -->

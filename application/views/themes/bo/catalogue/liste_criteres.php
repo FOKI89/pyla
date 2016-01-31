@@ -25,20 +25,17 @@
 				<div class="col s12">
 					<div class="card">
 						<div class="card-content">
-							<span class="card-title"><i class="material-icons prefix">list</i> Liste des utilisateurs</span>
-							<ul class="left-align">
-								<li class="card-panel hoverable"><i class="material-icons user-icon">person</i> Thomas Moraine
-									<span class="secondary-content">th.moraine@gmail.com</span>
-								</li>
-								<li class="card-panel hoverable"><i class="material-icons user-icon">person</i> Ludovic Sire
-									<span class="secondary-content">ludovic.sire@gmail.com</span>
-									<li>
-										<li class="card-panel hoverable"><i class="material-icons user-icon">person</i> Damien Léry
-											<span class="secondary-content">damien.lery@gmail.com</span>
-										</li>
-									</ul>
-								</div>
-							</div>
+							<span class="card-title"><i class="material-icons prefix">create</i> Liste des critères</span>
+							<ul class="collection left-align">
+								<li class="collection-item"><div>Poids<a href="#!" class="secondary-content">grammes</a></div></li>
+								<li class="collection-item"><div>Résolution<a href="#!" class="secondary-content">mégapixels</a></div></li>
+								<li class="collection-item"><div>PEGI 12<a href="#!" class="secondary-content"><i class="material-icons"></i></a></div></li>
+								<li class="collection-item"><div>PEGI 16<a href="#!" class="secondary-content"></a></div></li>
+								<li class="collection-item"><div>PEGI 18<a href="#!" class="secondary-content"></a></div></li>
+								<li class="collection-item"><div>Longueur<a href="#!" class="secondary-content">pages</a></div></li>
+
+							</ul>
+
 						</div>
 					</div>
 				</div>

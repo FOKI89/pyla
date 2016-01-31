@@ -96,7 +96,9 @@ $route['inscription'] = "utilisateur/form_creation";
 $route['inscription.php'] = "utilisateur/form_creation";
 $route['utilisateur/activation?(:any)'] = "utilisateur/activation";
 $route['activation?(:any)'] = "utilisateur/activation";
-$route['utilisateur/modification'] = "utilisateur/form_update";
+$route['mon-compte'] = "utilisateur/compte";
+$route['mon-compte/modification'] = "utilisateur/form_update";
+$route['mon-panier'] = "utilisateur/panier";
 
 /*
 | -------------------------------------------------------------------------
@@ -113,8 +115,9 @@ $route['backoffice/liste-utilisateur'] = "backoffice/liste_utilisateur";
 $route['backoffice/creer-article'] = "backoffice/creer_article";
 $route['backoffice/chercher-article'] = "backoffice/chercher_article";
 $route['backoffice/creer-critere'] = "backoffice/creer_critere";
-$route['backoffice/liste-critere'] = "backoffice/liste_critere";
+$route['backoffice/liste-critere'] = "backoffice/liste_criteres";
 $route['backoffice/chercher-commande'] = "backoffice/chercher_commande";
+$route['backoffice/liste-commande'] = "backoffice/liste_commandes";
 $route['backoffice/modifier-pages'] = "backoffice/modifier_pages";
 $route['backoffice/statistiques'] = "backoffice/statistiques";
 $route['backoffice/parametres'] = "backoffice/parametres";

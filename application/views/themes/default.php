@@ -50,7 +50,7 @@
 			    <div class="header-links col s9 m10 l5">
 			        <a class="btn yellow blue-text" href="<?php echo base_url().'inscription'; ?>">Inscription</a>
 			        <a class="btn blue yellow-text" href="<?php echo base_url().'connexion'; ?>">Connexion</a>
-			        <a class="btn white blue-grey-text darken-3-text" href="panier.php"><i class="material-icons">shopping_cart</i></a>
+			        <a class="btn white blue-grey-text darken-3-text" href="<?php echo base_url().'mon-panier'; ?>"><i class="material-icons">shopping_cart</i></a>
 			    </div>
 			</div>
 		</header>

@@ -25,24 +25,36 @@
 				<div class="col s12">
 					<div class="card">
 						<div class="card-content">
-							<span class="card-title"><i class="material-icons prefix">list</i> Liste des utilisateurs</span>
-							<ul class="left-align">
-								<li class="card-panel hoverable"><i class="material-icons user-icon">person</i> Thomas Moraine
-									<span class="secondary-content">th.moraine@gmail.com</span>
-								</li>
-								<li class="card-panel hoverable"><i class="material-icons user-icon">person</i> Ludovic Sire
-									<span class="secondary-content">ludovic.sire@gmail.com</span>
-									<li>
-										<li class="card-panel hoverable"><i class="material-icons user-icon">person</i> Damien Léry
-											<span class="secondary-content">damien.lery@gmail.com</span>
-										</li>
-									</ul>
+							<span class="card-title"><i class="material-icons prefix">create</i> Créer un critère</span>
+							<form action="#">
+								<div class="row">
+									<!-- Libéllé -->
+									<div class="input-field col s12 m8">
+										<input placeholder="Entrez le libellé ici" id="libelle" type="text" class="validate">
+										<label for="first_name">Libéllé</label>
+									</div>
+
+									<!-- Unité -->
+									<div class="input-field col s12 m4">
+										<input placeholder="Entrez l'unité ici" id="unite" type="text" class="validate" length="16">
+										<label for="first_name" data-error="Texte trop long !" data-success="OK !">Unité</label>
+									</div>
+								</div>
+
+								<!-- Bouton d'envoi du formulaire -->
+								<div class="row">
+									<div class="col s12">
+										<button class="btn waves-effect waves-light submit-button" type="submit" name="action">Valider la création
+											<i class="material-icons right">send</i>
+										</button>
+									</div>
 								</div>
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

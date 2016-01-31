@@ -52,7 +52,7 @@ class Backoffice extends CI_Controller
     public function chercher_utilisateur(){
         $this->layout->set_titre("Back Office - Chercher utilisateur");
         $this->layout->set_theme("default_bo");
-        //$this->layout->ajouter_js("bo/creer_utilisateur");
+        //$this->layout->ajouter_js("bo/chercher_utilisateur");
         $this->layout->view("themes/bo/utilisateurs/chercher_utilisateur");
         return false;
     }
@@ -60,10 +60,84 @@ class Backoffice extends CI_Controller
     public function liste_utilisateur(){
         $this->layout->set_titre("Back Office - Liste utilisateurs");
         $this->layout->set_theme("default_bo");
-        //$this->layout->ajouter_js("bo/creer_utilisateur");
+        //$this->layout->ajouter_js("bo/liste_utilisateurs");
         $this->layout->view("themes/bo/utilisateurs/liste_utilisateurs");
         return false;
     }
+
+    public function creer_article(){
+        $this->layout->set_titre("Back Office - Créer article");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/creer_article");
+        $this->layout->view("themes/bo/catalogue/creer_article");
+        return false;
+    }
+
+    public function chercher_article(){
+        $this->layout->set_titre("Back Office - Chercher article");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/chercher_article");
+        $this->layout->view("themes/bo/catalogue/chercher_article");
+        return false;
+    }
+
+    public function creer_critere(){
+        $this->layout->set_titre("Back Office - Créer critère");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/creer_critere");
+        $this->layout->view("themes/bo/catalogue/creer_critere");
+        return false;
+    }
+
+    public function liste_criteres(){
+        $this->layout->set_titre("Back Office - Liste critères");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/liste_criteres");
+        $this->layout->view("themes/bo/catalogue/liste_criteres");
+        return false;
+    }
+
+    public function chercher_commande(){
+        $this->layout->set_titre("Back Office - Chercher commande");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/chercher_commande");
+        $this->layout->view("themes/bo/commandes/chercher_commande");
+        return false;
+    }
+
+    public function liste_commandes(){
+        $this->layout->set_titre("Back Office - Liste commandes");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/liste_commandes");
+        $this->layout->view("themes/bo/commandes/liste_commandes");
+        return false;
+    }
+
+    public function modifier_pages(){
+        $this->layout->set_titre("Back Office - Modifier page");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/modifier_pages");
+        $this->layout->view("themes/bo/pages/modifier_pages");
+        return false;
+    }
+
+    public function parametres(){
+        $this->layout->set_titre("Back Office - Paramètres");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/parametres");
+        $this->layout->view("themes/bo/parametres/parametres");
+        return false;
+    }
+
+
+    public function statistiques(){
+        $this->layout->set_titre("Back Office - Statistiques");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/statistiques");
+        $this->layout->view("themes/bo/parametres/statistiques");
+        return false;
+    }
+
 
     public function form_connexion(){
         $return = array();
