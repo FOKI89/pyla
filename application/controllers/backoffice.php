@@ -12,144 +12,147 @@ class Backoffice extends CI_Controller
 
     public function index()
     {
-        $this->accueil();
+        $this->identification();
     }
 
     public function accueil(){
-        $admin_count = $this->utilisateur->count('statut',1);
-        if($admin_count == 0){
-            $this->layout->set_titre("BackOffice - Premiers pas");
-            $this->layout->set_theme('default_bo');
-            $this->load->view('themes/bo/login/backend_config');
+        if(!isset($_SESSION['admin']) || $_SESSION['admin'] != 1){
+            $admin_count = $this->utilisateur->count('statut',1);
+            if($admin_count == 0){
+                $this->layout->set_titre("Back Office - Installation");
+                $this->layout->set_theme("default_bo");
+                $this->load->view("themes/bo/login/backend_config");
+                return false;
+            }
+            $data = array();
+            if(isset($_COOKIE["email"]) && isset($_COOKIE['mdp'])){
+                $data["email"] = $_COOKIE["email"];
+                $data["mdp"] = $_COOKIE["mdp"];
+            }
+            $this->layout->set_titre("Back Office - Connexion");
+            $this->layout->set_theme("default_bo");
+            $this->load->view("themes/bo/login/backend_login", $data);
+            return false;
+        }else{
+            $this->layout->set_titre("Pila - Back Office");
+            $this->layout->set_theme("default_bo");
+            $this->layout->view("themes/bo/dashboard/dashboard");
             return false;
         }
-        $this->layout->set_titre("Pila Backoffice");
-        $this->layout->set_theme('default_bo');
-        $this->load->view('themes/bo/login/backend_login');
+    }
+
+    public function creer_utilisateur(){
+        $this->layout->set_titre("Back Office - Créer utilisateur");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/creer_utilisateur");
+        $this->layout->view("themes/bo/utilisateurs/creer_utilisateur");
         return false;
-        //$this->layout->view('accueil/menu',$data);
     }
 
-    public function checkAdmin(){
-        /* test utilisateur = admin
-           $this->session->set_userdata('admin',1);*/
-        if($this->session->userdata('admin') != null){
-            echo 'Bonjour Administrateur';//redirect(site_url().'/backoffice/accueil');
-        }
+    public function chercher_utilisateur(){
+        $this->layout->set_titre("Back Office - Chercher utilisateur");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/creer_utilisateur");
+        $this->layout->view("themes/bo/utilisateurs/chercher_utilisateur");
+        return false;
     }
 
-    private function _createMenu($id_parent = null){
-        $categories = $this->cat->getCategoriesByParent($id_parent);
-        if($categories != null){
-            $data['menu'] = '<div class="container">
-            <ul class="center hide-on-med-and-down desktop">';
-            foreach($categories as $categorie){
-                foreach($categorie as $key => $value){
-                    if($key == 'id'){
-                        $id_parent = intval($value);
-                    }
-                    if($key == 'libelle'){
-                        $data['menu'] .= '<li><a href="'.site_url('produit/'.$id_parent).'">'.$value.'</a></li><li style="list-style-type:none">'.$this->_createMenu($id_parent)['menu'].'</li>';
-                    }
-                }
-            }
-            $data['menu'] .= '</ul>';
-            return $data;
-        }
+    public function liste_utilisateur(){
+        $this->layout->set_titre("Back Office - Liste utilisateurs");
+        $this->layout->set_theme("default_bo");
+        //$this->layout->ajouter_js("bo/creer_utilisateur");
+        $this->layout->view("themes/bo/utilisateurs/liste_utilisateurs");
+        return false;
     }
-    /*private function _createMenu($id_parent = null){
-        $categories = $this->cat->getCategoriesByParent($id_parent);
-        if($categories != null){
-            $data['menu'] = '<ul>';
-            foreach($categories as $categorie){
-                foreach($categorie as $key => $value){
-                    if($key == 'id'){
-                        $id_parent = intval($value);
-                    }
-                    if($key == 'libelle'){
-                        $data['menu'] .= '<li><a href="'.site_url('produit/'.$id_parent).'">'.$value.'</a></li><li style="list-style-type:none">'.$this->_createMenu($id_parent)['menu'].'</li>';
-                    }
-                }
-            }
-            $data['menu'] .= '</ul>';
-            return $data;
-        }
-    }*/
 
     public function form_connexion(){
-        $this->layout->set_titre("Connexion");
-        $this->layout->ajouter_css("sweetalert/sweetalert");
-        $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
-        $this->layout->ajouter_js("sweetalert/sweetalert.min");
-        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("accueil/form_connexion");
-        $this->layout->view('themes/accueil/connection');
-    }
+        $return = array();
+        $return[0] = false;
+        $require = array("email","mdp");
 
-    /*Fonction pour créer des jeux de tests (ici produits) dans la BDD*/
-    public function insertion(){
-        $data = array();
-        $data[0]['reference'] = "IPR1";
-        $data[0]['libelle'] = "AK-CC7122EP01";
-        $data[0]['images'] = "";
-        $data[0]['marque'] = "Akasa";
-        $data[0]['video'] = "";
-        $data[0]['statut'] = "1";
+        $this->_validation_require($require);
 
-        $data[1]['reference'] = "IPR2";
-        $data[1]['libelle'] = "Alpine M1";
-        $data[1]['images'] = "";
-        $data[1]['marque'] = "Arctic";
-        $data[1]['video'] = "";
-        $data[1]['statut'] = "1";
-
-        $data[2]['reference'] = "IPR3";
-        $data[2]['libelle'] = "Seidon 120V (Ver. 2.0)";
-        $data[2]['images'] = "";
-        $data[2]['marque'] = "Cooler Master LTD";
-        $data[2]['video'] = "";
-        $data[2]['statut'] = "1";
-
-        $data[3]['reference'] = "IPR4";
-        $data[3]['libelle'] = "Macho Zero";
-        $data[3]['images'] = "";
-        $data[3]['marque'] = "Thermalright";
-        $data[3]['video'] = "";
-        $data[3]['statut'] = "1";
-        foreach($data as $key => $value){
-            $this->prod->create($value);
+        $option = array();
+        $option['email']  = $this->input->post("email");
+        $user_count = $this->utilisateur->count($option);
+        if($user_count < 1){
+            $return[1] = "L'email saisi n'est pas reconnu";
+            die(json_encode($return));
+        }elseif($user_count > 1){
+            $return[1] = "Erreur";
+            $return[2] = "Une erreur est survenue<br>Si celle-ci se reproduit, veuillez nous <a href='mailto:contact@pyla.fr'>contacter</a>";
+            die(json_encode($return));
         }
-    }
-
-    public function createPage()
-    {
-        $this->categorie_model->createCategorie('Niveau 1');
-    }
-
-    public function top_categories(){
-        $i = 0;
-        $data = array();
-        $categories = $this->cat->read("*",array("top" => 1));
-        foreach($categories as $categorie)
+        $user_tuples = $this->utilisateur->read("*",array("email" => $this->input->post("email")));
+        foreach($user_tuples as $user_tuple)
         {
-            $data[$i]['id'] = $categorie->id;
-            $data[$i]['libelle'] = $categorie->libelle;
-            $data[$i]['produits'] = $this->prod->getTopProduitsByCategorie((int)$categorie->id);
-            $i++;
+            $mdp = $this->encrypt->decode($user_tuple->mdp);
         }
-        return $data;
+        if($this->input->post("mdp") != $mdp){
+            $return[1] = "Le mot de passe saisi n'est pas reconnu";
+            die(json_encode($return));
+        }
+        if($user_tuple->statut < 6 && $user_tuple->statut > 2){
+            $statut_tuples = $this->stat->read("*",array("id" => $user_tuple->statut));
+            foreach($statut_tuples as $statut_tuple)
+            {
+                $description = $statut_tuple->description;
+            }
+            $return[1] = "Compte bloqué";
+            $return[2] = $description;
+            die(json_encode($return));
+        }elseif($user_tuple->statut < 0 || $user_tuple->statut > 5){
+            $return[1] = "Erreur";
+            $return[2] =  "Une erreur est survenue<br>Si celle-ci se reproduit, veuillez nous <a href='mailto:contact@pyla.fr'>contacter</a>";
+            die(json_encode($return));
+        }elseif(empty($user_tuple->statut)){
+            $return[1] = "Activation";
+            $return[2] =  "Votre compte n'est pas actif<br>Si vous n'avez pas reçu de mail d'activation, veuillez nous <a href='mailto:contact@pyla.fr'>contacter</a>";
+            die(json_encode($return));
+        }
+
+        $this->user->setId($user_tuple->id);
+        $this->user->setStatut($user_tuple->statut);
+        $this->_setSession();
+
+        $cookie = $this->input->post("cookie");
+        if(isset($cookie) && $cookie == "on"){
+            setcookie('email', $this->input->post("email"), time()+365*24*3600);
+            setcookie('mdp', $this->input->post("mdp"), time()+365*24*3600);
+        }
+
+        $return[0] = true;
+        die(json_encode($return));
     }
 
-    public function top_produits(){
-        $data = array();
-        $categories = $this->prod->read("*",array("top" => 1));
-        foreach($categories as $categorie)
-        {
-            $data[]['id'] = $categorie->id;
-            $data[]['libelle'] = $categorie->libelle;
+    private function _validation_require($require){
+        foreach($require as $item){
+            if(empty($this->input->post($item))){
+                $return[1] = "require";
+                die(json_encode($return));
+            }
         }
+    }
 
+    private function _setSession(){
+        $_SESSION['id'] = $this->user->getId();
+        if($this->user->getStatut() == "1"){
+            $_SESSION['admin'] = 1;
+        }
+    }
 
-        return $data;
+    public function reinitialisation(){
+        $this->utilisateur->delete(array("statut" => 1));
+        session_unset();
+        setcookie('email', '', 1);
+        setcookie('mdp', '', 1);
+        header('Location: '.site_url('backoffice'));
+        exit();
+    }
+
+    public function deconnexion(){
+        session_unset();
+        header('Location: '.site_url('backoffice'));
+        exit();
     }
 }

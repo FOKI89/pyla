@@ -16,8 +16,6 @@ class Accueil extends CI_Controller
     }
 
     public function accueil(){
-        $this->checkAdmin();
-
         $data = $this->_createMenu();
         // fusionner plusieurs vue avant d'en afficher le total
         $data = array();
@@ -29,14 +27,6 @@ class Accueil extends CI_Controller
                      ->view('themes/partials/top_products',$data);
         return false;
         //$this->layout->view('accueil/menu',$data);
-    }
-
-    public function checkAdmin(){
-        /* test utilisateur = admin
-           $this->session->set_userdata('admin',1);*/
-        if($this->session->userdata('admin') != null){
-            echo 'Bonjour Administrateur';//redirect(site_url().'/backoffice/accueil');
-        }
     }
 
     private function _createMenu($id_parent = null){

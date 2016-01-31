@@ -1,7 +1,7 @@
-$("#configuration").on("submit", function(c){
+$("#installation").on("submit", function(c){
     c.preventDefault();
     var data = new FormData();
-    $.each($('#configuration :input'), function(i, fileds){
+    $.each($('#installation :input'), function(i, fileds){
        data.append($(fileds).attr('name'), $(fileds).val());
     });
     var champs = ["email","mdp","confirm_mdp"];
@@ -13,7 +13,7 @@ $("#configuration").on("submit", function(c){
         } 
     }
     $.ajax({
-        url: 'utilisateur/form_config',
+        url: 'utilisateur/form_install',
         data: data,
         cache: false,
         contentType: false,
@@ -29,6 +29,10 @@ $("#configuration").on("submit", function(c){
                     timer: 2000,
                     showConfirmButton: false
                 });
+                setTimeout(function() {
+                    location.reload();
+                }, 2200);
+                
             }else if(jqXHR[1] == "require"){
                     swal({
                         title: "",
@@ -54,7 +58,7 @@ $("#configuration").on("submit", function(c){
         },
         error: function(jqXHR, textStatus, errorThrown)
         {
-            alert("ERREUR : "+ textStatus);
+            console.log("ERREUR : "+ textStatus);
         }
     });
     return false;

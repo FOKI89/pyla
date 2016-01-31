@@ -1,28 +1,50 @@
+<?php 
+	if(!isset($_SESSION['admin']) || $_SESSION['admin'] != 1){ 
+		header('Location: '.site_url('backoffice'));
+	  	exit();
+	}
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" > 
 <head>
-	<title><?php echo $titre; ?></title>
+	<title>Pila - Back Office</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="icon" type="image/png" href="<?php echo img_url("favicon.png") ?>" />
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="<?php echo css_url("bo/materialize.min") ?>"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="<?php echo css_url("/bo/custom_rules"); ?>" media="screen,projection">
+	<link type="text/css" rel="stylesheet" href="<?php echo css_url("sweetalert/sweetalert"); ?>" media="screen,projection">
+	<script src="<?php echo js_url("vendors/jquery-1.11.3.min"); ?>"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo js_url("bo/materialize.min"); ?>"></script>
+	<script type="text/javascript" src="<?php echo js_url("sweetalert/sweetalert.min"); ?>"></script>
+	<script type="text/javascript" src="<?php echo js_url("sweetalert/sweetalert-dev"); ?>"></script>
 	<?php foreach($css as $url): ?>
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
 	<?php endforeach; ?>
 </head>
 <body>
 	<header>
+<!-- 		<nav class="top-nav blue darken-4">
+          <div class="container">
+            <div class="nav-wrapper">
+                <a href="" class="button-collapse" data-activates="slide-out"><i class="mdi-navigation-menu"></i></a>
+                <a href="#!" class="breadcrumb">Back-office</a>
+                <a href="../Dashboard/dashboard.html" class="breadcrumb">Dashboard</a>
+            </div>
+          </div>
+        </nav> -->
 		<ul id="slide-out" class="side-nav fixed">
 			<!-- Header/logo Pila-->
-			<li class="blue darken-4 white-text valign-wrapper" style="height:64px;">
+			<li class="blue darken-4 white-text center-align" style="height:64px;">
 				<img src="<?php echo img_url("bo/logo.png") ?>" alt="Logo Projet Pila" style="max-height:80%">
 			</li>
 
 			<!-- Infos sur l'utilisateur connecté -->
 			<li class="yellow accent-4 center-align">
-				<i class="material-icons user-icon">person</i> Thomas Moraine
+				<i class="material-icons user-icon">person</i> Administrateur
 			</li>
 
 			<!-- Liste des catégories-->
@@ -31,7 +53,7 @@
 				<li>
 					<div class="collapsible-header blue-text text-darken-4">
 						<i class="material-icons">view_module</i>
-						<a href="../Dashboard/dashboard.html" class="categorie_menu">Dashboard</a></div>
+						<a href="<?php echo site_url('backoffice'); ?>" class="categorie_menu">Dashboard</a></div>
 					</li>
 					<!-- Sous-menu Utilisateurs -->
 					<li>
@@ -40,9 +62,9 @@
 						</div>
 						<div class="collapsible-body">
 							<ul class="center-align blue-text text-darken-4">
-								<li><a href="../Utilisateurs/creer_utilisateur.html" class="sidebar-link">Créer un compte</a></li>
-								<li><a href="../Utilisateurs/chercher_utilisateur.html" class="sidebar-link">Chercher un utilisateur</a></li>
-								<li><a href="../Utilisateurs/liste_utilisateurs.html" class="sidebar-link">Liste des utilisateurs</a></li>
+								<li><a href="<?php echo site_url('backoffice/creer-compte'); ?>" class="sidebar-link">Créer un compte</a></li>
+								<li><a href="<?php echo site_url('backoffice/chercher-utilisateur'); ?>" class="sidebar-link">Chercher un utilisateur</a></li>
+								<li><a href="<?php echo site_url('backoffice/liste-utilisateur'); ?>" class="sidebar-link">Liste des utilisateurs</a></li>
 							</ul>
 						</div>
 					</li>
@@ -53,10 +75,10 @@
 						</div>
 						<div class="collapsible-body">
 							<ul class="center-align blue-text text-darken-4">
-								<li><a href="../Catalogue/creer_article.html" class="sidebar-link">Créer un article</a></li>
-								<li><a href="../Catalogue/chercher_article.html" class="sidebar-link">Chercher un article</a></li>
-								<li><a href="../Catalogue/creer_critere.html" class="sidebar-link">Créer un critère</a></li>
-								<li><a href="../Catalogue/liste_criteres.html" class="sidebar-link">Liste des critères</a></li>
+								<li><a href="<?php echo site_url('backoffice/creer-article'); ?>" class="sidebar-link">Créer un article</a></li>
+								<li><a href="<?php echo site_url('backoffice/chercher-article'); ?>" class="sidebar-link">Chercher un article</a></li>
+								<li><a href="<?php echo site_url('backoffice/creer-critere'); ?>" class="sidebar-link">Créer un critère</a></li>
+								<li><a href="<?php echo site_url('backoffice/liste-critere'); ?>" class="sidebar-link">Liste des critères</a></li>
 							</ul>
 						</div>
 					</li>
@@ -67,7 +89,7 @@
 						</div>
 						<div class="collapsible-body">
 							<ul class="center-align blue-text text-darken-4">
-								<li><a href="../Commandes/chercher_commande.html" class="sidebar-link">Chercher une commande</a></li>
+								<li><a href="<?php echo site_url('backoffice/chercher-commande'); ?>" class="sidebar-link">Chercher une commande</a></li>
 							</ul>
 						</div>
 					</li>
@@ -78,14 +100,14 @@
 						</div>
 						<div class="collapsible-body">
 							<ul class="center-align blue-text text-darken-4">
-								<li><a href="../Pages/modif_pages.html" class="sidebar-link">Modifier les pages</a></li>
+								<li><a href="<?php echo site_url('backoffice/modifier-pages'); ?>" class="sidebar-link">Modifier les pages</a></li>
 							</ul>
 						</div>
 					</li>
 
 					<li>
 						<div class="collapsible-header"><i class="material-icons">timeline</i>
-							<span class="categorie_menu">Statistiques</span>
+							<a href="<?php echo site_url('backoffice/statistiques'); ?>" class="categorie_menu">Statistiques</a>
 						</div>
 						<div class="collapsible-body">
 							<ul class="center-align blue-text text-darken-4">
@@ -95,7 +117,7 @@
 					</li>
 					<li>
 						<div class="collapsible-header"><i class="material-icons">settings</i>
-							<span class="categorie_menu">Paramètres</span>
+							<a href="<?php echo site_url('backoffice/parametres'); ?>" class="categorie_menu">Paramètres</a>
 						</div>
 						<div class="collapsible-body">
 							<ul class="center-align blue-text text-darken-4">
@@ -104,10 +126,9 @@
 						</div>
 					</li>
 					<!-- Déconnexion -->
-					<li>
-						<div class="collapsible-header">
-							<i class="material-icons user-icon">exit_to_app</i>
-							<span> Déconnexion</span>
+					<li id="deconnexion">
+						<div class="collapsible-header"><i class="material-icons">exit_to_app</i>
+							<a href="<?php echo site_url('backoffice/deconnexion'); ?>" class="sidebar-link"><span class="categorie_menu">Déconnexion</span></a>
 						</div>
 					</li>
 				</ul>
@@ -129,7 +150,7 @@
 		</div>
 	</footer>
 	<?php foreach($js as $url): ?>
-	<script type="text/javascript" src="<?php echo $url; ?>"></script> 
-<?php endforeach; ?>
+		<script type="text/javascript" src="<?php echo $url; ?>"></script> 
+	<?php endforeach; ?>
 </body>
 </html>

@@ -333,6 +333,9 @@ class Utilisateur extends CI_Controller
 
     private function _setSession(){
         $_SESSION['id'] = $this->user->getId();
+        if($this->user->getStatut() == "1"){
+            $_SESSION['admin'] = 1;
+        }
     }
 
     public function form_connexion(){
@@ -380,6 +383,10 @@ class Utilisateur extends CI_Controller
             $return[2] =  "Votre compte n'est pas actif<br>Si vous n'avez pas reçu de mail d'activation, veuillez nous <a href='mailto:contact@pyla.fr'>contacter</a>";
             die(json_encode($return));
         }
+
+        $this->user->setId($user_tuple->id);
+        $this->user->setStatut($user_tuple->statut);
+        $this->_setSession();
 
         $return[0] = true;
         die(json_encode($return));
@@ -517,7 +524,7 @@ class Utilisateur extends CI_Controller
         }
     }
 
-    public function form_config(){
+    public function form_install(){
         $return = array();
         $return[0] = false;
         $require = array("email","mdp","confirm_mdp");
