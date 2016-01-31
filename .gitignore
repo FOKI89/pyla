@@ -9,8 +9,8 @@ node_modules
 
 
 # Fichiers de configuration
-application/config/config.php
-application/config/database.php
+config.php
+database.php
 
 
 # Images
