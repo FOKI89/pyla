@@ -16,7 +16,9 @@ class Accueil extends CI_Controller
     }
 
     public function accueil(){
-        $data = $this->_createMenu();
+
+	 $categories = $this->cat->read("*");
+    //var_dump($categories);
         // fusionner plusieurs vue avant d'en afficher le total
         $data = array();
         $data['categories'] = $this->top_categories();
@@ -29,25 +31,27 @@ class Accueil extends CI_Controller
         //$this->layout->view('accueil/menu',$data);
     }
 
-    private function _createMenu($id_parent = null){
-        $categories = $this->cat->getCategoriesByParent($id_parent);
+    
+
+    /*private function _createMenu(array $elements, $parentId = null){
         $data["menu"] = array();
-        if($categories != null){
-          foreach ($categories as $categorie) {
-              if ($categorie['id'] == $id_parent) {
-                  $children = $this->_createMenu($categorie['id']);
-                  if ($children) {
-                      $categorie['children'] = $children;
-                  }
-                  $data["menu"] = $categorie;
-              }
-          }
-          return $data;
-        }
+        if($elements != null){
+    			foreach ($elements as $element) {
+            var_dump($element);
+    				if ($element->id_parent == $parentId) {
+              var_dump($element->id_parent);
+    					$children = $this->_createMenu($elements, $element->id);
+    					if ($children) {
+                $element->children = array();
+    						$element->children[] = $children;
+    					}
+    					$data["menu"] = $element;
+    				}
+            return $data;
+    			}
 
-      }
-
-
+		    }
+	    }*/
 /*
 
         if($categories != null){

@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" > 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 	<head>
 		<title><?php echo $titre; ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
@@ -15,7 +15,6 @@
 			<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
 		<?php endforeach; ?>
 	</head>
-
 	<body>
 		<header>
  			<div class="row">
@@ -47,78 +46,44 @@
 			        	<a class="btn dropdown-button white grey-text" href="#!" data-activates="dropdown2">Catégories<i class="mdi-navigation-arrow-drop-down right"></i></a>
 			        </div>
 			    </div>
-			    <div class="header-links col s9 m10 l5">
-			        <a class="btn yellow blue-text" href="<?php echo base_url().'inscription'; ?>">Inscription</a>
-			        <a class="btn blue yellow-text" href="<?php echo base_url().'connexion'; ?>">Connexion</a>
-			        <a class="btn white blue-grey-text darken-3-text" href="<?php echo base_url().'mon-panier'; ?>"><i class="material-icons">shopping_cart</i></a>
-			    </div>
+					<div class="header-links col s9 m10 l5">
+				   	<?php if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
+					       <a class="btn yellow blue-text" href="<?php echo base_url().'mon-compte'; ?>">Mon Compte</a>
+					       <a class="btn blue yellow-text" href="<?php echo base_url().'deconnexion'; ?>">Déconnexion</a>
+				       <?php }else{ ?>
+				       	<a class="btn yellow blue-text" href="<?php echo base_url().'inscription'; ?>">Inscription</a>
+				       	<a class="btn blue yellow-text" href="<?php echo base_url().'connexion'; ?>">Connexion</a>
+				       <?php } ?>
+				       <a class="btn white blue-grey-text darken-3-text" href="<?php echo base_url().'mon-panier'; ?>"><i class="material-icons">shopping_cart</i></a>
+				   </div>
 			</div>
 		</header>
-
 		<nav class="main-nav z-depth-0 blue">
 		    <div class="nav-wrapper">
 				<a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
 				<div class="container">
 					<ul class="center hide-on-med-and-down desktop">
-						<li><a href="#">Habillement</a>
-						  <div class="subMenu indigo lighten-5 blue-text">
-							  <ul class="left-align">
-								  <li><a class="blue-text text-darken-4 subMenu-title" href="#">Chaussures</a></li>
-								  <li><a class="blue-text" href="#">Bottes</a></li>
-								  <li><a class="blue-text" href="#">Escarpins</a></li>
-								  <li><a class="blue-text" href="#">Sandales</a></li>
-								  <li><a class="blue-text" href="#">Chaussure de ville</a></li>
-								  <li><a class="blue-text" href="#">Sportswear</a></li>
-								  <li><a class="blue-text" href="#">Ballerines</a></li>
-							  </ul>
-							  <ul class="left-align">
-								  <li><a class="blue-text text-darken-4 subMenu-title" href="#">Haut</a></li>
-								  <li><a class="blue-text" href="#">Tee shirts</a></li>
-								  <li><a class="blue-text" href="#">Chemises</a></li>
-								  <li><a class="blue-text" href="#">Polo</a></li>
-							  </ul>
-							  <ul class="left-align">
-								  <li><a class="blue-text text-darken-4 subMenu-title" href="#">Manteaux</a></li>
-								  <li><a class="blue-text" href="#">Parka</a></li>
-								  <li><a class="blue-text" href="#">Duffle Coat</a></li>
-								  <li><a class="blue-text" href="#">Blouson</a></li>
-								  <li><a class="blue-text" href="#">Anorak</a></li>
-							  </ul>
-							  <ul class="left-align">
-								  <li><a class="blue-text text-darken-4 subMenu-title" href="#">Pantalons</a></li>
-								  <li><a class="blue-text" href="#">Jeans</a></li>
-								  <li><a class="blue-text" href="#">Chino</a></li>
-								  <li><a class="blue-text" href="#">Shorts</a></li>
-								  <li><a class="blue-text" href="#">Pantacourt</a></li>
-								  <li><a class="blue-text" href="#">Joggings</a></li>
-							  </ul>
-						  </div>
-						</li>
-						<li><a href="#">Tee-shirts</a>
-							<div class="subMenu white blue-text row">
-							    <ul class="col l4">
-							        <li><a href="#">Bottes</a></li>
-							        <li><a href="#">Escarpins</a></li>
-							        <li><a href="#">Sandales</a></li>
-							        <li><a href="#">Chaussure de ville</a></li>
-							        <li><a href="#">Sportswear</a></li>
-							        <li><a href="#">Ballerines</a></li>
-							    </ul>
-							    <ul class="col l4">
-							        <li><a href="#">Bottes</a></li>
-							        <li><a href="#">Escarpins</a></li>
-							        <li><a href="#">Sandales</a></li>
-							        <li><a href="#">Chaussure de ville</a></li>
-							        <li><a href="#">Sportswear</a></li>
-							        <li><a href="#">Ballerines</a></li>
-							    </ul>
-							</div>
-						</li>
-						<li><a href="#">Chemises</a></li>
-						<li><a href="#">Pantalons</a></li>
-						<li><a href="#">Manteaux</a></li>
-						<li><a href="#">Chaussettes</a></li>
-						<li><a href="#">Accessoires</a></li>
+					<?php if(isset($menu)){
+						foreach ($menu as $key => $topmenu) {
+							echo '<li><a href="'.base_url().'categorie/' .$topmenu['id']. '">' .$topmenu['libelle'].'</a>';
+							if(isset($topmenu['submenu'])){
+								echo '<div class="subMenu indigo lighten-5 blue-text">';
+								foreach ($topmenu['submenu'] as $key => $submenu) {
+										echo'<ul class="left-align">
+															<li><a class="blue-text text-darken-4 subMenu-title" href="'.base_url().'categorie/' .$submenu['id']. '">' .$submenu['libelle'].'</a></li>';
+												foreach ($submenu as $key => $subsubmenu) {
+													if(is_int($key)){
+														echo '<li><a class="blue-text" href="'.base_url().'categorie/' .$subsubmenu['id']. '">' .$subsubmenu['libelle'].'</a></li>';
+													}
+												}
+										echo'</ul>';
+								}
+								echo '</div>';
+							}
+							echo'</li>';
+						}
+					}
+					?>
 					</ul>
 				</div>
 		      <ul class="side-nav" id="mobile-menu">
@@ -127,79 +92,38 @@
 		              		<img src="<?php echo img_url("logo-2.png") ?>">
 		              	</a>
 		            </li>
-			        <li class="search no-padding">
-		  	            <div class="search-wrapper card">
-			                <input id="search"><i class="material-icons">search</i>
-			            	<div class="search-results"></div>
-			            </div>
-			        </li>
-		            <li class="no-padding deroule">
-		                <ul class="collapsible collapsible-accordion">
-		                    <li>
-		                        <a class="collapsible-header waves-effect waves-blue">Chaussures</a>
-		                        <div class="collapsible-body">
-		                            <ul>
-										<li><a href="#">Bottes</a></li>
-										<li><a href="#">Escarpins</a></li>
-										<li><a href="#">Sandales</a></li>
-										<li><a href="#">Chaussure de ville</a></li>
-										<li><a href="#">Sportswear</a></li>
-										<li><a href="#">Ballerines</a></li>
-		                            </ul>
-		                        </div>
-		                    </li>
-		                    <li>
-		                        <a class="collapsible-header waves-effect waves-blue">Tee-shirts</a>
-		                        <div class="collapsible-body">
-		                            <ul>
-		                                <li><a href="#">Bottes</a></li>
-		                                <li><a href="#">Escarpins</a></li>
-		                                <li><a href="#">Sandales</a></li>
-		                                <li><a href="#">Chaussure de ville</a></li>
-		                                <li><a href="#">Sportswear</a></li>
-		                                <li><a href="#">Ballerines</a></li>
-		                            </ul>
-		                        </div>
-		                    </li>
-		                    <li>
-		                        <a class="collapsible-header waves-effect waves-blue">Chemises</a>
-			                    <div class="collapsible-body">
-			                        <ul>
-			                            <li><a href="#">Bottes</a></li>
-			                            <li><a href="#">Escarpins</a></li>
-			                            <li><a href="#">Sandales</a></li>
-			                            <li><a href="#">Chaussure de ville</a></li>
-			                            <li><a href="#">Sportswear</a></li>
-			                            <li><a href="#">Ballerines</a></li>
-			                        </ul>
-			                    </div>
-			              	</li>
-			              	<li>
-		                  		<a class="collapsible-header waves-effect waves-blue">Pantalons</a>
-		                  		<div class="collapsible-body">
-									<ul>
-										<li><a href="#">Bottes</a></li>
-										<li><a href="#">Escarpins</a></li>
-										<li><a href="#">Sandales</a></li>
-										<li><a href="#">Chaussure de ville</a></li>
-										<li><a href="#">Sportswear</a></li>
-										<li><a href="#">Ballerines</a></li>
-									</ul>
-		                  		</div>
-		            		</li>
-		            	</ul>
-		          	</li>
-					<li class="no-padding"><a href="#">Chaussettes</a></li>
-					<li class="no-padding"><a href="#">Accessoires</a></li>
+				        <li class="search no-padding">
+			  	            <div class="search-wrapper card">
+				                <input id="search"><i class="material-icons">search</i>
+				            		<div class="search-results"></div>
+				            	</div>
+				        </li>
+							<?php if(isset($menu)){
+								foreach ($menu as $key => $topmenu) {
+									if(isset($topmenu['submenu'])){
+										echo '<li class="no-padding deroule">
+														<ul class="collapsible collapsible-accordion">
+															<li><a class="collapsible-header waves-effect waves-blue">'.$topmenu['libelle'].'</a>';
+										echo '<div class="collapsible-body"><ul>';
+										foreach ($topmenu['submenu'] as $key => $submenu) {
+												echo'<li><a href="'.base_url().'categorie/' .$submenu['id']. '">' .$submenu['libelle'].'</a></li>';
+										}
+										echo'</ul></li>';
+									}else{
+										echo '<li class="no-padding"><a href="'.base_url().'categorie/' .$topmenu['id']. '">'.$topmenu['libelle'].'</a></li>';
+									}
+								}
+							}
+							?>
 		      	</ul>
 		    </div>
+			</div>
 		</nav>
-
-		<div id="contenu">
-			<?php echo $output; ?>
-		</div>
+			<div id="contenu">
+				<?php echo $output; ?>
+			</div>
 			</div><!-- fin div section -->
-	    </div><!-- fin div container -->
+	  </div><!-- fin div container -->
 	    <footer class="page-footer indigo lighten-1">
 	        <div class="container">
 	            <div class="row">
@@ -236,13 +160,13 @@
          	</div>
 	        <div class="footer-copyright indigo">
            		<div class="container">
-	           		© 2016 Site batit avec Pila
+	           		© 2016 Site bati avec Pila
 	           		<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
 	           	</div>
 	        </div>
 	    </footer>
 		<?php foreach($js as $url): ?>
-			<script type="text/javascript" src="<?php echo $url; ?>"></script> 
+			<script type="text/javascript" src="<?php echo $url; ?>"></script>
 		<?php endforeach; ?>
 	</body>
 </html>

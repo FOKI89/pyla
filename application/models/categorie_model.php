@@ -8,7 +8,7 @@ class Categorie_model extends MY_Model
     protected $table = 'categories';
 
     public function __construct(){
-        
+
     }
 
     /*
@@ -37,6 +37,7 @@ class Categorie_model extends MY_Model
     |==================================================================================
     */
     public function getCategories($fields = '*', $where = null){
+		if($where == null)$where = 1;
         $categorie = $this->db->select($fields)
                      ->from('categories')
                      ->where($where)
@@ -65,7 +66,7 @@ class Categorie_model extends MY_Model
 
         $all = $this->db->query('SELECT * FROM categories WHERE id_parent '.$query_param.' ORDER BY rang');
         $categories = $all->result_array();
-        return $categories;        
+        return $categories;
     }
 
     /*
@@ -77,6 +78,6 @@ class Categorie_model extends MY_Model
     public function getLastCategories(){
         $all = $this->db->query('SELECT id, libelle FROM categories WHERE id NOT IN (SELECT id_parent FROM categories WHERE id_parent IS NOT NULL) AND id_parent IS NOT NULL ORDER BY rang');
         $categories = $all->result_array();
-        return $categories;        
+        return $categories;
     }
 }
