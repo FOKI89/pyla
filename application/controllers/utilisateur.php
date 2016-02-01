@@ -399,7 +399,7 @@ class Utilisateur extends CI_Controller
             $this->layout->ajouter_js("sweetalert/sweetalert.min");
             $this->layout->ajouter_js("sweetalert/sweetalert-dev");
             $this->layout->ajouter_js("accueil/form_connexion");
-            $this->layout->view('accueil/form_connexion');
+            $this->layout->view('themes/accueil/register');
             return false;
         }
         $user_tuples = $this->utilisateur->read("*",array("id" => $_SESSION['id']));
