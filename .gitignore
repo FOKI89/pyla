@@ -9,12 +9,12 @@ node_modules
 
 
 # Fichiers de configuration
-config.php
-database.php
+
+application/config/database.php
+application/config/config.php
 
 
 # Images
 assets/img/produit
 assets/img/bo
-application/config/database.php
-application/config/database.php
+
