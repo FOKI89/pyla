@@ -30,6 +30,34 @@ class Layout
 		$this->ajouter_js('accueil/footer');
 		$this->_setSession();
 	}
+	
+	private function _createMenu($id_parent = null){
+      $menu = array();
+      $categories = $this->CI->cat->getCategoriesByParent($id_parent);
+      $i = 0;
+      foreach($categories as $categorie)
+      {
+		$j = 0;
+        $menu[$i] = $categorie;
+        $scategories = $this->CI->cat->getCategoriesByParent((int)$categorie['id']);
+          foreach($scategories as $scategorie)
+          {
+			$k = 0;
+            $menu[$i] = (array)$menu[$i];
+            $menu[$i]['submenu'][$j] = $scategorie;
+            $sscategories = $this->CI->cat->getCategoriesByParent((int)$scategorie['id']);
+              foreach($sscategories as $sscategorie)
+              {
+                $menu[$i]['submenu'][$j] = (array)$menu[$i]['submenu'][$j];
+                $menu[$i]['submenu'][$j][$k] = $sscategorie;
+                $k++;
+              }
+          $j++;
+          }
+        $i++;
+        }
+      return $menu;
+      }
 
 	private function _createMenu($id_parent = null){
 		$menu = array();

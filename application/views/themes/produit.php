@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="col s12 m6">
-				<?php if(isset($description)){ ?> 
+				<?php if(isset($description)){ ?>
 				<p class="infos-produit bold">Description:</p>
 				<p><?php echo $description; ?></p>
 				<?php }; ?>

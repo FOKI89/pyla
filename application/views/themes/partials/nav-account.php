@@ -17,6 +17,7 @@
                 <div class="collapsible-body">
                     <ul>
                         <li><a href="#">Mes articles</a></li>
+                        <li><a href="#">Créer une vente</a></li>
                         <li><a href="#">Commandes reçues</a></li>
                         <li><a href="#">Retours</a></li>
                     </ul>
