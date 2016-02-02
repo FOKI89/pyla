@@ -1,17 +1,17 @@
 <div class="container">
 	<div class="section">
-		<h1 class="header center-on-small-only grey-text grey-darken-4-text">Espace Personnel</h1>
+		<h2 class="header center-on-small-only grey-text grey-darken-4-text">Espace Personnel</h2>
 		<div class ="row">
 			<div class="col l4 m4 s12">
 				<ul class="collapsible collapsible-accordion" id="nav-account">
-					<a href="<?php echo base_url().'mon-compte'; ?>"><li class="no-padding">Dashboard</li></a>
-					<a href="<?php echo base_url().'mon-compte/modification'; ?>" class="purple lighten-5"><li class="no-padding">Mes informations personnelles</li></a><li>
-					<a class="collapsible-header waves-effect blue lighten-4">Mes commandes</a>
+					<li class="no-padding"><a href="<?php echo base_url().'mon-compte'; ?>">Dashboard</a></li>
+					<li class="no-padding"><a href="<?php echo base_url().'mon-compte/modification'; ?>" class="purple lighten-5">Mes informations personnelles</a></li>
+					<li><a class="collapsible-header waves-effect blue lighten-4">Mes commandes</a>
 					<div class="collapsible-body">
 						<ul>
-							<a href="<?php echo base_url().'mon-compte/mes-commandes/en-cours'; ?>"><li >En cours</li></a>
-							<a href="<?php echo base_url().'mon-compte/mes-commandes/terminees'; ?>"><li>Terminées</li></a>
-							<a href="<?php echo base_url().'mon-compte/mes-commandes/signaler'; ?>"><li>Signaler un problème</li></a>
+							<li><a href="<?php echo base_url().'mon-compte/mes-commandes/en-cours'; ?>">En cours</a></li>
+							<li><a href="<?php echo base_url().'mon-compte/mes-commandes/terminees'; ?>">Terminées</a></li>
+							<li><a href="<?php echo base_url().'mon-compte/mes-commandes/signaler'; ?>">Signaler un problème</a></li>
 						</ul>
 					</div>
 				</li>
@@ -19,13 +19,13 @@
 					<a class="collapsible-header waves-effect deep-purple lighten-4">Mes ventes</a>
 					<div class="collapsible-body">
 						<ul>
-							<a href="<?php echo base_url().'mon-compte/mes-ventes/articles'; ?>"><li>Mes articles</li></a>
-							<a href="<?php echo base_url().'mon-compte/mes-ventes/terminees'; ?>"><li>Ventes terminées</li></a>
-							<a href="<?php echo base_url().'mon-compte/mes-ventes/retours'; ?>"><li>Retours</li></a>
+							<li><a href="<?php echo base_url().'mon-compte/mes-ventes/articles'; ?>">Mes articles</a></li>
+							<li><a href="<?php echo base_url().'mon-compte/mes-ventes/terminees'; ?>">Ventes terminées</a></li>
+							<li><a href="<?php echo base_url().'mon-compte/mes-ventes/retours'; ?>">Retours</a></li>
 						</ul>
 					</div>
 				</li>
-				<a href="<?php echo base_url().'mon-compte/mes-commentaires'; ?>" class="indigo lighten-4"><li class="no-padding">Mes commentaires</li></a>
+				<li class="no-padding"><a href="<?php echo base_url().'mon-compte/mes-commentaires'; ?>" class="indigo lighten-4">Mes commentaires</a></li>
 			</ul>
 		</div>
 		<div class="col l8 s12">

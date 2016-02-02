@@ -34,11 +34,11 @@ ul#nav-account .collapsible-body li a {
 
 /* Dashboard */
 .dashboard-account{
-  display: none;
+  //display: none;
 }
 
 .dashboard-account.active-account{
-  display: block;
+  //display: block;
 }
 
 .dashboard-account .card{
@@ -79,10 +79,10 @@ ul#nav-account .collapsible-body li a {
 
 /*  informations personnelles  */
 .informations-personnelles-account{
-  display: none;
+  //display: none;
 }
 .informations-personnelles-account.active-account{
-  display: block;
+  //display: block;
 }
 
 /* Commandes  */
@@ -90,14 +90,14 @@ ul#nav-account .collapsible-body li a {
 .ventes-account,
 .commentaires-account,
 .creer-vente-account{
-  display: none;
+  //display: none;
 }
 
 .commandes-account.active-account,
 .ventes-account.active-account,
 .commentaires-account.active-account,
-..creer-vente-account.active-account{
-  display: block;
+.creer-vente-account.active-account{
+  //display: block;
 }
 .commandes-account table.striped > tbody > tr:nth-child(2n+1){
   background: #bbdefb ;

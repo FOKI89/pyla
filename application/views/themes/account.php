@@ -1,33 +1,8 @@
 <div class="container">
 	<div class="section">
-		<h1 class="header center-on-small-only grey-text grey-darken-4-text">Espace Personnel</h1>
+		<h2 class="header center-on-small-only grey-text grey-darken-4-text">Espace Personnel</h2>
 		<div class ="row">
-			<div class="col l4 m4 s12">
-				<ul class="collapsible collapsible-accordion" id="nav-account">
-					<a href="<?php echo base_url().'mon-compte'; ?>"><li class="no-padding">Dashboard</li></a>
-					<a href="<?php echo base_url().'mon-compte/modification'; ?>" class="purple lighten-5"><li class="no-padding">Mes informations personnelles</li></a><li>
-						<a class="collapsible-header waves-effect blue lighten-4" data-nav="commandes-account">Mes commandes</a>
-						<div class="collapsible-body">
-							<ul>
-								<a href="#"><li>En cours</li></a>
-								<a href="#"><li>Terminées</li></a>
-								<a href="#"><li>Signaler un problème</li></a>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a class="collapsible-header waves-effect deep-purple lighten-4" data-nav="ventes-account">Mes ventes</a>
-						<div class="collapsible-body">
-							<ul>
-								<a href="#"><li>Mes articles</li></a>
-								<a href="#"><li>Commandes reçues</li></a>
-								<a href="#"><li>Retours</li></a>
-							</ul>
-						</div>
-					</li>
-					<li class="no-padding"><a href="#" class="indigo lighten-4" data-nav="commentaires-account">Mes commentaires</a></li>
-				</ul>
-			</div>
+			<?php include_once "partials/nav-account.php"; ?> 
 			<div class="col l8 s12">
 				<div class="dashboard-account active-account">
 					<h2>Dashboard</h2>

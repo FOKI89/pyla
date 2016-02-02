@@ -14,8 +14,8 @@ jQuery(document).ready(function($) {
 
 
     $("ul#nav-account > li a").click(function(event){
-      event.preventDefault();
-      navAccount(this);
+      //event.preventDefault();
+      //navAccount(this);
     });
 
 
