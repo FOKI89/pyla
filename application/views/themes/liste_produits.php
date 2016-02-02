@@ -22,7 +22,7 @@
 					<div class="card-reveal indigo lighten-5">
 						<span class="card-title grey-text text-darken-4"><?php echo $produit->libelle; ?><i class="material-icons right">close</i></span>
 						<p><?php echo substr($produit->description,0,145)."...";?></p>
-						<a class="btn waves-effect waves-light blue yellow-text" href="produit.php">Zoom sur le produit <i class="material-icons left">zoom_in</i></a>
+						<a class="btn waves-effect waves-light blue yellow-text" href="<?php echo base_url().'produit/'.$produit->id; ?>">Zoom sur le produit <i class="material-icons left">zoom_in</i></a>
 					</div>
 				</div><!-- fin div card -->
 			</div><!-- fin div col -->

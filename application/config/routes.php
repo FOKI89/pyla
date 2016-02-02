@@ -110,6 +110,7 @@ $route['mon-compte/mes-commandes/en-cours'] = "utilisateur/commande_en_cours";
 $route['mon-compte/mes-commandes/terminees'] = "utilisateur/commande_terminee";
 $route['mon-compte/mes-commandes/signaler'] = "utilisateur/commande_signaler";
 $route['mon-compte/mes-ventes/articles'] = "utilisateur/vente_article";
+$route['mon-compte/mes-ventes/creer-article'] = "utilisateur/creer_article";
 $route['mon-compte/mes-ventes/terminees'] = "utilisateur/vente_terminee";
 $route['mon-compte/mes-ventes/retours'] = "utilisateur/vente_retour";
 $route['mon-compte/mes-commentaires'] = "utilisateur/commentaire";
