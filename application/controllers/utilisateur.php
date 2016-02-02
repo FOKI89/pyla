@@ -398,7 +398,7 @@ class Utilisateur extends CI_Controller
             $this->layout->ajouter_js("sweetalert/sweetalert.min");
             $this->layout->ajouter_js("sweetalert/sweetalert-dev");
             $this->layout->ajouter_js("accueil/form_connexion");
-            $this->layout->view('accueil/form_connexion');
+            $this->layout->view('themes/accueil/register');
             return false;
         }
         $user_tuples = $this->utilisateur->read("*",array("id" => $_SESSION['id']));
@@ -690,7 +690,7 @@ class Utilisateur extends CI_Controller
         die(json_encode($return));
     }
 
-    public function chercher_utilisateur(){ var_dump($this->input->post());
+    public function chercher_utilisateur(){
         $return = array();
         $return[0] = false;
         $require = array("recherche");
