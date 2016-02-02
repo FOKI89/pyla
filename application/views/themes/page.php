@@ -1,18 +1,13 @@
-<?php require_once("header.php");?>
     <div class="container">
         <div class="section">
           <div class="row page">
-            <h1 class="header center-on-small-only blue-text">Titre de la page</h1>
+            <h2 class="header center-on-small-only blue-text"><?php echo $titre; ?></h2>
             <div class="col s12">
               <div class="card indigo lighten-5">
                 <div class="card-content grey-text text-darken-3">
                   <h2 class="card-title indigo-text">Un sous-titre</h2>
                   <!-- start slipsum code -->
-                  <p>Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also <a href='#' class="blue-text">clear</a>. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends. </p>
-
-                  <p>After <a href='#' class="blue-text">the avalanche</a>, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man.</p>
-
-                  <p>Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me <a href='#' class="blue-text">Mr Glass</a>. </p>
+                  <p><?php echo $contenu; ?></p>
                 </div>
               </div>
             </div>
@@ -80,4 +75,3 @@
           </div>
         </div><!-- fin div section -->
     </div><!-- fin div container -->
-<?php require_once("footer.php");?>

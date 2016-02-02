@@ -31,9 +31,8 @@ div.header-links{
 	}
 }
 
-
-div.recherche nav.col{
-	background: $backgroundColor;
+div.recherche nav{
+	//background: $backgroundColor;
 	color:$backgroundColorHeader;
 	height:40px;
 	line-height: 40px;
@@ -43,6 +42,20 @@ div.recherche nav.col{
 div.recherche i.right{
 	margin: 0;
 }
+
+div.recherche nav .input-field{
+	padding: 0;
+	height: 40px;
+}
+
+div.recherche nav .input-field:nth-of-type(2){
+	margin-top:-2px;
+}
+
+div.recherche nav .input-field input{
+	margin-bottom: 0;
+}
+
 header nav,
 header nav .nav-wrapper i,
 header nav a.button-collapse,

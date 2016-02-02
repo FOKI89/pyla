@@ -27,61 +27,6 @@ class Accueil extends CI_Controller
         //$this->layout->view('accueil/menu',$data);
     }
     
-    /*private function _createMenu(array $elements, $parentId = null){
-        $data["menu"] = array();
-        if($elements != null){
-    			foreach ($elements as $element) {
-            var_dump($element);
-    				if ($element->id_parent == $parentId) {
-              var_dump($element->id_parent);
-    					$children = $this->_createMenu($elements, $element->id);
-    					if ($children) {
-                $element->children = array();
-    						$element->children[] = $children;
-    					}
-    					$data["menu"] = $element;
-    				}
-            return $data;
-    			}
-		    }
-	    }*/
-/*
-        if($categories != null){
-            $data['menu'] = '<div class="container">
-            <ul class="center hide-on-med-and-down desktop">';
-            foreach($categories as $categorie){
-                foreach($categorie as $key => $value){
-                    if($key == 'id'){
-                        $id_parent = intval($value);
-                    }
-                    if($key == 'libelle'){
-                        $data['menu'] .= '<li><a href="'.site_url('produit/'.$id_parent).'">'.$value.'</a></li><li style="list-style-type:none">'.$this->_createMenu($id_parent)['menu'].'</li>';
-                    }
-                }
-            }
-            $data['menu'] .= '</ul>';
-            return $data;
-        }
-    }
-*/
-    /*private function _createMenu($id_parent = null){
-        $categories = $this->cat->getCategoriesByParent($id_parent);
-        if($categories != null){
-            $data['menu'] = '<ul>';
-            foreach($categories as $categorie){
-                foreach($categorie as $key => $value){
-                    if($key == 'id'){
-                        $id_parent = intval($value);
-                    }
-                    if($key == 'libelle'){
-                        $data['menu'] .= '<li><a href="'.site_url('produit/'.$id_parent).'">'.$value.'</a></li><li style="list-style-type:none">'.$this->_createMenu($id_parent)['menu'].'</li>';
-                    }
-                }
-            }
-            $data['menu'] .= '</ul>';
-            return $data;
-        }
-    }*/
     public function form_connexion(){
         $this->layout->set_titre("Connexion");
         $this->layout->ajouter_css("sweetalert/sweetalert");

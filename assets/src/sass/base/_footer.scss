@@ -1,3 +1,11 @@
 footer.page-footer{
-  margin-top: 0;
+    margin-top: 0;
+}
+
+footer.page-footer .container .row .col ul{
+    columns:3;
+}
+
+footer.page-footer ul li a:hover{
+    text-decoration: underline;
 }

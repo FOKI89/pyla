@@ -5,21 +5,23 @@ class Layout
 	private $CI;
 	private $var = array();
 	private $theme = 'default';
-	
+
 /*
 |===============================================================================
 | Constructeur
 |===============================================================================
 */
-	
+
 	public function __construct()
-	{	
+	{
 		$this->CI =& get_instance();
 		$this->CI->load->model("categorie_model", "cat");
 		$this->CI->load->model("site_model");
 		$this->CI->load->model("pays_model", "pays");
+		$this->CI->load->model('page_model');
 		$data = array();
 		$this->var['menu'] = $this->_createMenu();
+		$this->var['pages_footer'] = $this->_getPages();
 		$this->var['output'] = '';
 		$this->var['titre'] = ucfirst($this->CI->router->fetch_method()) . ' - ' . ucfirst($this->CI->router->fetch_class());
 		$this->var['charset'] = $this->CI->config->item('charset');
@@ -30,7 +32,7 @@ class Layout
 		$this->ajouter_js('accueil/footer');
 		$this->_setSession();
 	}
-	
+
 	private function _createMenu($id_parent = null){
       $menu = array();
       $categories = $this->CI->cat->getCategoriesByParent($id_parent);
@@ -69,7 +71,7 @@ class Layout
 	    }
 	    return false;
 	}
-	
+
 	/*
 	|===============================================================================
 	| Méthodes pour charger les vues
@@ -77,13 +79,13 @@ class Layout
 	|	. views
 	|===============================================================================
 	*/
-	
+
 	public function view($name, $data = array())
 	{
 		$this->var['output'] .= $this->CI->load->view($name, $data, true);
     	$this->CI->load->view('themes/'.$this->theme, $this->var);
 	}
-	
+
 	public function views($name, $data = array())
 	{
 		$this->var['output'] .= $this->CI->load->view($name, $data, true);
@@ -163,6 +165,18 @@ class Layout
 		}
 		return false;
 	}
+	/*
+	|===============================================================================
+	| Méthodes pour ajouter liens des pages dans le footer
+	|	. ajouter_page_link
+	|===============================================================================
+	*/
+
+	private function _getPages(){
+      $pages = array();
+      $pages = $this->CI->page_model->getPages();
+      return $pages;
+  }
 
 	private function _setSession()
 	{

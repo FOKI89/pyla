@@ -11,9 +11,9 @@
 		<script src="<?php echo js_url("vendors/materialize.min"); ?>"></script>
 		<script src="<?php echo js_url("vendors/nouislider.min"); ?>"></script>
 		<script src="<?php echo js_url("main"); ?>"></script>
-		<?php foreach($css as $url): ?>
+		<?php foreach($css as $url){ ?>
 			<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
-		<?php endforeach; ?>
+		<?php } ?>
 	</head>
 	<body>
 		<header>
@@ -24,27 +24,21 @@
 			    </a>
 			    </div>
 			    <!-- Champs de recherche  -->
-			    <div class="recherche col hide-on-small-only m10 l6">
-			        <nav class="col s7">
+			    <div class="recherche col hide-on-small-only m6 l6">
+			        <nav class="transparent z-depth-0">
 			            <div class="nav-wrapper">
-			              	<form>
-			                	<div class="input-field">
-			                  		<input id="search" type="search" required>
-			                  		<label for="search"><i class="material-icons">search</i></label>
-			                  		<i class="material-icons">close</i>
-			                	</div>
+			              	<form id="search-bar" method="" action="">
+				                	<div class="input-field col s8 z-depth-1 white">
+				                  		<input id="search" type="search" placeholder="Recherche" required>
+				                  		<label for="search"><i class="material-icons">search</i></label>
+				                  		<i class="material-icons">close</i>
+				                	</div>
+													<div class="input-field col s4 center">
+														<button class="btn waves-effect waves-light white grey-text text-darken-4 " type="submit" name="search">Rechercher</button>
+													</div>
 			              	</form>
 			            </div>
 			        </nav>
-			        <div class="col s5">
-			         	<ul id="dropdown2" class="dropdown-content">
-							<li><a class="blue-text" href="#" data-category="tee-shirts">Tee-shirts</a></li>
-							<li><a class="blue-text" data-category="Chemises">Chemises</a></a></li>
-							<li><a class="blue-text" href="#" data-category="Pantalons">Pantalons</a></li>
-							<li><a class="blue-text" href="#" data-category="Chaussures">Chaussures</a></li>
-			        	</ul>
-			        	<a class="btn dropdown-button white grey-text" href="#!" data-activates="dropdown2">Catégories<i class="mdi-navigation-arrow-drop-down right"></i></a>
-			        </div>
 			    </div>
 					<div class="header-links col s9 m10 l5">
 				   	<?php if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
@@ -124,17 +118,18 @@
 			</div>
 			</div><!-- fin div section -->
 	  </div><!-- fin div container -->
+
 	    <footer class="page-footer indigo lighten-1">
 	        <div class="container">
 	            <div class="row">
-	             	<div class="col l4 offset-l2 s4">
-	               		<h5 class="white-text">Acheter</h5>
-	               		<ul>
-							<li><a class="grey-text text-lighten-3" href="#!">Boutique de marque</a></li>
-							<li><a class="grey-text text-lighten-3" href="#!">Boutique Pila</a></li>
-							<li><a class="grey-text text-lighten-3" href="#!">Pila Mobile</a></li>
-						</ul>
-	             	</div>
+								<div class="col s12">
+									<ul>
+									<?php foreach($pages_footer as $page){ ?>
+										<li><a class="grey-text text-lighten-3" href="<?php echo $page->id;?>"><?php echo $page->titre;  ?></a></li>
+									<?php }?>
+									</ul>
+								</div>
+								<!--
 					<div class="col l4 offset-l2 s4">
 						<h5 class="white-text">Vendre</h5>
 						<ul>
@@ -156,6 +151,7 @@
 							<li><a class="grey-text text-lighten-3" href="#!">Espace livraison</a></li>
 						</ul>
 	             	</div>
+							-->
 	           	</div>
          	</div>
 	        <div class="footer-copyright indigo">
