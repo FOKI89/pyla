@@ -26,10 +26,42 @@ class Produit extends CI_Controller
         $this->produit($id_categorie);
     }
 
-    public function liste_produit($id_categorie = null){
+    public function liste_produits($id_categorie = null){
         $this->id_categorie = intval($id_categorie);
-        $data = $this->_createGrille();
-        $this->layout->view("produit/grille",$data);
+        $id_parent = NULL;
+        $i = 0;
+        $breadcrumb = array();
+        $id_categorie = $this->id_categorie;
+        do{
+            if(!$query = $this->db->query('SELECT id, libelle, id_parent FROM categories WHERE id = '.$id_categorie)){
+                show_error("Select produits by categorie","error_db");
+                return false;
+            }
+            $categorie = new StdClass();
+            $categorie->type = "categorie";
+            $categorie->id = $query->result()[0]->id;
+            $categorie->libelle = $query->result()[0]->libelle;
+            $breadcrumb[$i] = $categorie;
+            $id_parent = $query->result()[0]->id_parent;
+            $id_categorie = $id_parent;
+            $i++;
+        }while(!empty($id_parent));
+
+        $breadcrumb = array_reverse($breadcrumb);
+        if(!$query = $this->db->query('SELECT p.id, p.reference, p.libelle, p.marque, p.description, p.video, p.statut FROM categories_produits cp INNER JOIN produits p ON p.id = cp.id_produit WHERE cp.id_categorie = '.$this->id_categorie)){
+            show_error("Select produits by categorie","error_db");
+            return false;
+        }
+
+        $data['breadcrumb'] = $breadcrumb;
+        $data["produits"] = $query->result();
+
+        $this->layout->set_titre($breadcrumb[--$i]->libelle);
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_creation");
+        $this->layout->view('themes/liste_produits',$data);
     }
 
     private function _createGrille(){

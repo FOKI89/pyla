@@ -2,7 +2,32 @@
 	<div class="section">
 		<h1 class="header center-on-small-only grey-text grey-darken-4-text">Espace Personnel</h1>
 		<div class ="row">
-			<?php include "partials/nav-account.php";?>
+			<div class="col l4 m4 s12">
+				<ul class="collapsible collapsible-accordion" id="nav-account">
+					<a href="<?php echo base_url().'mon-compte'; ?>"><li class="no-padding">Dashboard</li></a>
+					<a href="<?php echo base_url().'mon-compte/modification'; ?>" class="purple lighten-5"><li class="no-padding">Mes informations personnelles</li></a><li>
+						<a class="collapsible-header waves-effect blue lighten-4" data-nav="commandes-account">Mes commandes</a>
+						<div class="collapsible-body">
+							<ul>
+								<a href="#"><li>En cours</li></a>
+								<a href="#"><li>Terminées</li></a>
+								<a href="#"><li>Signaler un problème</li></a>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<a class="collapsible-header waves-effect deep-purple lighten-4" data-nav="ventes-account">Mes ventes</a>
+						<div class="collapsible-body">
+							<ul>
+								<a href="#"><li>Mes articles</li></a>
+								<a href="#"><li>Commandes reçues</li></a>
+								<a href="#"><li>Retours</li></a>
+							</ul>
+						</div>
+					</li>
+					<li class="no-padding"><a href="#" class="indigo lighten-4" data-nav="commentaires-account">Mes commentaires</a></li>
+				</ul>
+			</div>
 			<div class="col l8 s12">
 				<div class="dashboard-account active-account">
 					<h2>Dashboard</h2>
@@ -22,7 +47,7 @@
 							<h3>Dernier Commentaire:</h3>
 							<div class="divider grey darken-4"></div>
 							<p>Arche antique - 03 Mars 2016</p>
-							<p>Super produit, dommage qu'il n'y est pas plus...</p>
+							<p>Super produit, dommage qu'il n'y ait pas plus...</p>
 							<a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
 						</div>
 					</div>
@@ -31,7 +56,7 @@
 							<h3>Dernier Vente:</h3>
 							<div class="divider grey darken-4"></div>
 							<p>Arche antique - 14 Avril 2016</p>
-							<p>Super produit, dommage qu'il n'y est pas plus...</p>
+							<p>Super produit, dommage qu'il n'y ait pas plus...</p>
 							<a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
 						</div>
 					</div>
@@ -40,94 +65,12 @@
 							<h3>Infos</h3>
 							<div class="divider grey darken-4"></div>
 							<p>Arche antique - 03 Mars 2016</p>
-							<p>Super produit, dommage qu'il n'y est pas plus...</p>
+							<p>Super produit, dommage qu'il n'y ait pas plus...</p>
 							<a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
 						</div>
 					</div>
 					<div class="divider"></div>
 				</div> <!-- fin div dashboard -->
-				<div class="informations-personnelles-account">
-					<div class="row">
-						<h2>Mes informations personnelles</h2>
-						<p>Je peux modifier mes informations personnelles.</p>
-						<div class="divider"></div>
-						<form id="modification-account" class="col s12" action="">
-							<div class="row">
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">account_circle</i>
-
-									<input value="Arnold" id="first_name" type="text" class="validate" name="firstname">
-									<label for="first_name">Prénom:</label>
-								</div>
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">perm_identity</i>
-
-									<input value ="Schwarzenegger" id="last_name" type="text" class="validate" name="lastname">
-									<label for="last_name">Nom:</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">email</i>
-
-									<input value="Conan@predator.com" id="email" type="email" class="validate" name="email">
-									<label for="email">Email:</label>
-								</div>
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">phone</i>
-									<input value="+5049536953" id="telephone" type="text" class="validate" name="telephone">
-									<label for="email">Téléphone:</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">room</i>
-									<input value="580 Skynet boulevard" id="adresse" type="text" class="validate" name="address">
-									<label for="adresse">Adresse:</label>
-								</div>
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">label</i>
-									<input value="San francisco" id="ville" type="text" class="validate" name="city">
-									<label for="ville">Ville:</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">label</i>
-									<input value="ART32" id="codePostal" type="text" class="validate" name="cp">
-									<label for="codePostal">Code Postal:</label>
-								</div>
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">label</i>
-									<input value="USA" id="pays" type="text" class="validate" name="country">
-									<label for="pays">Pays:</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">lock_open</i>
-
-									<input id="password" type="password" class="validate" name="password">
-									<label for="password">Mot de passe:</label>
-								</div>
-								<div class="input-field col s12 m6">
-									<i class="material-icons prefix blue-text darken-4-text">lock_outline</i>
-
-									<input id="confirm-password" type="password" class="validate" name="confirm_password">
-									<label for="confirm-password">Confirmation du mot de passe:</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<button class="btn waves-effect waves-light blue yellow-text " type="submit" name="connection">Modifier
-										<i class="material-icons right">send</i>
-									</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div><!-- fin div informations personnelles -->
-
 				<div class="commandes-account">
 					<h2>Mes Commandes</h2>
 					<table class="responsive-table striped">

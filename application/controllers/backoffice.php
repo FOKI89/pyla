@@ -42,33 +42,60 @@ class Backoffice extends CI_Controller
     }
 
     public function creer_utilisateur(){
+        $fields = array("id","libelle");
+        $pays = $this->pays->read($fields);
+        $select = [];
+        $select [''] = "Veuillez sélectionner un pays";
+        foreach($pays as $item)
+        {
+            foreach($item as $key => $value)
+            {
+                if($key == "id"){
+                    $cle = $value;
+                }
+                else{
+                    $select[$cle] = $value;
+                }
+            }
+        }
+        $data = array();
+        $data["pays"] = $select;
         $this->layout->set_titre("Back Office - Créer utilisateur");
         $this->layout->set_theme("default_bo");
-        //$this->layout->ajouter_js("bo/creer_utilisateur");
-        $this->layout->view("themes/bo/utilisateurs/creer_utilisateur");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("bo/creer_utilisateur");
+        $this->layout->view("themes/bo/utilisateurs/creer_utilisateur",$data);
         return false;
     }
 
     public function chercher_utilisateur(){
         $this->layout->set_titre("Back Office - Chercher utilisateur");
         $this->layout->set_theme("default_bo");
-        //$this->layout->ajouter_js("bo/chercher_utilisateur");
+        $this->layout->ajouter_js("bo/chercher_utilisateur");
         $this->layout->view("themes/bo/utilisateurs/chercher_utilisateur");
         return false;
     }
 
     public function liste_utilisateur(){
+        if(!$query = $this->db->query('SELECT u.id, u.nom, u.prenom, u.email, u.adresse, u.ville, u.telephone, u.date_entree, u.statut, p.libelle AS `pays_libelle`, s.libelle AS `statut_libelle` FROM utilisateurs u LEFT JOIN pays p ON p.id = u.id_pays LEFT JOIN statut s ON s.id = u.statut ORDER BY u.nom ASC')){
+            show_error("Select utilisateur","error_db");
+            return false;
+        }
+        $data['utilisateurs'] = $query->result();        
         $this->layout->set_titre("Back Office - Liste utilisateurs");
         $this->layout->set_theme("default_bo");
-        //$this->layout->ajouter_js("bo/liste_utilisateurs");
-        $this->layout->view("themes/bo/utilisateurs/liste_utilisateurs");
+        $this->layout->ajouter_js("bo/jquery.tabledit.min");
+        $this->layout->ajouter_js("bo/liste_utilisateurs");
+        $this->layout->view("themes/bo/utilisateurs/liste_utilisateurs",$data);
         return false;
     }
 
     public function creer_article(){
         $this->layout->set_titre("Back Office - Créer article");
         $this->layout->set_theme("default_bo");
-        //$this->layout->ajouter_js("bo/creer_article");
+        $this->layout->ajouter_js("bo/creer_article");
         $this->layout->view("themes/bo/catalogue/creer_article");
         return false;
     }

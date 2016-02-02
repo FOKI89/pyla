@@ -25,13 +25,12 @@ class Utilisateur extends CI_Controller
         $this->load->model("pays_model", "pays");
         $this->load->model("token_model", "token");
         $this->load->model("statut_model", "stat");
-        $this->output->enable_profiler(false);
+        $this->output->enable_profiler(true);
     }
 
     public function form_creation(){
         $fields = array("id","libelle");
         $pays = $this->pays->read($fields);
-
         $select = [];
         $select [''] = "Veuillez sélectionner un pays";
         foreach($pays as $item)
@@ -191,7 +190,7 @@ class Utilisateur extends CI_Controller
     }
 
     private function _deleteUser(){
-        if(!$query = $this->db->query('Select * FROM utilisateurs WHERE email = "'.$this->user->getEmail().'" AND statut IS NULL')){
+        if(!$query = $this->db->query('SELECT * FROM utilisateurs WHERE email = "'.$this->user->getEmail().'" AND statut IS NULL')){
             show_error("Select utilisateur","error_db");
             return false;
         }
@@ -364,7 +363,7 @@ class Utilisateur extends CI_Controller
             $return[1] = "Le mot de passe saisi n'est pas reconnu";
             die(json_encode($return));
         }
-        if($user_tuple->statut < 6 && $user_tuple->statut > 2){
+        if($user_tuple->statut < 7 && $user_tuple->statut > 2){
             $statut_tuples = $this->stat->read("*",array("id" => $user_tuple->statut));
             foreach($statut_tuples as $statut_tuple)
             {
@@ -373,7 +372,7 @@ class Utilisateur extends CI_Controller
             $return[1] = "Compte bloqué";
             $return[2] = $description;
             die(json_encode($return));
-        }elseif($user_tuple->statut < 0 || $user_tuple->statut > 5){
+        }elseif($user_tuple->statut < 0 || $user_tuple->statut > 6){
             $return[1] = "Erreur";
             $return[2] =  "Une erreur est survenue<br>Si celle-ci se reproduit, veuillez nous <a href='mailto:contact@pyla.fr'>contacter</a>";
             die(json_encode($return));
@@ -445,13 +444,75 @@ class Utilisateur extends CI_Controller
                   "pays" => $select,
                   "date_naissance" => $this->user->getdateNaissance(),
                   );
-
         $this->layout->set_titre("Coordonnées");
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("utilisateur/form_update");
-        $this->layout->view("utilisateur/form_update",$data);
+        $this->layout->view('themes/compte/informations_personnelles',$data);
+    }
+
+    public function commande_en_cours(){
+        $this->layout->set_titre("Coordonnées");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_update");
+        $this->layout->view('themes/compte/commande_en_cours');
+    }
+
+    public function commande_terminee(){
+        $this->layout->set_titre("Coordonnées");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_update");
+        $this->layout->view('themes/compte/commande_terminee');
+    }
+
+    public function commande_signaler(){
+        $this->layout->set_titre("Coordonnées");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_update");
+        $this->layout->view('themes/compte/commande_signaler');
+    }
+
+    public function vente_article(){
+        $this->layout->set_titre("Coordonnées");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_update");
+        $this->layout->view('themes/compte/vente_article');
+    }
+
+    public function vente_terminee(){
+        $this->layout->set_titre("Coordonnées");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_update");
+        $this->layout->view('themes/compte/vente_terminee');
+    }
+
+    public function vente_retour(){
+        $this->layout->set_titre("Coordonnées");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_update");
+        $this->layout->view('themes/compte/vente_retour');
+    }
+
+    public function commentaire(){
+        $this->layout->set_titre("Coordonnées");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_update");
+        $this->layout->view('themes/compte/commentaire');
     }
 
     public function form_modification(){
@@ -494,8 +555,9 @@ class Utilisateur extends CI_Controller
             $mdp = $this->encrypt->encode($this->input->post('new_mdp'));
         }
 
-        $post = (array) $this->input->post();      
-        unset($post['submit']);
+        $post = (array) $this->input->post();
+        unset($post['undefined']);
+        unset($post['connection']);
         if(!empty($post['new_mdp'])){
             $post['mdp'] = $this->encrypt->encode($post['new_mdp']);
             unset($post['old_mdp']);
@@ -516,10 +578,92 @@ class Utilisateur extends CI_Controller
         die(json_encode($return));
     }
 
-    public function deconnexion(){
-        if(isset($_SESSION['id'])){
-            $_SESSION['id'] = NULL;
+    public function form_modification_bo(){
+        $return = array();
+        $return[0] = false;
+        $require = array("prenom","nom","email");
+        $format = array("prenom","nom","email","telephone","adresse","ville","cp","pays","date_entree");
+        $post = (array) $this->input->post();
+        $post = $this->suppr_accents($post,'',true);
+
+        $this->_validation_require_bo($require);
+        $this->_validation_format_bo($format,$post);
+
+        $id = $post['id'];
+        if(isset($post['pays'])){
+            $post['id_pays'] = $post['pays'];
         }
+        unset($post['id']);
+        unset($post['Pays']);
+        unset($post['action']);
+        unset($post[0]);
+        
+        if(!$this->utilisateur->update(array("id" => $id), $post)){
+            show_error("Update coordonnées","error_db");
+            return false;
+        }
+
+        $return[0] = true;
+        die(json_encode($return));
+    }
+
+    private function _validation_require_bo($require){
+        foreach($this->input->post() as $key => $value){
+            $champ = strtolower($key);
+            $key = $this->suppr_accents(strtolower($key));
+            if(in_array($key,$require) && empty($value)){
+                $return[1] = "require";
+                $return[2] = $champ;
+                die(json_encode($return));
+            }
+        }
+    }
+
+    private function _validation_format_bo($format, $post){
+        foreach($format as $item){
+            if($item == "prenom" && !empty($post[$item]) && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
+                $return[1] = "Prénom";
+                die(json_encode($return));
+            }
+            elseif($item == "nom" && !empty($post[$item]) && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù.-]{3,50}$/"))) === false){
+                $return[1] = "Nom";
+                die(json_encode($return));
+            }
+            elseif($item == "email" && !empty($post[$item]) && (filter_var($post[$item], FILTER_VALIDATE_EMAIL) === false || filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/(yopmail\.com|trash-mail\.com|thrma\.com|mailinator\.com)/"))) !== false)){
+                $return[1] = "Email";
+                die(json_encode($return));
+            }
+            elseif($item == "telephone" && !empty($post[$item]) && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^\+?([0-9](.|-|\s)*){5,20}$/"))) === false){
+                $return[1] = "Téléphone";
+                die(json_encode($return));
+            }
+            elseif($item == "adresse" && !empty($post[$item])  && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
+                $return[1] = "Adresse";
+                die(json_encode($return));
+            }
+            elseif($item == "ville" && !empty($post[$item])  && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
+                $return[1] = "Ville";
+                die(json_encode($return));
+            }
+            elseif($item == "cp" && !empty($post[$item])  && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han} .-]{3,50}$/"))) === false){
+                $return[1] = "Code Postal";
+                die(json_encode($return));
+            }
+            elseif($item == "pays" && !empty($post[$item])  && (filter_var($post[$item], FILTER_VALIDATE_INT) === false || filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9]{1,3}$/"))) === false)){
+                $return[1] = "Id Pays";
+                die(json_encode($return));
+            }
+            elseif($item == "date_naissance"  && !empty($post[$item]) && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))) === false){
+                $return[1] = "Date de naissance";
+                die(json_encode($return));
+            }
+        }
+    }
+
+    public function deconnexion(){
+        session_unset();
+        header('Location: '.site_url());
+        exit();
     }
 
     public function form_install(){
@@ -544,6 +688,13 @@ class Utilisateur extends CI_Controller
 
         $return[0] = true;
         die(json_encode($return));
+    }
+
+    public function chercher_utilisateur(){ var_dump($this->input->post());
+        $return = array();
+        $return[0] = false;
+        $require = array("recherche");
+        $this->_validation_require($require);
     }
 
     private function _insertion_admin(){
@@ -577,5 +728,28 @@ class Utilisateur extends CI_Controller
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("utilisateur/form_creation");
         $this->layout->view('themes/panier');
+    }
+
+    public function suppr_accents($str, $encoding ='utf-8',$min = false)
+    {
+        if(is_array($str)){
+            $result = array();
+            foreach($str as $key => $value){
+                $key = htmlentities($key, ENT_NOQUOTES, $encoding);
+                $key = preg_replace('#&([A-za-z])(?:acute|grave|cedil|circ|orn|ring|slash|th|tilde|uml);#', '\1', $key);
+                $key = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $key);
+                $key = preg_replace('#&[^;]+;#', '', $key);
+                if($min){
+                    $key = strtolower($key);
+                }
+                $result[$key] = $value;
+            }
+        }else{
+            $result = htmlentities($str, ENT_NOQUOTES, $encoding);
+            $result = preg_replace('#&([A-za-z])(?:acute|grave|cedil|circ|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+            $result = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str);
+            $result = preg_replace('#&[^;]+;#', '', $str);
+        }
+        return $result;
     }
 }

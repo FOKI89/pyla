@@ -15,8 +15,11 @@ class Layout
 	public function __construct()
 	{	
 		$this->CI =& get_instance();
+		$this->CI->load->model("categorie_model", "cat");
 		$this->CI->load->model("site_model");
 		$this->CI->load->model("pays_model", "pays");
+		$data = array();
+		$this->var['menu'] = $this->_createMenu();
 		$this->var['output'] = '';
 		$this->var['titre'] = ucfirst($this->CI->router->fetch_method()) . ' - ' . ucfirst($this->CI->router->fetch_class());
 		$this->var['charset'] = $this->CI->config->item('charset');
@@ -27,6 +30,35 @@ class Layout
 		$this->ajouter_js('accueil/footer');
 		$this->_setSession();
 	}
+
+	private function _createMenu($id_parent = null){
+		$menu = array();
+		$categories = $this->CI->cat->getCategoriesByParent($id_parent);
+		$i = 0;
+		foreach($categories as $categorie)
+		{	
+			$j = 0;
+			$menu[$i] = $categorie;
+			$scategories = $this->CI->cat->getCategoriesByParent((int)$categorie['id']);
+				foreach($scategories as $scategorie)
+				{	
+					$k = 0;
+					$menu[$i] = (array)$menu[$i];
+					$menu[$i][$j] = $scategorie;
+					$sscategories = $this->CI->cat->getCategoriesByParent((int)$scategorie['id']);
+						foreach($sscategories as $sscategorie)
+						{
+							$menu[$i][$j] = (array)$menu[$i][$j];
+							$menu[$i][$j][$k] = $sscategorie;
+							$k++;
+						}
+						$j++;
+				}
+				$i++;
+		}
+		return $menu;
+	}
+
 
 	public function set_theme($theme)
 	{

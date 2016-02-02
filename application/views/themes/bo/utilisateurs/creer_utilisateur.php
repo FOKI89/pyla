@@ -18,55 +18,80 @@
 <div class="container">
 	<!-- Center row -->
 	<div class="row ">
-		<div class="col s12 center-align">
+		<div class="col s12">
 			<!-- ======================================================================= -->
 			<!-- Formulaire de création d'utilisateur -->
 			<div class="row">
 				<div class="col s12">
-					<div class="card hoverable">
+					<div class="card hoverable" >
 						<div class="card-content">
 							<span class="card-title"><i class="material-icons prefix">person_add</i> Créer un compte</span>
-
-							<form action="">
-
+							<form id="creer_compte" action="">
 								<div class="row">
 									<div class="input-field col s12 m6">
 										<i class="material-icons prefix">account_circle</i>
-										<input id="first_name" type="text" class="validate">
-										<label for="first_name">Votre prénom</label>
+										<input id="prenom" type="text" class="validate" name="prenom">
+										<label for="prenom">Prénom</label>
 									</div>
 									<div class="input-field col s12 m6">
-										<input id="last_name" type="text" class="validate">
-										<label for="last_name">Votre nom</label>
+										<i class="material-icons prefix">perm_identity</i>
+										<input id="nom" type="text" class="validate" name="nom">
+										<label for="nom">Nom</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12 m6">
+										<i class="material-icons prefix">email</i>
+										<input id="email" type="text" class="validate" name="email">
+										<label for="email">Email</label>
+									</div>
+									<div class="input-field col s12 m6">
+										<i class="material-icons prefix">phone</i>
+										<input id="telephone" type="text" class="validate" name="telephone">
+										<label for="telephone">Téléphone</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12 m6">
+										<i class="material-icons prefix">room</i>
+										<input id="adresse" type="text" class="validate" name="adresse">
+										<label for="adresse">Adresse</label>
+									</div>
+									<div class="input-field col s12 m6">
+										<i class="material-icons prefix">label</i>
+										<input id="ville" type="text" class="validate" name="ville">
+										<label for="ville">Ville</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12 m6">
+										<i class="material-icons prefix">room</i>
+										<input id="cp" type="text" class="validate" name="cp">
+										<label for="cp">Code Postal</label>
+									</div>
+									<div class="input-field col s12 m6" id="select_pays">
+										<i class="material-icons prefix">label</i>
+										<?php echo form_dropdown("pays",$pays,'',"class='validate'"); ?>
+										<label for="pays">Pays</label>
 									</div>
 								</div>
 								<div class="row">
 									<div class="input-field col s12 m6">
 										<i class="material-icons prefix">lock</i>
-										<input id="password" type="password" class="validate">
-										<label for="password">Mot de passe</label>
+										<input id="mdp" type="password" class="validate" name="mdp">
+										<label for="mdp">Mot de passe</label>
 									</div>
 									<div class="input-field col s12 m6">
-										<input id="password" type="password" class="validate">
-										<label for="password">Entrez à nouveau votre mot de passe</label>
+										<i class="material-icons prefix">lock_outline</i>
+										<input id="confirm_mdp" type="password" class="validate" name="confirm_mdp">
+										<label for="confirm_mdp">Entrez à nouveau le mot de passe</label>
 									</div>
 								</div>
-
-								<div class="row">
-									<div class="input-field col s12 m6">
-										<i class="material-icons prefix">contact_mail</i>
-										<input id="email" type="email" class="validate">
-										<label for="email" data-success="OK !" data-error="Format incorrect !">Adresse e-mail</label>
-									</div>
-									<div class="input-field col s12 m6">
-										<input id="email" type="email" class="validate">
-										<label for="email" data-success="OK !" data-error="Format incorrect !">Entrez à nouveau votre adresse e-mail</label>
-									</div>
 								</div>
 								<!-- Validation et envoi du formulaire -->
 								<div class="row">
-									<div class="input-field col s12">
-										<button class="btn waves-effect waves-light submit-button" type="submit" name="action">Créer votre compte
+									<div class="input-field col s12 center-align">
+										<button class="btn waves-effect waves-light submit-button" type="submit" name="action">Valider
 											<i class="material-icons right">send</i>
 										</button>
 									</div>

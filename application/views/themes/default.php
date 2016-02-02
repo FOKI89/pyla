@@ -48,8 +48,13 @@
 			        </div>
 			    </div>
 			    <div class="header-links col s9 m10 l5">
-			        <a class="btn yellow blue-text" href="<?php echo base_url().'inscription'; ?>">Inscription</a>
-			        <a class="btn blue yellow-text" href="<?php echo base_url().'connexion'; ?>">Connexion</a>
+			    	<?php if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
+				        <a class="btn yellow blue-text" href="<?php echo base_url().'mon-compte'; ?>">Mon Compte</a>
+				        <a class="btn blue yellow-text" href="<?php echo base_url().'deconnexion'; ?>">Déconnexion</a>
+			        <?php }else{ ?>
+			        	<a class="btn yellow blue-text" href="<?php echo base_url().'inscription'; ?>">Inscription</a>
+				        <a class="btn blue yellow-text" href="<?php echo base_url().'connexion'; ?>">Connexion</a>
+			        <?php } ?>
 			        <a class="btn white blue-grey-text darken-3-text" href="<?php echo base_url().'mon-panier'; ?>"><i class="material-icons">shopping_cart</i></a>
 			    </div>
 			</div>

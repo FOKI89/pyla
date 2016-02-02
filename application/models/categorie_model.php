@@ -37,6 +37,7 @@ class Categorie_model extends MY_Model
     |==================================================================================
     */
     public function getCategories($fields = '*', $where = null){
+        if($where == null) $where = 1;
         $categorie = $this->db->select($fields)
                      ->from('categories')
                      ->where($where)
