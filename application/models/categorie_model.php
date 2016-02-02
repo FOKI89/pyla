@@ -4,13 +4,9 @@ class Categorie_model extends MY_Model
     private $id;
     private $libelle;
     private $id_parent;
-
     protected $table = 'categories';
-
     public function __construct(){
-        
     }
-
     /*
     |==================================================================================
     | Méthode pour retourne tous les champs d'une categorie precise
@@ -27,7 +23,6 @@ class Categorie_model extends MY_Model
                      ->result();
         return $categorie;
     }
-
     /*
     |==================================================================================
     | Méthode pour retourne les champs passes en parametre de toutes les categories
@@ -37,6 +32,7 @@ class Categorie_model extends MY_Model
     |==================================================================================
     */
     public function getCategories($fields = '*', $where = null){
+        if($where == null)$where = 1;
         $categorie = $this->db->select($fields)
                      ->from('categories')
                      ->where($where)
@@ -44,7 +40,6 @@ class Categorie_model extends MY_Model
                      ->result();
         return $categorie;
     }
-
     /*
     |==================================================================================
     | Méthode pour retourne tous les champs des categories selon la categorie parente
@@ -62,12 +57,10 @@ class Categorie_model extends MY_Model
         }else{
             $query_param = '= '.$id_parent;
         }
-
         $all = $this->db->query('SELECT * FROM categories WHERE id_parent '.$query_param.' ORDER BY rang');
         $categories = $all->result_array();
-        return $categories;        
+        return $categories;
     }
-
     /*
     |==================================================================================
     | Méthode pour retourne tous les champs des categories sans categorie parente
@@ -77,6 +70,6 @@ class Categorie_model extends MY_Model
     public function getLastCategories(){
         $all = $this->db->query('SELECT id, libelle FROM categories WHERE id NOT IN (SELECT id_parent FROM categories WHERE id_parent IS NOT NULL) AND id_parent IS NOT NULL ORDER BY rang');
         $categories = $all->result_array();
-        return $categories;        
+        return $categories;
     }
 }

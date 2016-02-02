@@ -18,7 +18,7 @@
         <img src="/img/top-product3.jpg">
         <div class="top-products-link-hover">
             <p class="white-text">Gizeh,<span>impériale</span></p>
-			<a class="bouton waves-effect waves-light yellow blue-text" href="#">J'achète</a>
-		</div>
+                  <a class="bouton waves-effect waves-light yellow blue-text" href="#">J'achète</a>
+            </div>
     </div>
 </div>

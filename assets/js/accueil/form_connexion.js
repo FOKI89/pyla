@@ -54,7 +54,7 @@ $("#connection").on("submit", function(c){
                         type: "error",
                         showConfirmButton: true
                     });
-                }else{ console.log('in');
+                }else{
                     swal({
                         html:true,
                         title: "Erreur",
@@ -63,6 +63,8 @@ $("#connection").on("submit", function(c){
                         showConfirmButton: true
                     });
                 }
+            }else{
+                location.href = './';
             }
         },
         error: function(jqXHR, textStatus, errorThrown)

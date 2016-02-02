@@ -25,29 +25,38 @@
 				<div class="col s12">
 					<div class="card hoverable">
 						<div class="card-content">
-							<span class="card-title"><i class="material-icons prefix">search</i> Chercher un utilisateur</span>
-							<form action="">
-								<div class="input-field col s12 m6">
-									<select>
-										<option value="" disabled selected>Sélectionner</option>
+							<span class="card-title">
+								<i class="material-icons prefix">
+									search
+								</i>
+								Chercher un utilisateur
+							</span>
+							<form id="chercher_utilisateur" action="">
+								<div class="input-field col s6 offset-s3" id="select">
+									<select id="select_utilisateur">
+										<option value="default" disabled selected>Sélectionner</option>
 										<option value="id">ID</option>
 										<option value="prenom">Prénom</option>
 										<option value="nom">Nom</option>
-										<option value="email">Adresse e-mail</option>
+										<option value="email">Email</option>
+										<option value="adresse">Adresse</option>
+										<option value="ville">Ville</option>
 									</select>								</div>
 								<div class="input-field col s6 offset-s3">
-									<input placeholder="Entrez votre texte ici" id="first_name" type="text" class="validate">
+									<input placeholder="Recherche" id="recherche" type="text" class="validate" name="recherche">
 								</div>
 
 								<!-- Validation et envoi du formulaire -->
 								<div class="row">
 									<div class="input-field col s12">
-										<button class="btn waves-effect waves-light submit-button" type="submit" name="action">Lancer la recherche
+										<button class="btn waves-effect waves-light submit-button" type="submit" name="submit">Lancer la recherche
 											<i class="material-icons right">send</i>
 										</button>
 									</div>
 								</div>
 							</form>
+						</div>
+						<div class="card-content" id="resultat">
 						</div>
 					</div>
 				</div>

@@ -16,11 +16,13 @@
 	<link type="text/css" rel="stylesheet" href="<?php echo css_url("bo/materialize.min") ?>"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="<?php echo css_url("/bo/custom_rules"); ?>" media="screen,projection">
 	<link type="text/css" rel="stylesheet" href="<?php echo css_url("sweetalert/sweetalert"); ?>" media="screen,projection">
-	<script src="<?php echo js_url("vendors/jquery-1.11.3.min"); ?>"></script>
+	<script type="text/javascript" src="<?php echo js_url("vendors/jquery-1.11.3.min"); ?>"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo js_url("bo/materialize.min"); ?>"></script>
 	<script type="text/javascript" src="<?php echo js_url("sweetalert/sweetalert.min"); ?>"></script>
 	<script type="text/javascript" src="<?php echo js_url("sweetalert/sweetalert-dev"); ?>"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script type="text/javascript" src="<?php echo js_url("main"); ?>"></script>
 	<?php foreach($css as $url): ?>
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
 	<?php endforeach; ?>
@@ -39,11 +41,13 @@
 		<ul id="slide-out" class="side-nav fixed">
 			<!-- Header/logo Pila-->
 			<li class="blue darken-4 white-text center-align" style="height:64px;">
-				<img src="<?php echo img_url("bo/logo.png") ?>" alt="Logo Projet Pila" style="max-height:80%">
+				<a href="<?php echo base_url(); ?>" class="brand-logo">
+					<img src="<?php echo img_url("bo/logo.png") ?>" alt="Logo Projet Pila" style="max-height:80%" title="Aller à la boutique">
+				</a>
 			</li>
 
 			<!-- Infos sur l'utilisateur connecté -->
-			<li class="yellow accent-4 center-align">
+			<li class="yellow center-align">
 				<i class="material-icons user-icon">person</i> Administrateur
 			</li>
 

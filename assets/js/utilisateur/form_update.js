@@ -1,7 +1,7 @@
-$("#new_user").on("submit", function(c){
+$("#modif_user").on("submit", function(c){
     c.preventDefault();
     var data = new FormData();
-    $.each($('form#new_user :input'), function(i, fileds){
+    $.each($('form#modif_user :input'), function(i, fileds){
        data.append($(fileds).attr('name'), $(fileds).val());
     });
 
@@ -17,9 +17,8 @@ $("#new_user").on("submit", function(c){
              $('[name ='+champs[i]+']').css({ 'box-shadow': '0 0 8px #399BFF'});
         } 
     }
-
     $.ajax({
-        url: 'form_modification',
+        url: '../utilisateur/form_modification',
         data: data,
         cache: false,
         contentType: false,
