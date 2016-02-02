@@ -21,6 +21,7 @@
 						<ul>
 							<li><a href="<?php echo base_url().'mon-compte/mes-ventes/articles'; ?>">Mes articles</a></li>
 							<li><a href="<?php echo base_url().'mon-compte/mes-ventes/terminees'; ?>">Ventes terminées</a></li>
+							<li><a href="<?php echo base_url().'mon-compte/mes-ventes/creer-article'; ?>">Créer un article</a></li>
 							<li><a href="<?php echo base_url().'mon-compte/mes-ventes/retours'; ?>">Retours</a></li>
 						</ul>
 					</div>
@@ -78,7 +79,7 @@
 								<input id="cp" type="text" class="validate" name="cp" value="<?php echo $cp; ?>">
 								<label for="codePostal">Code Postal</label>
 							</div>
-							<div class="input-field col s12 m6">
+							<div class="input-field col s12 m6 select-damous">
 								<i class="material-icons prefix blue-text darken-4-text">label</i>
 								<?php echo form_dropdown("id_pays",$pays,$id_pays); ?>
 								<label for="pays">Pays</label>

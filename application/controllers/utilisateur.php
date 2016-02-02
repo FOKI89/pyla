@@ -453,65 +453,97 @@ class Utilisateur extends CI_Controller
     }
 
     public function commande_en_cours(){
-        $this->layout->set_titre("Coordonnées");
+        $this->layout->set_titre("Commandes - En cours");
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("utilisateur/form_update");
+        //$this->layout->ajouter_js("utilisateur/form_update");
         $this->layout->view('themes/compte/commande_en_cours');
     }
 
     public function commande_terminee(){
-        $this->layout->set_titre("Coordonnées");
+        $this->layout->set_titre("Commandes - Terminées");
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("utilisateur/form_update");
+        //$this->layout->ajouter_js("utilisateur/form_update");
         $this->layout->view('themes/compte/commande_terminee');
     }
 
     public function commande_signaler(){
-        $this->layout->set_titre("Coordonnées");
+        $this->layout->set_titre("Commandes - Signaler");
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("utilisateur/form_update");
+        //$this->layout->ajouter_js("utilisateur/form_update");
         $this->layout->view('themes/compte/commande_signaler');
     }
 
     public function vente_article(){
-        $this->layout->set_titre("Coordonnées");
+        $this->layout->set_titre("Ventes - Articles");
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("utilisateur/form_update");
+        //$this->layout->ajouter_js("utilisateur/form_update");
         $this->layout->view('themes/compte/vente_article');
     }
 
-    public function vente_terminee(){
-        $this->layout->set_titre("Coordonnées");
+    public function creer_article(){
+        $fields = array(
+                  "id",
+                  "libelle",
+                  );
+        $where = array(
+                  "id_parent" => null,
+                  );
+        $categories = $this->cat->getLastCategories($fields);
+        $select = [];
+        $select[0] = "Veuillez sélectionner une catégorie";
+        foreach($categories as $categorie)
+        {
+            foreach($categorie as $key => $value)
+            {
+                if($key == "id"){
+                    $cle = $value;
+                }else{
+                    $select[$cle] = $value;
+                }
+            }
+        }
+        $data = array();
+        $data["categories"] = $select;
+        $this->layout->set_titre("Ventes - Créer un article");
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("utilisateur/form_update");
+        $this->layout->ajouter_js("utilisateur/creer_article");
+        $this->layout->view('themes/compte/creer_article',$data);
+    }
+
+    public function vente_terminee(){
+        $this->layout->set_titre("Ventes - Terminées");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        //$this->layout->ajouter_js("utilisateur/form_update");
         $this->layout->view('themes/compte/vente_terminee');
     }
 
     public function vente_retour(){
-        $this->layout->set_titre("Coordonnées");
+        $this->layout->set_titre("Ventes - Retours");
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("utilisateur/form_update");
+        //$this->layout->ajouter_js("utilisateur/form_update");
         $this->layout->view('themes/compte/vente_retour');
     }
 
     public function commentaire(){
-        $this->layout->set_titre("Coordonnées");
+        $this->layout->set_titre("Mes commentaires");
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
-        $this->layout->ajouter_js("utilisateur/form_update");
+        //$this->layout->ajouter_js("utilisateur/form_update");
         $this->layout->view('themes/compte/commentaire');
     }
 
@@ -718,7 +750,7 @@ class Utilisateur extends CI_Controller
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("utilisateur/form_creation");
-        $this->layout->view('themes/account');
+        $this->layout->view('themes/compte/dashboard');
     }
 
     public function panier(){

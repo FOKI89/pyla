@@ -56,6 +56,19 @@ class Produit extends CI_Controller
         $data['breadcrumb'] = $breadcrumb;
         $data["produits"] = $query->result();
 
+        $id = $categorie->id;
+        foreach($data['produits'] as $produit){
+            $images = preg_grep('/^([^.])/', scandir($this->config->item('url_base').'/assets/img/produit/'.$produit->id)); 
+            $i = 0;
+            $tab = array();
+            foreach($images as $image){
+                $tab[$i] = $image;
+                $i++;
+            }
+            $produit->images = $tab;
+        }
+        //var_dump($data['produits']); die;
+
         $this->layout->set_titre($breadcrumb[--$i]->libelle);
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
@@ -152,7 +165,7 @@ class Produit extends CI_Controller
     public function form_validation(){
         $return = array();
         $return[0] = false;
-        $require = array("reference","libelle","marque","image");
+        $require = array("libelle","marque","image");
         $format = array("reference","libelle","marque","video");
 
         if(empty($_FILES["image"]["name"])){
