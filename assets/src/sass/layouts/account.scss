@@ -88,13 +88,15 @@ ul#nav-account .collapsible-body li a {
 /* Commandes  */
 .commandes-account,
 .ventes-account,
-.commentaires-account{
+.commentaires-account,
+.creer-vente-account{
   display: none;
 }
 
 .commandes-account.active-account,
 .ventes-account.active-account,
-.commentaires-account.active-account{
+.commentaires-account.active-account,
+..creer-vente-account.active-account{
   display: block;
 }
 .commandes-account table.striped > tbody > tr:nth-child(2n+1){
