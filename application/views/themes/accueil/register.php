@@ -53,7 +53,7 @@
 								<input id="cp" type="text" class="validate" name="cp">
 								<label for="cp">Code Postal:</label>
 							</div>
-							<div class="input-field col s12 m6" id="select_pays">
+							<div class="input-field col s12 m6 select-damous">
 								<i class="material-icons prefix blue-text darken-4-text">label</i>
 								<?php echo form_dropdown("pays",$pays); ?>
 								<label for="pays">Pays:</label>
@@ -74,7 +74,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="input-field col s12">
+							<div class="input-field col s12 center">
 								<button class="btn waves-effect waves-light blue yellow-text " type="submit" name="connection">S'inscrire
 									<i class="material-icons right">send</i>
 								</button>

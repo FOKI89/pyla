@@ -126,6 +126,16 @@ ul#nav-account .collapsible-body li a {
   padding: 10px 0;
 }
 
+.subscribe .dropdown-content{
+  margin:0 0 0 3rem;
+}
+
+.subscribe .dropdown-content li{
+  list-style: none;
+  padding: 0;
+}
+
+
 .subscribe p.required-fields{
   text-align: right;
 }
@@ -144,7 +154,10 @@ ul#nav-account .collapsible-body li a {
   top:0;
 }
 
-#select_pays input{
+.select-damous div.select-wrapper input{
   margin-left: 3rem;
   width: calc(100% - 3rem);
+}
+.select-damous div.select-wrapper .dropdown-content{
+  margin-left: 3rem;
 }
