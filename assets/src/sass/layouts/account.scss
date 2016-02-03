@@ -136,11 +136,13 @@ ul#nav-account .collapsible-body li a {
 }
 
 
-.subscribe p.required-fields{
+.subscribe p.required-fields,
+.contact p.required-fields{
   text-align: right;
 }
 
-.subscribe p.required-fields i{
+.subscribe p.required-fields i,
+.contact p.required-fields i{
   width:20px;
 }
 
@@ -149,6 +151,12 @@ ul#nav-account .collapsible-body li a {
 }
 
 .subscribe form p.required-fields{
+  position: absolute;
+  right:0;
+  top:0;
+}
+
+.contact form p.required-fields{
   position: absolute;
   right:0;
   top:0;

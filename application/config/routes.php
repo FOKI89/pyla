@@ -73,6 +73,8 @@ $route['connexion.php'] = "accueil/form_connexion";
 | -------------------------------------------------------------------------
 */
 $route['contact'] = "page/contact";
+$route['categorie/6'] = "page/contact";
+$route['categorie/5'] = "page/about";
 $route['page/(:num)'] = "page/page/$1";
 
 
