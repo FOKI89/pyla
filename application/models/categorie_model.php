@@ -9,7 +9,7 @@ class Categorie_model extends MY_Model
     }
     /*
     |==================================================================================
-    | Méthode pour retourne tous les champs d'une categorie precise
+    | Méthode pour retourner tous les champs d'une categorie precise
     |   . id_categorie : int de l'id de la categorie demandee
     |   . return : tous les champs d'une categorie
     |==================================================================================
@@ -25,7 +25,7 @@ class Categorie_model extends MY_Model
     }
     /*
     |==================================================================================
-    | Méthode pour retourne les champs passes en parametre de toutes les categories
+    | Méthode pour retourner les champs passes en parametre de toutes les categories
     |   . fields : array contenant la liste des champs souhaités
     |   . where : array contenant la liste des conditions where
     |   . return : les champs demandes d'une ou plusieurs categories
@@ -42,7 +42,7 @@ class Categorie_model extends MY_Model
     }
     /*
     |==================================================================================
-    | Méthode pour retourne tous les champs des categories selon la categorie parente
+    | Méthode pour retourner tous les champs des categories selon la categorie parente
     |   . id_parent : int de l'id de la categorie parente
     |   . return : tous les champs d'une ou plusieurs categories
     |==================================================================================
@@ -63,12 +63,24 @@ class Categorie_model extends MY_Model
     }
     /*
     |==================================================================================
-    | Méthode pour retourne tous les champs des categories sans categorie parente
+    | Méthode pour retourner tous les champs des categories sans categorie parente
     |   . return : id et libelle d'une ou plusieurs categories
     |==================================================================================
     */
     public function getLastCategories(){
         $all = $this->db->query('SELECT id, libelle FROM categories WHERE id NOT IN (SELECT id_parent FROM categories WHERE id_parent IS NOT NULL) AND id_parent IS NOT NULL ORDER BY libelle ASC');
+        $categories = $all->result_array();
+        return $categories;
+    }
+    /*
+    |==================================================================================
+    | Méthode pour retourner l'id et le libelle d'une categorie selon un id produit
+    |   . return : id et libelle d'une ou plusieurs categories
+    |==================================================================================
+    */
+    public function getCategoriesByProduit($id_produit = null){
+
+        $all = $this->db->query('SELECT c.id, c.libelle FROM categories c INNER JOIN categories_produits cp ON cp.id_categorie = c.id INNER JOIN produits p ON p.id = cp.id_produit WHERE p.id = '.$id_produit.' LIMIT 1');
         $categories = $all->result_array();
         return $categories;
     }

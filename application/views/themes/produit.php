@@ -6,26 +6,28 @@
 			<div class="col s12 m6">
 				<div class="card">
 					<div class="card-image">
-						<img src="img/top-product1.jpg">
+						<img src="<?php echo img_url('produit/'.$produit->id.'/'.reset($produit->image)) ?>">
 					</div>
 				</div>
 				<div class="card">
+					<?php foreach($produit->image as $image){ ?>
 					<div class="card-image col s4">
-						<a href=""><img src="img/top-product1.jpg"></a>
+						<img class="materialboxed" src="<?php echo img_url('produit/'.$produit->id.'/'.$image) ?>">
 					</div>
-					<div class="card-image col s4">
-						<a href=""><img src="img/top-product1.jpg"></a>
-					</div>
-					<div class="card-image col s4">
-						<a href=""><img src="img/top-product1.jpg"></a>
-					</div>
+					<?php }; ?>
 				</div>
 			</div>
 			<div class="col s12 m6">
-				<?php if(isset($description)){ ?>
-				<p class="infos-produit bold">Description:</p>
-				<p><?php echo $description; ?></p>
-				<?php }; ?>
+				<?php if(isset($produit->reference)){ ?>
+					<p class="infos-produit bold">Référence</p>
+					<p>
+				<?php echo $produit->reference; }?></p>
+				<?php if(isset($produit->reference)){ ?>
+					<p class="infos-produit bold">Marque</p>
+					<p><?php echo $produit->marque; }?></p>
+				<?php if(isset($produit->description)){ ?>
+					<p class="infos-produit bold">Description</p>
+					<p><?php echo $produit->description; }?></p>
 					<p class="infos-produit bold">Le meilleur prix:</p>
 					<p><span class="prix red-text darken-4-text bold">103.30€</span> + frais de port(<span class="bold">30€</span>)</p>
 					<p>Vendu par <a href="#" class="blue-text">Prixdedingue</a></p>
