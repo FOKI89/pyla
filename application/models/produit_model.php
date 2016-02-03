@@ -41,7 +41,7 @@ class Produit_model extends MY_Model
             $limit = "";
         }
 
-        $all = $this->db->query('SELECT p.id, p.reference, p.libelle, p.image, p.marque, p.description, p.video, p.statut, p.date FROM categories_produits cp INNER JOIN produits p WHERE cp.id_produit = p.id AND cp.id_categorie = '.$id_categorie.' AND p.statut = 1 ORDER BY libelle '.$limit);
+        $all = $this->db->query('SELECT p.id, p.reference, p.libelle, p.image, p.marque, p.description, p.video, p.statut, p.date, pu.prix, u.nom, u.prenom FROM categories_produits cp INNER JOIN produits p WHERE cp.id_produit = p.id AND cp.id_categorie = '.$id_categorie.' INNER JOIN AND p.statut = 1 ORDER BY libelle '.$limit);
         $produits = $all->result_array();
         return $produits;     
     }

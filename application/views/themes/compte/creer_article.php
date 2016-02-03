@@ -32,26 +32,26 @@
 		<div class="col l8 s12">
 			<div class="row creer-vente-account">
 				<div class="col s12">
-					<div class="card">
+					<div class="card center-align">
 						<div class="card-content">
 							<span class="card-title"><i class="material-icons prefix">create</i> Créer un article</span>
 							<form id="new_article" action="">
 								<!-- Prix et Nom du produit-->
 								<div class="row">
-									<div class="col s12 m6">
+									<div class="col s12 m6 left-align">
 										<input type="text"  name="libelle" id="libelle" class="validate" required >
 										<label for="libelle">Libellé</label>
 									</div>
-									<div class="col s12 m6">
+									<div class="col s12 m6 left-align">
 										<input type="text" name="reference" class="validate" >
 										<label for="reference">Référence</label>
 									</div>
 								</div><div class="row">
-									<div class="col s12 m6">
+									<div class="col s12 m6 left-align">
 										<input type="text" name="marque" id="marque" class="validate" required >
 										<label for="marque">Marque</label>
 									</div>
-									<div class="col s12 m6">
+									<div class="col s12 m6 left-align">
 										<input type="number" name="prix" id="prix" step="0.01" min="0.01" required >
 										<label for="prix">Prix (en €)</label>
 									</div>
@@ -59,13 +59,13 @@
 
 								<!-- Description du produit -->
 								<div class="row">
-									<div class="col s12 m12">
+									<div class="col s12 m12 left-align">
 										<textarea name="description" id="description" class="materialize-textarea" ></textarea>
 										<label for="description">Description du produit</label>
 									</div>
 								</div>
 								<!-- Photo de l'article -->
-								<div class="file-field input-field">
+								<div class="file-field input-field left-align">
 									<div class="btn file-upload-button blue yellow-text">
 										<span>Photo</span>
 										<input type="file" name="image" id="image" required >
@@ -75,11 +75,11 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="input-field col s12 m6 select-damous grey-text">
+									<div class="input-field col s12 m6 select-damous grey-text left-align">
 										<?php echo form_dropdown('categories',$categories); ?>
 									</div>
 									<div class="input-field col s12 m6">
-										<button type="submit" name="creer_produit" class="btn waves-effect waves-light blue yellow-text " >Créer le produit
+										<button type="submit" name="creer_produit" class="btn waves-effect waves-light blue yellow-text " >Valider
 											<i class="material-icons right">library_add</i>
 										</button>
 									</div>

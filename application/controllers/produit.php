@@ -168,7 +168,7 @@ class Produit extends CI_Controller
     public function form_validation(){
         $return = array();
         $return[0] = false;
-        $require = array("libelle","marque","image");
+        $require = array("libelle","marque","image", "prix");
         $format = array("reference","libelle","marque","video");
 
         if(empty($_FILES["image"]["name"])){
@@ -186,7 +186,8 @@ class Produit extends CI_Controller
         if(!empty($this->input->post("video"))){
             $this->product->setVideo($this->input->post("video"));
         }
-        $this->product->setStatut(1);
+        $this->product->setStatut(0);
+        $this->product_user->setPrix($this->input->post("prix"));
 
         $this->_insertion();
 
@@ -229,6 +230,18 @@ class Produit extends CI_Controller
                 echo $this->upload->display_errors();
             }  
         }
+
+        $fields = array(
+                  "id_produit" => $this->product->getId(),
+                  "id_utilisateur" => $_SESSION['id'],
+                  "prix" => $this->product_user->getPrix(),
+                  "quantite" => 1,
+                  );
+
+        if(!$this->pr_ut->create($fields)){
+            show_error("Create produit utilisateur","error_db");
+            return false;
+        }
   
         $return[0] = true;
         die(json_encode($return));
@@ -248,6 +261,9 @@ class Produit extends CI_Controller
             if(($item == "libelle" || $item == "reference" || $item == "marque") && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^((.){2,})$/"))) === false){
                 $return[1] = "Les champs libellé, référence et marque doivent se composer d'au moins 3 caractères";
                 die(json_encode($return));
+            }elseif(!empty($this->input->post('prix')) && filter_var($item, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^\d+([\.\,]?\d+)?$/"))) === false){
+                /*$return[1] = "Prix";
+                die(json_encode($return));*/
             }elseif(!empty($this->input->post('video')) && filter_var($item, FILTER_VALIDATE_URL) === false){
                 $return[1] = "L'url de la vidéo n'est pas correcte";
                 die(json_encode($return));

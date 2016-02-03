@@ -7,7 +7,7 @@ $("#new_article").on("submit", function(c){
    $.each($('form#new_article input[type=file]')[0].files, function (i, file) { 
        data.append("image", file);
    });
-    var champs = ["libelle", "reference", "marque", "image"];
+    var champs = ["libelle", "reference", "marque", "image", "prix"];
     for(var i= 0; i < champs.length; i++)
     {
         $('[name ='+champs[i]+']').css({ 'box-shadow': 'none'});
