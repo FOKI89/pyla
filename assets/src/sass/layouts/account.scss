@@ -146,20 +146,20 @@ ul#nav-account .collapsible-body li a {
   width:20px;
 }
 
+
 .subscribe form .row{
   position: relative;
 }
 
-.subscribe form p.required-fields{
+.subscribe form p.required-fields,
+.contact form p.required-fields{
   position: absolute;
   right:0;
   top:0;
 }
 
 .contact form p.required-fields{
-  position: absolute;
-  right:0;
-  top:0;
+  right:3px;
 }
 
 .select-damous div.select-wrapper input{
@@ -168,4 +168,8 @@ ul#nav-account .collapsible-body li a {
 }
 .select-damous div.select-wrapper .dropdown-content{
   margin-left: 3rem;
+}
+
+.contact form .row{
+  margin-top: 20px;
 }

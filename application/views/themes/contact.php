@@ -25,7 +25,12 @@
               <i class="material-icons prefix">email</i>
               <p class="required-fields red-text darken-4-text"><i class=" tiny material-icons">star_rate</i></p>
               <input id="email" type="email" class="validate">
-              <label for="email" data-error="wrong" data-success="right">Email</label>
+              <label for="email" data-error="wrong" data-success="right">Email:</label>
+            </div>
+						<div class="input-field col s12">
+              <i class="material-icons prefix">work</i>
+              <input id="job" type="text" class="validate">
+              <label for="job">Profession:</label>
             </div>
             <div class="input-field col s12">
               <p class="required-fields red-text darken-4-text"><i class=" tiny material-icons">star_rate</i></p>
