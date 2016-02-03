@@ -67,7 +67,6 @@ class Produit extends CI_Controller
             }
             $produit->images = $tab;
         }
-        //var_dump($data['produits']); die;
 
         $this->layout->set_titre($breadcrumb[--$i]->libelle);
         $this->layout->ajouter_css("sweetalert/sweetalert");
@@ -207,8 +206,8 @@ class Produit extends CI_Controller
                 $config["image_library"]  = "gd2";
                 $config["source_image"]   = $img["full_path"];
                 $config["maintain_ratio"] = TRUE;
-                $config["width"]          = 400;
-                $config["height"]         = 250;
+                $config["width"]          = 300;
+                $config["height"]         = 200;
                 $config["overwrite"]      = TRUE;
 
                 $this->image_lib->initialize($config);
@@ -280,5 +279,86 @@ class Produit extends CI_Controller
         if(!$this->cat_prod->create($options_echappees, $options_non_echappees)){
             show_error("Insertion categorie_produit","error_db");
         }
+    }
+
+    public function form_modification_bo(){
+        $return = array();
+        $return[0] = false;
+        $require = array("libelle");
+        $format = array("libelle","reference","marque","statut");
+        $post = (array) $this->input->post();
+        $post = $this->suppr_accents($post,'',true);
+
+        $this->_validation_require_bo($require);
+        $this->_validation_format_bo($format,$post);
+
+        $id = $post['id'];
+        unset($post['id']);
+        unset($post['action']);
+        unset($post[0]);
+        
+        if(!$this->prod->update(array("id" => $id), $post)){
+            show_error("Update articles","error_db");
+            return false;
+        }
+
+        $return[0] = true;
+        die(json_encode($return));
+    }
+
+    private function _validation_require_bo($require){
+        foreach($this->input->post() as $key => $value){
+            $champ = strtolower($key);
+            $key = $this->suppr_accents(strtolower($key));
+            if(in_array($key,$require) && empty($value)){
+                $return[1] = "require";
+                $return[2] = $champ;
+                die(json_encode($return));
+            }
+        }
+    }
+
+    private function _validation_format_bo($format, $post){
+        foreach($format as $item){
+            if($item == "libelle" && !empty($post[$item])  && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han} .-]{3,50}$/"))) === false){
+                $return[1] = "Libellé";
+                die(json_encode($return));
+            }
+            elseif($item == "reference" && !empty($post[$item])  && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han} .-]{3,50}$/"))) === false){
+                $return[1] = "Référence";
+                die(json_encode($return));
+            }
+            elseif($item == "marque" && !empty($post[$item])  && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han} .-]{3,50}$/"))) === false){
+                $return[1] = "Marque";
+                die(json_encode($return));
+            }
+            elseif($item == "statut" && !empty($post[$item])  && filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(0|1){1}$/"))) === false){
+                $return[1] = "Statut";
+                die(json_encode($return));
+            }
+        }
+    }
+
+    public function suppr_accents($str, $encoding ='utf-8',$min = false)
+    {
+        if(is_array($str)){
+            $result = array();
+            foreach($str as $key => $value){
+                $key = htmlentities($key, ENT_NOQUOTES, $encoding);
+                $key = preg_replace('#&([A-za-z])(?:acute|grave|cedil|circ|orn|ring|slash|th|tilde|uml);#', '\1', $key);
+                $key = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $key);
+                $key = preg_replace('#&[^;]+;#', '', $key);
+                if($min){
+                    $key = strtolower($key);
+                }
+                $result[$key] = $value;
+            }
+        }else{
+            $result = htmlentities($str, ENT_NOQUOTES, $encoding);
+            $result = preg_replace('#&([A-za-z])(?:acute|grave|cedil|circ|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+            $result = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str);
+            $result = preg_replace('#&[^;]+;#', '', $str);
+        }
+        return $result;
     }
 }

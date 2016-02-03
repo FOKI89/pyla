@@ -59,15 +59,30 @@
 					<ul class="center hide-on-med-and-down desktop">
 					<?php if(isset($menu)){
 						foreach ($menu as $key => $topmenu) {
-							echo '<li><a href="'.base_url().'categorie/' .$topmenu['id']. '">' .$topmenu['libelle'].'</a>';
+							if($topmenu['home'] == "1"){
+								echo'<li><a href="'.base_url().'">' .$topmenu['libelle'].'</a>';
+							}else{
+								echo'<li><a href="'.base_url().'categorie/' .$topmenu['id']. '">' .$topmenu['libelle'].'</a>';
+							}
+							//echo '<li><a href="'.base_url().'categorie/' .$topmenu['id']. '">' .$topmenu['libelle'].'</a>';
 							if(isset($topmenu['submenu'])){
 								echo '<div class="subMenu indigo lighten-5 blue-text">';
 								foreach ($topmenu['submenu'] as $key => $submenu) {
-										echo'<ul class="left-align">
-															<li><a class="blue-text text-darken-4 subMenu-title" href="'.base_url().'categorie/' .$submenu['id']. '">' .$submenu['libelle'].'</a></li>';
+										echo'<ul class="left-align">';
+										if($submenu['home'] == "1"){
+											echo'<li><a class="blue-text text-darken-4 subMenu-title" href="'.base_url().'/">' .$submenu['libelle'].'</a></li>';
+										}else{
+											echo'<li><a class="blue-text text-darken-4 subMenu-title" href="'.base_url().'categorie/' .$submenu['id']. '">' .$submenu['libelle'].'</a></li>';
+										}
+															//<li><a class="blue-text text-darken-4 subMenu-title" href="'.base_url().'categorie/' .$submenu['id']. '">' .$submenu['libelle'].'</a></li>';
 												foreach ($submenu as $key => $subsubmenu) {
 													if(is_int($key)){
-														echo '<li><a class="blue-text" href="'.base_url().'categorie/' .$subsubmenu['id']. '">' .$subsubmenu['libelle'].'</a></li>';
+														if($subsubmenu['home'] == "1"){
+															echo'<li><a class="blue-text" href="'.base_url().'/">' .$subsubmenu['libelle'].'</a></li>';
+														}else{
+															echo'<li><a class="blue-text" href="'.base_url().'categorie/' .$subsubmenu['id']. '">' .$subsubmenu['libelle'].'</a></li>';
+														}
+														//echo '<li><a class="blue-text" href="'.base_url().'categorie/' .$subsubmenu['id']. '">' .$subsubmenu['libelle'].'</a></li>';
 													}
 												}
 										echo'</ul>';
@@ -125,7 +140,7 @@
 								<div class="col s12">
 									<ul>
 									<?php foreach($pages_footer as $page){ ?>
-										<li><a class="grey-text text-lighten-3" href="<?php echo $page->id;?>"><?php echo $page->titre;  ?></a></li>
+										<li><a class="grey-text text-lighten-3" href="<?php echo 'page/'.$page->id;?>"><?php echo $page->titre;  ?></a></li>
 									<?php }?>
 									</ul>
 								</div>

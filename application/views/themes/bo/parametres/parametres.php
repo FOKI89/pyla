@@ -8,7 +8,7 @@
 
 			<a href="<?php echo site_url('backoffice'); ?>" class="breadcrumb">Back-office</a>
 			<span class="breadcrumb">Utilisateurs</span>
-			<span class="breadcrumb">Créer un compte</span>
+			<span class="breadcrumb">Liste des utilisateurs</span>
 		</div>
 	</div>
 </nav>
@@ -20,84 +20,92 @@
 	<div class="row ">
 		<div class="col s12">
 			<!-- ======================================================================= -->
-			<!-- Formulaire de création d'utilisateur -->
 			<div class="row">
 				<div class="col s12">
-					<div class="card hoverable" >
-						<div class="card-content">
+					<div class="card hoverable">
+						<div class="card-content black-text">
 							<div class="center-align">
-								<span class="card-title"><i class="material-icons prefix">person_add</i> Créer un compte</span>
+								<span class="card-title"><i class="material-icons prefix">search</i> Paramètres</span>
 							</div>
-							<form id="creer_compte" action="">
+							<!-- Formulaire de réglage des paramètres -->
+							<form id="parametre" action="">
+								<!-- Nom du site -->
 								<div class="row">
-									<div class="input-field col s12 m6">
-										<i class="material-icons prefix">account_circle</i>
-										<input id="prenom" type="text" class="validate" name="prenom">
-										<label for="prenom">Prénom</label>
-									</div>
-									<div class="input-field col s12 m6">
-										<i class="material-icons prefix">perm_identity</i>
+									<div class="input-field col s12">
+										<i class="material-icons prefix">language</i>
 										<input id="nom" type="text" class="validate" name="nom">
-										<label for="nom">Nom</label>
+										<label for="nom">Nom du site</label>
 									</div>
 								</div>
+
+								<!-- E-mail de contact-->
 								<div class="row">
 									<div class="input-field col s12 m6">
 										<i class="material-icons prefix">email</i>
-										<input id="email" type="text" class="validate" name="email">
-										<label for="email">Email</label>
+										<input id="email" type="email" class="validate" name="email">
+										<label for="email" data-error="Format incorrect" data-success="Format correct !">Email de contact</label>
 									</div>
+
+									<!-- Téléphone -->
 									<div class="input-field col s12 m6">
 										<i class="material-icons prefix">phone</i>
-										<input id="telephone" type="text" class="validate" name="telephone">
-										<label for="telephone">Téléphone</label>
+										<input id="telephone" type="text" name="telephone">
+										<label for="telephone">Téléphone de contact</label>
 									</div>
 								</div>
+									
+								<!-- Adresse et ville -->
 								<div class="row">
 									<div class="input-field col s12 m6">
 										<i class="material-icons prefix">room</i>
 										<input id="adresse" type="text" class="validate" name="adresse">
-										<label for="adresse">Adresse</label>
+										<label for="adresse">Adresse de contact</label>
 									</div>
+
 									<div class="input-field col s12 m6">
 										<i class="material-icons prefix">label</i>
 										<input id="ville" type="text" class="validate" name="ville">
 										<label for="ville">Ville</label>
 									</div>
 								</div>
+
+								<!-- Code Postal et pays -->
 								<div class="row">
 									<div class="input-field col s12 m6">
 										<i class="material-icons prefix">room</i>
 										<input id="cp" type="text" class="validate" name="cp">
-										<label for="cp">Code Postal</label>
+										<label for="cp">Code postal</label>
 									</div>
+
 									<div class="input-field col s12 m6" id="select_pays">
 										<i class="material-icons prefix">label</i>
-										<?php echo form_dropdown("pays",$pays,'',"class='validate grey-text'"); ?>
+										<?php echo form_dropdown("id_pays",$pays,'',"class='validate grey-text select_pays_param' id='select_pays'"); ?>
 										<label for="pays">Pays</label>
 									</div>
 								</div>
+
+								<!-- Logo du site -->
 								<div class="row">
-									<div class="input-field col s12 m6">
-										<i class="material-icons prefix">lock</i>
-										<input id="mdp" type="password" class="validate" name="mdp">
-										<label for="mdp">Mot de passe</label>
-									</div>
-									<div class="input-field col s12 m6">
-										<i class="material-icons prefix">lock_outline</i>
-										<input id="confirm_mdp" type="password" class="validate" name="confirm_mdp">
-										<label for="confirm_mdp">Entrez à nouveau le mot de passe</label>
+									<div class="file-field input-field col s12">
+										<div class="btn blue darken-4">
+											<span>Logo</span>
+											<input id="logo" type="file" class="validate" name="logo">
+										</div>
+										<div class="file-path-wrapper">
+											<input class="file-path validate" type="text">
+										</div>
 									</div>
 								</div>
-								</div>
-								<!-- Validation et envoi du formulaire -->
+
+								<!-- Bouton d'envoi -->
 								<div class="row">
-									<div class="input-field col s12 center-align">
+									<div class="col s12 center-align">
 										<button class="btn waves-effect waves-light submit-button" type="submit" name="action">Valider
 											<i class="material-icons right">send</i>
 										</button>
 									</div>
 								</div>
+
 							</form>
 						</div>
 					</div>

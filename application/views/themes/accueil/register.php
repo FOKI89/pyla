@@ -53,7 +53,7 @@
 								<input id="cp" type="text" class="validate" name="cp">
 								<label for="cp">Code Postal:</label>
 							</div>
-							<div class="input-field col s12 m6 select-damous">
+							<div class="input-field col s12 m6 select-damous grey-text">
 								<i class="material-icons prefix blue-text darken-4-text">label</i>
 								<?php echo form_dropdown("pays",$pays); ?>
 								<label for="pays">Pays:</label>

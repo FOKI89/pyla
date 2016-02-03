@@ -16,9 +16,6 @@ footer .container a{
 .logo_login{
 	height:75px;
 	margin:20%;
-<<<<<<< HEAD
-}
-=======
 }
 
 .user_avatar{
@@ -125,4 +122,9 @@ body {
     flex: 1 0 auto;
   }
 
->>>>>>> 32856f30c38f4587c2716ab13f67f4f9ff14f469
+.select-damous{
+  margin-left: 3rem;
+  width: calc(100% - 3rem); }
+
+.select-damous{
+  margin-left: 3rem; }

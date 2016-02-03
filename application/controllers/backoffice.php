@@ -41,6 +41,35 @@ class Backoffice extends CI_Controller
         }
     }
 
+    public function creer_categorie(){
+        if(!$query = $this->db->query('SELECT id, libelle FROM categories WHERE id_parent IS NULL OR (id_parent IS NOT NULL AND id IN( SELECT id_parent FROM categories )) ORDER BY libelle ASC')){
+            show_error("Select categorie creation","error_db");
+            return false;
+        }  
+        $categorie = $query->result(); 
+        $select = [];
+        $select [''] = "Catégorie parente";
+        foreach($categorie as $item)
+        {
+            foreach($item as $key => $value)
+            {
+                if($key == "id"){
+                    $cle = $value;
+                }
+                else{
+                    $select[$cle] = $value;
+                }
+            }
+        }
+        $data = array();
+        $data["categorie"] = $select;
+        $this->layout->set_titre("Back Office - Créer catégorie");
+        $this->layout->set_theme("default_bo");
+        $this->layout->ajouter_js("bo/creer_categorie");
+        $this->layout->view("themes/bo/categorie/creer_categorie",$data);
+        return false;
+    }
+
     public function creer_utilisateur(){
         $fields = array("id","libelle");
         $pays = $this->pays->read($fields);
@@ -108,6 +137,20 @@ class Backoffice extends CI_Controller
         return false;
     }
 
+    public function liste_article(){
+        if(!$query = $this->db->query('SELECT p.id, p.reference, p.libelle AS `produit_libelle`, p.marque, p.statut, p.date, c.libelle AS `categorie_libelle` FROM produits p LEFT JOIN categories_produits cp ON p.id = cp.id_produit LEFT JOIN categories c ON c.id = cp.id_categorie ORDER BY p.libelle ASC')){
+            show_error("Select utilisateur","error_db");
+            return false;
+        }
+        $data['produits'] = $query->result();        
+        $this->layout->set_titre("Back Office - Liste articles");
+        $this->layout->set_theme("default_bo");
+        $this->layout->ajouter_js("bo/jquery.tabledit.min");
+        $this->layout->ajouter_js("bo/liste_articles");
+        $this->layout->view("themes/bo/catalogue/liste_articles",$data);
+        return false;
+    }
+
     public function creer_critere(){
         $this->layout->set_titre("Back Office - Créer critère");
         $this->layout->set_theme("default_bo");
@@ -149,10 +192,28 @@ class Backoffice extends CI_Controller
     }
 
     public function parametres(){
+        $fields = array("id","libelle");
+        $pays = $this->pays->read($fields);
+        $select = [];
+        $select [''] = "Veuillez sélectionner un pays";
+        foreach($pays as $item)
+        {
+            foreach($item as $key => $value)
+            {
+                if($key == "id"){
+                    $cle = $value;
+                }
+                else{
+                    $select[$cle] = $value;
+                }
+            }
+        }
+        $data = array();
+        $data["pays"] = $select;
         $this->layout->set_titre("Back Office - Paramètres");
         $this->layout->set_theme("default_bo");
-        //$this->layout->ajouter_js("bo/parametres");
-        $this->layout->view("themes/bo/parametres/parametres");
+        $this->layout->ajouter_js("bo/form_parametre");
+        $this->layout->view("themes/bo/parametres/parametres",$data);
         return false;
     }
 
@@ -226,12 +287,119 @@ class Backoffice extends CI_Controller
         die(json_encode($return));
     }
 
+    public function form_insertion_categorie(){
+        $return = array();
+        $return[0] = false;
+        $require = array("libelle");
+
+        $this->_validation_require($require);
+        $post = (array)$this->input->post();
+
+        if(isset($post["top"]) && $post["top"] == "on"){
+            $post["top"] = 1;
+        }else{
+            $post["top"] = 0;
+        }
+        if(isset($post["home"]) && $post["home"] == "on"){
+            $post["home"] = 1;
+        }else{
+            $post["home"] = 0;
+        }
+        unset($post["undefined"]);
+        unset($post["action"]);
+
+        $options_echappees = array();
+        $options_non_echappees = array();
+        $options_echappees["libelle"] = $post["libelle"];
+        $options_non_echappees["id_parent"] = $post["id_parent"];
+        $options_non_echappees["top"] = $post["top"];
+        $options_non_echappees["home"] = $post["home"];
+        $options_non_echappees["rang"] = 0;
+        
+        if(!$this->cat->create($options_echappees, $options_non_echappees)){
+            show_error("Insert administrateur","error_db");
+            return false;
+        }
+        $return[0] = true;
+        die(json_encode($return));
+    }
+
+    public function form_parametre(){
+        $return = array();
+        $return[0] = false;
+        $require = array("nom","email","adresse","ville","cp","id_pays");
+        $format = array("nom","email","telephone","adresse","ville","cp","id_pays");
+
+        $this->_validation_require($require);
+        $this->_validation_format($format);
+        $post = (array)$this->input->post();
+        unset($post["undefined"]);
+        unset($post["action"]);
+        $this->_insertion_parametre($post);
+
+        /*$return[0] = "lien";
+        $return[1] = "http://localhost:8888/Pyla/activation?t=".$this->num_token;*/
+        $return[0] = true;
+        die(json_encode($return));
+    }
+
     private function _validation_require($require){
         foreach($require as $item){
             if(empty($this->input->post($item))){
                 $return[1] = "require";
                 die(json_encode($return));
             }
+        }
+    }
+
+    private function _validation_format($format){
+        foreach($format as $item){
+            if($item == "nom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù.-]{3,50}$/"))) === false){
+                $return[1] = "Nom";
+                die(json_encode($return));
+            }
+            elseif($item == "email" && !empty($this->input->post($item)) && (filter_var($this->input->post($item), FILTER_VALIDATE_EMAIL) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/(yopmail\.com|trash-mail\.com|thrma\.com|mailinator\.com)/"))) !== false)){
+                $return[1] = "Email";
+                die(json_encode($return));
+            }
+            elseif($item == "telephone" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^\+?([0-9](.|-|\s)*){5,20}$/"))) === false){
+                $return[1] = "Téléphone".$this->input->post($item);
+                die(json_encode($return));
+            }
+            elseif($item == "adresse" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
+                $return[1] = "Adresse";
+                die(json_encode($return));
+            }
+            elseif($item == "ville" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[[0-9a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
+                $return[1] = "Ville";
+                die(json_encode($return));
+            }
+            elseif($item == "cp" && !empty($this->input->post($item))  && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9a-zA-Z\p{Cyrillic}\p{Han} .-]{3,50}$/"))) === false){
+                $return[1] = "Code Postal";
+                die(json_encode($return));
+            }
+            elseif($item == "id_pays" && !empty($this->input->post($item))  && (filter_var($this->input->post($item), FILTER_VALIDATE_INT) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9]{1,3}$/"))) === false)){
+                $return[1] = "Id Pays";
+                die(json_encode($return));
+            }
+        }
+    }
+
+    private function _insertion_parametre($post){
+        $options_echappees = array();
+        $options_non_echappees = array();
+        $options_echappees["nom"] = $post["nom"];
+        $options_echappees["email"] = $post["email"];
+        $options_echappees["telephone"] = $post["telephone"];
+        $options_echappees["adresse"] = $post["adresse"];
+        $options_echappees["ville"] = $post["ville"];
+        $options_echappees["cp"] = $post["cp"];
+        $options_echappees["id_pays"] = $post["id_pays"];
+        $options_non_echappees["date_creation"] = "NOW()";
+        
+        if(!$this->site_model->update(1,$options_echappees, $options_non_echappees)){
+            show_error("Insert site","error_db");
+            return false;
         }
     }
 

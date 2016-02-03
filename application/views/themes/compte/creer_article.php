@@ -34,7 +34,7 @@
 				<div class="col s12">
 					<div class="card">
 						<div class="card-content">
-							<span class="card-title"><i class="material-icons prefix">create</i> Créer une vente</span>
+							<span class="card-title"><i class="material-icons prefix">create</i> Créer un article</span>
 							<form id="new_article" action="">
 								<!-- Prix et Nom du produit-->
 								<div class="row">

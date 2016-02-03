@@ -620,15 +620,16 @@ class Utilisateur extends CI_Controller
 
         $this->_validation_require_bo($require);
         $this->_validation_format_bo($format,$post);
-
+        
         $id = $post['id'];
         if(isset($post['pays'])){
             $post['id_pays'] = $post['pays'];
         }
         unset($post['id']);
-        unset($post['Pays']);
+        unset($post['pays']);
         unset($post['action']);
         unset($post[0]);
+
         
         if(!$this->utilisateur->update(array("id" => $id), $post)){
             show_error("Update coordonnées","error_db");
@@ -681,7 +682,7 @@ class Utilisateur extends CI_Controller
                 $return[1] = "Code Postal";
                 die(json_encode($return));
             }
-            elseif($item == "pays" && !empty($post[$item])  && (filter_var($post[$item], FILTER_VALIDATE_INT) === false || filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[0-9]{1,3}$/"))) === false)){
+            elseif($item == "pays" && !empty($post[$item])  && (filter_var($post[$item], FILTER_VALIDATE_INT) === false || filter_var($post[$item], FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[1-9]{1,3}$/"))) === false)){
                 $return[1] = "Id Pays";
                 die(json_encode($return));
             }

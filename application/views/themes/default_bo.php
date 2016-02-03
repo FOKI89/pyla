@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" > 
 <head>
-	<title>Pila - Back Office</title>
+	<title><?php echo $titre; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="icon" type="image/png" href="<?php echo img_url("favicon.png") ?>" />
@@ -72,6 +72,12 @@
 							</ul>
 						</div>
 					</li>
+					<!-- Sous-menu Catégories -->
+					<li>
+						<div class="collapsible-header"><i class="material-icons">toc</i>
+							<a href="<?php echo site_url('backoffice/creer-categorie'); ?>" class="categorie_menu">Catégories</a>
+						</div>
+					</li>
 					<!-- Sous-menu Catalogue -->
 					<li>
 						<div class="collapsible-header"><i class="material-icons">library_books</i>
@@ -81,6 +87,7 @@
 							<ul class="center-align blue-text text-darken-4">
 								<li><a href="<?php echo site_url('backoffice/creer-article'); ?>" class="sidebar-link">Créer un article</a></li>
 								<li><a href="<?php echo site_url('backoffice/chercher-article'); ?>" class="sidebar-link">Chercher un article</a></li>
+								<li><a href="<?php echo site_url('backoffice/liste-categorie'); ?>" class="sidebar-link">Liste des articles</a></li>
 								<li><a href="<?php echo site_url('backoffice/creer-critere'); ?>" class="sidebar-link">Créer un critère</a></li>
 								<li><a href="<?php echo site_url('backoffice/liste-critere'); ?>" class="sidebar-link">Liste des critères</a></li>
 							</ul>
@@ -111,17 +118,13 @@
 							</ul>
 						</div>
 					</li>
-
+					<!-- Sous-menu Statistiques -->
 					<li>
 						<div class="collapsible-header"><i class="material-icons">timeline</i>
 							<a href="<?php echo site_url('backoffice/statistiques'); ?>" class="categorie_menu">Statistiques</a>
 						</div>
-						<div class="collapsible-body">
-							<ul class="center-align blue-text text-darken-4">
-								<li>Sous-menu Stats</li>
-							</ul>
-						</div>
 					</li>
+					<!-- Sous-menu Paramètres -->
 					<li>
 						<div class="collapsible-header"><i class="material-icons">settings</i>
 							<a href="<?php echo site_url('backoffice/parametres'); ?>" class="categorie_menu">Paramètres</a>

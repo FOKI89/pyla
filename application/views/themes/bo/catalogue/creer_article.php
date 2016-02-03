@@ -30,7 +30,7 @@
 								<!-- Prix et Nom du produit-->
 								<div class="row">
 									<div class="col s12 m6">
-										<input id="libelle" type="text" name="libelle" class="validate" >
+										<input id="libelle" type="text" name="libelle" class="validate" required >
 										<label for="libelle">Nom du produit</label>
 									</div>
 									<div class="col s12 m6">

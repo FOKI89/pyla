@@ -25,7 +25,7 @@
 				<div class="col s12">
 					<div class="card">
 						<div class="card-content">
-							<span class="card-title"><i class="material-icons prefix">list</i>Liste des utilisateurs</span>
+							<span class="card-title">Liste des utilisateurs</span>
 							<table class="striped" id="liste_utilisateurs">
 								<thead>
 									<tr>
@@ -48,7 +48,7 @@
 									<?php foreach($utilisateurs as $item){ ;?>
 									<tr>
 										<td>
-										<?php if($item->statut > 3){ ?>
+										<?php if($item->statut > 3 || !isset($item->statut)){ ?>
 										<i class="material-icons user-icon red-text">person</i>
 										<?php }elseif($item->statut > 1){ ?>
 											<i class="material-icons user-icon green-text">person</i>
