@@ -34,14 +34,6 @@
 					<div class="row">
 						<form id="ajout_panier" action="" method="get">
 							<div class="input-field col s12 center">
-								<select class="icon validate">
-									<option value="" disabled selected>Quantité</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
-							</div>
-							<div class="input-field col s12 center">
 								<button class="btn waves-effect waves-light blue yellow-text" type="submit" name="ajout_panier">Ajouter au panier
 									<i class="material-icons right medium">shopping_cart</i>
 								</button>

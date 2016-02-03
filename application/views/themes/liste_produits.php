@@ -39,6 +39,6 @@
 				</ul>
 			</div>
 		</div><!-- fin div row -->
-		<?php include 'partials/best_sales.php'; ?>
+		<?php //include 'partials/best_sales.php'; ?>
 	</div><!-- fin div section -->
 </div><!-- fin div container -->
