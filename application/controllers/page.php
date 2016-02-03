@@ -10,7 +10,7 @@ class Page extends CI_Controller
     {
         $this->page();
     }
-    
+
     public function page($id_page = null){
       $data = array();
       $page = $this->page_model->read("*", array("id" => $id_page));
@@ -27,6 +27,15 @@ class Page extends CI_Controller
       $data['mail'] = $mailAdmin[0]->email;
       $this->layout->set_titre("Contact");
       $this->layout->view('themes/contact', $data);
+      return false;
+    }
+
+    public function about(){
+      $data = array();
+      $mailAdmin = $this->site_model->read("*", array());
+      $data['mail'] = $mailAdmin[0]->email;
+      $this->layout->set_titre("Qui sommmes nous ?");
+      $this->layout->view('themes/about', $data);
       return false;
     }
 
