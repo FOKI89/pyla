@@ -6,11 +6,9 @@
 			<?php foreach($produits as $produit){ ?>
 			<div class="col s12 m6 l4">
 				<div class="card z-depth-0">
-					<?php foreach($produit->images as $image){ ?>
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="<?php echo img_url('produit/'.$produit->id.'/'.$image) ?>" alt="">
-						</div>
-					<?php } ?>
+					<div class="card-image waves-effect waves-block waves-light">
+						<img class="activator" src="<?php echo img_url('produit/'.$produit->id.'/'.$produit->images[0]) ?>" alt="">
+					</div>
 					<div class="card-content indigo lighten-5">
 						<span class="card-title activator grey-text text-darken-4"><?php echo $produit->libelle; ?><i class="material-icons right">more_vert</i></span>
 						<form class="" action="" method="post">
@@ -29,7 +27,7 @@
 				</div><!-- fin div card -->
 			</div><!-- fin div col -->
 			<?php } ?>
-			<div class="col s12 center">
+			<div class="col s12 center hide">
 				<ul class="pagination">
 					<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
 					<li class="active"><a href="#!">1</a></li>

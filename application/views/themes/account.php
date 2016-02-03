@@ -2,7 +2,7 @@
 	<div class="section">
 		<h2 class="header center-on-small-only grey-text grey-darken-4-text">Espace Personnel</h2>
 		<div class ="row">
-			<?php include_once "partials/nav-account.php"; ?> 
+			<?php include_once "partials/nav-account.php"; ?>
 			<div class="col l8 s12">
 				<div class="dashboard-account active-account">
 					<h2>Dashboard</h2>
@@ -12,8 +12,8 @@
 						<div class="card-content blue lighten-4">
 							<h3>Dernière Commande:</h3>
 							<div class="divider grey darken-4"></div>
-							<p>Arche antique - 03 Mars 2016</p>
-							<p>150€</p>
+							<p>Projecteur Sony HJK201 - 03 Mars 2016</p>
+							<p class="right-align">650€</p>
 							<a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
 						</div>
 					</div>

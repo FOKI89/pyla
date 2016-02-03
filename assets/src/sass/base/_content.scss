@@ -39,6 +39,12 @@
     margin: 10px 0;
 }
 
+.product div.card-content::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
 .main-part-product .card-image{
     margin-bottom: 5px;
 }
@@ -139,4 +145,11 @@ div.top-products-link-hover .bouton{
 
 .about .card .card-content p{
   margin-bottom: 10px;
+}
+
+
+/* Breadcrumb  */
+
+div.bread{
+  margin-top: 15px;
 }

@@ -31,6 +31,11 @@ div.meilleures-ventes p{
 
 
 /* Liste_produits*/
+
+.liste_produits div.card-image img.activator{
+  max-height: 250px;
+}
+
 .liste_produits div.card-content::after{
   content:"";
   display: table;

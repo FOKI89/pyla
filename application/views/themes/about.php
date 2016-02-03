@@ -55,11 +55,11 @@
                 <p>Nous avons mis tout notre coeur pour vous proposez la meilleur expérience possible. Et nous espérons que vous apprécierez ce service.</p>
                 <p>Nous travaillons à l'évolution perpétuelle de Pila, si vous remarquez des erreurs, bugs ou autres problèmes n'hésitez pas à nous en faire part.</p>
                 <div class="center">
-                  <a class="btn blue yellow-text center" href="<?php echo base_url().'/categorie/6'; ?>">Signaler un bug</a>
+                  <a class="btn blue yellow-text center" href="<?php echo base_url().'/page/contact'; ?>">Signaler un bug</a>
                 </div>
                 <p>De même si vous avez envie de participez à l'aventure, envoyez nous votre candidature</p>
                 <div class="center">
-                  <a class="btn blue yellow-text center" href="<?php echo base_url().'/categorie/6'; ?>">Rejoindre la Team</a>
+                  <a class="btn blue yellow-text center" href="<?php echo base_url().'/page/contact'; ?>">Rejoindre la Team</a>
                 </div>
               </div>
             </div>

@@ -32,45 +32,41 @@
 		<div class="col l8 s12">
 			<div class="">
 					<h2>Mes Ventes - Retours</h2>
-					<table class="responsive-table striped">
-						<thead>
-							<tr>
-								<th data-field="reference">Référence</th>
-								<th data-field="prix">Prix</th>
-								<th data-field="nombre-items">Nombre d'articles</th>
-								<th data-field="date">Date</th>
-								<th data-field="adresse-livraison">Adresse de livraison</th>
-								<th data-field="status">Status</th>
-							</tr>
-						</thead>
+					<h3> Retour de l’objet acheté :</h3>
 
-						<tbody>
-							<tr>
-								<td><a href="">Alvin</a></td>
-								<td>90€</td>
-								<td>2</td>
-								<td>23 Janvier 2016</td>
-								<td>89 golden ticket street</td>
-								<td>Temrinée</td>
-							</tr>
-							<tr>
-								<td><a href="">Alan</a></td>
-								<td>15.30€</td>
-								<td>2</td>
-								<td>05 Janvier 2016</td>
-								<td>89 total recall place</td>
-								<td>Annulée</td>
-							</tr>
-							<tr>
-								<td><a href="">Jonathan</a></td>
-								<td>85.60€</td>
-								<td>4</td>
-								<td>18 Décembre 2015</td>
-								<td>89 golden ticket street</td>
-								<td>Terminée</td>
-							</tr>
-						</tbody>
-					</table>
+					<p>Un vendeur particulier peut tout à fait vous autoriser à renvoyer l’objet pour échange ou remboursement mais ce n’est pas une obligation, contrairement à un vendeur professionnel qui doit offrir à ses acheteurs consommateurs un droit de rétractation, comme cela est expliqué sur la page suivante</p>
+
+					<h3>Garanties :</h3>
+
+					<p>Que votre vendeur soit particulier ou professionnel, il est tenu de la garantie des vices cachés. En tant qu’acheteur, vous avez droit à cette garantie quel que soit le produit acheté, qu’il soit neuf ou d’occasion. Cette garantie légale couvre tous les frais entraînés par les vices cachés. Un remboursement partiel ou total peut être obtenu, ou bien la résolution du contrat. Pour plus d’informations, vous pouvez consulter la page suivante sur le site de la DGCCRF.</p>
+
+					<h3>Si vous achetez à un vendeur professionnel</h3>
+
+					<p>En tant que consommateur, vos droits vis-à-vis d’un vendeur professionnel sont renforcés.</p>
+
+					<h3>Informations obligatoires :</h3>
+
+					<p>Un certain nombre d’informations doivent apparaître dans l’annonce du vendeur (ou encore dans sa page perso ou dans sa boutique). En application des dispositions du code de la consommation et de la loi du 21 juin 2004 pour la confiance dans l’économie numérique, le vendeur doit notamment indiquer :</p>
+					<ul>
+					<li>son nom ou sa raison sociale s’il s’agit d’une personne morale</li>
+					<li>son numéro de téléphone</li>
+					<li>son adresse de courrier électronique</li>
+					<li>son adresse physique ou, s’il s’agit d’une personne morale, l’adresse du siège social et, si elle est différente l’adresse de l’établissement responsable de l’offre</li>
+					<li>le cas échéant, son numéro d’inscription au registre du commerce et des sociétés ou au répertoire des métiers et le montant du capital social</li>
+					<li>le cas échéant, son numéro individuel d’identification à la TVA</li>
+					<li>les caractéristiques essentielles du bien ou du service</li>
+					<li>le prix indiqué de manière claire et non ambiguë, et notamment si les taxes et les frais de livraison sont inclus</li>
+					<li>les frais de livraison</li>
+					<li>les modalités de paiement, de livraison ou d’exécution</li>
+					<li>les limitations éventuelles de la responsabilité contractuelle et les conditions particulières de la vente</li>
+					<li>l’existence d’un droit de rétraction, sauf dans les cas où ce droit ne s’applique pas</li>
+					<li>le cas échéant, la durée minimale du contrat proposé lorsqu’il porte sur la fourniture continue ou périodique d’un bien ou d’un service.</li>
+				</ul>
+
+					<p>N’oubliez pas, de nombreux sites institutionnels sont à votre disposition pour approfondir toutes ces questions. En particulier, vous pouvez consulter :
+					le site de la DGCCRF : http://www.economie.gouv.fr/dgccrf;
+					le site du Ministère de l’Economie consacré au cybercommerce : http://www.economie.gouv.fr/dgccrf/consommation/thematiques/Commerce-electronique;
+					le site de la Commission Nationale de l’Informatique et des Libertés (CNIL)  : http://www.cnil.fr.</p>
 				</div><!-- fin div ventes -->
 		</div><!-- fin div contenu account -->
 	</div><!-- fin div row -->

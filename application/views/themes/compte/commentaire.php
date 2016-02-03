@@ -35,7 +35,7 @@
 					<div class="row">
 						<div class="col s12">
 							<div class='card-content'>
-								<p>12/01/16 - <a href="" class="blue-text">Nom du produit</a></p>
+								<p>12/01/16 - <a href="<?php echo base_url().'/produit/1';?>" class="blue-text">Objectif Fish Eye, Sony</a></p>
 								<p>Nullam aliquet ut erat eget posuere. Aenean ornare, sem sit amet auctor consectetur, leo enim tempor orci, at pretium tortor nunc a purus. Donec vulputate sit amet sapien sodales cursus. Proin maximus, felis in rutrum euismod, nisl est tristique lacus, et euismod tortor nulla vitae sapien. Donec ac augue tristique, ornare nibh id, cursus erat. Cras accumsan, metus et mollis fringilla, sem ligula pharetra justo, sagittis lacinia ipsum libero vitae sem. Quisque nec turpis id risus lacinia suscipit id ut lorem. Fusce faucibus erat accumsan, molestie augue non, suscipit ipsum. Morbi lorem dui, molestie sit amet orci at, molestie imperdiet arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada leo risus, sed imperdiet dui vehicula vitae. Aenean porta nisi at elementum porta. Donec pharetra sapien eu eros posuere vulputate. Vivamus ante sapien, pharetra nec nibh vitae, tincidunt dictum urna. Suspendisse dignissim dignissim felis, non semper leo luctus at.</p>
 								<button class="btn waves-effect waves-light blue yellow-text" type="button" name="effacer">Effacer
 									<i class="material-icons right">replay</i>

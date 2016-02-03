@@ -38,36 +38,34 @@
 					<div class="card-content blue lighten-4">
 						<h3>Dernière Commande:</h3>
 						<div class="divider grey darken-4"></div>
-						<p>Arche antique - 03 Mars 2016</p>
-						<p>150€</p>
-						<a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
+						<p>Projecteur HJK201, Sony  - <span class="grey-text text-darken-2">02 Février 2016</span></p>
+						<p class="right-align bold">650€</p>
+						<a href="<?php echo base_url().'/mon-compte/mes-commandes/en-cours';?>" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
 					</div>
 				</div>
 				<div class="card col m6 s12 z-depth-0">
 					<div class="card-content indigo lighten-4">
 						<h3>Dernier Commentaire:</h3>
 						<div class="divider grey darken-4"></div>
-						<p>Arche antique - 03 Mars 2016</p>
-						<p>Super produit, dommage qu'il n'y ait pas plus...</p>
-						<a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
+						<p>Objectif Fish Eye, Canon - <span class="grey-text text-darken-2">15 Décembre 2015</span></p>
+						<p>Super produit, l'effet est vraiment concluant je peux faire créer des ...</p>
+						<a href="<?php echo base_url().'/mon-compte/mes-commentaires';?>" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
 					</div>
 				</div>
 				<div class="card col m6 s12 z-depth-0">
 					<div class="card-content deep-purple lighten-4">
-						<h3>Dernier Vente:</h3>
+						<h3>Dernière Vente:</h3>
 						<div class="divider grey darken-4"></div>
-						<p>Arche antique - 14 Avril 2016</p>
-						<p>Super produit, dommage qu'il n'y ait pas plus...</p>
-						<a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
+						<p>Vous n'avez pas encore fait de vente</p>
+						<a href="<?php echo base_url().'/mon-compte/mes-ventes/creer-article';?>" class="blue-text"><i class="tiny material-icons">play_arrow</i> Créer une vente</a>
 					</div>
 				</div>
 				<div class="card col m6 s12 z-depth-0">
 					<div class="card-content purple lighten-5">
 						<h3>Infos</h3>
 						<div class="divider grey darken-4"></div>
-						<p>Arche antique - 03 Mars 2016</p>
-						<p>Super produit, dommage qu'il n'y ait pas plus...</p>
-						<a href="" class="blue-text"><i class="tiny material-icons">play_arrow</i> En détail</a>
+						<p>Vous avez modifié vos informations le <span class="grey-text text-darken-2">03 Février 2016</span></p>
+						<a href="<?php echo base_url().'/page/contact';?>" class="blue-text"><i class="tiny material-icons">play_arrow</i> Signaler un problème</a>
 					</div>
 				</div>
 				<div class="divider"></div>

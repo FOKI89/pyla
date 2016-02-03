@@ -35,9 +35,9 @@
 						<table class="responsive-table striped">
 							<thead>
 								<tr>
-									<th data-field="reference">Référence</th>
+									<th data-field="reference">Article</th>
+									<th data-field="prix">Marque</th>
 									<th data-field="prix">Prix</th>
-									<th data-field="nombre-items">Nombre d'articles</th>
 									<th data-field="date">Date</th>
 									<th data-field="adresse-livraison">Adresse de livraison</th>
 									<th data-field="status">Status</th>
@@ -46,28 +46,12 @@
 
 							<tbody>
 								<tr>
-									<td><a href="">Alvin</a></td>
-									<td>90€</td>
-									<td>2</td>
-									<td>23 Janvier 2016</td>
+									<td><a href="<?php echo base_url().'/produit/1';?>">Projecteur HJK201</a></td>
+									<td>Sony</td>
+									<td>650€</td>
+									<td>02 Février 2016</td>
 									<td>89 golden ticket street</td>
-									<td>Terminée</td>
-								</tr>
-								<tr>
-									<td><a href="">Alan</a></td>
-									<td>15.30€</td>
-									<td>2</td>
-									<td>05 Janvier 2016</td>
-									<td>89 total recall place</td>
-									<td>Annulée</td>
-								</tr>
-								<tr>
-									<td><a href="">Jonathan</a></td>
-									<td>85.60€</td>
-									<td>4</td>
-									<td>18 Décembre 2015</td>
-									<td>89 golden ticket street</td>
-									<td>Terminée</td>
+									<td>En cours</td>
 								</tr>
 							</tbody>
 						</table>

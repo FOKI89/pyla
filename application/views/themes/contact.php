@@ -52,7 +52,7 @@
               <label>Objet</label>
             </div>
             <div class="input-field col s12 right-align">
-              <button class="btn waves-effect waves-light blue yellow-text " type="submit" name="connection">Envoyer
+              <button class="btn waves-effect waves-light blue yellow-text " type="submit" name="contact-form">Envoyer
                 <i class="material-icons right">send</i>
               </button>
             </div>

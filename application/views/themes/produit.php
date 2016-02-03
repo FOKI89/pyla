@@ -4,12 +4,12 @@
 		<h2 class="header center-on-small-only grey-text grey-darken-4-text"><?php echo $produit->libelle; ?></h2>
 		<div class ="row produit">
 			<div class="col s12 m6">
-				<div class="card">
+				<div class="card transparent z-depth-0">
 					<div class="card-image">
 						<img src="<?php echo img_url('produit/'.$produit->id.'/'.reset($produit->image)) ?>">
 					</div>
 				</div>
-				<div class="card">
+				<div class="card transparent">
 					<?php foreach($produit->image as $image){ ?>
 					<div class="card-image col s4">
 						<img class="materialboxed" src="<?php echo img_url('produit/'.$produit->id.'/'.$image) ?>">
