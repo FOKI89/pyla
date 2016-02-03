@@ -205,9 +205,9 @@ class Produit extends CI_Controller
 
                 $config["image_library"]  = "gd2";
                 $config["source_image"]   = $img["full_path"];
-                $config["maintain_ratio"] = TRUE;
-                $config["width"]          = 300;
-                $config["height"]         = 200;
+                $config["maintain_ratio"] = FALSE;
+                $config["width"]          = 400;
+                $config["height"]         = 400;
                 $config["overwrite"]      = TRUE;
 
                 $this->image_lib->initialize($config);
@@ -241,7 +241,7 @@ class Produit extends CI_Controller
 
     private function _validation_format($format){
         foreach($format as $item){
-            if(($item == "libelle" || $item == "reference" || $item == "marque") && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^((.){3,})$/"))) === false){
+            if(($item == "libelle" || $item == "reference" || $item == "marque") && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^((.){2,})$/"))) === false){
                 $return[1] = "Les champs libellé, référence et marque doivent se composer d'au moins 3 caractères";
                 die(json_encode($return));
             }elseif(!empty($this->input->post('video')) && filter_var($item, FILTER_VALIDATE_URL) === false){

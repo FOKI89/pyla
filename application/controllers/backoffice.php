@@ -311,6 +311,7 @@ class Backoffice extends CI_Controller
         $options_echappees = array();
         $options_non_echappees = array();
         $options_echappees["libelle"] = $post["libelle"];
+        $options_echappees["description"] = $post["description"];
         $options_non_echappees["id_parent"] = $post["id_parent"];
         $options_non_echappees["top"] = $post["top"];
         $options_non_echappees["home"] = $post["home"];

@@ -68,12 +68,15 @@ class Produit_model extends MY_Model
         return $produits;  
     }
 
-    public function setCategorie($libelle, $id_parent = null)
-    {  
-
-    }
-    
-    public function createMenu($array){
-
+    /*
+    |==================================================================================
+    | Méthode pour retourne les trois produits les mieux notés
+    |   . return : tous les champs de trois produits
+    |==================================================================================
+    */
+    public function getTopProduits(){
+        $query = $this->db->query('SELECT p.id, p.libelle FROM produits p INNER JOIN evaluations e ON e.id_produit = p.id ORDER BY note DESC LIMIT 3');
+        $produits = $query->result();
+        return $produits;  
     }
 }

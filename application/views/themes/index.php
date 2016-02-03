@@ -2,6 +2,6 @@
     <div class="container">
         <div class="section">
           <div class="row">
-            <h1 class="header center-on-small-only blue-text">Pila</h1>
+            <h2 class="header center-on-small-only blue-text"><?php echo $_SESSION['site_nom']; ?></h2>
           </div>
         

@@ -1,6 +1,6 @@
 	<div class="container">
 		<div class="section">
-			<h1 class="header center-on-small-only grey-text grey-darken-4-text">Inscription</h1>
+			<h2 class="header center-on-small-only grey-text grey-darken-4-text">Inscription</h2>
 			<div class ="row">
 				<div class="subscribe col s12">
 					<h2 class="blue-text darken-4-text">Rejoignez-nous</h2>

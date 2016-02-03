@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Sam 30 Janvier 2016 à 21:21
+-- Généré le :  Mer 03 Février 2016 à 14:09
 -- Version du serveur :  5.5.38
 -- Version de PHP :  5.6.2
 
@@ -39,169 +39,175 @@ CREATE TABLE `categories` (
 `id` int(11) NOT NULL,
   `id_parent` int(11) DEFAULT NULL,
   `libelle` varchar(255) NOT NULL,
+  `description` longtext,
   `rang` int(10) NOT NULL DEFAULT '1',
-  `top` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8;
+  `top` tinyint(1) DEFAULT '0',
+  `home` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `categories`
 --
 
-INSERT INTO `categories` (`id`, `id_parent`, `libelle`, `rang`, `top`) VALUES
-(1, NULL, 'Home', 1, 0),
-(2, NULL, 'Informatique', 2, 0),
-(3, NULL, 'Image & Son', 3, 0),
-(4, NULL, 'Jeux & Consoles', 4, 0),
-(5, NULL, 'Qui sommes-nous', 6, 0),
-(6, NULL, 'Contact', 5, 0),
-(7, 2, 'Pièce', 5, 0),
-(8, 2, 'Périphérique', 3, 0),
-(9, 2, 'Portable', 2, 0),
-(10, 2, 'Ordinateur', 1, 0),
-(11, 2, 'Réseau', 4, 0),
-(12, 3, 'Photo', 0, 0),
-(13, 3, 'Caméra', 0, 0),
-(14, 3, 'Télévision', 0, 0),
-(15, 3, 'Meuble', 0, 0),
-(16, 3, 'Home cinéma / Hifi', 0, 1),
-(17, 3, 'Lecteur enregistreur', 0, 0),
-(18, 3, 'Son numérique', 0, 0),
-(19, 3, 'Hi-Fi embarquée', 0, 0),
-(20, 3, 'Projection', 0, 0),
-(21, 3, 'Affichage public', 0, 0),
-(22, 4, 'Univers PC', 0, 0),
-(23, 4, 'Univers PS4', 0, 0),
-(24, 4, 'Univers PS3', 0, 0),
-(25, 4, 'Univers Xbox One', 0, 0),
-(26, 4, 'Univers 3DS & 2DS', 0, 0),
-(27, 4, 'Univers Wii U', 0, 0),
-(28, 4, 'Univers PS Vita', 0, 0),
-(29, 4, 'Autres Univers', 0, 0),
-(30, 7, 'Boîtier', 0, 1),
-(31, 7, 'Accessoires boîtier', 0, 0),
-(32, 7, 'Alimentation', 0, 0),
-(33, 7, 'Disque dur', 0, 0),
-(34, 7, 'Disque SSD', 0, 1),
-(35, 7, 'Carte mère', 0, 0),
-(36, 7, 'Carte graphique', 0, 0),
-(37, 7, 'Mémoire PC', 0, 0),
-(38, 7, 'Processeur', 0, 0),
-(39, 7, 'Refroidissement', 0, 0),
-(40, 8, 'Écran PC', 0, 0),
-(41, 8, 'Clef USB', 0, 0),
-(42, 8, 'Disque dur externe', 0, 0),
-(43, 8, 'Clavier/souris', 0, 0),
-(44, 8, 'Imprimante', 0, 0),
-(45, 8, 'Onduleur', 0, 0),
-(46, 8, 'Enceinte PC', 0, 0),
-(47, 8, 'Casque audio', 0, 0),
-(48, 8, 'Musique pro', 0, 0),
-(49, 8, 'Tablette graphique', 0, 0),
-(50, 9, 'PC Portable', 0, 0),
-(51, 9, 'Portable LDLCD', 0, 0),
-(52, 9, 'Portable Apple', 0, 0),
-(53, 9, 'Ultrabook', 0, 0),
-(54, 9, 'Tablette', 0, 0),
-(55, 9, 'Ipad', 0, 0),
-(56, 9, 'Sacs & sacoches', 0, 0),
-(57, 9, 'Extension mémoire', 0, 0),
-(58, 9, 'Refroidisseur', 0, 0),
-(59, 9, 'Accessoires tablette', 0, 0),
-(60, 10, 'Ordinateur Apple', 0, 0),
-(61, 10, 'Ordinateur PC fixe', 0, 0),
-(62, 10, 'Kit upgrade PC', 0, 0),
-(63, 10, 'PC LDLC', 0, 0),
-(64, 10, 'PC HardWare.fr', 0, 0),
-(65, 10, 'Mini PC', 0, 0),
-(66, 10, 'PC tout-en-un', 0, 0),
-(67, 10, 'PC tactile', 0, 0),
-(68, 10, 'Serveur', 0, 0),
-(69, 10, 'Garanties', 0, 0),
-(70, 11, 'Carte réseaux', 0, 0),
-(71, 11, 'Switch', 0, 0),
-(72, 11, 'Modem & routeur', 0, 0),
-(73, 11, 'CPL', 0, 0),
-(74, 11, 'Serveur NAS', 0, 0),
-(75, 11, 'Caméra IP', 0, 0),
-(76, 11, 'Domotique', 0, 0),
-(77, 12, 'Compact', 0, 0),
-(78, 12, 'Hybride', 0, 0),
-(79, 12, 'Reflex', 0, 0),
-(80, 12, 'Objectif', 0, 0),
-(81, 12, 'Carte mémoire', 0, 0),
-(82, 13, 'Caméscope', 0, 0),
-(83, 13, 'Caméra sportive', 0, 0),
-(84, 13, 'Sac, étui, dragonne', 0, 0),
-(85, 14, 'TV', 0, 0),
-(86, 14, 'TV 4K Ultra HD', 0, 0),
-(87, 14, 'TV connectée', 0, 0),
-(88, 14, 'Adaptateur TNT & Sat', 0, 0),
-(89, 14, 'Télécommande', 0, 0),
-(90, 15, 'Meuble TV', 0, 0),
-(91, 15, 'Support mural TV', 0, 0),
-(92, 15, 'Support plafond', 0, 0),
-(93, 16, 'Ampli home cinéma', 0, 0),
-(94, 16, 'Pack home cinéma', 0, 0),
-(95, 16, 'Enceintes', 0, 0),
-(96, 16, 'Chaîne Hi-Fi', 0, 0),
-(97, 16, 'Ampli Hi-Fi', 0, 0),
-(98, 17, 'Lecteur multimédia', 0, 0),
-(99, 17, 'Lecteur Blu-ray', 0, 0),
-(100, 17, 'Lecteur DVD', 0, 0),
-(101, 18, 'Lecteur MP3 & iPod', 0, 0),
-(102, 18, 'Casques', 0, 0),
-(103, 18, 'Enceinte Bluetooth', 0, 0),
-(104, 18, 'Dictaphone', 0, 0),
-(105, 18, 'Radio & radio réveil', 0, 0),
-(106, 19, 'Autoradio', 0, 0),
-(107, 19, 'Haut-parleur', 0, 0),
-(108, 19, 'Amplificateur', 0, 0),
-(109, 20, 'Vidéoprojecteur', 0, 0),
-(110, 20, 'Vidéoprojecteur 3D', 0, 0),
-(111, 20, 'Pico projecteur', 0, 0),
-(112, 20, 'Écran de projection', 0, 0),
-(113, 20, 'Pointeur laser', 0, 0),
-(114, 20, 'Support plafond', 0, 0),
-(115, 20, 'Lampes', 0, 0),
-(116, 21, 'Écran dynamique', 0, 0),
-(117, 22, 'Jeux PC', 0, 0),
-(118, 22, 'Joypad', 0, 0),
-(119, 22, 'Joystick', 0, 0),
-(120, 22, 'Volant PC', 0, 0),
-(121, 22, 'Clavier Gamer', 0, 0),
-(122, 22, 'Souris Gamer', 0, 0),
-(123, 22, 'Micro-casque Gamer', 0, 0),
-(124, 22, 'Lunettes protection', 0, 0),
-(125, 23, 'Console PS4', 0, 0),
-(126, 23, 'Jeux PS4', 0, 0),
-(127, 23, 'Accessoire PS4', 0, 0),
-(128, 24, 'Console PS3', 0, 0),
-(129, 24, 'Jeux PS3', 0, 0),
-(130, 24, 'Accessoire PS3', 0, 0),
-(131, 25, 'Console Xbox One', 0, 0),
-(132, 25, 'Jeux Xbox One', 0, 0),
-(133, 25, 'Accessoire Xbox One', 0, 0),
-(134, 26, 'Console 3DS & 2DS', 0, 0),
-(135, 26, 'Jeux 3DS & 2DS', 0, 0),
-(136, 26, 'Accessoire 3DS & 2DS', 0, 0),
-(137, 27, 'Console Wii U', 0, 0),
-(138, 27, 'Jeux Wii U', 0, 0),
-(139, 27, 'Accessoire Wii U', 0, 0),
-(140, 28, 'Console PS Vita', 0, 0),
-(141, 28, 'Jeux PS Vita', 0, 0),
-(142, 28, 'Accessoire PS Vita', 0, 0),
-(143, 29, 'Univers 360', 0, 0),
-(144, 29, 'Univers Wii', 0, 0),
-(145, 29, 'Univers DS', 0, 0),
-(146, 29, 'Univers PSP', 0, 0),
-(147, 29, 'Univers MAC', 0, 0),
-(148, 29, 'Produits dérivés', 0, 0),
-(149, 148, 'T-Shirt', 0, 0),
-(150, 148, 'Porte-clefs', 0, 0),
-(151, 148, 'Mugs', 0, 0),
-(152, 148, 'Blocs-notes', 0, 0),
-(159, 149, 'Dragon Ball', 0, 0),
-(160, 149, 'Final Fantasy', 0, 0);
+INSERT INTO `categories` (`id`, `id_parent`, `libelle`, `description`, `rang`, `top`, `home`) VALUES
+(1, NULL, 'Home', NULL, 1, 0, 1),
+(2, NULL, 'Informatique', NULL, 2, 0, 0),
+(3, NULL, 'Image & Son', NULL, 3, 0, 0),
+(4, NULL, 'Jeux & Consoles', NULL, 4, 0, 0),
+(5, NULL, 'Qui sommes-nous', NULL, 6, 0, 0),
+(6, NULL, 'Contact', NULL, 5, 0, 0),
+(7, 2, 'Pièce', NULL, 5, 0, 0),
+(8, 2, 'Périphérique', NULL, 3, 0, 0),
+(9, 2, 'Portable', NULL, 2, 0, 0),
+(10, 2, 'Ordinateur', NULL, 1, 0, 0),
+(11, 2, 'Réseau', NULL, 4, 0, 0),
+(12, 3, 'Photo', NULL, 0, 0, 0),
+(13, 3, 'Caméra', NULL, 0, 0, 0),
+(14, 3, 'Télévision', NULL, 0, 0, 0),
+(15, 3, 'Meuble', NULL, 0, 0, 0),
+(16, 3, 'Home cinéma / Hifi', NULL, 0, 1, 0),
+(17, 3, 'Lecteur enregistreur', NULL, 0, 0, 0),
+(18, 3, 'Son numérique', NULL, 0, 0, 0),
+(19, 3, 'Hi-Fi embarquée', NULL, 0, 0, 0),
+(20, 3, 'Projection', NULL, 0, 0, 0),
+(21, 3, 'Affichage public', NULL, 0, 0, 0),
+(22, 4, 'Univers PC', NULL, 0, 0, 0),
+(23, 4, 'Univers PS4', NULL, 0, 0, 0),
+(24, 4, 'Univers PS3', NULL, 0, 0, 0),
+(25, 4, 'Univers Xbox One', NULL, 0, 0, 0),
+(26, 4, 'Univers 3DS & 2DS', NULL, 0, 0, 0),
+(27, 4, 'Univers Wii U', NULL, 0, 0, 0),
+(28, 4, 'Univers PS Vita', NULL, 0, 0, 0),
+(29, 4, 'Autres Univers', NULL, 0, 0, 0),
+(30, 7, 'Boîtier', NULL, 0, 1, 0),
+(31, 7, 'Accessoires boîtier', NULL, 0, 0, 0),
+(32, 7, 'Alimentation', NULL, 0, 0, 0),
+(33, 7, 'Disque dur', NULL, 0, 0, 0),
+(34, 7, 'Disque SSD', 'Un SSD est matériellement plus solide qu''un disque dur, les plateaux de ces derniers étant de plus en plus souvent en verre depuis 2003. Cette spécificité lui permet une résistance aux chocs et aux vibrations bien plus importante que les disques mécaniques.\r\n\r\nLes SSD surclassent les disques durs classiques au niveau performance (débit, latence inexistante sur les SSD, consommation). Néanmoins, le rapport prix-espace de stockage reste encore largement à l''avantage du disque mécanique, près de dix fois moins cher en 2012.\r\n\r\nUne tendance apparue en 2012 sur les ordinateurs de salon consiste à mettre le système sur un SSD d''environ 100 Go et les données sur un disque dur de capacité dix fois supérieure et de coût similaire.\r\n\r\nDepuis 2013 les capacités des SSD ont beaucoup évolué et on peut en trouver de 2 To', 0, 1, 0),
+(35, 7, 'Carte mère', NULL, 0, 0, 0),
+(36, 7, 'Carte graphique', NULL, 0, 0, 0),
+(37, 7, 'Mémoire PC', NULL, 0, 0, 0),
+(38, 7, 'Processeur', NULL, 0, 0, 0),
+(39, 7, 'Refroidissement', NULL, 0, 0, 0),
+(40, 8, 'Écran PC', NULL, 0, 0, 0),
+(41, 8, 'Clef USB', NULL, 0, 0, 0),
+(42, 8, 'Disque dur externe', NULL, 0, 0, 0),
+(43, 8, 'Clavier/souris', NULL, 0, 0, 0),
+(44, 8, 'Imprimante', NULL, 0, 0, 0),
+(45, 8, 'Onduleur', NULL, 0, 0, 0),
+(46, 8, 'Enceinte PC', NULL, 0, 0, 0),
+(47, 8, 'Casque audio', NULL, 0, 0, 0),
+(48, 8, 'Musique pro', NULL, 0, 0, 0),
+(49, 8, 'Tablette graphique', NULL, 0, 0, 0),
+(50, 9, 'PC Portable', NULL, 0, 0, 0),
+(51, 9, 'Portable LDLCD', NULL, 0, 0, 0),
+(52, 9, 'Portable Apple', NULL, 0, 0, 0),
+(53, 9, 'Ultrabook', NULL, 0, 0, 0),
+(54, 9, 'Tablette', NULL, 0, 0, 0),
+(55, 9, 'Ipad', NULL, 0, 0, 0),
+(56, 9, 'Sacs & sacoches', NULL, 0, 0, 0),
+(57, 9, 'Extension mémoire', NULL, 0, 0, 0),
+(58, 9, 'Refroidisseur', NULL, 0, 0, 0),
+(59, 9, 'Accessoires tablette', NULL, 0, 0, 0),
+(60, 10, 'Ordinateur Apple', NULL, 0, 0, 0),
+(61, 10, 'Ordinateur PC fixe', NULL, 0, 0, 0),
+(62, 10, 'Kit upgrade PC', NULL, 0, 0, 0),
+(63, 10, 'PC LDLC', NULL, 0, 0, 0),
+(64, 10, 'PC HardWare.fr', NULL, 0, 0, 0),
+(65, 10, 'Mini PC', NULL, 0, 0, 0),
+(66, 10, 'PC tout-en-un', NULL, 0, 0, 0),
+(67, 10, 'PC tactile', NULL, 0, 0, 0),
+(68, 10, 'Serveur', NULL, 0, 0, 0),
+(69, 10, 'Garanties', NULL, 0, 0, 0),
+(70, 11, 'Carte réseaux', NULL, 0, 0, 0),
+(71, 11, 'Switch', NULL, 0, 0, 0),
+(72, 11, 'Modem & routeur', NULL, 0, 0, 0),
+(73, 11, 'CPL', NULL, 0, 0, 0),
+(74, 11, 'Serveur NAS', NULL, 0, 0, 0),
+(75, 11, 'Caméra IP', NULL, 0, 0, 0),
+(76, 11, 'Domotique', NULL, 0, 0, 0),
+(77, 12, 'Compact', NULL, 0, 0, 0),
+(78, 12, 'Hybride', NULL, 0, 0, 0),
+(79, 12, 'Reflex', NULL, 0, 0, 0),
+(80, 12, 'Objectif', NULL, 0, 0, 0),
+(81, 12, 'Carte mémoire', NULL, 0, 0, 0),
+(82, 13, 'Caméscope', NULL, 0, 0, 0),
+(83, 13, 'Caméra sportive', NULL, 0, 0, 0),
+(84, 13, 'Sac, étui, dragonne', NULL, 0, 0, 0),
+(85, 14, 'TV', NULL, 0, 0, 0),
+(86, 14, 'TV 4K Ultra HD', NULL, 0, 0, 0),
+(87, 14, 'TV connectée', NULL, 0, 0, 0),
+(88, 14, 'Adaptateur TNT & Sat', NULL, 0, 0, 0),
+(89, 14, 'Télécommande', NULL, 0, 0, 0),
+(90, 15, 'Meuble TV', NULL, 0, 0, 0),
+(91, 15, 'Support mural TV', NULL, 0, 0, 0),
+(92, 15, 'Support plafond', NULL, 0, 0, 0),
+(93, 16, 'Ampli home cinéma', NULL, 0, 0, 0),
+(94, 16, 'Pack home cinéma', NULL, 0, 0, 0),
+(95, 16, 'Enceintes', NULL, 0, 0, 0),
+(96, 16, 'Chaîne Hi-Fi', NULL, 0, 0, 0),
+(97, 16, 'Ampli Hi-Fi', NULL, 0, 0, 0),
+(98, 17, 'Lecteur multimédia', NULL, 0, 0, 0),
+(99, 17, 'Lecteur Blu-ray', NULL, 0, 0, 0),
+(100, 17, 'Lecteur DVD', NULL, 0, 0, 0),
+(101, 18, 'Lecteur MP3 & iPod', NULL, 0, 0, 0),
+(102, 18, 'Casques', NULL, 0, 0, 0),
+(103, 18, 'Enceinte Bluetooth', NULL, 0, 0, 0),
+(104, 18, 'Dictaphone', NULL, 0, 0, 0),
+(105, 18, 'Radio & radio réveil', NULL, 0, 0, 0),
+(106, 19, 'Autoradio', NULL, 0, 0, 0),
+(107, 19, 'Haut-parleur', NULL, 0, 0, 0),
+(108, 19, 'Amplificateur', NULL, 0, 0, 0),
+(109, 20, 'Vidéoprojecteur', NULL, 0, 0, 0),
+(110, 20, 'Vidéoprojecteur 3D', NULL, 0, 0, 0),
+(111, 20, 'Pico projecteur', NULL, 0, 0, 0),
+(112, 20, 'Écran de projection', NULL, 0, 0, 0),
+(113, 20, 'Pointeur laser', NULL, 0, 0, 0),
+(114, 20, 'Support plafond', NULL, 0, 0, 0),
+(115, 20, 'Lampes', NULL, 0, 0, 0),
+(116, 21, 'Écran dynamique', NULL, 0, 0, 0),
+(117, 22, 'Jeux PC', NULL, 0, 0, 0),
+(118, 22, 'Joypad', NULL, 0, 0, 0),
+(119, 22, 'Joystick', NULL, 0, 0, 0),
+(120, 22, 'Volant PC', NULL, 0, 0, 0),
+(121, 22, 'Clavier Gamer', NULL, 0, 0, 0),
+(122, 22, 'Souris Gamer', NULL, 0, 0, 0),
+(123, 22, 'Micro-casque Gamer', NULL, 0, 0, 0),
+(124, 22, 'Lunettes protection', NULL, 0, 0, 0),
+(125, 23, 'Console PS4', NULL, 0, 0, 0),
+(126, 23, 'Jeux PS4', NULL, 0, 0, 0),
+(127, 23, 'Accessoire PS4', NULL, 0, 0, 0),
+(128, 24, 'Console PS3', NULL, 0, 0, 0),
+(129, 24, 'Jeux PS3', NULL, 0, 0, 0),
+(130, 24, 'Accessoire PS3', NULL, 0, 0, 0),
+(131, 25, 'Console Xbox One', NULL, 0, 0, 0),
+(132, 25, 'Jeux Xbox One', NULL, 0, 0, 0),
+(133, 25, 'Accessoire Xbox One', NULL, 0, 0, 0),
+(134, 26, 'Console 3DS & 2DS', NULL, 0, 0, 0),
+(135, 26, 'Jeux 3DS & 2DS', NULL, 0, 0, 0),
+(136, 26, 'Accessoire 3DS & 2DS', NULL, 0, 0, 0),
+(137, 27, 'Console Wii U', NULL, 0, 0, 0),
+(138, 27, 'Jeux Wii U', NULL, 0, 0, 0),
+(139, 27, 'Accessoire Wii U', NULL, 0, 0, 0),
+(140, 28, 'Console PS Vita', NULL, 0, 0, 0),
+(141, 28, 'Jeux PS Vita', NULL, 0, 0, 0),
+(142, 28, 'Accessoire PS Vita', NULL, 0, 0, 0),
+(143, 29, 'Univers 360', NULL, 0, 0, 0),
+(144, 29, 'Univers Wii', NULL, 0, 0, 0),
+(145, 29, 'Univers DS', NULL, 0, 0, 0),
+(146, 29, 'Univers PSP', NULL, 0, 0, 0),
+(147, 29, 'Univers MAC', NULL, 0, 0, 0),
+(148, 29, 'Produits dérivés', NULL, 0, 0, 0),
+(149, 148, 'T-Shirt', NULL, 0, 0, 0),
+(150, 148, 'Porte-clefs', NULL, 0, 0, 0),
+(151, 148, 'Mugs', NULL, 0, 0, 0),
+(152, 148, 'Blocs-notes', NULL, 0, 0, 0),
+(159, 149, 'Dragon Ball', NULL, 0, 0, 0),
+(160, 149, 'Final Fantasy', NULL, 0, 0, 0),
+(162, 148, 'Rick and Morty', NULL, 1, 1, 0),
+(163, 29, 'Univers DSi XL', NULL, 1, 1, 0),
+(166, 29, 'Univers DS XL', NULL, 0, 0, 1),
+(167, 10, 'MacBook Pro Rétina', 'Ceci est une description pour un MacBook Pro Rétina', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -259,7 +265,18 @@ INSERT INTO `categories_produits` (`id_categorie`, `id_produit`) VALUES
 (39, 38),
 (39, 39),
 (39, 40),
-(69, 131);
+(69, 131),
+(109, 132),
+(144, 133),
+(109, 134),
+(128, 135),
+(148, 136),
+(94, 137),
+(94, 138),
+(94, 139),
+(94, 140),
+(94, 141),
+(94, 142);
 
 -- --------------------------------------------------------
 
@@ -347,7 +364,7 @@ CREATE TABLE `evaluations` (
   `id_produit` int(11) NOT NULL,
   `note` enum('1','2','3','4','5') DEFAULT NULL,
   `date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `evaluations`
@@ -357,7 +374,13 @@ INSERT INTO `evaluations` (`id`, `id_utilisateur`, `id_produit`, `note`, `date`)
 (1, 193, 1, '4', '0000-00-00 00:00:00'),
 (2, 195, 2, '1', '0000-00-00 00:00:00'),
 (3, 195, 3, '2', '0000-00-00 00:00:00'),
-(4, 193, 20, '4', '0000-00-00 00:00:00');
+(4, 193, 20, '4', '0000-00-00 00:00:00'),
+(5, 193, 137, '1', '0000-00-00 00:00:00'),
+(6, 195, 138, '1', '0000-00-00 00:00:00'),
+(7, 193, 139, '1', '0000-00-00 00:00:00'),
+(8, 193, 140, '5', '0000-00-00 00:00:00'),
+(9, 195, 141, '5', '0000-00-00 00:00:00'),
+(10, 195, 142, '5', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -390,6 +413,26 @@ CREATE TABLE `factures_lignes` (
   `id_facture` int(11) NOT NULL,
   `quantite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pages`
+--
+
+CREATE TABLE `pages` (
+`id` int(11) unsigned NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `contenu` longtext NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `pages`
+--
+
+INSERT INTO `pages` (`id`, `titre`, `contenu`) VALUES
+(1, 'Devenir Vendeur', 'Morbi diam lacus, semper at euismod in, posuere non lectus. Sed non pretium risus. Nam volutpat tortor non ipsum pulvinar, et commodo augue tincidunt. Proin lobortis magna sit amet quam egestas, ut scelerisque erat imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi pellentesque velit dui, nec posuere ex imperdiet tristique. Fusce luctus urna id pellentesque lobortis. Nulla ullamcorper est eu feugiat sollicitudin. Maecenas ut urna velit. Duis consectetur finibus semper. Aliquam erat volutpat. Vivamus quis lectus enim. Etiam ut mauris mollis dui venenatis feugiat eu eget nisl. Phasellus mattis tellus a eros rutrum, at facilisis eros aliquet. Cras eget magna at mi porttitor feugiat posuere at libero.'),
+(2, 'Mentions légales', 'Phasellus vel mauris convallis, pulvinar sapien vel, faucibus erat. Aenean sit amet venenatis orci. Nunc nulla lacus, elementum id quam quis, lobortis ultricies dui. In congue maximus massa, nec dictum sapien interdum in. Donec sed neque nisi. Sed a maximus ipsum. Aenean vitae ante sagittis, semper mi ac, molestie eros. Mauris id pretium sapien. Proin blandit suscipit elementum. Nam sodales odio quis mauris facilisis, sit amet placerat urna aliquam. Donec vitae egestas tortor. Nam porttitor congue orci nec fringilla. Maecenas euismod faucibus rhoncus. Pellentesque in tincidunt nisl, at varius neque. Praesent dictum laoreet ex, sed accumsan nibh posuere sed.');
 
 -- --------------------------------------------------------
 
@@ -667,7 +710,7 @@ INSERT INTO `pays` (`id`, `code`, `libelle`, `indicatif`) VALUES
 
 CREATE TABLE `produits` (
 `id` int(11) NOT NULL,
-  `reference` varchar(255) NOT NULL,
+  `reference` varchar(255) DEFAULT NULL,
   `libelle` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `marque` varchar(255) NOT NULL,
@@ -675,14 +718,14 @@ CREATE TABLE `produits` (
   `video` varchar(255) DEFAULT NULL,
   `statut` tinyint(1) NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `produits`
 --
 
 INSERT INTO `produits` (`id`, `reference`, `libelle`, `image`, `marque`, `description`, `video`, `statut`, `date`) VALUES
-(1, 'IPB1', 'UMX-3 Noir', '', 'LDLC', NULL, '', 1, '0000-00-00'),
+(1, 'IPB1', 'UMX-3 Noir', '', 'LDLC', 'Le boîtier PC LDLC UMX-3 est un boîtier Mini Tour au design superbe bénéficiant d''une qualité de fabrication supérieure. Conçu pour être fonctionnel, ergonomique et efficace, il se destine à tous les types de configurations compactes : PC Gamer mono-GPU, PC Multimédia, Configuration avancée (pour power user), PC bureautique et Station de travail.', '', 1, '0000-00-00'),
 (2, 'IPB2', 'QT01 Blanc', '', 'LDLC', NULL, '', 0, '0000-00-00'),
 (3, 'IPB3', 'Aeolus', '', 'Advance', NULL, '', 1, '0000-00-00'),
 (4, 'IPB4', 'Aegis Core (Bleu)', '', 'BitFenix', NULL, '', 1, '0000-00-00'),
@@ -722,7 +765,18 @@ INSERT INTO `produits` (`id`, `reference`, `libelle`, `image`, `marque`, `descri
 (38, 'IPR2', 'Alpine M1', '', 'Arctic', NULL, '', 1, '0000-00-00'),
 (39, 'IPR3', 'Seidon 120V (Ver. 2.0)', '', 'Cooler Master LTD', NULL, '', 1, '0000-00-00'),
 (40, 'IPR4', 'Macho Zero', '', 'Thermalright', NULL, '', 1, '0000-00-00'),
-(131, 'Reference 1', 'Produit 1', NULL, 'Marque 1', NULL, NULL, 1, '2016-01-28');
+(131, 'IPSSD4', 'Phoenix Blade 680 Go PCI Express 8x', NULL, 'Thermalright', NULL, NULL, 1, '2016-01-28'),
+(132, '', 'Vidéoprojecteur', NULL, 'Canon', 'Ceci est un vidéoprojecteur', NULL, 1, '2016-02-02'),
+(133, 'RF-09', 'Vidéoprojecteur', NULL, 'Canon', 'Ceci est un vidéoprojecteur', NULL, 1, '2016-02-02'),
+(134, '', 'PS4', NULL, 'SONY', 'Console Next-Gen', NULL, 1, '2016-02-02'),
+(135, '', 'PS3', NULL, 'SONY', 'Ceci est une base du tout', NULL, 1, '2016-02-02'),
+(136, 'RICK-092', 'Rick and Morty - Comic', NULL, 'Adult Swim', 'Comic de la série Rick and Morty', NULL, 1, '2016-02-02'),
+(137, 'AZERTY1', 'Home Cinéma 1', NULL, 'LG', 'Ceci est un Home Cinéma 1', NULL, 1, '2016-02-03'),
+(138, 'AZERTY2', 'Home Cinéma 2', NULL, 'Samsung', 'Ceci est un Home Cinéma 2', NULL, 1, '2016-02-03'),
+(139, 'AZERTY3', 'Home Cinéma 3', NULL, 'Yamaha', 'Ceci est un Home Cinéma 3', NULL, 1, '2016-02-03'),
+(140, 'AZERTY1', 'Home Cinéma 1', NULL, 'LG', 'Ceci est une description de home cinéma 1', NULL, 1, '2016-02-03'),
+(141, 'AZERTY2', 'Home Cinéma 2', NULL, 'Samsung', 'Ceci est une description de home cinéma 2', NULL, 1, '2016-02-03'),
+(142, 'AZERTY3', 'Home Cinéma 3', NULL, 'Yamaha', 'Ceci est une description de home cinéma 3', NULL, 1, '2016-02-03');
 
 -- --------------------------------------------------------
 
@@ -766,16 +820,15 @@ CREATE TABLE `site` (
   `email` varchar(255) NOT NULL,
   `telephone` varchar(255) NOT NULL,
   `logo` varchar(255) DEFAULT NULL,
-  `mdp` varchar(255) NOT NULL,
   `date_creation` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `site`
 --
 
-INSERT INTO `site` (`id`, `nom`, `adresse`, `cp`, `ville`, `id_pays`, `email`, `telephone`, `logo`, `mdp`, `date_creation`) VALUES
-(1, 'Pyla', '25 rue Claude Tillier', '75012', 'PARIS', 76, 'contact@pyla.fr', '01 74 67 36 79', NULL, '', '2016-01-28 22:19:00');
+INSERT INTO `site` (`id`, `nom`, `adresse`, `cp`, `ville`, `id_pays`, `email`, `telephone`, `logo`, `date_creation`) VALUES
+(1, 'Pylos', '18 rue Claude Tillier', '75013', 'PARIS', 61, 'pylos@contact.fr', '01.74.25.12.25', NULL, '2016-02-03 02:05:45');
 
 -- --------------------------------------------------------
 
@@ -787,7 +840,7 @@ CREATE TABLE `statut` (
 `id` int(11) NOT NULL,
   `libelle` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `statut`
@@ -798,7 +851,8 @@ INSERT INTO `statut` (`id`, `libelle`, `description`) VALUES
 (2, 'Client', 'L''accès à cette partie de Pyla est restreint'),
 (3, 'Vendeur', 'L''accès à cette partie de Pyla est restreint'),
 (4, 'Vendeur malhonnête', 'Nombre de ventes non honorées trop élevé<br>Pour en savoir plus, <a href=''mailto:contact@pyla.fr''> contactez-nous</a>'),
-(5, 'Payeur malhonnête', 'Nombre de paiements non honorés trop élevé<br>Pour en savoir plus, <a href=''mailto:contact@pyla.fr''> contactez-nous</a>');
+(5, 'Payeur malhonnête', 'Nombre de paiements non honorés trop élevé<br>Pour en savoir plus, <a href=''mailto:contact@pyla.fr''> contactez-nous</a>'),
+(6, 'Bloqué', 'Compte bloqué');
 
 -- --------------------------------------------------------
 
@@ -822,7 +876,18 @@ CREATE TABLE `token` (
 `id` int(11) unsigned NOT NULL,
   `token` varchar(30) DEFAULT NULL,
   `date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `token`
+--
+
+INSERT INTO `token` (`id`, `token`, `date`) VALUES
+(1, 'EifvlKJ6cW', '2016-02-01 14:32:28'),
+(2, 'PS2pz2u2RV', '2016-02-01 17:09:22'),
+(3, 'dUbbUjeK1Y', '2016-02-01 21:37:07'),
+(4, '5bVCAOVz5h', '2016-02-02 02:43:05'),
+(5, 'hq43QV3W5Q', '2016-02-02 03:54:04');
 
 -- --------------------------------------------------------
 
@@ -845,15 +910,21 @@ CREATE TABLE `utilisateurs` (
   `statut` int(11) DEFAULT NULL,
   `date_entree` datetime NOT NULL,
   `id_token` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=286 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id`, `prenom`, `nom`, `adresse`, `telephone`, `cp`, `ville`, `id_pays`, `email`, `mdp`, `date_naissance`, `statut`, `date_entree`, `id_token`) VALUES
-(193, 'Damien', 'LERY', '12 rue Damrémont', '0174567899', '75018', 'PARIS', 0, 'Burminfely78@einro.com', 'YSPWe58pWLqDFvXJHW6+y7QZhx0hOrJU9rEItduXFekK7zRuL/abofXgyf4a7CCXDsIdUY3zJwhJJeN2qSkfqA==', NULL, 2, '2016-01-27 00:00:00', 49),
-(195, 'Damien', 'LERY', '12 rue Damrémont', '0174567899', '75018', 'PARIS', 0, 'Burminfely78@enro.com', 'JKyOw5O8uSC2QNawXipgnPZ22/ICn6qYnhjvaFrmKmTekun9Ii1YpuW7Z+U3GbLJiV0YjVafpfD6Cy3TSCZFEw==', NULL, 2, '2016-01-27 00:00:00', 51);
+(193, 'Damien', 'LERY', '12 rue Damrémont', '0174567899', '75018', 'PARIS', 0, 'Burminfely78@einro.com', 'YSPWe58pWLqDFvXJHW6+y7QZhx0hOrJU9rEItduXFekK7zRuL/abofXgyf4a7CCXDsIdUY3zJwhJJeN2qSkfqA==', NULL, 3, '2016-01-27 00:00:00', 49),
+(195, 'Damien', 'LERY', '12 rue Damrémont', '0174567899', '75018', 'PARIS', 0, 'Burminfely78@einrot.com', 'JKyOw5O8uSC2QNawXipgnPZ22/ICn6qYnhjvaFrmKmTekun9Ii1YpuW7Z+U3GbLJiV0YjVafpfD6Cy3TSCZFEw==', NULL, 4, '2016-01-27 00:00:00', 51),
+(279, 'Dam', 'LERY', '17 rue Damrémont', '0174560061', '75018', 'TOURS', 76, 'damien@sfr.fr', '3Ig2Ql+uASqdF3YZgvmKnLSaMc8E6LN0OU0oaJ2of50Jnm3NCqPcN2JA8x44aIPur2FIGtlKDTkThA0Wp7q1Rg==', NULL, 5, '2016-02-01 09:39:49', NULL),
+(280, 'Jean', 'BON', '25 rue Claude Tillier', '', '', 'PARIS', 61, 'jean.bon@free.us', 'Wg5aIPiOIBLTbySR7EBrrEwWPzy9ZasgbrZDPlWmtz4O9xJmRhmxcKsIm7zdY62ZhJafNdHBw5BqMmsMdyG8pw==', NULL, 6, '2016-02-01 14:32:28', 1),
+(281, 'Ludovic', 'SIRE', '17 rue du velu', '0678990128', '75003', 'PARIS', 76, 'ludo@free.fr', 'ZjaFdteF+1R5FejbrjC3ztT+QtbOngXXSznn9xESvPOz/OGMU8/aWJMe1yNVYWDYCL539n7fdN6OJwuOwblsnQ==', NULL, 2, '2016-02-01 17:09:22', 2),
+(283, 'Priscille', 'LIBEAUT', '', '', '', 'PARIS', 76, 'priss@sfr.fr', 'KHcdyhESl3EC1d3IKG85asni28/6iXpdhhyb6TIgZ2LXY9FTCpu1Eq3213v2e3z919HdUvcwO0d9Ru8YySeZHw==', NULL, 2, '2016-02-02 02:43:05', 4),
+(284, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'damien.lery@sfr.fr', '6CNqPu5BWQG/two7vUJONavSkNwZb2OWhvYm55mYrq64AX6JRCDo2bl7NECE44ztqElLVynhEEQfFoyi/tmSJw==', NULL, 1, '2016-02-02 02:51:21', NULL),
+(285, 'Ludovic', 'SIRE', '', '', '', '', 76, 'ludovic@free.fr', 'TZ2gHFHYZqTqk4JarstxgNkhkFEY+Fp4NhWhJzI4FTQ8ENkE3WqXmTxEljn8OsVyoz2j4hjYGMJCFsneNqFF7A==', NULL, NULL, '2016-02-02 03:54:04', 5);
 
 --
 -- Index pour les tables exportées
@@ -926,6 +997,12 @@ ALTER TABLE `factures_lignes`
  ADD PRIMARY KEY (`id`), ADD KEY `IDX_70E5DC89F7384557` (`id_produit`), ADD KEY `IDX_70E5DC89201BCD60` (`id_facture`);
 
 --
+-- Index pour la table `pages`
+--
+ALTER TABLE `pages`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `pays`
 --
 ALTER TABLE `pays`
@@ -992,7 +1069,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `categories`
 --
 ALTER TABLE `categories`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=161;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=168;
 --
 -- AUTO_INCREMENT pour la table `commandes`
 --
@@ -1017,7 +1094,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `evaluations`
 --
 ALTER TABLE `evaluations`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `factures`
 --
@@ -1029,6 +1106,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `factures_lignes`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT pour la table `pages`
+--
+ALTER TABLE `pages`
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT pour la table `pays`
 --
 ALTER TABLE `pays`
@@ -1037,7 +1119,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=250;
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=132;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=143;
 --
 -- AUTO_INCREMENT pour la table `produits_utilisateurs`
 --
@@ -1047,12 +1129,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `site`
 --
 ALTER TABLE `site`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `statut`
 --
 ALTER TABLE `statut`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `tags`
 --
@@ -1062,12 +1144,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `token`
 --
 ALTER TABLE `token`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=263;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=286;
 --
 -- Contraintes pour les tables exportées
 --

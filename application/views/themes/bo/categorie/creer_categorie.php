@@ -21,7 +21,7 @@
 		<div class="col s12">
 			<!-- ======================================================================= -->
 			<!-- Formulaire de création d'utilisateur -->
-			<div class="row">
+			<div class="row center-align">
 				<div class="col s12">
 					<div class="card hoverable" >
 						<div class="card-content">
@@ -35,12 +35,19 @@
 									<div class="input-field col s12 m6 select-damous grey-text">
 										<?php echo form_dropdown("id_parent",$categorie, "", "class='validate' id='select_parent'"); ?>
 									</div>
+								</div>
 								<div class="row">
-									<div class="input-field col s12 m6">
+									<div class="input-field col s12 m12">
+										<textarea name="description" id="description" class="materialize-textarea" ></textarea>
+										<label for="description">Description</label>
+									</div>
+								</div>
+								<div class="row left-align">
+									<div class="input-field col s12 m2">
 										<input type="checkbox" name="top" id="top"  value="off"/>
 										<label for="top">En avant</label>
 									</div>
-									<div class="input-field col s12 m6">
+									<div class="input-field col s12 m2">
 										<input type="checkbox" name="home" id="home"  value="off"/>
 										<label for="home">Lien vers accueil</label>
 									</div>
