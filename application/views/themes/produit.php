@@ -28,13 +28,17 @@
 				<?php if(isset($produit->description)){ ?>
 					<p class="infos-produit bold">Description</p>
 					<p><?php echo $produit->description; }?></p>
-					<p class="infos-produit bold">Le meilleur prix:</p>
-					<p><span class="prix red-text darken-4-text bold">103.30€</span> + frais de port(<span class="bold">30€</span>)</p>
-					<p>Vendu par <a href="#" class="blue-text">Prixdedingue</a></p>
+					<p class="infos-produit bold">Prix (€)</p>
+					<p><span class="prix red-text darken-4-text bold"><?php echo $produit->prix; ?></span></p>
+					<?php if(!empty($produit->prenom)){ ?>
+					<p>Vendu par <a href="mailto:<?php echo $produit->email; ?>?subject=A propos de l'article <?php echo $produit->libelle; ?>" class="blue-text"><?php echo $produit->prenom.' '.$produit->nom; ?></a></p>
+					<?php }elseif($produit->statut == "1"){ ?>
+					<p>Vendu par <a href="mailto:<?php echo $_SESSION['site_email']; ?>?subject=A propos de l'article <?php echo $produit->libelle; ?>" class="blue-text"><?php echo $_SESSION['site_nom']; ?></a></p>
+					<?php } ?>
 					<div class="row">
 						<form id="ajout_panier" action="" method="get">
 							<div class="input-field col s12 center">
-								<button class="btn waves-effect waves-light blue yellow-text" type="submit" name="ajout_panier">Ajouter au panier
+								<button class="btn waves-effect waves-light blue yellow-text" type="" name="ajout_panier" data-panier="<?php echo $produit->id; ?>">Ajouter au panier
 									<i class="material-icons right medium">shopping_cart</i>
 								</button>
 							</div>

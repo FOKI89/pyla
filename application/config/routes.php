@@ -95,6 +95,7 @@ $route['categorie/(:num)'] = "produit/liste_produits/$1";
 */
 
 $route['produit/(:num)'] = "produit/detail_produit/$1";
+$route['produit/ajout-panier'] = "produit/ajout_panier";
 
 /*
 | -------------------------------------------------------------------------
@@ -128,6 +129,7 @@ $route['deconnexion'] = "utilisateur/deconnexion";
 */
 
 $route['backoffice'] = "backoffice/accueil";
+$route['backoffice/reinitialisation'] = "backoffice/form_reinitialisation";
 $route['backoffice/nouveau-produit'] = "produit/form_creation";
 $route['backoffice/nouveau-critere'] = "critere/form_creation";
 $route['backoffice/creer-compte'] = "backoffice/creer_utilisateur";

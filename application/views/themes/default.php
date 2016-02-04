@@ -175,7 +175,7 @@
 	           		<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
 	           	</div>
 	        </div>
-	    </footer>
+	    </footer><?php var_dump($_SESSION["site_cp"]);?>
 		<?php foreach($js as $url): ?>
 			<script type="text/javascript" src="<?php echo $url; ?>"></script>
 		<?php endforeach; ?>

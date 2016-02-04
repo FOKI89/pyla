@@ -17,13 +17,13 @@ class Backoffice extends CI_Controller
 
     public function accueil(){
         if(!isset($_SESSION['admin']) || $_SESSION['admin'] != 1){
-            $admin_count = $this->utilisateur->count('statut',1);
+            /*$admin_count = $this->utilisateur->count('statut',1);
             if($admin_count == 0){
                 $this->layout->set_titre("Back Office - Installation");
                 $this->layout->set_theme("default_bo");
                 $this->load->view("themes/bo/login/backend_config");
                 return false;
-            }
+            }*/
             $data = array();
             if(isset($_COOKIE["email"]) && isset($_COOKIE['mdp'])){
                 $data["email"] = $_COOKIE["email"];
@@ -39,6 +39,13 @@ class Backoffice extends CI_Controller
             $this->layout->view("themes/bo/dashboard/dashboard");
             return false;
         }
+    }
+
+    public function form_reinitialisation(){
+        $this->layout->set_titre("Back Office - Installation");
+        $this->layout->set_theme("default_bo");
+        $this->load->view("themes/bo/login/backend_config");
+        return false;
     }
 
     public function creer_categorie(){
@@ -412,11 +419,11 @@ class Backoffice extends CI_Controller
     }
 
     public function reinitialisation(){
-        $this->utilisateur->delete(array("statut" => 1));
+        //$this->utilisateur->delete(array("statut" => 1));
         session_unset();
         setcookie('email', '', 1);
         setcookie('mdp', '', 1);
-        header('Location: '.site_url('backoffice'));
+        header('Location: '.site_url('backoffice/form_reinitialisation'));
         exit();
     }
 

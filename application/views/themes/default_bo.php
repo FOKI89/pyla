@@ -129,11 +129,6 @@
 						<div class="collapsible-header"><i class="material-icons">settings</i>
 							<a href="<?php echo site_url('backoffice/parametres'); ?>" class="categorie_menu">Paramètres</a>
 						</div>
-						<div class="collapsible-body">
-							<ul class="center-align blue-text text-darken-4">
-								<li>Sous-menu Paramètres</li>
-							</ul>
-						</div>
 					</li>
 					<!-- Déconnexion -->
 					<li id="deconnexion">

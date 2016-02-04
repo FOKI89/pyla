@@ -48,7 +48,7 @@ class Produit extends CI_Controller
         }while(!empty($id_parent));
 
         $breadcrumb = array_reverse($breadcrumb);
-        if(!$query = $this->db->query('SELECT p.id, p.reference, p.libelle, p.marque, p.description, p.video, p.statut FROM categories_produits cp INNER JOIN produits p ON p.id = cp.id_produit WHERE cp.id_categorie = '.$this->id_categorie)){
+        if(!$query = $this->db->query('SELECT p.id, p.reference, p.libelle, p.marque, p.description, p.video, p.statut FROM categories_produits cp INNER JOIN produits p ON p.id = cp.id_produit WHERE cp.id_categorie = '.$this->id_categorie.' AND p.statut = 1')){
             show_error("Select produits by categorie","error_db");
             return false;
         }
@@ -73,6 +73,7 @@ class Produit extends CI_Controller
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("utilisateur/form_creation");
+        $this->layout->ajouter_js("produit/ajout_panier");
         $this->layout->view('themes/liste_produits',$data);
     }
 
@@ -109,7 +110,11 @@ class Produit extends CI_Controller
 
     public function detail_produit($id_produit = null){
         $this->id = intval($id_produit);
-        $produit = $this->prod->read("*",array("id" => $this->id));
+        if(!$query = $this->db->query('SELECT p.id, p.libelle, p.reference, p.marque, p.description, pu.prix, u.nom, u.prenom, u.email, u.statut FROM produits p INNER JOIN produits_utilisateurs pu ON pu.id_produit = p.id INNER JOIN utilisateurs u ON u.id = pu.id_utilisateur WHERE p.id = '.$this->id)){
+            show_error("Select produit utilisateur","error_db");
+            return false;
+        }
+        $produit = $query->result();
 
         $categorie = $this->cat->getCategoriesByProduit($id_produit);
         $categorie[0]['type'] = "categorie";
@@ -122,13 +127,17 @@ class Produit extends CI_Controller
             $tab[$i] = $image;
             $i++;
         }
-        $produit[0]->image = $tab;
+        $produit[0]->image = $tab; 
         $breadcrumb = array();
         $breadcrumb[] = $categorie[0];
         $breadcrumb[] = $produit[0];
         $data['produit'] = $produit[0];
         $data['breadcrumb'] = $breadcrumb;
         $this->layout->set_titre($produit[0]->libelle);
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("produit/ajout_panier");
         $this->layout->view("themes/produit",$data);
     }
 
@@ -243,6 +252,14 @@ class Produit extends CI_Controller
             return false;
         }
 
+
+        $options_echappees = array();
+        $options_non_echappees = array();
+        $options_non_echappees["statut"] = "3";
+        if(!$this->utilisateur->update((int)$_SESSION['id'],$options_echappees,$options_non_echappees)){
+            show_error("Update utilisateur vendeur","error_db");
+            return false;
+        }
         $return[0] = true;
         die(json_encode($return));
     }
@@ -380,5 +397,35 @@ class Produit extends CI_Controller
             $result = preg_replace('#&[^;]+;#', '', $str);
         }
         return $result;
+    }
+    public function ajout_panier(){
+        $return = array();
+        $return[0] = false;
+
+        $id_produit = $this->input->post("id_produit");
+
+        if(!$query_vendeur = $this->db->query('SELECT p.id, p.libelle, p.reference, p.marque, p.description, pu.prix, u.nom, u.prenom, u.email, u.statut FROM utilisateurs u INNER JOIN produits_utilisateurs pu ON pu.id_utilisateur = u.id INNER JOIN produits p ON p.id = pu.id_produit WHERE pu.id_produit = '.$id_produit)){
+            show_error("Select produit vendeur","error_db");
+            return false;
+        }
+        $panier = $query_vendeur->result();
+
+        if(!isset($_SESSION['panier'])){
+            $_SESSION['panier'] = array();
+        }else{
+            foreach($_SESSION['panier'] as $key => $value){
+                foreach($_SESSION['panier'] as $key => $value){
+                    if($value->id == $id_produit){
+                        $return[1] = "Article déjà repertorié";
+                        die(json_encode($return));
+                    }
+                }
+            }
+        }
+        $_SESSION['panier'][] = $panier[0];
+
+        $return = array();
+        $return[0] = true;
+        die(json_encode($return));
     }
 }

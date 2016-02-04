@@ -4,7 +4,7 @@ $("#installation").on("submit", function(c){
     $.each($('#installation :input'), function(i, fileds){
        data.append($(fileds).attr('name'), $(fileds).val());
     });
-    var champs = ["email","mdp","confirm_mdp"];
+    var champs = ["old_email","email_contact","mdp","confirm_mdp"];
     for(var i= 0; i < champs.length; i++)
     {
         $('[name ='+champs[i]+']').css({ 'box-shadow': 'none'});
@@ -13,7 +13,7 @@ $("#installation").on("submit", function(c){
         } 
     }
     $.ajax({
-        url: 'utilisateur/form_install',
+        url: '../utilisateur/form_install',
         data: data,
         cache: false,
         contentType: false,
@@ -30,7 +30,7 @@ $("#installation").on("submit", function(c){
                     showConfirmButton: false
                 });
                 setTimeout(function() {
-                    location.reload();
+                    window.location.replace(jqXHR[1]);
                 }, 2200);
                 
             }else if(jqXHR[1] == "require"){
@@ -44,6 +44,13 @@ $("#installation").on("submit", function(c){
                 swal({
                     title: "Erreur",
                     text: "Les mots de passe ne concordent pas",
+                    type: "warning",
+                    showConfirmButton: true
+                });
+            }else if(jqXHR[1] == "introuvable"){
+                swal({
+                    title: "Erreur",
+                    text: "L'ancien email n'a pas été trouvé",
                     type: "warning",
                     showConfirmButton: true
                 });
