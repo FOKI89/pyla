@@ -15,7 +15,7 @@
 <!-- ======================================================================= -->
 <!-- CONTENU PRINCIPAL-->
 <!-- Conteneur -->
-<div class="container">
+<div class="super-container">
 	<!-- Center row -->
 	<div class="row ">
 		<div class="col s12 center-align">

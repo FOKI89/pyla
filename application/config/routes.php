@@ -67,8 +67,8 @@ $route['accueil.html'] = "accueil/accueil";
 $route['accueil.php'] = "accueil/accueil";
 $route['connexion'] = "accueil/form_connexion";
 $route['connexion.php'] = "accueil/form_connexion";
-$route['recherche'] = "accueil/search_front";
-$route['recherche.php'] = "accueil/search_front";
+$route['recherche/(:any)'] = "accueil/search_front/$1";
+
 /*
 | -------------------------------------------------------------------------
 | PAGES

@@ -104,27 +104,14 @@ function fourchettePrix(){
 }
 
 function recherche(form){
-    var data = $("#search_input").val();
-
-      $.ajax({
-          url: 'accueil/search_front',
-          data: data,
-          cache: false,
-          contentType: false,
-          processData: false,
-          dataType: "json",
-          type: 'POST',
-          success: function(jqXHR){
-            if(jqXHR[0] !== true){
-
-            }else{
-                  location.href = 'accueil/recherche';
-            }
-          },
-          error: function(jqXHR, textStatus, errorThrown)
-          {
-              alert("ERREUR : "+ textStatus);
-          }
-      });
-      return false;
+    var recherche = $(form).val();
+    var path = window.location.pathname;
+    var reg = /recherche/;
+    if(reg.test(path)){
+      var tab = path.split("/");
+      window.location = '/' + tab[1] + '/'+ recherche ;
+    }else{
+      window.location = "recherche/" + recherche ;
+    }
+  return false;
 }

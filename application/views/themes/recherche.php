@@ -1,12 +1,11 @@
 <div class="container">
 	<div class="section">
     <div class="row liste_produits">
-      <?php //var_dump($produits); ?>
       <?php foreach($produits as $produit){ ?>
       <div class="col s12 m6 l4 product">
         <div class="card z-depth-0">
           <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="<?php //echo img_url('produit/'.$produit->id.'/'.$produit->images[0]) ?>" alt="">
+            <img class="activator" src="<?php echo img_url('produit/'.$produit->id.'/'.$produit->image); ?>" alt="">
           </div>
           <div class="card-content indigo lighten-5">
             <span class="card-title activator grey-text text-darken-4"><?php echo $produit->libelle; ?><i class="material-icons right">more_vert</i></span>
@@ -38,5 +37,3 @@
         </ul>
       </div>
     </div><!-- fin div row -->
-  </div><!-- fin div container -->
-</div><!-- fin div section -->

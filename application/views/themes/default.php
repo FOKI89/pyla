@@ -172,10 +172,10 @@
 	        <div class="footer-copyright indigo">
            		<div class="container">
 	           		© 2016 Site bati avec Pila
-	           		<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+	           		<!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
 	           	</div>
 	        </div>
-	    </footer><?php var_dump($_SESSION["site_cp"]);?>
+	    </footer>
 		<?php foreach($js as $url): ?>
 			<script type="text/javascript" src="<?php echo $url; ?>"></script>
 		<?php endforeach; ?>

@@ -15,7 +15,7 @@
 <!-- ======================================================================= -->
 <!-- CONTENU PRINCIPAL-->
 <!-- Conteneur -->
-<div class="container">
+<div class="super-container">
 	<!-- Center row -->
 	<div class="row ">
 		<div class="col s12 center-align">
@@ -26,7 +26,7 @@
 					<div class="card">
 						<div class="card-content">
 							<span class="card-title">Liste des utilisateurs</span>
-							<table class="striped" id="liste_utilisateurs">
+							<table class="striped responsive-table" id="liste_utilisateurs">
 								<thead>
 									<tr>
 										<th data-field="icon"></th>

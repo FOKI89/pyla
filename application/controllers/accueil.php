@@ -6,7 +6,7 @@ class Accueil extends CI_Controller
 		parent::__construct();
 		$this->load->model('categorie_model', 'cat');
 		$this->load->model('produit_model', 'prod');
-		$this->output->enable_profiler(true);
+		$this->output->enable_profiler(false);
 	}
 	public function index()
 	{
@@ -23,22 +23,28 @@ class Accueil extends CI_Controller
 		return false;
 	}
 
-	public function search_front(){
+	public function search_front($recherche){
 		$data = array();
-		if(isset($_POST['data'])){
-			$searched = '"%'.$_POST['data'].'%"';
+		if(isset($recherche)){
+			$searched = '"%'.$recherche.'%"';
 			$search = 'WHERE libelle LIKE '.$searched.' OR marque LIKE '.$searched.' OR description LIKE '.$searched;
 		}else{
 			$search = "";
 		}
 		if(!$query = $this->db->query('SELECT * FROM produits '. $search)){
 				show_error("Select * produits","error_db");
-				return false;
+				//return false;
 		}
-		$data["produits"] = $query->result();
+		$produits = $query->result();
+		foreach ($produits as $produit) {
+			$images = preg_grep('/^([^.])/', scandir($this->config->item('url_base').'/assets/img/produit/'.$produit->id));
+			$produit->image = reset($images);
+		}
+
+		$data['produits'] = $produits;
 		$this->layout->set_titre("Recherche");
 		$this->layout->view('themes/recherche', $data);
-		return false;
+		//return false;
 	}
 
 
