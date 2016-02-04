@@ -29,7 +29,9 @@
 					<!-- Corps du formulaire-->
 					<div class="row">
 						<div class="form col s8 offset-s2">
-							<input placeholder="E-mail *" id="email" type="text" name="email" class="validate">
+							<input placeholder="Email *" id="old_email" type="text" name="old_email" class="validate">
+							<input placeholder="Nouvel email si différent de l'actuel" id="new_email" type="text" name="new_email" class="validate">
+							<input placeholder="Email de contact *" id="email_contact" type="text" name="email_contact" class="validate">
 							<input placeholder="Mot de passe *" id="mdp" type="password" name="mdp" class="validate">
 							<input placeholder="Confirmation mot de passe *" id="confirm_mdp" type="password" name="confirm_mdp" class="validate">
 							<p class="center-align">

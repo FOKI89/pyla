@@ -13,7 +13,7 @@
 						<span class="card-title activator grey-text text-darken-4"><?php echo $produit->libelle; ?><i class="material-icons right">more_vert</i></span>
 						<form class="" action="" method="post">
 							<div class="input-field col s12 center">
-								<button class="btn waves-effect waves-light blue yellow-text" type="submit" name="ajout_panier" value="<?php echo $produit->id; ?>">Ajouter au panier
+								<button class="btn waves-effect waves-light blue yellow-text" type="" name="ajout_panier" value="<?php echo $produit->id; ?>" data-panier="<?php echo $produit->id; ?>">Ajouter au panier
 									<i class="material-icons right medium">shopping_cart</i>
 								</button>
 							</div>
@@ -22,7 +22,9 @@
 					<div class="card-reveal indigo lighten-5">
 						<span class="card-title grey-text text-darken-4"><?php echo $produit->libelle; ?><i class="material-icons right">close</i></span>
 						<p><?php echo substr($produit->description,0,145)."...";?></p>
-						<a class="btn waves-effect waves-light blue yellow-text" href="<?php echo base_url().'produit/'.$produit->id; ?>">Zoom sur le produit <i class="material-icons left">zoom_in</i></a>
+						<div class="center-align">
+							<a class="btn waves-effect waves-light blue yellow-text" href="<?php echo base_url().'produit/'.$produit->id; ?>">Zoom sur le produit <i class="material-icons left">zoom_in</i></a>
+						</div>
 					</div>
 				</div><!-- fin div card -->
 			</div><!-- fin div col -->

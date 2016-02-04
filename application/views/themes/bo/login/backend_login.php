@@ -35,7 +35,7 @@
 								<input type="checkbox" name="cookie" id="cookie" value="off"/>
 								<label for="cookie">Se souvenir de moi</label>
 							</p>
-							<p>
+							<p class="center-align">
 								<button class="btn waves-effect waves-light btn-large submit-button" type="submit" name="connexion">Connexion
 									<i class="material-icons right">send</i>
 								</button>

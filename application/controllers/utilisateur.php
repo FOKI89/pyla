@@ -25,7 +25,7 @@ class Utilisateur extends CI_Controller
         $this->load->model("pays_model", "pays");
         $this->load->model("token_model", "token");
         $this->load->model("statut_model", "stat");
-        $this->output->enable_profiler(true);
+        $this->output->enable_profiler(false);
     }
 
     public function form_creation(){
@@ -93,7 +93,15 @@ class Utilisateur extends CI_Controller
         }
         $this->_insertion();
         $this->_setToken();
-        $this->_mailInscription();
+
+        $data = array();
+        $data["prenom"] = $this->user->getPrenom();
+        $data["nom"] = $this->user->getNom();
+        $data["token"] = $this->num_token;
+        $template = "inscription";
+        $sujet = "Activation de votre compte ".$_SESSION["site_nom"];
+        $email = $this->user->getEmail();
+        $this->_mailInscription($data,$template,$sujet,$email);
 
         /*$return[0] = "lien";
         $return[1] = "http://localhost:8888/Pyla/activation?t=".$this->num_token;*/
@@ -112,15 +120,15 @@ class Utilisateur extends CI_Controller
 
     private function _validation_format($format){
         foreach($format as $item){
-            if($item == "prenom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
+            if($item == "prenom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z \p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù. .-]{3,50}$/"))) === false){
                 $return[1] = "Prénom";
                 die(json_encode($return));
             }
-            elseif($item == "nom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù.-]{3,50}$/"))) === false){
+            elseif($item == "nom" && !empty($this->input->post($item)) && filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z \p{Cyrillic}\p{Han}ÂÄÀÉÈÊËÎÏÔÖÛÜÙâäàéèêëîïôöûüù.-]{3,50}$/"))) === false){
                 $return[1] = "Nom";
                 die(json_encode($return));
             }
-            elseif($item == "email" && !empty($this->input->post($item)) && (filter_var($this->input->post($item), FILTER_VALIDATE_EMAIL) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/(yopmail\.com|trash-mail\.com|thrma\.com|mailinator\.com)/"))) !== false)){
+            elseif(($item == "email" || $item == "email_contact" || ($item == "new_email" && !empty($item))) && !empty($this->input->post($item)) && (filter_var($this->input->post($item), FILTER_VALIDATE_EMAIL) === false || filter_var($this->input->post($item), FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/(yopmail\.com|trash-mail\.com|thrma\.com|mailinator\.com)/"))) !== false)){
                 $return[1] = "Email";
                 die(json_encode($return));
             }
@@ -266,20 +274,18 @@ class Utilisateur extends CI_Controller
         }
     }
 
-    private function _mailInscription(){
-        $data = array();
-        $data["prenom"] = $this->user->getPrenom();
-        $data["nom"] = $this->user->getNom();
-        $data["token"] = $this->num_token;
-        $message = $this->load->view('themes/email/inscription.php',$data,TRUE);
-        $this->email->from('dlery.jarvis@gmail.com', 'Pyla');
-        $this->email->to($this->user->getEmail());
-        $this->email->subject('Activation de votre compte Pyla');
+    private function _mailInscription($data,$template,$sujet,$email){
+        $message = $this->load->view('themes/email/'.$template.'.php',$data,TRUE);
+        $this->email->from($_SESSION["site_email"], $_SESSION["site_nom"]);
+        $this->email->to($email);
+        $this->email->subject($sujet);
         $this->email->message($message);
         $this->email->set_mailtype("html"); 
         if(!$this->email->send()){
             echo $this->email->print_debugger();
+            return false;
         }
+        return true;
     }
 
     public function activation(){
@@ -351,7 +357,7 @@ class Utilisateur extends CI_Controller
             die(json_encode($return));
         }elseif($user_count > 1){
             $return[1] = "Erreur";
-            $return[2] = "Une erreur est survenue<br>Si celle-ci se reproduit, veuillez nous <a href='mailto:contact@pyla.fr'>contacter</a>";
+            $return[2] = "Une erreur est survenue<br>Si celle-ci se reproduit, veuillez nous <a href='mailto:".$_SESSION['site_email']."'>contacter</a>";
             die(json_encode($return));
         }
         $user_tuples = $this->utilisateur->read("*",array("email" => $this->input->post("email")));
@@ -374,7 +380,7 @@ class Utilisateur extends CI_Controller
             die(json_encode($return));
         }elseif($user_tuple->statut < 0 || $user_tuple->statut > 6){
             $return[1] = "Erreur";
-            $return[2] =  "Une erreur est survenue<br>Si celle-ci se reproduit, veuillez nous <a href='mailto:contact@pyla.fr'>contacter</a>";
+            $return[2] =  "Une erreur est survenue<br>Si celle-ci se reproduit, veuillez nous <a href='mailto:".$_SESSION['site_email']."'>contacter</a>";
             die(json_encode($return));
         }elseif(empty($user_tuple->statut)){
             $return[1] = "Activation";
@@ -702,8 +708,8 @@ class Utilisateur extends CI_Controller
     public function form_install(){
         $return = array();
         $return[0] = false;
-        $require = array("email","mdp","confirm_mdp");
-        $format = array("email","mdp");
+        $require = array("old_email","email_contact","mdp","confirm_mdp");
+        $format = array("old_email","new_email","email_contact","mdp");
 
         $this->_validation_require($require);
         $this->_validation_format($format);
@@ -715,11 +721,23 @@ class Utilisateur extends CI_Controller
         }else{
             $mdp = $this->encrypt->encode($this->input->post('mdp'));
         }
-        $this->user->setEmail($this->input->post("email"));
+
+        $admin_count = $this->utilisateur->count('email',$this->input->post("old_email"));
+        if($admin_count != 1){
+            $return[1] = "introuvable";
+            die(json_encode($return));
+        }
+        $new_email = $this->input->post("new_email");
+        if(isset($new_email) && !empty($new_email)){
+            $this->user->setEmail($this->input->post("new_email"));
+        }else{
+            $this->user->setEmail($this->input->post("old_email"));
+        }
         $this->user->setMdp($mdp);
-        $this->_insertion_admin();
+        $this->_update_admin($this->input->post("old_email"), $this->input->post("email_contact"));
 
         $return[0] = true;
+        $return[1] = base_url()."backoffice";
         die(json_encode($return));
     }
 
@@ -730,17 +748,54 @@ class Utilisateur extends CI_Controller
         $this->_validation_require($require);
     }
 
-    private function _insertion_admin(){
-        $options_echappees = array();
+    private function _update_admin($old_email, $email_contact){
+/*        $options_echappees = array();
         $options_non_echappees = array();
+        $options_echappees["nom"] = $_SESSION['site_nom'];
         $options_echappees["email"] = $this->user->getEmail();
-        $options_echappees["mdp"] = $this->user->getMdp();;
+        $options_echappees["mdp"] = $this->user->getMdp();
         $options_non_echappees = array();
         $options_non_echappees["date_entree"] = "NOW()";
         $options_non_echappees["statut"] = "1";
 
         if(!$this->utilisateur->create($options_echappees, $options_non_echappees)){
             show_error("Insert administrateur","error_db");
+            return false;
+        }
+
+        unset($options_non_echappees);
+        $options_echappees = array();
+        $options_echappees["email"] = $email_contact;
+        if(!$this->site_model->create($options_echappees)){
+            show_error("Insert administrateur email contact","error_db");
+            return false;
+        }*/
+        //echo "site ".$_SESSION['site_nom']." - email ".$this->user->getEmail()." - old ".$old_email." - mdp ".$this->user->getMdp(); die;
+        $options_echappees = array();
+        $options_non_echappees = array();
+        $options_echappees["nom"] = $_SESSION['site_nom'];
+        $options_echappees["email"] = $this->user->getEmail();
+        $options_echappees["mdp"] = $this->user->getMdp();
+        $options_non_echappees = array();
+        $options_non_echappees["date_entree"] = "NOW()";
+        $options_non_echappees["statut"] = "1";
+        $where = array(
+                  "email" => $old_email,
+                  );
+
+        if(!$this->utilisateur->update($where, $options_echappees, $options_non_echappees)){
+            show_error("Insert administrateur","error_db");
+            return false;
+        }
+
+        unset($options_echappees);
+        unset($options_non_echappees);
+        $options_echappees = array();
+        $options_non_echappees = array();
+        $options_echappees["email"] = $email_contact;
+        $options_non_echappees["date_creation"] = "NOW()";
+        if(!$this->site_model->update(1,$options_echappees)){
+            show_error("Insert administrateur email contact","error_db");
             return false;
         }
     }
@@ -755,12 +810,74 @@ class Utilisateur extends CI_Controller
     }
 
     public function panier(){
+        if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
+            $this->layout->set_titre("Connexion");
+            $this->layout->ajouter_css("sweetalert/sweetalert");
+            $this->layout->ajouter_js("vendors/jquery-1.11.3.min");
+            $this->layout->ajouter_js("sweetalert/sweetalert.min");
+            $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+            $this->layout->ajouter_js("accueil/form_connexion");
+            $this->layout->view('themes/accueil/connection');
+            return false;
+        }
+        
+        if(!$query_client = $this->db->query('SELECT id, nom, prenom, email FROM utilisateurs WHERE id = '.$_SESSION['id'])){
+            show_error("Select client connect","error_db");
+            return false;
+        }
+        $client = $query_client->result();
+        $_SESSION["client"] = $client[0];
+        $panier = isset($_SESSION["panier"]) ? $_SESSION["panier"] : null;
+        
+        $data = array(
+                    "client" => $_SESSION["client"],
+                    "panier" => $panier
+                );
         $this->layout->set_titre("Mon panier");
         $this->layout->ajouter_css("sweetalert/sweetalert");
         $this->layout->ajouter_js("sweetalert/sweetalert.min");
         $this->layout->ajouter_js("sweetalert/sweetalert-dev");
         $this->layout->ajouter_js("utilisateur/form_creation");
-        $this->layout->view('themes/panier');
+        $this->layout->view('themes/panier', $data);
+    }
+
+    public function retirer_panier($index){
+        unset($_SESSION["panier"][$index]);
+        $this->panier();
+    }
+
+    public function valider_panier(){
+        $where = array("id" => 1);
+        $site = $this->site_model->read("*", $where);
+
+        $data = array();
+        $data["email_client"] = $_SESSION["client"]->email;
+        $data["prenom_client"] = $_SESSION["client"]->prenom;
+        $data["nom_client"] = $_SESSION["client"]->nom;
+        $data["nom_site"] = $site[0]->nom;
+        $data["email_site"] = $site[0]->email;
+        foreach($_SESSION["panier"] as $key => $panier ){
+            $data["site_nom"] = $_SESSION["site_nom"];
+            $data["id"] = $panier->id;
+            $data["libelle"] = $panier->libelle;
+            $data["reference"] = $panier->reference;
+            $data["marque"] = $panier->marque;
+            $data["prix"] = $panier->prix;
+            $data["prenom"] = $panier->prenom;
+            $data["nom"] = $panier->nom;
+            $template = "panier";
+            $sujet = $_SESSION["site_nom"]." - Commande en attente";
+            $email = $panier->email;
+            if($this->_mailInscription($data,$template,$sujet,$email)){
+                unset($_SESSION["panier"]);
+            }
+        }
+        $this->layout->set_titre("Mon panier");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("utilisateur/form_creation");
+        $this->layout->view('themes/panier_valide');
     }
 
     public function suppr_accents($str, $encoding ='utf-8',$min = false)

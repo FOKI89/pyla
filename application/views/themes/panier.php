@@ -3,63 +3,38 @@
 		<div class="row">
 		</div>
 		<h2>Mon panier</h2>
+		<?php if(isset($_SESSION['panier']) && !empty($_SESSION['panier'])){ ?>
 		<table class="responsive-table striped panier">
 			<thead>
 				<tr>
+					<th data-field="libelle">Libellé</th>
 					<th data-field="reference">Référence</th>
-					<th data-field="image-produit">Produit</th>
+					<th data-field="marque">Marque</th>
 					<th data-field="prix">Prix</th>
-					<th data-field="nombre-items">Nombre d'articles</th>
-					<th data-field="suppression">Retirer du panier</th>
+					<th data-field="vendeur">Vendeur</th>
+					<th data-field="suppression">Retirer</th>
 				</tr>
 			</thead>
 			<tbody>
+				<?php foreach($_SESSION["panier"] as $key => $panier ){ ?>
 				<tr>
-					<td><a href="">Tee shirt rouge, Addadas</a></td>
-					<td><img src="img/test-mini4.jpg" alt="produit"></td>
-					<td>70€</td>
-					<td><div class="input-field col s12 center">
-						<select class="icon validate">
-							<option value="" disabled selected>2</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-						</select>
-					</div></td>
-					<td><a href="" title="Retirer du panier" class="vide-panier"><i class="material-icons medium">close</i></a></td>
+					<td><a href="<?php echo base_url().'produit/'.$panier->id; ?>"><?php echo $panier->libelle; ?></a></td>
+					<td><?php echo $panier->reference; ?></td>
+					<td><?php echo $panier->marque; ?></td>
+					<td><?php echo $panier->prix; ?></td>
+					<?php if(isset($panier->prenom)){ ?>
+					<td><?php echo $panier->prenom.' '.$panier->nom; ?></td>
+					<?php }else{ ?>
+					<td><?php echo $_SESSION["site_nom"]; ?></td>
+					<?php } ?>
+					<td><a href="<?php echo base_url().'utilisateur/retirer_panier/'.$key; ?>" title="Retirer du panier" class="vide-panier"><i class="material-icons medium">close</i></a></td>
 				</tr>
-				<tr>
-					<td><a href="">Tee shirt rouge, Addadas</a></td>
-					<td><img src="img/test-mini4.jpg" alt="produit"></td>
-					<td>70€</td>
-					<td><div class="input-field col s12 center">
-						<select class="icon validate">
-							<option value="" disabled selected>2</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-						</select>
-					</div></td>
-					<td><a href="" title="Retirer du panier" class="vide-panier"><i class="material-icons medium">close</i></a></td>
-				</tr>
-				<tr>
-					<td><a href="">Tee shirt rouge, Addadas</a></td>
-					<td><img src="img/test-mini4.jpg" alt="produit"></td>
-					<td>70€</td>
-					<td>
-						<div class="input-field col s12 center">
-							<select class="icon validate">
-								<option value="" disabled selected>2</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-							</select>
-						</div>
-					</td>
-					<td><a href="" title="Retirer du panier" class="vide-panier"><i class="material-icons medium">close</i></a></td>
-				</tr>
+				<?php } ?>
 			</tbody>
 		</table>
-		<a class="btn yellow blue-text right" href="#">Valider</a>
+		<a class="btn yellow blue-text right" href="<?php echo base_url().'utilisateur/valider_panier'; ?>">Valider</a>
+		<?php }else{ ?>
+		<p class="center">Votre panier est vide</p>
+		<?php } ?>
 	</div><!-- fin div section -->
 </div><!-- fin div container -->
