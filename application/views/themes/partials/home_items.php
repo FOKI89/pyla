@@ -12,18 +12,14 @@
 				</div>
 				<div class="card-content indigo lighten-5">
 					<span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i><?php echo $categorie['libelle'];?></span>
-					<form class="" action="" method="post">
-						<div class="input-field col s12 center">
-							<button class="btn waves-effect waves-light blue yellow-text" type="submit" name="ajout_panier" value="<?php echo $categorie['id']; ?>">Ajouter au panier
-								<i class="material-icons right medium">shopping_cart</i>
-							</button>
-						</div>
-					</form>
+					<div class="center">
+						<a class="btn waves-effect waves-light blue yellow-text" href="<?php echo base_url().'categorie/'.$categorie['id'];?>">En savoir<i class="material-icons right">add</i></a>
+					</div>
 				</div>
 				<div class="card-reveal indigo lighten-5">
 					<span class="card-title grey-text text-darken-4"><?php echo $categorie['libelle']; ?><i class="material-icons right">close</i></span>
 					<p><?php if(isset($categorie['description'])) echo substr($categorie['description'],0,165)."...";?></p>
-					<a class="btn waves-effect waves-light blue yellow-text" href="<?php echo base_url().'categorie/'.$categorie['id'];?>">En savoir<i class="material-icons right">add</i></a>
+
 				</div>
 			</div>
 			<div class="card transparent col m4 hide-on-small-only side-part-product z-depth-0">

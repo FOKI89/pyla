@@ -6,7 +6,7 @@ class Accueil extends CI_Controller
 		parent::__construct();
 		$this->load->model('categorie_model', 'cat');
 		$this->load->model('produit_model', 'prod');
-		$this->output->enable_profiler(false);
+		$this->output->enable_profiler(true);
 	}
 	public function index()
 	{
@@ -22,6 +22,25 @@ class Accueil extends CI_Controller
 		->view('themes/partials/top_products',$data);
 		return false;
 	}
+
+	public function search_front(){
+		$data = array();
+		if(isset($_POST['data'])){
+			$searched = '"%'.$_POST['data'].'%"';
+			$search = 'WHERE libelle LIKE '.$searched.' OR marque LIKE '.$searched.' OR description LIKE '.$searched;
+		}else{
+			$search = "";
+		}
+		if(!$query = $this->db->query('SELECT * FROM produits '. $search)){
+				show_error("Select * produits","error_db");
+				return false;
+		}
+		$data["produits"] = $query->result();
+		$this->layout->set_titre("Recherche");
+		$this->layout->view('themes/recherche', $data);
+		return false;
+	}
+
 
 	public function form_connexion(){
 		$this->layout->set_titre("Connexion");
@@ -100,4 +119,5 @@ class Accueil extends CI_Controller
 		}
 		return $data;
 	}
+
 }

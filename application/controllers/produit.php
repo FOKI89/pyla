@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Produit extends CI_Controller
-{   
+{
     private $id;
     private $reference;
     private $libelle;
@@ -20,7 +20,7 @@ class Produit extends CI_Controller
         $this->load->model("categorie_produit_model", "cat_prod");
         $this->output->enable_profiler(false);
     }
-    
+
     public function index($id_categorie = null)
     {
         $this->produit($id_categorie);
@@ -58,7 +58,7 @@ class Produit extends CI_Controller
 
         $id = $categorie->id;
         foreach($data['produits'] as $produit){
-            $images = preg_grep('/^([^.])/', scandir($this->config->item('url_base').'/assets/img/produit/'.$produit->id)); 
+            $images = preg_grep('/^([^.])/', scandir($this->config->item('url_base').'/assets/img/produit/'.$produit->id));
             $i = 0;
             $tab = array();
             foreach($images as $image){
@@ -101,7 +101,7 @@ class Produit extends CI_Controller
                     }
                     $data["grille"] .= "</ul>";
                 }
-                
+
             }
         }
         return $data;
@@ -115,7 +115,7 @@ class Produit extends CI_Controller
         $categorie[0]['type'] = "categorie";
         $produit[0]->type = "produit";
 
-        $images = preg_grep('/^([^.])/', scandir($this->config->item('url_base').'/assets/img/produit/'.$produit[0]->id)); 
+        $images = preg_grep('/^([^.])/', scandir($this->config->item('url_base').'/assets/img/produit/'.$produit[0]->id));
         $i = 0;
         $tab = array();
         foreach($images as $image){
@@ -175,7 +175,7 @@ class Produit extends CI_Controller
             $return[1] = "require";
             die(json_encode($return));
         }
-        
+
         $this->_validation_require($require);
         $this->_validation_format($format);
 
@@ -200,7 +200,7 @@ class Produit extends CI_Controller
             $config["upload_path"]   = $filename;
             $config["allowed_types"] = "gif|jpg|png|jpeg";
             $config["max_size"]      = "2048";
-            $config["encrypt_name"]  = TRUE;  
+            $config["encrypt_name"]  = TRUE;
 
             $this->upload->initialize($config);
 
@@ -228,7 +228,7 @@ class Produit extends CI_Controller
                 $return[1] = "no upload";
                 die(json_encode($return));
                 echo $this->upload->display_errors();
-            }  
+            }
         }
 
         $fields = array(
@@ -242,7 +242,7 @@ class Produit extends CI_Controller
             show_error("Create produit utilisateur","error_db");
             return false;
         }
-  
+
         $return[0] = true;
         die(json_encode($return));
     }
@@ -316,7 +316,7 @@ class Produit extends CI_Controller
         unset($post['id']);
         unset($post['action']);
         unset($post[0]);
-        
+
         if(!$this->prod->update(array("id" => $id), $post)){
             show_error("Update articles","error_db");
             return false;

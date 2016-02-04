@@ -27,14 +27,14 @@
 			    <div class="recherche col hide-on-small-only m6 l6">
 			        <nav class="transparent z-depth-0">
 			            <div class="nav-wrapper">
-			              	<form id="search-bar" method="" action="">
+			              	<form id="search_form">
 				                	<div class="input-field col s8 z-depth-1 white">
-				                  		<input id="search" type="search" placeholder="Recherche" required>
-				                  		<label for="search"><i class="material-icons">search</i></label>
+				                  		<input id="search_input" type="search" name="search_input" placeholder="Recherche" required>
+				                  		<label for="search_input"><i class="material-icons">search</i></label>
 				                  		<i class="material-icons">close</i>
 				                	</div>
 													<div class="input-field col s4 center">
-														<button class="btn waves-effect waves-light white grey-text text-darken-4 " type="submit" name="search">Rechercher</button>
+														<button id="search_button" class="btn waves-effect waves-light white grey-text text-darken-4 " type="submit" name="search_button" >Rechercher</button>
 													</div>
 			              	</form>
 			            </div>

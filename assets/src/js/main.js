@@ -8,6 +8,13 @@ jQuery(document).ready(function($) {
     $('.slider').slider({full_width: true});
 
 
+    if($('div.product').length > 0){
+        equalizeDiv($('div.product'));
+      $( window ).resize(function(){
+        equalizeDiv($('div.product'));
+      });
+    }
+
     hoverEvent('nav.main-nav ul.desktop li');
     hoverEvent('.top-products>div');
     //centerMenu("ul.desktop");
@@ -32,9 +39,23 @@ jQuery(document).ready(function($) {
     if($('.nav-filter #filtre_prix').length > 0){
       fourchettePrix();
     }
+
+/* search bar */
+    $('#search_form').on('submit', function(c){
+      c.preventDefault();
+      recherche($('#search_form :input'));
+    });
+
+
 });
 
-
+function equalizeDiv(div){
+  var maxHeight = 0;
+  $(div).each(function(){
+     if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+  });
+  $(div).height(maxHeight);
+}
 
 function centerMenu(menu){
     var ulWidth = $(menu).width();
@@ -80,4 +101,30 @@ function fourchettePrix(){
          'max': 450
        },
     });
+}
+
+function recherche(form){
+    var data = $("#search_input").val();
+
+      $.ajax({
+          url: 'accueil/search_front',
+          data: data,
+          cache: false,
+          contentType: false,
+          processData: false,
+          dataType: "json",
+          type: 'POST',
+          success: function(jqXHR){
+            if(jqXHR[0] !== true){
+
+            }else{
+                  location.href = 'accueil/recherche';
+            }
+          },
+          error: function(jqXHR, textStatus, errorThrown)
+          {
+              alert("ERREUR : "+ textStatus);
+          }
+      });
+      return false;
 }

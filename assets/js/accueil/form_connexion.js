@@ -10,7 +10,7 @@ $("#connection").on("submit", function(c){
         $('[name ='+champs[i]+']').css({ 'box-shadow': 'none'});
         if($('[name ='+champs[i]+']').val() == ''){
              $('[name ='+champs[i]+']').css({ 'box-shadow': '0 0 8px #399BFF'});
-        } 
+        }
     }
 
     $.ajax({
