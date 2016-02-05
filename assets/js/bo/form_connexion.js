@@ -14,7 +14,7 @@ $("#connection").on("submit", function(c){
     }
 
     $.ajax({
-        url: 'backoffice/form_connexion',
+        url: 'form_connexion',
         data: data,
         cache: false,
         contentType: false,

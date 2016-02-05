@@ -39,6 +39,14 @@ class Page extends CI_Controller
       return false;
     }
 
+    public function my404(){
+      $data = array();
+      $this->layout->set_titre("404");
+      $data['titre'] = "Oups, la page que vous essayer de joindre n'existe pas.";
+      $data['contenu'] = ''; // View name
+      $this->layout->view('themes/page', $data);
+
+    }
     public function form_connexion(){
         $this->layout->set_titre("Connexion");
         $this->layout->ajouter_css("sweetalert/sweetalert");

@@ -147,6 +147,11 @@ div.top-products-link-hover .bouton{
   margin-bottom: 10px;
 }
 
+.about .card::after{
+  content:"";
+  display:table;
+  clear: both;
+}
 
 /* Breadcrumb  */
 

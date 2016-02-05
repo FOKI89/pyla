@@ -1,4 +1,4 @@
-<div class="nav-filter indigo lighten-5">
+<div class="nav-filter indigo lighten-5 hide">
   <nav class="indigo indigo lighten-5">
     <h3 class="center">Filtres</h3>
     <form id="filtrage" class="row" action="" method="" >

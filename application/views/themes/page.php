@@ -2,16 +2,18 @@
         <div class="section">
           <div class="row page">
             <h2 class="header center-on-small-only blue-text"><?php echo $titre; ?></h2>
+            <?php if(isset($contenu) && !empty($contenu)){ ?>
             <div class="col s12">
               <div class="card indigo lighten-5">
                 <div class="card-content grey-text text-darken-3">
-                  <h2 class="card-title indigo-text">Un sous-titre</h2>
+                  <h2 class="card-title indigo-text hide">Un sous-titre</h2>
                   <!-- start slipsum code -->
                   <p><?php echo $contenu; ?></p>
                 </div>
               </div>
             </div>
-            <div class="col s12 m6">
+            <?php } ?>
+            <div class="col s12 m6 hide">
               <div class="card indigo lighten-5">
                 <div class="card-content grey-text text-darken-3">
                   <h2 class="card-title indigo-text">Un sous-titre</h2>
@@ -52,7 +54,7 @@
                 </div>
               </div>
             </div>
-            <div class="col s12 m6">
+            <div class="col s12 m6 hide">
               <div class="card indigo lighten-5">
                   <div class="card-content grey-text text-darken-3">
                     <h2 class="card-title indigo-text">Un sous-titre</h2>
@@ -71,7 +73,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div><!-- fin div section -->
     </div><!-- fin div container -->

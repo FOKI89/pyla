@@ -3,7 +3,9 @@
     <h2 class="header center-on-small-only grey-text grey-darken-4-text">Qui sommes-nous ?</h2>
 		<div class ="row about">
       <div class="card indigo lighten-5 z-depth-0">
-        <h2 class="card-title indigo-text">L'équipe:</h2>
+				<div class="card-content">
+					<h2 class="card-title indigo-text">L'équipe:</h2>
+				</div>
         <div class="col s12 m4">
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">

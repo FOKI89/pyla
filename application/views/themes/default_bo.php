@@ -1,12 +1,12 @@
-<?php 
-	if(!isset($_SESSION['admin']) || $_SESSION['admin'] != 1){ 
+<?php
+	if(!isset($_SESSION['admin']) || $_SESSION['admin'] != 1){
 		header('Location: '.site_url('backoffice'));
 	  	exit();
 	}
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" > 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 <head>
 	<title><?php echo $titre; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
@@ -67,7 +67,7 @@
 						<div class="collapsible-body">
 							<ul class="center-align blue-text text-darken-4">
 								<li><a href="<?php echo site_url('backoffice/creer-compte'); ?>" class="sidebar-link">Créer un compte</a></li>
-								<li><a href="<?php echo site_url('backoffice/chercher-utilisateur'); ?>" class="sidebar-link">Chercher un utilisateur</a></li>
+								<li class="hide"><a href="<?php echo site_url('backoffice/chercher-utilisateur'); ?>" class="sidebar-link">Chercher un utilisateur</a></li>
 								<li><a href="<?php echo site_url('backoffice/liste-utilisateur'); ?>" class="sidebar-link">Liste des utilisateurs</a></li>
 							</ul>
 						</div>
@@ -85,16 +85,16 @@
 						</div>
 						<div class="collapsible-body">
 							<ul class="center-align blue-text text-darken-4">
-								<li><a href="<?php echo site_url('backoffice/creer-article'); ?>" class="sidebar-link">Créer un article</a></li>
-								<li><a href="<?php echo site_url('backoffice/chercher-article'); ?>" class="sidebar-link">Chercher un article</a></li>
+								<li class="hide"><a href="<?php echo site_url('backoffice/creer-article'); ?>" class="sidebar-link">Créer un article</a></li>
+								<li class="hide"><a href="<?php echo site_url('backoffice/chercher-article'); ?>" class="sidebar-link">Chercher un article</a></li>
 								<li><a href="<?php echo site_url('backoffice/liste-categorie'); ?>" class="sidebar-link">Liste des articles</a></li>
-								<li><a href="<?php echo site_url('backoffice/creer-critere'); ?>" class="sidebar-link">Créer un critère</a></li>
-								<li><a href="<?php echo site_url('backoffice/liste-critere'); ?>" class="sidebar-link">Liste des critères</a></li>
+								<li class="hide"><a href="<?php echo site_url('backoffice/creer-critere'); ?>" class="sidebar-link">Créer un critère</a></li>
+								<li class="hide"><a href="<?php echo site_url('backoffice/liste-critere'); ?>" class="sidebar-link">Liste des critères</a></li>
 							</ul>
 						</div>
 					</li>
 					<!-- Sous-menu Commandes -->
-					<li>
+					<li class="hide">
 						<div class="collapsible-header"><i class="material-icons">shopping_cart</i>
 							<span class="categorie_menu">Commandes</span>
 						</div>
@@ -119,7 +119,7 @@
 						</div>
 					</li>
 					<!-- Sous-menu Statistiques -->
-					<li>
+					<li class="hide">
 						<div class="collapsible-header"><i class="material-icons">timeline</i>
 							<a href="<?php echo site_url('backoffice/statistiques'); ?>" class="categorie_menu">Statistiques</a>
 						</div>
@@ -155,7 +155,7 @@
 		</div>
 	</footer>
 	<?php foreach($js as $url): ?>
-		<script type="text/javascript" src="<?php echo $url; ?>"></script> 
+		<script type="text/javascript" src="<?php echo $url; ?>"></script>
 	<?php endforeach; ?>
 </body>
 </html>
