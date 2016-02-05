@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
     $('.materialboxed').materialbox();
     $('.slider').slider({full_width: true});
 
-
+/* Event Redimensionnement */
     if($('div.product').length > 0){
         equalizeDiv($('div.product'));
       $( window ).resize(function(){
@@ -20,16 +20,11 @@ jQuery(document).ready(function($) {
     //centerMenu("ul.desktop");
 
 
-    $("ul#nav-account > li a").click(function(event){
-      //event.preventDefault();
-      //navAccount(this);
-    });
-
-
+/* Effets visuels sur les select via matérialize */
     if($(".input-field select").length > 0){
       $(".input-field select").material_select();
     }
-
+/* nav filter event */
     if($('.nav-filter').length > 0){
       filterPosition();
       $( window ).resize(function(){
@@ -40,7 +35,7 @@ jQuery(document).ready(function($) {
       fourchettePrix();
     }
 
-/* search bar */
+/* search bar event */
     $('#search_form').on('submit', function(c){
       c.preventDefault();
       recherche($('#search_form :input'));
@@ -48,7 +43,7 @@ jQuery(document).ready(function($) {
 
 
 });
-
+/*  Redimensionnement des height div produits pour un meilleur affichage */
 function equalizeDiv(div){
   var maxHeight = 0;
   $(div).each(function(){
@@ -57,11 +52,12 @@ function equalizeDiv(div){
   $(div).height(maxHeight);
 }
 
+/* Redimensionnement de la width et centrage horizontal*/
 function centerMenu(menu){
     var ulWidth = $(menu).width();
     $(menu).attr("width", ulWidth);
 }
-
+/* Gestion la nav principal */
 function hoverEvent(parent){
     $(parent).mouseenter(function() {
         $(this).children("div").show();
@@ -77,6 +73,8 @@ function navAccount(link){
   $("." + part).addClass('active-account');
 }
 
+
+/* Function gérant le positionnement dynamique de la nav latérale du fitlre*/
 function filterPosition(){
   if($( window ).width() > 975){
     var bodyWidth = $('body').width();
@@ -89,7 +87,7 @@ function filterPosition(){
     $('.nav-filter').width(maxWidth);
   }
 }
-
+/* function d'affichage d'un selecteur de prix */
 function fourchettePrix(){
   var slider = document.getElementById('filtre_prix');
     noUiSlider.create(slider, {
@@ -102,16 +100,10 @@ function fourchettePrix(){
        },
     });
 }
-
+/* Function gérant la recherche sur le site  */
 function recherche(form){
     var recherche = $(form).val();
-    var path = window.location.pathname;
-    var reg = /recherche/;
-    if(reg.test(path)){
-      var tab = path.split("/");
-      window.location = '/' + tab[1] + '/'+ recherche ;
-    }else{
-      window.location = "recherche/" + recherche ;
-    }
+    var baseUrl = $("header .logo .brand-logo").attr("href");
+    window.location = baseUrl + "recherche/" + recherche ;
   return false;
 }

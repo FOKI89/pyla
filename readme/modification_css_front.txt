@@ -1,0 +1,28 @@
+/*****************************************************************************************\
+*******************************************************************************************
+******************************** Modification CSS *****************************************
+*******************************************************************************************
+\*****************************************************************************************/
+
+
+Pila utilise le framework matérialize en SASS compilé avec Gulp.
+        Partie Gulp et CSS (Doc : https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md):
+            1. Installer nodeJS.
+            2. Lancer un npm_install dans le dossier assets (gulp est déjà configuré).
+            3. Lancer un gulp_watch dans le dossier assets (où est situé le dossier node_module).
+            4. /!\ Travailler sur les fichiers situés dans (assets/src).
+            5. CSS : fichiers .scss situés dans (assets/src/sass).
+            6. JS : fichiers js situés dans (assets/src/js).
+            7. Amusez-vous, les styles sont compilés automatiquement et rejoingnent le dossier assets/css.
+
+        Partie Matérialize (Doc : http://materializecss.com/about.html):
+            1. Les éléments de matérialize sont utilisés sur Pila.
+            2. Pour modifier les couleurs, il faut modifier les classes de couleurs
+            directement dans les vues du projet.
+            Exemple : application/views/themes/default.php (contient le header et le footer de Pila).
+            Remplacer la couleur du menu du bleu au rouge:
+              Modifier la class blue de <nav class="main-nav z-depth-0 blue"> par Red
+              -> <nav class="main-nav z-depth-0 red">
+
+            Pour plus d'informations sur la liste des couleurs disponibles et leur utilisation:
+            http://materializecss.com/color.html

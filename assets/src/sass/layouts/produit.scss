@@ -41,6 +41,11 @@ div.meilleures-ventes p{
   display: table;
   clear:both;
 }
+
+.liste_produits div.card-content .card-title{
+  line-height: 1.2;
+}
+
 span.card-title.activator i{
   margin-top: 12px;
 }
