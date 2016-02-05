@@ -16,4 +16,6 @@ class Page_model extends MY_Model
       $pages = $this->page_model->read("*", array());
       return $pages;
     }
+
+
 }

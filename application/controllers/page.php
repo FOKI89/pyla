@@ -1,6 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Page extends CI_Controller
 {
+    private $id;
+    private $titre;
+    private $contenu;
+
     public function __construct()
     {
         parent::__construct();
@@ -57,9 +61,40 @@ class Page extends CI_Controller
         $this->layout->view('themes/accueil/connection');
     }
 
-    public function createPage()
-    {
-        $this->categorie_model->createCategorie('Niveau 1');
+    public function form_validation(){
+        $return = array();
+        $return[0] = false;
+        $require = array("titre","contenu");
+
+        $this->_validation_require($require);
+
+        $this->pages->setTitre($this->input->post("titre"));
+        $this->pages->setContenu($this->input->post("contenu"));
+
+        $this->_insertion();
+
+        $return[0] = true;
+        die(json_encode($return));
     }
 
+    private function _validation_require($require){
+        foreach($require as $item){
+            if(empty($this->input->post($item))){
+                $return[1] = "require";
+                die(json_encode($return));
+            }
+        }
+    }
+
+    private function _insertion(){
+        $options_echappees = array();
+        $options_non_echappees = array();
+        $options_echappees["titre"] = $this->pages->getTitre();
+        $options_echappees["contenu"] = $this->pages->getContenu();
+
+        if(!$this->page_model->create($options_echappees, $options_non_echappees)){
+            show_error("Insertion page","error_db");
+            return false;
+        }
+    }
 }

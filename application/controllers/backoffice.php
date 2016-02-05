@@ -52,8 +52,8 @@ class Backoffice extends CI_Controller
         if(!$query = $this->db->query('SELECT id, libelle FROM categories WHERE id_parent IS NULL OR (id_parent IS NOT NULL AND id IN( SELECT id_parent FROM categories )) ORDER BY libelle ASC')){
             show_error("Select categorie creation","error_db");
             return false;
-        }  
-        $categorie = $query->result(); 
+        }
+        $categorie = $query->result();
         $select = [];
         $select [''] = "Catégorie parente";
         foreach($categorie as $item)
@@ -119,7 +119,7 @@ class Backoffice extends CI_Controller
             show_error("Select utilisateur","error_db");
             return false;
         }
-        $data['utilisateurs'] = $query->result();        
+        $data['utilisateurs'] = $query->result();
         $this->layout->set_titre("Back Office - Liste utilisateurs");
         $this->layout->set_theme("default_bo");
         $this->layout->ajouter_js("bo/jquery.tabledit.min");
@@ -149,7 +149,7 @@ class Backoffice extends CI_Controller
             show_error("Select utilisateur","error_db");
             return false;
         }
-        $data['produits'] = $query->result();        
+        $data['produits'] = $query->result();
         $this->layout->set_titre("Back Office - Liste articles");
         $this->layout->set_theme("default_bo");
         $this->layout->ajouter_js("bo/jquery.tabledit.min");
@@ -190,11 +190,14 @@ class Backoffice extends CI_Controller
         return false;
     }
 
-    public function modifier_pages(){
-        $this->layout->set_titre("Back Office - Modifier page");
+    public function creer_pages(){
+        $this->layout->set_titre("Back Office - Créer page");
         $this->layout->set_theme("default_bo");
-        //$this->layout->ajouter_js("bo/modifier_pages");
-        $this->layout->view("themes/bo/pages/modifier_pages");
+        $this->layout->ajouter_css("sweetalert/sweetalert");
+        $this->layout->ajouter_js("sweetalert/sweetalert.min");
+        $this->layout->ajouter_js("sweetalert/sweetalert-dev");
+        $this->layout->ajouter_js("bo/creer_page");
+        $this->layout->view("themes/bo/pages/creer_pages");
         return false;
     }
 
@@ -323,7 +326,7 @@ class Backoffice extends CI_Controller
         $options_non_echappees["top"] = $post["top"];
         $options_non_echappees["home"] = $post["home"];
         $options_non_echappees["rang"] = 0;
-        
+
         if(!$this->cat->create($options_echappees, $options_non_echappees)){
             show_error("Insert administrateur","error_db");
             return false;
@@ -404,7 +407,7 @@ class Backoffice extends CI_Controller
         $options_echappees["cp"] = $post["cp"];
         $options_echappees["id_pays"] = $post["id_pays"];
         $options_non_echappees["date_creation"] = "NOW()";
-        
+
         if(!$this->site_model->update(1,$options_echappees, $options_non_echappees)){
             show_error("Insert site","error_db");
             return false;

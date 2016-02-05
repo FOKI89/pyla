@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Page
+class Pages
 {
     private $id;
     private $titre;
